@@ -63,6 +63,25 @@
   .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
   footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
   .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--gold);color:#3a2c00}
+  .match-day{margin-bottom:16px}
+  .match-day h3{font-family:'Archivo';font-size:14px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
+  .match-card{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:6px}
+  .match-card .team{font-weight:700;font-size:15px}
+  .match-card .team.right{text-align:right}
+  .match-card .score{font-family:'Archivo';font-weight:900;font-size:20px;color:var(--pitch);min-width:60px;text-align:center}
+  .match-card .score.pending{color:var(--slate);font-size:14px;font-weight:600}
+  .match-card .grp-tag{font-size:11px;color:var(--slate)}
+  .grp-btns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .grp-btn{font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:2px solid var(--line);background:#fff;cursor:pointer;transition:all .15s}
+  .grp-btn:hover{border-color:var(--gold)}
+  .grp-btn.active{background:var(--pitch);color:#fff;border-color:var(--pitch)}
+  .grp-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px}
+  .grp-table th{text-align:left;padding:10px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);border-bottom:2px solid var(--line)}
+  .grp-table th.num{text-align:center}
+  .grp-table td{padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px}
+  .grp-table td.num{text-align:center;font-family:'Archivo';font-weight:800;font-variant-numeric:tabular-nums}
+  .grp-table tr:last-child td{border-bottom:none}
+  .grp-table tr:nth-child(-n+2) td.num{color:var(--pitch)}
   @media(max-width:560px){.cards{grid-template-columns:1fr}}
   :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -86,6 +105,8 @@
 
   <div class="meta" id="meta"></div>
   <div id="podcast"></div>
+  <div id="kamper"></div>
+  <div id="grupper"></div>
   <h2>Tabell</h2>
   <div id="board"></div>
   <div id="topp"></div>
@@ -141,11 +162,10 @@ async function load(id){
   html += `</div>`;
   $("#board").innerHTML = html;
 
-  // Statistikk
+  renderKamper(d);
+  renderGrupper(d);
   renderStats(d);
-  // Topp 10 scorere + assist
   renderTopp(d);
-  // Podcast
   renderPodcast(id, d);
   $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra API-Football. Alt bygges automatisk.";
 }
@@ -186,6 +206,82 @@ async function renderPodcast(id, d){
     <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC">${esc(pod.ingress||'')}
     ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p></div>`;
 }
+function renderKamper(d){
+  const kamper = (d.fasit||{}).kamper||[];
+  if(!kamper.length){ $("#kamper").innerHTML=''; return; }
+
+  const today = new Date().toISOString().slice(0,10);
+  const yesterday = new Date(Date.now()-86400000).toISOString().slice(0,10);
+  const tomorrow = new Date(Date.now()+86400000).toISOString().slice(0,10);
+  const relevant = kamper.filter(k=> k.dato===yesterday || k.dato===today || k.dato===tomorrow);
+  if(!relevant.length){ $("#kamper").innerHTML=''; return; }
+
+  const byDate = {};
+  relevant.forEach(k=>{ (byDate[k.dato]=byDate[k.dato]||[]).push(k); });
+
+  const dateLabel = d => d===today?'I dag':d===yesterday?'I går':d===tomorrow?'I morgen':d;
+
+  let html = '<h2>Kamper</h2>';
+  Object.keys(byDate).sort().forEach(dato=>{
+    html += `<div class="match-day"><h3>${dateLabel(dato)}</h3>`;
+    byDate[dato].forEach(k=>{
+      const finished = k.status==='FINISHED';
+      const scoreText = finished
+        ? `${k.home_score} – ${k.away_score}`
+        : k.status==='IN_PLAY'||k.status==='PAUSED'?'LIVE':'vs';
+      const cls = finished?'score':'score pending';
+      const grp = k.group?`<div class="grp-tag">${esc(k.group.replace('GROUP_','Gr. '))}</div>`:'';
+      html += `<div class="match-card">
+        <div class="team right">${esc(k.home)}${grp}</div>
+        <div class="${cls}">${scoreText}</div>
+        <div class="team">${esc(k.away)}</div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+  $("#kamper").innerHTML = html;
+}
+
+function renderGrupper(d){
+  const grupper = (d.fasit||{}).grupper||{};
+  const keys = Object.keys(grupper).sort();
+  if(!keys.length){ $("#grupper").innerHTML=''; return; }
+
+  let html = '<h2>Grupper</h2><div class="grp-btns">';
+  keys.forEach((g,i)=>{
+    html += `<button class="grp-btn${i===0?' active':''}" onclick="showGroup('${g}',this)">${esc(g)}</button>`;
+  });
+  html += '</div>';
+
+  keys.forEach((g,i)=>{
+    const rows = grupper[g];
+    html += `<div class="grp-content" id="grp-${g.replace(/ /g,'_')}" style="${i===0?'':'display:none'}">
+      <table class="grp-table"><thead><tr>
+        <th>#</th><th>Lag</th><th class="num">K</th><th class="num">P</th><th class="num">MF</th><th class="num">M+</th>
+      </tr></thead><tbody>`;
+    rows.forEach((r,j)=>{
+      html += `<tr>
+        <td class="num">${j+1}</td>
+        <td>${esc(r.lag)}</td>
+        <td class="num">${r.spilt||0}</td>
+        <td class="num">${r.poeng}</td>
+        <td class="num">${r.mf>=0?'+':''}${r.mf}</td>
+        <td class="num">${r.maal_for}</td>
+      </tr>`;
+    });
+    html += '</tbody></table></div>';
+  });
+  $("#grupper").innerHTML = html;
+}
+
+function showGroup(g, btn){
+  document.querySelectorAll('.grp-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.grp-content').forEach(el=>el.style.display='none');
+  const el = document.getElementById('grp-'+g.replace(/ /g,'_'));
+  if(el) el.style.display='';
+}
+
 init();
 </script>
 </body>
