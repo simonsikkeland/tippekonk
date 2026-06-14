@@ -31,9 +31,26 @@
     {
       "n": 8,
       "result": "H"
+    },
+    {
+      "n": 9,
+      "result": "H"
     }
   ],
-  "group_winners": {},
+  "group_winners": {
+    "Gruppe A": "Mexico",
+    "Gruppe B": "Canada",
+    "Gruppe D": "USA",
+    "Gruppe C": "Skottland",
+    "Gruppe E": "Tyskland",
+    "Gruppe F": "Nederland",
+    "Gruppe H": "Spania",
+    "Gruppe G": "Belgia",
+    "Gruppe I": "Frankrike",
+    "Gruppe J": "Argentina",
+    "Gruppe K": "Portugal",
+    "Gruppe L": "England"
+  },
   "r16": [],
   "r8": [],
   "kvart": [],
@@ -42,6 +59,6 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "Folarin Balogun",
-  "antall_maal": 22
+  "toppscorer": "",
+  "antall_maal": 0
 }
