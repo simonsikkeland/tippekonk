@@ -121,9 +121,9 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     try:
         st = _get(f"/competitions/{comp}/standings?season={season}", token)
         time.sleep(6)
-        for grp in st.get("standings", []):
-            if grp.get("type") != "TOTAL":
-                continue
+        standings = st.get("standings", [])
+        print(f"  Standings typer: {[g.get('type') for g in standings]}")
+        for grp in standings:
             label = grp.get("group", "")
             table = grp.get("table", [])
             if label and table:
