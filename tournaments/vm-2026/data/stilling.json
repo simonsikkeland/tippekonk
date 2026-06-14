@@ -4,50 +4,59 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T19:31:21+00:00",
+  "oppdatert": "2026-06-14T19:42:25+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
       {
-        "n": 1,
+        "home": "Mexico",
+        "away": "Sør-Afrika",
         "result": "H"
       },
       {
-        "n": 2,
+        "home": "Sør-Korea",
+        "away": "Tsjekkia",
         "result": "H"
       },
       {
-        "n": 3,
+        "home": "Canada",
+        "away": "Bosnia-Hercegovina",
         "result": "U"
       },
       {
-        "n": 4,
+        "home": "USA",
+        "away": "Paraguay",
         "result": "H"
       },
       {
-        "n": 5,
+        "home": "Qatar",
+        "away": "Sveits",
         "result": "U"
       },
       {
-        "n": 6,
+        "home": "Brasil",
+        "away": "Marokko",
         "result": "U"
       },
       {
-        "n": 7,
+        "home": "Haiti",
+        "away": "Skottland",
         "result": "B"
       },
       {
-        "n": 8,
+        "home": "Australia",
+        "away": "Tyrkia",
         "result": "H"
       },
       {
-        "n": 9,
+        "home": "Tyskland",
+        "away": "Curaçao",
         "result": "H"
       }
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Qatar",
+      "Gruppe B": "Canada",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -81,8 +90,8 @@
         "group": "GROUP_A"
       },
       {
-        "home": "South Korea",
-        "away": "Czechia",
+        "home": "Sør-Korea",
+        "away": "Tsjekkia",
         "dato": "2026-06-12",
         "home_score": 2,
         "away_score": 1,
@@ -92,10 +101,10 @@
       },
       {
         "home": "Canada",
-        "away": "Bosnia-Herzegovina",
+        "away": "Bosnia-Hercegovina",
         "dato": "2026-06-12",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 1,
         "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B"
@@ -192,7 +201,7 @@
       },
       {
         "home": "Spania",
-        "away": "Cape Verde Islands",
+        "away": "Kapp Verde",
         "dato": "2026-06-15",
         "home_score": null,
         "away_score": null,
@@ -272,7 +281,7 @@
       },
       {
         "home": "Portugal",
-        "away": "Congo DR",
+        "away": "DR Kongo",
         "dato": "2026-06-17",
         "home_score": null,
         "away_score": null,
@@ -311,7 +320,7 @@
         "group": "GROUP_K"
       },
       {
-        "home": "Czechia",
+        "home": "Tsjekkia",
         "away": "Sør-Afrika",
         "dato": "2026-06-18",
         "home_score": null,
@@ -322,7 +331,7 @@
       },
       {
         "home": "Sveits",
-        "away": "Bosnia-Herzegovina",
+        "away": "Bosnia-Hercegovina",
         "dato": "2026-06-18",
         "home_score": null,
         "away_score": null,
@@ -342,7 +351,7 @@
       },
       {
         "home": "Mexico",
-        "away": "South Korea",
+        "away": "Sør-Korea",
         "dato": "2026-06-19",
         "home_score": null,
         "away_score": null,
@@ -452,7 +461,7 @@
       },
       {
         "home": "Uruguay",
-        "away": "Cape Verde Islands",
+        "away": "Kapp Verde",
         "dato": "2026-06-21",
         "home_score": null,
         "away_score": null,
@@ -542,7 +551,7 @@
       },
       {
         "home": "Colombia",
-        "away": "Congo DR",
+        "away": "DR Kongo",
         "dato": "2026-06-24",
         "home_score": null,
         "away_score": null,
@@ -561,7 +570,7 @@
         "group": "GROUP_B"
       },
       {
-        "home": "Bosnia-Herzegovina",
+        "home": "Bosnia-Hercegovina",
         "away": "Qatar",
         "dato": "2026-06-24",
         "home_score": null,
@@ -591,7 +600,7 @@
         "group": "GROUP_C"
       },
       {
-        "home": "Czechia",
+        "home": "Tsjekkia",
         "away": "Mexico",
         "dato": "2026-06-25",
         "home_score": null,
@@ -602,7 +611,7 @@
       },
       {
         "home": "Sør-Afrika",
-        "away": "South Korea",
+        "away": "Sør-Korea",
         "dato": "2026-06-25",
         "home_score": null,
         "away_score": null,
@@ -701,7 +710,7 @@
         "group": "GROUP_H"
       },
       {
-        "home": "Cape Verde Islands",
+        "home": "Kapp Verde",
         "away": "Saudi-Arabia",
         "dato": "2026-06-27",
         "home_score": null,
@@ -761,7 +770,7 @@
         "group": "GROUP_K"
       },
       {
-        "home": "Congo DR",
+        "home": "DR Kongo",
         "away": "Usbekistan",
         "dato": "2026-06-27",
         "home_score": null,
@@ -1121,14 +1130,14 @@
           "spilt": 1
         },
         {
-          "lag": "South Korea",
+          "lag": "Sør-Korea",
           "poeng": 3,
           "mf": 1,
           "maal_for": 2,
           "spilt": 1
         },
         {
-          "lag": "Czechia",
+          "lag": "Tsjekkia",
           "poeng": 0,
           "mf": -1,
           "maal_for": 1,
@@ -1144,6 +1153,20 @@
       ],
       "Gruppe B": [
         {
+          "lag": "Canada",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1156,20 +1179,6 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
-        },
-        {
-          "lag": "Canada",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
-        },
-        {
-          "lag": "Bosnia-Herzegovina",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -1331,7 +1340,7 @@
           "spilt": 0
         },
         {
-          "lag": "Cape Verde Islands",
+          "lag": "Kapp Verde",
           "poeng": 0,
           "mf": 0,
           "maal_for": 0,
@@ -1421,7 +1430,7 @@
           "spilt": 0
         },
         {
-          "lag": "Congo DR",
+          "lag": "DR Kongo",
           "poeng": 0,
           "mf": 0,
           "maal_for": 0,
@@ -1486,7 +1495,7 @@
       "Mexico": "https://crests.football-data.org/769.svg",
       "England": "https://crests.football-data.org/770.svg",
       "USA": "https://crests.football-data.org/usa.svg",
-      "South Korea": "https://crests.football-data.org/772.png",
+      "Sør-Korea": "https://crests.football-data.org/772.png",
       "Frankrike": "https://crests.football-data.org/773.svg",
       "Sør-Afrika": "https://crests.football-data.org/9396.svg",
       "Algerie": "https://crests.football-data.org/algeria.svg",
@@ -1495,7 +1504,7 @@
       "Sveits": "https://crests.football-data.org/788.svg",
       "Ecuador": "https://crests.football-data.org/791.svg",
       "Sverige": "https://crests.football-data.org/792.svg",
-      "Czechia": "https://crests.football-data.org/798.svg",
+      "Tsjekkia": "https://crests.football-data.org/798.svg",
       "Kroatia": "https://crests.football-data.org/799.svg",
       "Saudi-Arabia": "https://crests.football-data.org/saudi_arabia.svg",
       "Tunisia": "https://crests.football-data.org/tunisia.svg",
@@ -1509,10 +1518,10 @@
       "Canada": "https://crests.football-data.org/canada.svg",
       "Haiti": "https://crests.football-data.org/haiti.svg",
       "Iran": "https://crests.football-data.org/iran.svg",
-      "Bosnia-Herzegovina": "https://crests.football-data.org/bosnia.svg",
+      "Bosnia-Hercegovina": "https://crests.football-data.org/bosnia.svg",
       "Panama": "https://crests.football-data.org/panama.svg",
-      "Cape Verde Islands": "https://crests.football-data.org/cape_verde.svg",
-      "Congo DR": "https://crests.football-data.org/congo_dr.svg",
+      "Kapp Verde": "https://crests.football-data.org/cape_verde.svg",
+      "DR Kongo": "https://crests.football-data.org/congo_dr.svg",
       "Elfenbenskysten": "https://crests.football-data.org/787.svg",
       "Qatar": "https://crests.football-data.org/8030.svg",
       "Jordan": "https://crests.football-data.org/8049.png",
@@ -1546,22 +1555,22 @@
       },
       {
         "navn": "Ladislav Krejčí",
-        "lag": "Czechia",
+        "lag": "Tsjekkia",
         "maal": 1
       },
       {
         "navn": "In-beom Hwang",
-        "lag": "South Korea",
+        "lag": "Sør-Korea",
         "maal": 1
       },
       {
         "navn": "Hyun-Gyu Oh",
-        "lag": "South Korea",
+        "lag": "Sør-Korea",
         "maal": 1
       },
       {
         "navn": "Jovo Lukić",
-        "lag": "Bosnia-Herzegovina",
+        "lag": "Bosnia-Hercegovina",
         "maal": 1
       },
       {
@@ -1581,12 +1590,12 @@
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 3,
+      "poeng": 6,
       "linjer": [
         {
-          "label": "Gruppespill (3 riktige)",
-          "pts": 3,
-          "detail": "3 x 1p"
+          "label": "Gruppespill (6 riktige)",
+          "pts": 6,
+          "detail": "6 x 1p"
         },
         {
           "label": "Toppscorer",
