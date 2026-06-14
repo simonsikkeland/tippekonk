@@ -1,42 +1,50 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny episode av Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, her sammen med Ada, og vi skal ta dere gjennom dagens stilling i den aller viktigste konkurransen i verden akkurat nå."
+    "tekst": "Hei og velkommen til en ny episode av Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her sitter Ada ved siden av meg. Ada, hvordan går det?"
   },
   {
     "vert": "Ada",
-    "tekst": "Og med den aller viktigste mener Jonas selvfølgelig viktigere enn selve VM. Hei alle sammen! Oppdatert per fjortende juni klokken halv åtte på kvelden, og vi har faktisk noe å snakke om!"
+    "tekst": "Det går strålende, Jonas! Sola skinner, VM er i gang, og folk har begynt å tape penger på tipping. Alt er som det skal være."
   },
   {
     "vert": "Jonas",
-    "tekst": "Ja, for det skjer ting! Stilling i Piggy's VM-konkurranse – på toppen, med en solid to poeng, troner ingen ringere enn Simon!"
+    "tekst": "Haha, ja, det er liksom kjernen i det hele. Og vi er oppdatert per fjortende juni, klokken kvart over syv på kvelden. La oss ta en titt på stillingen, da!"
   },
   {
     "vert": "Ada",
-    "tekst": "To poeng, Jonas. To. Poeng. Kongen av konkurransen sitter på to poeng. Det er litt tidlig i turneringen, skal vi si."
+    "tekst": "Ja, for det er jo det vi alle har ventet på. Hvem topper Piggy's VM-konkurranse akkurat nå?"
   },
   {
     "vert": "Jonas",
-    "tekst": "Haha, ja, vi er definitivt i en slags oppstartsfase her. Men Simon leder, og det er det som teller! En poeng er ett poeng, og to poeng er... dobbelt så bra."
+    "tekst": "Jo, og det er én mann som stikker av med ledelsen på dette tidlige tidspunktet, og det er Simon! Han sitter på tre poeng og er alene øverst på lista."
   },
   {
     "vert": "Ada",
-    "tekst": "Dypt, Jonas. Veldig dypt. Nå er det bare Simon på listen foreløpig, så han leder like mye foran seg selv som han leder foran alle andre."
+    "tekst": "Simon! Selvfølgelig er det Simon. Jeg vedder på at han allerede sender screenshots til alle i gruppa."
   },
   {
     "vert": "Jonas",
-    "tekst": "Klassisk Simon-strategi, egentlig. Ingen toppscorere å melde om enda, ingen assist – tabellene er like tomme som kjøleskapet mitt på en søndag kveld."
+    "tekst": "Uten tvil. Gruppa er nok full av flammende hjerter og thumbs up fra ham akkurat nå. Men altså, tre poeng i en VM-konkurranse er jo en begynnelse, ikke en seier."
   },
   {
     "vert": "Ada",
-    "tekst": "Så konklusjonen er: Simon leder, ingen jager ham, og vi vet ikke hvem som scorer eller legger til rette. Dette er grunnlaget vi bygger sendingen på i kveld, folkens."
+    "tekst": "Helt riktig. Det er langt igjen, og med VM-tipping kan alt snu på et blunk. En dårlig dag og Simon er tilbake i midtsjiktet med resten av oss dødelige."
   },
   {
     "vert": "Jonas",
-    "tekst": "Vi er profesjonelle. Men alvor talt – det kommer til å skje mye fremover, konkurransen er akkurat i gang, og vi lover dere at det blir tøffere kamper om pallplassene!"
+    "tekst": "Og når det gjelder toppscorere og assist i konkurransen, så er det tomt der enn så lenge. Tabellene er blanke. Det er tidlig dager, folkens."
   },
   {
     "vert": "Ada",
-    "tekst": "Absolutt. Simon, nyt ledelsen mens du kan! Takk for at dere hørte på, vi ses neste oppdatering – og forhåpentligvis har vi litt mer å bryne oss på da!"
+    "tekst": "Ja, vi er jo knapt i gang. Men det betyr at alt ligger åpent! Ingen har låst noe som helst, og neste oppdatering kan se helt annerledes ut."
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Absolutt. Vi følger dette tett og kommer tilbake med nye oppdateringer etter hvert som VM spinner videre. Takk for at du hørte på, og husk: det er aldri for sent å angre på tipset ditt."
+  },
+  {
+    "vert": "Ada",
+    "tekst": "Ha det bra alle sammen, og Simon, nyt det mens det varer! Ha det!"
   }
 ]
