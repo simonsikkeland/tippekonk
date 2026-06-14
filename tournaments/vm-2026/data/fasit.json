@@ -11,6 +11,11 @@
       "result": "H"
     },
     {
+      "home": "Canada",
+      "away": "Bosnia-Hercegovina",
+      "result": "U"
+    },
+    {
       "home": "USA",
       "away": "Paraguay",
       "result": "H"
@@ -43,7 +48,7 @@
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Qatar",
+    "Gruppe B": "Canada",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -64,7 +69,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 12,
+  "antall_maal": 27,
   "kamper": [
     {
       "home": "Mexico",
@@ -90,8 +95,8 @@
       "home": "Canada",
       "away": "Bosnia-Hercegovina",
       "dato": "2026-06-12",
-      "home_score": null,
-      "away_score": null,
+      "home_score": 1,
+      "away_score": 1,
       "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
@@ -162,7 +167,7 @@
       "dato": "2026-06-14",
       "home_score": 0,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F"
     },
@@ -172,7 +177,7 @@
       "dato": "2026-06-14",
       "home_score": null,
       "away_score": null,
-      "status": "TIMED",
+      "status": "SCHEDULED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E"
     },
@@ -1140,6 +1145,20 @@
     ],
     "Gruppe B": [
       {
+        "lag": "Canada",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
+        "lag": "Bosnia-Hercegovina",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
         "lag": "Qatar",
         "poeng": 1,
         "mf": 0,
@@ -1152,20 +1171,6 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
-      },
-      {
-        "lag": "Canada",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Bosnia-Hercegovina",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
       }
     ],
     "Gruppe C": [

@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T20:50:40+00:00",
+  "oppdatert": "2026-06-14T20:58:15+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -17,6 +17,11 @@
         "home": "Sør-Korea",
         "away": "Tsjekkia",
         "result": "H"
+      },
+      {
+        "home": "Canada",
+        "away": "Bosnia-Hercegovina",
+        "result": "U"
       },
       {
         "home": "USA",
@@ -51,7 +56,7 @@
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Qatar",
+      "Gruppe B": "Canada",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -72,7 +77,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Folarin Balogun",
-    "antall_maal": 12,
+    "antall_maal": 27,
     "kamper": [
       {
         "home": "Mexico",
@@ -98,8 +103,8 @@
         "home": "Canada",
         "away": "Bosnia-Hercegovina",
         "dato": "2026-06-12",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 1,
         "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B"
@@ -170,7 +175,7 @@
         "dato": "2026-06-14",
         "home_score": 0,
         "away_score": 0,
-        "status": "IN_PLAY",
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_F"
       },
@@ -180,7 +185,7 @@
         "dato": "2026-06-14",
         "home_score": null,
         "away_score": null,
-        "status": "TIMED",
+        "status": "SCHEDULED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_E"
       },
@@ -1148,6 +1153,20 @@
       ],
       "Gruppe B": [
         {
+          "lag": "Canada",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1160,20 +1179,6 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
-        },
-        {
-          "lag": "Canada",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
-        },
-        {
-          "lag": "Bosnia-Hercegovina",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -1585,12 +1590,12 @@
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 5,
+      "poeng": 6,
       "linjer": [
         {
-          "label": "Gruppespill (5 riktige)",
-          "pts": 5,
-          "detail": "5 x 1p"
+          "label": "Gruppespill (6 riktige)",
+          "pts": 6,
+          "detail": "6 x 1p"
         },
         {
           "label": "Toppscorer",
@@ -1600,7 +1605,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 12)"
+          "detail": "tippet 304 (fasit 27)"
         }
       ]
     },
@@ -1622,7 +1627,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 12)"
+          "detail": "tippet 169 (fasit 27)"
         }
       ]
     },
@@ -1644,7 +1649,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 12)"
+          "detail": "tippet 302 (fasit 27)"
         }
       ]
     },
@@ -1666,7 +1671,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 12)"
+          "detail": "tippet 306 (fasit 27)"
         }
       ]
     },
@@ -1688,7 +1693,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 12)"
+          "detail": "tippet 300 (fasit 27)"
         }
       ]
     },
@@ -1710,7 +1715,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 262 (fasit 12)"
+          "detail": "tippet 262 (fasit 27)"
         }
       ]
     },
@@ -1732,7 +1737,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 161 (fasit 12)"
+          "detail": "tippet 161 (fasit 27)"
         }
       ]
     },
@@ -1754,7 +1759,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 12)"
+          "detail": "tippet 264 (fasit 27)"
         }
       ]
     },
@@ -1776,7 +1781,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 12)"
+          "detail": "tippet 286 (fasit 27)"
         }
       ]
     },
@@ -1798,7 +1803,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 12)"
+          "detail": "tippet 298 (fasit 27)"
         }
       ]
     },
@@ -1820,69 +1825,69 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 12)"
+          "detail": "tippet 200 (fasit 27)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 12,
+      "fasit": 27,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 149
+          "diff": 134
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 157
+          "diff": 142
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 188
+          "diff": 173
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 250
+          "diff": 235
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 252
+          "diff": 237
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 274
+          "diff": 259
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 286
+          "diff": 271
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 288
+          "diff": 273
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 290
+          "diff": 275
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 292
+          "diff": 277
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 294
+          "diff": 279
         }
       ]
     },

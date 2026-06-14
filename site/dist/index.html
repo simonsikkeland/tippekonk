@@ -68,6 +68,16 @@
   .grp-table .team-cell{display:flex;align-items:center;gap:8px}
   .grp-table .team-cell img{width:22px;height:15px;object-fit:contain;border-radius:1px}
 
+  /* Podium */
+  .podium{display:flex;gap:12px;margin-bottom:18px}
+  .podium-card{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .podium-card.gold{border-color:var(--gold);background:linear-gradient(180deg,#FFF9EB,#fff)}
+  .podium-card.silver{border-color:#C0C0C0;background:linear-gradient(180deg,#F5F5F5,#fff)}
+  .podium-card.bronze{border-color:#CD7F32;background:linear-gradient(180deg,#FFF5EB,#fff)}
+  .podium-medal{font-size:28px}
+  .podium-name{font-weight:800;font-size:18px;font-family:'Archivo'}
+  .podium-pts{font-family:'Archivo';font-size:22px;font-weight:900;color:var(--pitch)}
+
   /* Board */
   .board{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .hrow,.row{display:grid;grid-template-columns:56px 1fr 96px 36px;align-items:center}
@@ -185,10 +195,26 @@ async function load(id){
     <div><div class="k">Status</div><div class="v">${statusText}</div></div>
     ${d.har_fasit&&leder?`<div><div class="k">Leder</div><div class="v">${esc(leder.navn)} · ${leder.poeng}p</div></div>`:''}`;
 
-  // Tabell
+  // Topp 3 podium
+  if(d.har_fasit && d.stilling.length >= 3){
+    const medals = ['🥇','🥈','🥉'];
+    let podHtml = '<div class="podium">';
+    d.stilling.slice(0,3).forEach((s,i)=>{
+      podHtml += `<div class="podium-card ${i===0?'gold':i===1?'silver':'bronze'}">
+        <span class="podium-medal">${medals[i]}</span>
+        <span class="podium-name">${esc(s.navn)}</span>
+        <span class="podium-pts">${s.poeng}p</span>
+      </div>`;
+    });
+    podHtml += '</div>';
+    $("#board").innerHTML = podHtml;
+  }
+
+  // Full tabell (collapsed by default, show top 3 + expand button)
   let html = `<div class="board"><div class="hrow"><span>Plass</span><span>Deltaker</span><span style="text-align:right">Poeng</span><span></span></div>`;
   d.stilling.forEach((s,i)=>{
-    html += `<div class="row" onclick="toggle(${i})">
+    const hidden = i >= 3 ? ' style="display:none"' : '';
+    html += `<div class="row board-row" data-idx="${i}"${hidden} onclick="toggle(${i})">
       <span class="pos ${i===0&&d.har_fasit?'lead':''}">${d.har_fasit?s.plass:'–'}</span>
       <span class="nm">${esc(s.navn)}</span>
       <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
@@ -197,8 +223,11 @@ async function load(id){
         <div class="dl"><span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span></span>
         <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`).join("")}</div>`;
   });
+  if(d.stilling.length > 3){
+    html += `<div class="row" style="justify-content:center;cursor:pointer;color:var(--slate);font-weight:700;font-size:14px" onclick="expandBoard(this)">Vis alle ${d.stilling.length} deltakere ▾</div>`;
+  }
   html += `</div>`;
-  $("#board").innerHTML = html;
+  $("#board").innerHTML += html;
 
   renderKamper(d);
   renderGrupper(d);
@@ -209,6 +238,10 @@ async function load(id){
 }
 
 function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
+function expandBoard(btn){
+  document.querySelectorAll('.board-row').forEach(el=>el.style.display='');
+  btn.style.display='none';
+}
 
 function renderKamper(d){
   const kamper = (d.fasit||{}).kamper||[];
