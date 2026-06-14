@@ -20,12 +20,18 @@ import subprocess
 import sys
 import tempfile
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from pathlib import Path
 
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 ELEVEN_URL = "https://api.elevenlabs.io/v1/text-to-speech"
+
+RSS_FEEDS = [
+    "https://www.vg.no/rss/feed/sport/fotball/?format=rss",
+    "https://www.nrk.no/sport/fotball/toppsaker.rss",
+    "https://feeds.bbci.co.uk/sport/football/rss.xml",
+]
 
 # To verter. Stemme-ID-ene kan overstyres i tournament.json -> podcast.stemmer.
 # Standard er ElevenLabs innebygde stemmer (tilgjengelig pa alle planer).
@@ -35,29 +41,84 @@ DEFAULT_VOICES = {
 }
 
 
+def hent_nyheter() -> list[str]:
+    """Hent VM-relaterte overskrifter fra RSS-feeds."""
+    import xml.etree.ElementTree as ET
+    nyheter = []
+    vm_sokeord = ["vm", "world cup", "fifa", "2026", "qatar", "usa", "mexico", "canada"]
+    for url in RSS_FEEDS:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "TippekonkBot/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as r:
+                xml = r.read().decode("utf-8", errors="replace")
+            root = ET.fromstring(xml)
+            for item in root.iter("item"):
+                title = (item.findtext("title") or "").strip()
+                desc = (item.findtext("description") or "").strip()
+                if not title:
+                    continue
+                tekst = f"{title}. {desc}" if desc else title
+                if any(s in tekst.lower() for s in vm_sokeord):
+                    nyheter.append(tekst[:200])
+        except Exception as e:
+            print(f"  (RSS {url} feilet: {e})")
+    return nyheter[:15]
+
+
 def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     """Be Claude skrive dialogmanus. Returnerer [{vert, tekst}, ...]."""
     vert_navn = list((cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES).keys())
     a, b = (vert_navn + ["Ada", "Jonas"])[:2]
 
     stilling = data.get("stilling", [])[:8]
-    topp_sc = data.get("topp_scorere", [])[:5]
-    topp_as = data.get("topp_assist", [])[:5]
+    fasit = data.get("fasit", {})
+    topp_sc = fasit.get("topp_scorere", [])[:5]
+    kamper = fasit.get("kamper", [])
+
+    # Gårsdagens og dagens resultater
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
+    tomorrow = (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    resultater = [
+        f"{k['home']} {k['home_score']}-{k['away_score']} {k['away']}"
+        for k in kamper
+        if k.get("status") == "FINISHED" and k.get("dato") in (today, yesterday)
+    ]
+    kommende = [
+        f"{k['home']} vs {k['away']} ({k.get('group','').replace('GROUP_','Gr. ')})"
+        for k in kamper
+        if k.get("status") in ("TIMED", "SCHEDULED") and k.get("dato") in (today, tomorrow)
+    ]
+
+    # Gruppetabeller - hvem leder?
+    grupper = fasit.get("grupper", {})
+    gruppeledere = {g: rows[0]["lag"] for g, rows in grupper.items() if rows}
+
+    # Nyheter
+    nyheter = hent_nyheter()
+    print(f"  {len(nyheter)} VM-nyheter hentet fra RSS")
 
     sammendrag = {
         "turnering": data.get("turnering", {}).get("navn"),
         "oppdatert": data.get("oppdatert"),
-        "stilling": [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]} for s in stilling],
-        "toppscorere": [{"navn": x["navn"], "mal": x["antall"]} for x in topp_sc],
-        "assist": [{"navn": x["navn"], "assist": x["antall"]} for x in topp_as],
+        "stilling_konkurranse": [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]} for s in stilling],
+        "ferske_resultater": resultater,
+        "kommende_kamper": kommende,
+        "toppscorere": [{"navn": x["navn"], "lag": x.get("lag",""), "maal": x.get("maal",0)} for x in topp_sc],
+        "gruppeledere": gruppeledere,
+        "nyheter_fra_media": nyheter,
     }
 
     system = (
-        f"Du skriver manus til en norsk fotballpodcast om en privat tippekonkurranse blant venner. "
+        f"Du skriver manus til en norsk fotballpodcast om en privat tippekonkurranse blant venner under VM 2026. "
         f"To verter, {a} og {b}, prater avslappet og humoristisk sammen. "
-        f"De gar gjennom dagens stilling i konkurransen, hvem som leder, hvem som naermer seg, "
-        f"og litt om toppscorere og assist. Hold en lett, vennlig tone med glimt i oyet. "
-        f"Lengde: rundt 8-12 replikker totalt (ca 3-5 minutter tale). "
+        f"De dekker: 1) Ferske kampresultater og overraskelser, 2) Stilling i tippekonkurransen, "
+        f"3) Toppscorere og stjernespillere, 4) Kommende kamper og hva man bor folge med pa, "
+        f"5) Relevante nyheter (skader, favoritter, kontroverser) basert pa nyhetsoverskriftene. "
+        f"Vev inn konkret informasjon fra dataen - nevn lagnavn, spillernavn, resultater og score. "
+        f"Hold en lett, engasjert tone med glimt i oyet. Veer litt opinionated - ha meninger om lag og kamper. "
+        f"Lengde: rundt 12-18 replikker totalt (ca 4-6 minutter tale). "
         f"Svar KUN med gyldig JSON: en liste av objekter med feltene 'vert' (enten '{a}' eller '{b}') "
         f"og 'tekst'. Ingen markdown, ingen forklaring. Skriv tall som ord der det er naturlig for opplesing."
     )
@@ -65,7 +126,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
 
     body = json.dumps({
         "model": "claude-sonnet-4-6",
-        "max_tokens": 2000,
+        "max_tokens": 4000,
         "system": system,
         "messages": [{"role": "user", "content": user}],
     }).encode("utf-8")
