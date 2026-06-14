@@ -50,6 +50,13 @@
   .ladder{margin-top:8px;font-size:14px}
   .ladder div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line)}
   .pod{background:var(--pitch);color:#fff;border-radius:12px;padding:18px;margin-top:14px}
+  .toplist{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .toplist .tl-row{display:grid;grid-template-columns:34px 1fr auto;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px}
+  .toplist .tl-row:last-child{border-bottom:none}
+  .toplist .tl-row .rk{font-family:'Archivo';font-weight:900;color:var(--slate)}
+  .toplist .tl-row.lead .rk{color:var(--gold-deep)}
+  .toplist .tl-row .who small{color:var(--slate);font-weight:500}
+  .toplist .tl-row .n{font-family:'Archivo';font-weight:900;font-size:18px;color:var(--pitch);font-variant-numeric:tabular-nums}
   .pod h3{margin:0 0 8px;font-family:'Archivo'}
   audio{width:100%;margin-top:6px}
   .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
@@ -81,6 +88,7 @@
   <div id="podcast"></div>
   <h2>Tabell</h2>
   <div id="board"></div>
+  <div id="topp"></div>
   <div id="stats"></div>
 </main>
 <footer id="foot"></footer>
@@ -135,12 +143,29 @@ async function load(id){
 
   // Statistikk
   renderStats(d);
+  // Topp 10 scorere + assist
+  renderTopp(d);
   // Podcast
   renderPodcast(id, d);
-  $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
+  $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra API-Football. Alt bygges automatisk.";
 }
 
 function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
+
+function renderTopp(d){
+  const list = (arr, enhet) => !arr||!arr.length ? '' : `<div class="toplist">` +
+    arr.map((x,i)=>`<div class="tl-row ${i===0?'lead':''}">
+      <span class="rk">${i+1}</span>
+      <span class="who">${esc(x.navn)} <small>· ${esc(x.land||x.lag||'')}</small></span>
+      <span class="n">${x.antall} ${enhet}</span></div>`).join('') + `</div>`;
+  const sc = list(d.topp_scorere, 'mål');
+  const as = list(d.topp_assist, 'a');
+  if(!sc && !as){ $("#topp").innerHTML=''; return; }
+  $("#topp").innerHTML = `<h2>Topp 10</h2><div class="cards">
+    ${sc?`<div><h3 style="font-family:'Archivo';font-size:15px;margin:0 0 8px;color:var(--slate);text-transform:uppercase;letter-spacing:1px">⚽ Toppscorere</h3>${sc}</div>`:''}
+    ${as?`<div><h3 style="font-family:'Archivo';font-size:15px;margin:0 0 8px;color:var(--slate);text-transform:uppercase;letter-spacing:1px">🅰️ Assist-konger</h3>${as}</div>`:''}
+  </div>`;
+}
 
 function renderStats(d){
   const st = d.statistikk||{}; let cards="";
