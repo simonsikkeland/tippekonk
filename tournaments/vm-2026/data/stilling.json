@@ -4,16 +4,46 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T16:28:17+00:00",
-  "har_fasit": false,
-  "fasit": {},
+  "oppdatert": "2026-06-14T16:46:14+00:00",
+  "har_fasit": true,
+  "fasit": {
+    "matches": [],
+    "group_winners": {},
+    "r16": [],
+    "r8": [],
+    "kvart": [],
+    "semi": [],
+    "bronse": [],
+    "bronse_vinner": "",
+    "finale": [],
+    "vm_vinner": "",
+    "toppscorer": "",
+    "antall_maal": 0
+  },
   "stilling": [
     {
       "plass": 1,
       "navn": "Simon",
       "poeng": 0,
-      "linjer": []
+      "linjer": [
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 304 (fasit 0)"
+        }
+      ]
     }
   ],
-  "statistikk": {}
+  "statistikk": {
+    "antall_maal": {
+      "fasit": 0,
+      "tipp": [
+        {
+          "navn": "Simon",
+          "tipp": 304,
+          "diff": 304
+        }
+      ]
+    }
+  }
 }
