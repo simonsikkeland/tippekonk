@@ -165,9 +165,9 @@
       "home": "Nederland",
       "away": "Japan",
       "dato": "2026-06-14",
-      "home_score": 0,
-      "away_score": 0,
-      "status": "PAUSED",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F"
     },
