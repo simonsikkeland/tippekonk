@@ -115,7 +115,7 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         )
         add(f"Gruppespill ({correct} riktige)", correct * rules["kamp"], f'{correct} x {rules["kamp"]}p')
 
-    if fact.get("group_winners"):
+    if fact.get("group_winners") and fact.get("gruppespill_ferdig"):
         correct = sum(
             1 for g, t in pred["group_winners"].items()
             if fact["group_winners"].get(g) and _norm(fact["group_winners"][g]) == _norm(t)
