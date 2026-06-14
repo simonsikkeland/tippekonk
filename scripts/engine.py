@@ -87,6 +87,90 @@ def parse_sheet(path: str | Path) -> dict:
     }
 
 
+def parse_master(path: str | Path) -> list[dict]:
+    """Parse MASTER-arket og returner en liste med prediksjoner per deltaker."""
+    wb = load_workbook(path, data_only=True)
+    ws = wb["MASTER"]
+
+    # Deltakernavn i rad 3, kolonne 5-15
+    deltakere = []
+    for c in range(5, 16):
+        navn = ws.cell(3, c).value
+        if navn:
+            deltakere.append({"col": c, "navn": str(navn).strip()})
+
+    results = []
+    for d in deltakere:
+        col = d["col"]
+
+        # Kamper rad 4-75
+        matches = []
+        for r in range(4, 76):
+            n = ws.cell(r, 2).value
+            home = str(ws.cell(r, 3).value or "").strip()
+            away = str(ws.cell(r, 4).value or "").strip()
+            pick = str(ws.cell(r, col).value or "").strip().upper()
+            if n is not None and home:
+                matches.append({"n": int(n), "home": home, "away": away, "pick": pick})
+
+        # Gruppevinnere rad 77-88
+        gw = {}
+        for r in range(77, 89):
+            label = ws.cell(r, 3).value
+            team = ws.cell(r, col).value
+            if label and team:
+                gw[str(label).strip()] = str(team).strip()
+
+        # Sluttspill - lese lag fra deltaker-kolonne
+        def col_block(start, end):
+            out = []
+            for r in range(start, end + 1):
+                v = ws.cell(r, col).value
+                if v is not None and str(v).strip():
+                    out.append(str(v).strip())
+            return out
+
+        r16 = col_block(91, 122)
+        r8 = col_block(125, 140)
+        kvart = col_block(143, 150)
+        semi = col_block(153, 156)
+        bronse = col_block(153, 156)  # same as semi for bronsefinale-lag
+
+        # Bronsefinale: rad 151-152 for lag, rad 153 for vinner? Let me check layout
+        bronse_lag = col_block(153, 154)
+        bronse_vinner = str(ws.cell(155, col).value or "").strip()
+        finale_lag = col_block(158, 159)
+        vm_vinner = str(ws.cell(160, col).value or "").strip()
+
+        # Bonus
+        toppscorer = str(ws.cell(162, col).value or "").strip()
+        assist = str(ws.cell(163, col).value or "").strip()
+        maal = ws.cell(164, col).value
+        kort = ws.cell(165, col).value
+
+        results.append({
+            "navn": d["navn"],
+            "pred": {
+                "matches": matches,
+                "group_winners": gw,
+                "r16": r16,
+                "r8": r8,
+                "kvart": kvart,
+                "semi": semi,
+                "bronse": bronse_lag,
+                "bronse_vinner": bronse_vinner,
+                "finale": finale_lag,
+                "vm_vinner": vm_vinner,
+                "toppscorer": toppscorer,
+                "assist": assist,
+                "antall_maal": int(maal) if maal not in (None, "") else None,
+                "antall_kort": int(kort) if kort not in (None, "") else None,
+            }
+        })
+
+    return results
+
+
 def _count_set(preds, fact_set):
     hits, used = 0, set()
     for p in preds:

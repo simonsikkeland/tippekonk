@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from engine import parse_sheet, score  # noqa: E402
+from engine import parse_sheet, parse_master, score  # noqa: E402
 
 
 def navn_fra_filnavn(p: Path) -> str:
@@ -29,17 +29,28 @@ def main(tournament_dir: str):
     fact = json.loads(fasit_path.read_text(encoding="utf-8")) if fasit_path.exists() else {}
 
     ark_dir = tdir / "ark"
-    sheets = sorted(ark_dir.glob("*.xlsx")) + sorted(ark_dir.glob("*.xls"))
+    master = ark_dir / "MASTER.xlsx"
 
     deltakere = []
-    for sp in sheets:
+    if master.exists():
         try:
-            pred = parse_sheet(sp)
+            entries = parse_master(master)
+            for e in entries:
+                sc = score(e["pred"], fact, rules)
+                deltakere.append({"navn": e["navn"], "pred": e["pred"], "poeng": sc["total"], "linjer": sc["lines"]})
+            print(f"  Lastet {len(entries)} deltakere fra MASTER.xlsx")
         except Exception as e:
-            print(f"  Hoppet over {sp.name}: {e}")
-            continue
-        sc = score(pred, fact, rules)
-        deltakere.append({"navn": navn_fra_filnavn(sp), "pred": pred, "poeng": sc["total"], "linjer": sc["lines"]})
+            print(f"  MASTER.xlsx feilet: {e}")
+    else:
+        sheets = sorted(ark_dir.glob("*.xlsx")) + sorted(ark_dir.glob("*.xls"))
+        for sp in sheets:
+            try:
+                pred = parse_sheet(sp)
+            except Exception as e:
+                print(f"  Hoppet over {sp.name}: {e}")
+                continue
+            sc = score(pred, fact, rules)
+            deltakere.append({"navn": navn_fra_filnavn(sp), "pred": pred, "poeng": sc["total"], "linjer": sc["lines"]})
 
     deltakere.sort(key=lambda d: d["poeng"], reverse=True)
     for i, d in enumerate(deltakere):
