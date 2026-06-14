@@ -1,0 +1,19 @@
+{
+  "turnering": {
+    "navn": "Piggy's VM-konkurranse 2026",
+    "kort_navn": "VM 2026",
+    "vert": "USA, Canada og Mexico"
+  },
+  "oppdatert": "2026-06-14T16:28:17+00:00",
+  "har_fasit": false,
+  "fasit": {},
+  "stilling": [
+    {
+      "plass": 1,
+      "navn": "Simon",
+      "poeng": 0,
+      "linjer": []
+    }
+  ],
+  "statistikk": {}
+}
