@@ -192,16 +192,20 @@ def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path):
 
 
 def sett_sammen(klipp: list[Path], ut: Path):
-    """Konkatener MP3-klipp med ffmpeg."""
+    """Konkatener MP3-klipp med ffmpeg, re-encode til konsistent format."""
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         for k in klipp:
             f.write(f"file '{k.resolve()}'\n")
         liste = f.name
-    subprocess.run(
-        ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", liste, "-c", "copy", str(ut)],
-        check=True, capture_output=True,
+    result = subprocess.run(
+        ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", liste,
+         "-ar", "44100", "-ac", "1", "-b:a", "128k", str(ut)],
+        capture_output=True,
     )
     os.unlink(liste)
+    if result.returncode != 0:
+        print(f"  ffmpeg feil: {result.stderr.decode('utf-8', errors='replace')[-500:]}")
+        result.check_returncode()
 
 
 def lag_feed(pod_dir: Path, cfg: dict, episoder: list, base_url: str):
