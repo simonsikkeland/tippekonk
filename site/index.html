@@ -113,6 +113,13 @@
   .replikk{margin-bottom:10px;font-size:14px;line-height:1.5;color:#D8E8DC}
   .replikk:last-child{margin-bottom:0}
   .replikk .vert-navn{font-weight:800;color:var(--gold);margin-right:6px}
+  .playlist{margin-top:14px;border-top:1px solid rgba(255,255,255,.15);padding-top:10px}
+  .playlist h4{margin:0 0 8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:800}
+  .pl-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:background .12s;font-size:14px;color:#D8E8DC}
+  .pl-item:hover{background:rgba(255,255,255,.1)}
+  .pl-item.active{background:rgba(255,255,255,.15);font-weight:700}
+  .pl-item .pl-date{color:rgba(255,255,255,.5);font-size:12px;min-width:50px}
+  .pl-item .pl-play{color:var(--gold);font-size:16px}
   .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
   .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
   footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
@@ -382,10 +389,16 @@ function renderStats(d){
   $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
 }
 
+let _podId = null;
+
 async function renderPodcast(id, d){
+  _podId = id;
   let pod=null;
   try{ pod = await jget(`${id}/podcast/siste.json`); }catch(e){}
   if(!pod){ $("#podcast").innerHTML=""; return; }
+
+  let episoder=[];
+  try{ episoder = await jget(`${id}/podcast/episoder.json`); }catch(e){}
 
   let manus=null;
   try{ manus = await jget(`${id}/podcast/manus-${pod.id}.json`); }catch(e){}
@@ -393,14 +406,54 @@ async function renderPodcast(id, d){
   let manusHtml = '';
   if(manus && manus.length){
     manusHtml = `<button class="manus-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent=this.nextElementSibling.classList.contains('open')?'Skjul manus':'Les manus'">Les manus</button>
-    <div class="manus-box">${manus.map(m=>`<div class="replikk"><span class="vert-navn">${esc(m.vert)}:</span>${esc(m.tekst)}</div>`).join('')}</div>`;
+    <div class="manus-box" id="manus-box">${manus.map(m=>`<div class="replikk"><span class="vert-navn">${esc(m.vert)}:</span>${esc(m.tekst)}</div>`).join('')}</div>`;
   }
 
-  $("#podcast").innerHTML = `<div class="pod"><h3>🎙️ ${esc(pod.tittel||'Dagens sending')}</h3>
-    ${pod.lyd?`<audio controls src="${id}/podcast/${esc(pod.lyd)}"></audio>`:''}
-    <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC">${esc(pod.ingress||'')}
+  let playlistHtml = '';
+  if(episoder.length > 0){
+    playlistHtml = `<div class="playlist"><h4>Alle episoder</h4>`;
+    episoder.forEach((ep,i)=>{
+      const dato = new Date(ep.dato).toLocaleDateString('no-NO',{day:'numeric',month:'short'});
+      const isActive = ep.id === pod.id;
+      playlistHtml += `<div class="pl-item${isActive?' active':''}" onclick="playEpisode('${esc(ep.id)}','${esc(ep.lyd||'')}','${esc(ep.tittel||'')}')">
+        <span class="pl-play">${isActive?'▶':'▷'}</span>
+        <span class="pl-date">${dato}</span>
+        <span>${esc(ep.tittel||ep.id)}</span>
+      </div>`;
+    });
+    playlistHtml += '</div>';
+  }
+
+  $("#podcast").innerHTML = `<div class="pod"><h3 id="pod-title">🎙️ ${esc(pod.tittel||'Dagens sending')}</h3>
+    <audio id="pod-audio" controls ${pod.lyd?`src="${id}/podcast/${esc(pod.lyd)}"`:''} style="width:100%;margin-top:6px"></audio>
+    <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC" id="pod-ingress">${esc(pod.ingress||'')}
     ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p>
-    ${manusHtml}</div>`;
+    ${manusHtml}
+    ${playlistHtml}</div>`;
+}
+
+async function playEpisode(epId, lyd, tittel){
+  const audio = document.getElementById('pod-audio');
+  if(lyd && audio){
+    audio.src = `${_podId}/podcast/${lyd}`;
+    audio.play();
+  }
+  document.getElementById('pod-title').textContent = '🎙️ ' + (tittel||epId);
+  document.querySelectorAll('.pl-item').forEach(el=>{
+    el.classList.remove('active');
+    el.querySelector('.pl-play').textContent = '▷';
+  });
+  event.currentTarget.classList.add('active');
+  event.currentTarget.querySelector('.pl-play').textContent = '▶';
+
+  // Last manus for valgt episode
+  const box = document.getElementById('manus-box');
+  if(box){
+    try{
+      const m = await jget(`${_podId}/podcast/manus-${epId}.json`);
+      box.innerHTML = m.map(r=>`<div class="replikk"><span class="vert-navn">${esc(r.vert)}:</span>${esc(r.tekst)}</div>`).join('');
+    }catch(e){ box.innerHTML = '<div class="replikk" style="color:rgba(255,255,255,.4)">Manus ikke tilgjengelig</div>'; }
+  }
 }
 init();
 </script>
