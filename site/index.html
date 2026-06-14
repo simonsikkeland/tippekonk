@@ -1,1 +1,167 @@
-test
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Piggy's tippekonkurranse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B132B; --paper:#FBF7F0; --line:#E3DACB; --pitch:#1E6F3C;
+    --gold:#E8B83A; --gold-deep:#C9971F; --red:#C8472F; --slate:#5A6472; --chalk:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif}
+  .display{font-family:'Archivo',sans-serif}
+  header{background:var(--pitch);color:var(--chalk);padding:30px 20px 26px;border-bottom:4px solid var(--gold);position:relative;overflow:hidden}
+  header .stripes{position:absolute;inset:0;opacity:.10;background:repeating-linear-gradient(90deg,transparent 0 56px,#fff 56px 57px)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:800}
+  h1{margin:6px 0 0;font-size:clamp(30px,7vw,46px);font-weight:900;line-height:1;letter-spacing:-1px}
+  .sub{margin:8px 0 0;color:#D8E8DC;font-size:15px}
+  main{max-width:1000px;margin:0 auto;padding:22px 20px 60px}
+  select{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .meta{display:flex;gap:26px;flex-wrap:wrap;padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:12px;margin:18px 0}
+  .meta .k{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);font-weight:800}
+  .meta .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+  .board{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .hrow,.row{display:grid;grid-template-columns:56px 1fr 96px 36px;align-items:center}
+  .hrow{padding:11px 16px;border-bottom:2px solid var(--line);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);font-weight:800}
+  .row{padding:13px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
+  .row:hover{background:#F3ECE0}
+  .pos{font-family:'Archivo';font-size:21px;font-weight:900}
+  .pos.lead{color:var(--gold-deep)}
+  .nm{font-weight:700;font-size:16px}
+  .pts{font-family:'Archivo';text-align:right;font-size:23px;font-weight:900;color:var(--pitch);font-variant-numeric:tabular-nums}
+  .chev{text-align:right;color:var(--slate)}
+  .detail{padding:6px 16px 16px;background:#FAF5EC;border-bottom:1px solid var(--line);display:none}
+  .detail.open{display:block}
+  .dl{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;border-bottom:1px dashed var(--line)}
+  .dl:last-child{border-bottom:none}
+  .dl .p{font-weight:800;font-variant-numeric:tabular-nums}
+  .dl .p.zero{color:var(--slate)}
+  .dl .p.win{color:var(--pitch)}
+  h2{font-family:'Archivo';font-size:20px;margin:30px 0 12px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h3{margin:0 0 4px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--slate)}
+  .card .big{font-family:'Archivo';font-size:30px;font-weight:900}
+  .ladder{margin-top:8px;font-size:14px}
+  .ladder div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line)}
+  .pod{background:var(--pitch);color:#fff;border-radius:12px;padding:18px;margin-top:14px}
+  .pod h3{margin:0 0 8px;font-family:'Archivo'}
+  audio{width:100%;margin-top:6px}
+  .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
+  .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
+  footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--gold);color:#3a2c00}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="stripes"></div>
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow">Piggy's · tippekonkurranse</div>
+    <h1 id="title">Stillingen</h1>
+    <p class="sub" id="subtitle">Laster …</p>
+  </div>
+</header>
+<main>
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <label for="tsel" style="font-size:13px;color:var(--slate);font-weight:700">Mesterskap:</label>
+    <select id="tsel"></select>
+    <span id="updated" style="font-size:12px;color:var(--slate)"></span>
+  </div>
+
+  <div class="meta" id="meta"></div>
+  <div id="podcast"></div>
+  <h2>Tabell</h2>
+  <div id="board"></div>
+  <div id="stats"></div>
+</main>
+<footer id="foot"></footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+async function jget(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) throw new Error(u); return r.json(); }
+
+async function init(){
+  let manifest=[];
+  try{ manifest = await jget("manifest.json"); }catch(e){}
+  const sel = $("#tsel");
+  if(!manifest.length){ $("#subtitle").textContent="Ingen mesterskap publisert ennå."; return; }
+  manifest.forEach(m=>{
+    const o=document.createElement("option"); o.value=m.id; o.textContent=m.kort_navn; sel.appendChild(o);
+  });
+  sel.onchange=()=>load(sel.value);
+  load(manifest[manifest.length-1].id);   // nyeste sist i lista
+}
+
+async function load(id){
+  let d;
+  try{ d = await jget(`${id}/stilling.json`); }
+  catch(e){ $("#board").innerHTML=`<div class="empty"><div class="big">Ingen data ennå</div><p>Last opp ark for dette mesterskapet.</p></div>`; return; }
+
+  $("#title").textContent = d.turnering.kort_navn || "Stillingen";
+  $("#subtitle").textContent = d.turnering.navn + (d.turnering.vert?` · ${d.turnering.vert}`:"");
+  $("#updated").textContent = d.oppdatert ? "Oppdatert "+new Date(d.oppdatert).toLocaleString("no-NO") : "";
+
+  const leder = d.stilling[0];
+  $("#meta").innerHTML = `
+    <div><div class="k">Deltakere</div><div class="v">${d.stilling.length}</div></div>
+    <div><div class="k">Status</div><div class="v">${d.har_fasit?'<span class="pill">I gang</span>':'Ikke startet'}</div></div>
+    ${d.har_fasit&&leder?`<div><div class="k">Leder</div><div class="v">${esc(leder.navn)} · ${leder.poeng}p</div></div>`:''}`;
+
+  // Tabell
+  let html = `<div class="board"><div class="hrow"><span>Plass</span><span>Deltaker</span><span style="text-align:right">Poeng</span><span></span></div>`;
+  d.stilling.forEach((s,i)=>{
+    html += `<div class="row" onclick="toggle(${i})">
+      <span class="pos ${i===0&&d.har_fasit?'lead':''}">${d.har_fasit?s.plass:'–'}</span>
+      <span class="nm">${esc(s.navn)}</span>
+      <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
+      <span class="chev">${d.har_fasit?'▸':''}</span></div>
+      <div class="detail" id="det${i}">${(s.linjer||[]).map(l=>`
+        <div class="dl"><span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span></span>
+        <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`).join("")}</div>`;
+  });
+  html += `</div>`;
+  $("#board").innerHTML = html;
+
+  // Statistikk
+  renderStats(d);
+  // Podcast
+  renderPodcast(id, d);
+  $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
+}
+
+function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
+
+function renderStats(d){
+  const st = d.statistikk||{}; let cards="";
+  const ladder = (arr)=>arr.slice(0,5).map(x=>`<div><span>${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
+  if(st.antall_maal) cards += `<div class="card"><h3>Antall mål</h3><div class="big">${st.antall_maal.fasit}</div><div class="ladder">${ladder(st.antall_maal.tipp)}</div></div>`;
+  if(st.antall_kort) cards += `<div class="card"><h3>Antall kort</h3><div class="big">${st.antall_kort.fasit}</div><div class="ladder">${ladder(st.antall_kort.tipp)}</div></div>`;
+  if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
+  if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
+  $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
+}
+
+async function renderPodcast(id, d){
+  let pod=null;
+  try{ pod = await jget(`${id}/podcast/siste.json`); }catch(e){}
+  if(!pod){ $("#podcast").innerHTML=""; return; }
+  $("#podcast").innerHTML = `<div class="pod"><h3>🎙️ ${esc(pod.tittel||'Dagens sending')}</h3>
+    ${pod.lyd?`<audio controls src="${id}/podcast/${esc(pod.lyd)}"></audio>`:''}
+    <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC">${esc(pod.ingress||'')}
+    ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p></div>`;
+}
+init();
+</script>
+</body>
+</html>
