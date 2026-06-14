@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T19:23:42+00:00",
+  "oppdatert": "2026-06-14T19:27:58+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [],
@@ -1544,13 +1544,8 @@
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 27,
+      "poeng": 0,
       "linjer": [
-        {
-          "label": "Gruppevinnere (9 riktige)",
-          "pts": 27,
-          "detail": "9 x 3p"
-        },
         {
           "label": "Toppscorer",
           "pts": 0,
