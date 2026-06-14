@@ -96,6 +96,13 @@
   .pod{background:var(--pitch);color:#fff;border-radius:12px;padding:18px;margin-top:14px}
   .pod h3{margin:0 0 8px;font-family:'Archivo'}
   audio{width:100%;margin-top:6px}
+  .manus-toggle{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:6px 14px;font:inherit;font-size:13px;font-weight:700;color:#D8E8DC;cursor:pointer;margin-top:10px;transition:all .15s}
+  .manus-toggle:hover{background:rgba(255,255,255,.25)}
+  .manus-box{margin-top:12px;padding:14px;background:rgba(0,0,0,.2);border-radius:10px;display:none}
+  .manus-box.open{display:block}
+  .replikk{margin-bottom:10px;font-size:14px;line-height:1.5;color:#D8E8DC}
+  .replikk:last-child{margin-bottom:0}
+  .replikk .vert-navn{font-weight:800;color:var(--gold);margin-right:6px}
   .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
   .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
   footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
@@ -346,10 +353,21 @@ async function renderPodcast(id, d){
   let pod=null;
   try{ pod = await jget(`${id}/podcast/siste.json`); }catch(e){}
   if(!pod){ $("#podcast").innerHTML=""; return; }
+
+  let manus=null;
+  try{ manus = await jget(`${id}/podcast/manus-${pod.id}.json`); }catch(e){}
+
+  let manusHtml = '';
+  if(manus && manus.length){
+    manusHtml = `<button class="manus-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent=this.nextElementSibling.classList.contains('open')?'Skjul manus':'Les manus'">Les manus</button>
+    <div class="manus-box">${manus.map(m=>`<div class="replikk"><span class="vert-navn">${esc(m.vert)}:</span>${esc(m.tekst)}</div>`).join('')}</div>`;
+  }
+
   $("#podcast").innerHTML = `<div class="pod"><h3>🎙️ ${esc(pod.tittel||'Dagens sending')}</h3>
     ${pod.lyd?`<audio controls src="${id}/podcast/${esc(pod.lyd)}"></audio>`:''}
     <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC">${esc(pod.ingress||'')}
-    ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p></div>`;
+    ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p>
+    ${manusHtml}</div>`;
 }
 init();
 </script>
