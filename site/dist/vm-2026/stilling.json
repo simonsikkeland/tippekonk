@@ -4,10 +4,43 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T18:46:32+00:00",
+  "oppdatert": "2026-06-14T18:57:49+00:00",
   "har_fasit": true,
   "fasit": {
-    "matches": [],
+    "matches": [
+      {
+        "n": 1,
+        "result": "H"
+      },
+      {
+        "n": 2,
+        "result": "H"
+      },
+      {
+        "n": 3,
+        "result": "U"
+      },
+      {
+        "n": 4,
+        "result": "H"
+      },
+      {
+        "n": 5,
+        "result": "U"
+      },
+      {
+        "n": 6,
+        "result": "U"
+      },
+      {
+        "n": 7,
+        "result": "B"
+      },
+      {
+        "n": 8,
+        "result": "H"
+      }
+    ],
     "group_winners": {},
     "r16": [],
     "r8": [],
@@ -17,33 +50,44 @@
     "bronse_vinner": "",
     "finale": [],
     "vm_vinner": "",
-    "toppscorer": "",
-    "antall_maal": 0
+    "toppscorer": "Folarin Balogun",
+    "antall_maal": 22
   },
   "stilling": [
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 0,
+      "poeng": 3,
       "linjer": [
+        {
+          "label": "Gruppespill (3 riktige)",
+          "pts": 3,
+          "detail": "3 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kylian Mbappé"
+        },
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 0)"
+          "detail": "tippet 304 (fasit 22)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 0,
+      "fasit": 22,
       "tipp": [
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 304
+          "diff": 282
         }
       ]
-    }
+    },
+    "toppscorer_treff": []
   }
 }

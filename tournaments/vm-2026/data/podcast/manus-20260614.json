@@ -1,50 +1,42 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny episode av Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her ved siden av meg sitter Ada. Hei Ada!"
+    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her er Ada, og vi er klare til å gå gjennom dagens stilling. Ada, hvordan har dagen vært?"
   },
   {
     "vert": "Ada",
-    "tekst": "Hei Jonas! Og hei alle dere som lytter hjemme. Vi er her for å gå gjennom den siste stillingen i konkurransen, og jeg lover deg – det er drama på gang."
+    "tekst": "Jo takk, Jonas, den har vært akkurat passe dramatisk for en VM-dag! Og med 'dramatisk' mener jeg selvfølgelig at vi har en knivskarp tabell med én person på den. Én! Simon styrer showet helt alene der oppe."
   },
   {
     "vert": "Jonas",
-    "tekst": "Drama er kanskje å ta litt hardt i, Ada. Stillingen ble oppdatert i dag klokken seks og tre kvarter på ettermiddagen, og... vel... Simon leder med null poeng."
+    "tekst": "Ja, Simon sitter på toppen med tre poeng, og vet du hva? Det er faktisk nok til å lede. Det er litt som å vinne en eating contest når du er den eneste som møtte opp."
   },
   {
     "vert": "Ada",
-    "tekst": "Null poeng! Og han leder! Det sier jo litt om situasjonen. Simon har altså klart å karre til seg førsteplassen uten å score et eneste poeng. Det er nesten imponerende på sitt eget vis."
+    "tekst": "Haha, ja men æren er æren! Simon skal ha ros. Tre poeng er tre poeng, og foreløpig er det ingen som truer. Alle de andre ligger på null, så det er faktisk litt av en luke allerede."
   },
   {
     "vert": "Jonas",
-    "tekst": "Det er faktisk det. Han har monopol på toppen akkurat nå. Ingen over, ingen under – Simon er alene om tronen. En ensom konge med null poeng."
+    "tekst": "Det stemmer. Og vi er jo tidlig i konkurransen, så det er absolutt håp for alle dere som henger etter Simon akkurat nå. Men altså, tre mot null er ikke det man drømmer om å se på leaderboardet som deltaker."
   },
   {
     "vert": "Ada",
-    "tekst": "Vi bør kanskje nevne at turneringen knapt har kommet i gang, da. Det er tidlig i VM, og de fleste kampene gjenstår, så dette bildet kan snu seg ganske fort."
+    "tekst": "Nei, og det morsomste er at vi ikke har noen toppscorere eller assistleder å snakke om ennå heller. Tabellen er litt... spartansk, skal vi si."
   },
   {
     "vert": "Jonas",
-    "tekst": "Absolutt. Men inntil videre er det Simon som styrer og steller. Og når det gjelder toppscorere og assist i konkurransen, så er listene helt tomme foreløpig. Blanke ark alle sammen."
+    "tekst": "Spartansk er et pent ord for det, Ada! Men det betyr jo at alt fremdeles er åpent. Neste runde kan snu alt fullstendig. Noen kan gå fra null til helt på et blunk."
   },
   {
     "vert": "Ada",
-    "tekst": "Ja, det er litt som det første snøfallet – rent og uplettet. Ingen har fått uttelling ennå, og alle har alt å spille for. Liker det!"
+    "tekst": "Akkurat! Og det er jo det som gjør tippekonkurranser så vanedannende. Den dagen du tenker det er over, er gjerne dagen noen plutselig tipper tre rette på rad og raner til seg seieren. Simon bør ikke slappe av for mye."
   },
   {
     "vert": "Jonas",
-    "tekst": "Godt sagt. Og det betyr jo at neste oppdatering kan snu alt på hodet. Simon kan rykke ned til sisteplass like fort som han kom til toppen – altså fra null poeng til… null poeng, men fra en annen vinkel."
+    "tekst": "Godt poeng. Så til deg, Simon: kos deg i føringen, men pass deg i ryggen! Og til alle dere andre: det er på tide å våkne. Piggy's VM-konkurranse er i gang for alvor."
   },
   {
     "vert": "Ada",
-    "tekst": "Haha, matematikken er komplisert her altså. Men det er det som gjør det gøy! Vi følger spent med, og dere som hører på – følg med dere også. Neste episode vil forhåpentligvis ha litt mer kjøtt på beinet."
-  },
-  {
-    "vert": "Jonas",
-    "tekst": "Det lover vi! Takk for at dere hørte på Piggy's VM-konkurranse to tusen og tjueseks. Ha det bra, alle sammen!"
-  },
-  {
-    "vert": "Ada",
-    "tekst": "Ha det! Og Simon – nyt ledelsen mens den varer!"
+    "tekst": "Takk for at dere hørte på! Vi er tilbake med ny oppdatering snart. Heier på alle – bortsett fra kanskje Simon. Han klarer seg fint selv. Ha det!"
   }
 ]

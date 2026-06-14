@@ -1,5 +1,38 @@
 {
-  "matches": [],
+  "matches": [
+    {
+      "n": 1,
+      "result": "H"
+    },
+    {
+      "n": 2,
+      "result": "H"
+    },
+    {
+      "n": 3,
+      "result": "U"
+    },
+    {
+      "n": 4,
+      "result": "H"
+    },
+    {
+      "n": 5,
+      "result": "U"
+    },
+    {
+      "n": 6,
+      "result": "U"
+    },
+    {
+      "n": 7,
+      "result": "B"
+    },
+    {
+      "n": 8,
+      "result": "H"
+    }
+  ],
   "group_winners": {},
   "r16": [],
   "r8": [],
@@ -9,6 +42,6 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "",
-  "antall_maal": 0
+  "toppscorer": "Folarin Balogun",
+  "antall_maal": 22
 }
