@@ -1,82 +1,70 @@
 [
   {
     "vert": "Frank",
-    "tekst": "God kveld og velkommen til Piggys VM-konkurranse-podcast! Jeg er Frank, det er lørdag kveld, VM er i gang, og vi har allerede sett nok fotball til at jeg glemmer at jeg har en jobb!"
+    "tekst": "God kveld og velkommen til Piggys VM-konkurranse-podden! Jeg er Frank, hun ved siden av meg er Ada, og vi er midt i det aller første VM som spilles i Nord-Amerika. Det er mål, drama, kontroverser og — viktigst av alt — noen i vennegjengen vår som absolutt ikke vet hva de driver med."
   },
   {
     "vert": "Ada",
-    "tekst": "Og jeg er Ada — den eneste her som faktisk forstår fotball. Vi har resultater, vi har tabeller, vi har drama, og vi har en vennegjeng som tror de kan tippe fotball. Spoiler: de fleste kan ikke det."
+    "tekst": "Det stemmer, Frank. Og vi skal ta for oss alt i kveld — resultater, tabellsituasjonen i konkurransen, og de kampene som kommer. Men først — vi MÅ ha jingelen!"
   },
   {
     "vert": "Frank",
-    "tekst": "Men først — vi MÅ ha jingelen. Ada, er du klar?"
-  },
-  {
-    "vert": "Ada",
-    "tekst": "Alltid klar. En, to, tre — 🎵 Vi skal til VM, vi skal til VM, Frank og Ada og hele gjengen — vi skal til VM! 🎵"
+    "tekst": "Åja, vi MÅ. Ett, to, tre, fire —"
   },
   {
     "vert": "Frank",
-    "tekst": "🎵 Noen tippet riktig, noen tippet feil, men vi elsker dere alle — til VM! 🎵 Nydelig. Sjelden har noe vært så vakkert og så falskt på en gang."
+    "tekst": "♩♩ Vi tip-per VM, vi tip-per VM, Simon leder men vi tar ham igjen — ♩♩"
   },
   {
     "vert": "Ada",
-    "tekst": "OK, la oss snakke om det som skjedde i går og i dag. Og starten er seks resultater. Og, Frank — det ene du MÅ nevne først."
+    "tekst": "♩♩ Seks po-eng til Simon, fem til alle and-re, hvem som vinner til slutt, det er bare tull å spå — ♩♩"
   },
   {
     "vert": "Frank",
-    "tekst": "Tyskland syv — Curaçao én. SYV. Mot Curaçao! Og det morsomste? Tjuefem av tjueseks Curaçao-spillere er ikke engang født i Curaçao. Det er bokstavelig talt et lag laget av folk som bor andre steder og tenkte 'vet du hva, la oss representere en øy med hundre tusen innbyggere i VM.' Respekt. Men ikke mot Tyskland."
+    "tekst": "Nydelig. Stemmer ikke, men nydelig. Greit, la oss ta fatt på dagens kamper! Og vi starter med den helt absurde — Tyskland sju, Curaçao én. Sju–én! Kai Havertz med to mål. Curaçao, der tjuefem av tjueseks spillere er født utenfor landet. Imponerende at de tok seg til VM. Litt mindre imponerende at de slapp inn sju."
   },
   {
     "vert": "Ada",
-    "tekst": "Kai Havertz scoret to mål, og er allerede delt toppscorer i turneringen sammen med Folarin Balogun fra USA, som også er på to mål etter den ville åpningskampen mot Paraguay — fire til én! USA feirer som om de allerede har vunnet VM. Og OK, det var faktisk imponerende."
+    "tekst": "Og jeg kan melde at Bjørn — kjære, naive Bjørn — tippet Curaçao til å holde det under tre mål imot. Det gikk ikke så bra, Bjørn. Det gikk faktisk veldig dårlig. Men alle andre jubler, for USA sto for kveldens beste godbit: fire–én mot Paraguay! Folarin Balogun med to mål, og amerikanerne er allerede gruppeledere i gruppe D. Åpningsseremoni med Katy Perry og en tiåring fra Drammen som sang med henne — og så banket de Paraguay. Hva er livet?"
   },
   {
     "vert": "Frank",
-    "tekst": "Så til det virkelige dramaet. Qatar én — Sveits én. På overtid! En trettiåm gammel kaptein stanger inn utlikner. Alle norske aviser sammenligner det med Kjetil Rekdal mot Brasil i nittensekstitysju — og det er jo helt riktig. Qatar holder Sveits unna gruppe-avansement, potensielt. Noen i gjengen tippet det?"
+    "tekst": "Og så — Qatar mot Sveits. Alle ventet oppskriftsmessig Sveits-seier. I stedet stanget en trettifem år gammel Qatar-kaptein inn en sen utligning på overtid. Sammenligner de med Kjetil Rekdal mot Brasil. Kjetil Rekdal, Ada! Det er stor stas. Marius tippet Sveits-seier og gikk rett på trynet. Brasil mot Marokko endte én–én, Skottland slo Haiti én–null og leder nå gruppe C, og Australia slo Tyrkia to–null."
   },
   {
     "vert": "Ada",
-    "tekst": "La oss se på tabellen! Simon leder med seks poeng — gratulerer, Simon, det er imponerende! Men Andrè, Marius, Jonas og Bjørn henger alle på fem poeng, så det er ikke mye å skryte av ennå, Simon. Ringstad, Tobias og Håkon ligger på fire. Håkon — blemmen din i dag koster deg dyrt, og vi vet du vet hva vi snakker om."
+    "tekst": "La oss ta tabellen! Simon leder suverent med seks poeng. Andrè, Marius, Jonas og Bjørn alle på fem — men Bjørn mistet altså poeng på Curaçao-blemmen. Ringstad, Tobias og Håkon henger etter på fire. Håkon, hva skjer kompis? Fire poeng. Ikke veldig mye å skryte av. Ringstad er der også, og du er ikke akkurat i flytsonen heller."
   },
   {
     "vert": "Frank",
-    "tekst": "Brasil én — Marokko én. Det er faktisk litt symptomatisk for brasiliansk fotball for tiden. Avisa sier halve Brasil gir blaffen i VM nå. Den gule trøyen er blitt et politisk symbol. Og de klarte ikke å slå Marokko. Andrè, du tippet sikkert Brasil-seier her, gjorde du ikke? Det er lov å si det høyt."
+    "tekst": "Simon leder med seks poeng og er faktisk alene på topp. Respekt til Simon. Men det er tidlig, og med fire poeng skiller mellom første og sisteplass — dette kan snu seg på to kamper. Andrè og Jonas sitter tett i nakken på ham. Jeg heier på kaos i toppen, det er mye mer underholdende."
   },
   {
     "vert": "Ada",
-    "tekst": "Og Skottland vant over Haiti én til null — leder nå gruppe C! Haiti null mål, null poeng. Det er tungt. Men Australia to — Tyrkia null er kanskje den største overraskelsen. Ingen sa Australia, og noen i gjengen burde ha sett den komme. Ringstad — vi ser på deg."
+    "tekst": "La oss snakke kommende kamper! Og det er noen skikkelig saftige på programmet. Spania mot Kapp Verde — Spania leder gruppe H, de er i form, og dette bør gi mål. Tobias, du har Spania høyt, så dette er kampen du henger hele VM-drømmen på. Ikke rot det til."
   },
   {
     "vert": "Frank",
-    "tekst": "Nå til det som kommer! Vi har fem kamper å glede oss til. Spania mot Kapp Verde og Saudi-Arabia mot Uruguay i gruppe H — og Spania leder allerede den gruppen. Det er ikke noe overraskende der, men hold øye med Saudi-Arabia mot Uruguay. Det kan bli blamage for en av dem."
+    "tekst": "Belgia mot Egypt i gruppe G — Belgia leder gruppen og dette er en kamp Jonas og Andrè begge har tippet ulikt på. Den kan avgjøre hvem av dem som tar ledelsen. Og Sverige mot Tunisia! Ikke glem den. Sverige har ikke fått den store oppmerksomheten, men de kan stikke av med poeng her. Og Saudi-Arabia mot Uruguay — Uruguay er ikke til å spøke med, men Saudi kan overraske. Vi har jo sett det før i VM-sammenheng."
   },
   {
     "vert": "Ada",
-    "tekst": "Belgia mot Egypt i gruppe G — Belgia leder gruppen, og det burde holde. Men vi har sett nok overraskelser til å ikke ta noe for gitt. Bjørn og Jonas — dere er på fem poeng og trenger en perfekt runde her. Velg med hodet, ikke med hjertet!"
+    "tekst": "Og så er det Norge da, Frank! Solbakken skjermes, Brede Hangeland avlaster ham før VM-åpningen mot Irak. Og Haaland — noen lurte på formen hans, men landslagssjefen sier det er null tvil. Sitert: 'Hvis skuddet hans hadde truffet keeper, hadde han vært død.' Det er en slags bekreftelse, antar jeg."
   },
   {
     "vert": "Frank",
-    "tekst": "Og Sverige mot Tunisia i gruppe F — Nederland leder den gruppen, men Sverige trenger poeng. Det er en kamp Tobias og Håkon må sikte seg inn på. Tobias, du har fire poeng og MÅ ikke blemme her. Marius — du er også på fem, men du virker alltid rolig. Det er mistenkelig."
+    "tekst": "Det er den mest norske måten å si 'han er i form' på som noensinne er sagt. Og med det — husk å følge med på Elfenbenskysten mot Ecuador også, gruppe E kan bli veldig tett. Tyskland leder der, men det er langt igjen."
   },
   {
     "vert": "Ada",
-    "tekst": "En liten nyhet vi ikke kan la ligge: Haaland skal visst være i rute til VM-start for Norge. Landslagssjefen sier at 'hvis skuddet hans hadde truffet keeperen, hadde han vært død' — og det er enten veldig betryggende eller veldig skremmende, avhengig av hvem du heier på. Vi heier på Norge."
+    "tekst": "Oppsummert: Simon er sjefen akkurat nå, men ingen er trygge. Bjørn og Marius har litt å bevise etter dagens runde. Håkon og Ringstad må skjerpe seg. Og Frank — du har ikke nevnt dine egne tips én eneste gang i kveld."
   },
   {
     "vert": "Frank",
-    "tekst": "Og en liten bonus: En tiåring fra Drammen som heter Tius sang med Katy Perry under åpningsseremonien i Los Angeles. Ti år gammel. Synger med Katy Perry på VM-åpning. Jeg er trettiseks og har ikke gjort noe like kult én eneste gang i hele mitt liv."
+    "tekst": "Det er fordi jeg er verten, Ada. Jeg er hevet over konkurransen. Takk for at dere hørte på! Følg med på neste episode, del podden med noen som kan fotball — eller noen som ikke kan det, det er faktisk morsommere. Ha det!"
   },
   {
     "vert": "Ada",
-    "tekst": "Det er det vi kaller perspektiv, Frank. OK — oppsummering: Simon i tet med seks poeng, men det er tett. Neste runde avgjør mye. Alle i gjengen er fortsatt med, men det er lite som skiller topp fra bunn. Hvem tør å ta sjansen på Saudi-Arabia? Hvem setter alt på Spania? Vi får se!"
-  },
-  {
-    "vert": "Frank",
-    "tekst": "Takk for at dere hørte på! Følg med, tip smart, og husk: uansett hva Trump finner på under dette VM — og det kommer han til å finne på noe — så er fotballen det viktigste. Vi sees til neste runde. Ha det bra, alle sammen!"
-  },
-  {
-    "vert": "Ada",
-    "tekst": "🎵 Vi ses neste gang — vi ses neste gang — med nye resultater og nye blemmer fra gjengen! 🎵 Ha det!"
+    "tekst": "Ha det bra, alle sammen! ♩♩ Vi ses igjen — Vi tip-per VM! ♩♩"
   }
 ]
