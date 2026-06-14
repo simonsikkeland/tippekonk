@@ -4,47 +4,10 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T19:13:00+00:00",
+  "oppdatert": "2026-06-14T19:23:38+00:00",
   "har_fasit": true,
   "fasit": {
-    "matches": [
-      {
-        "n": 1,
-        "result": "H"
-      },
-      {
-        "n": 2,
-        "result": "H"
-      },
-      {
-        "n": 3,
-        "result": "U"
-      },
-      {
-        "n": 4,
-        "result": "H"
-      },
-      {
-        "n": 5,
-        "result": "U"
-      },
-      {
-        "n": 6,
-        "result": "U"
-      },
-      {
-        "n": 7,
-        "result": "B"
-      },
-      {
-        "n": 8,
-        "result": "H"
-      },
-      {
-        "n": 9,
-        "result": "H"
-      }
-    ],
+    "matches": [],
     "group_winners": {
       "Gruppe A": "Mexico",
       "Gruppe B": "Canada",
@@ -68,7 +31,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Folarin Balogun",
-    "antall_maal": 22,
+    "antall_maal": 12,
     "kamper": [
       {
         "home": "Mexico",
@@ -1472,19 +1435,117 @@
           "spilt": 0
         }
       ]
-    }
+    },
+    "flagg": {
+      "Uruguay": "https://crests.football-data.org/758.svg",
+      "Tyskland": "https://crests.football-data.org/759.svg",
+      "Spania": "https://crests.football-data.org/760.svg",
+      "Paraguay": "https://crests.football-data.org/761.svg",
+      "Argentina": "https://crests.football-data.org/762.png",
+      "Ghana": "https://crests.football-data.org/ghana.svg",
+      "Brasil": "https://crests.football-data.org/764.svg",
+      "Portugal": "https://crests.football-data.org/765.svg",
+      "Japan": "https://crests.football-data.org/766.svg",
+      "Mexico": "https://crests.football-data.org/769.svg",
+      "England": "https://crests.football-data.org/770.svg",
+      "USA": "https://crests.football-data.org/usa.svg",
+      "South Korea": "https://crests.football-data.org/772.png",
+      "Frankrike": "https://crests.football-data.org/773.svg",
+      "Sør-Afrika": "https://crests.football-data.org/9396.svg",
+      "Algerie": "https://crests.football-data.org/algeria.svg",
+      "Australia": "https://crests.football-data.org/779.svg",
+      "New Zealand": "https://crests.football-data.org/783.svg",
+      "Sveits": "https://crests.football-data.org/788.svg",
+      "Ecuador": "https://crests.football-data.org/791.svg",
+      "Sverige": "https://crests.football-data.org/792.svg",
+      "Czechia": "https://crests.football-data.org/798.svg",
+      "Kroatia": "https://crests.football-data.org/799.svg",
+      "Saudi-Arabia": "https://crests.football-data.org/saudi_arabia.svg",
+      "Tunisia": "https://crests.football-data.org/tunisia.svg",
+      "Tyrkia": "https://crests.football-data.org/803.svg",
+      "Senegal": "https://crests.football-data.org/senegal.svg",
+      "Belgia": "https://crests.football-data.org/805.svg",
+      "Marokko": "https://crests.football-data.org/morocco.svg",
+      "Østerrike": "https://crests.football-data.org/816.svg",
+      "Colombia": "https://crests.football-data.org/818.svg",
+      "Egypt": "https://crests.football-data.org/825.svg",
+      "Canada": "https://crests.football-data.org/canada.svg",
+      "Haiti": "https://crests.football-data.org/haiti.svg",
+      "Iran": "https://crests.football-data.org/iran.svg",
+      "Bosnia-Herzegovina": "https://crests.football-data.org/bosnia.svg",
+      "Panama": "https://crests.football-data.org/panama.svg",
+      "Cape Verde Islands": "https://crests.football-data.org/cape_verde.svg",
+      "Congo DR": "https://crests.football-data.org/congo_dr.svg",
+      "Elfenbenskysten": "https://crests.football-data.org/787.svg",
+      "Qatar": "https://crests.football-data.org/8030.svg",
+      "Jordan": "https://crests.football-data.org/8049.png",
+      "Irak": "https://crests.football-data.org/iraq.svg",
+      "Usbekistan": "https://crests.football-data.org/8070.png",
+      "Nederland": "https://crests.football-data.org/8601.svg",
+      "Norge": "https://crests.football-data.org/813.svg",
+      "Skottland": "https://crests.football-data.org/814.svg",
+      "Curaçao": "https://crests.football-data.org/curacao.svg"
+    },
+    "topp_scorere": [
+      {
+        "navn": "Folarin Balogun",
+        "lag": "USA",
+        "maal": 2
+      },
+      {
+        "navn": "Kai Havertz",
+        "lag": "Tyskland",
+        "maal": 2
+      },
+      {
+        "navn": "Julián Quiñones",
+        "lag": "Mexico",
+        "maal": 1
+      },
+      {
+        "navn": "Raúl Jiménez",
+        "lag": "Mexico",
+        "maal": 1
+      },
+      {
+        "navn": "Ladislav Krejčí",
+        "lag": "Czechia",
+        "maal": 1
+      },
+      {
+        "navn": "In-beom Hwang",
+        "lag": "South Korea",
+        "maal": 1
+      },
+      {
+        "navn": "Hyun-Gyu Oh",
+        "lag": "South Korea",
+        "maal": 1
+      },
+      {
+        "navn": "Jovo Lukić",
+        "lag": "Bosnia-Herzegovina",
+        "maal": 1
+      },
+      {
+        "navn": "Cyle Larin",
+        "lag": "Canada",
+        "maal": 1
+      },
+      {
+        "navn": "Mauricio",
+        "lag": "Paraguay",
+        "maal": 1
+      }
+    ],
+    "gruppespill_ferdig": false
   },
   "stilling": [
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 30,
+      "poeng": 27,
       "linjer": [
-        {
-          "label": "Gruppespill (3 riktige)",
-          "pts": 3,
-          "detail": "3 x 1p"
-        },
         {
           "label": "Gruppevinnere (9 riktige)",
           "pts": 27,
@@ -1498,19 +1559,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 22)"
+          "detail": "tippet 304 (fasit 12)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 22,
+      "fasit": 12,
       "tipp": [
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 282
+          "diff": 292
         }
       ]
     },

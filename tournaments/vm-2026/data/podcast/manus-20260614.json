@@ -1,42 +1,46 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og med meg i studio har jeg som alltid den uslåelige Ada. Hei, Ada!"
+    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her ved siden av meg sitter Ada – klar for en ny runde med tippeanalyse av høyeste klasse."
   },
   {
     "vert": "Ada",
-    "tekst": "Hei, Jonas! 'Uslåelig' er et sterkt ord, men jeg tar det. La oss bare si at jeg er her, og det er vel det viktigste."
+    "tekst": "Høyeste klasse, ja. Det er sterke ord for det som i bunn og grunn er en gjeng venner som gjetter på fotballkamper og later som de vet hva de driver med. Men ja, hei alle sammen!"
   },
   {
     "vert": "Jonas",
-    "tekst": "Akkurat! Og vi er oppdatert per fjortende juni, klokken syv og tretten på kvelden, så dette er ferskvare, altså. Og da vi kikker på stillingen... ja, det er ikke akkurat noe folksomt der oppe i toppen."
+    "tekst": "Og vi har en oppdatering fra søndag den fjortende juni, klokken sju og tjuetre på kvelden. Og det er én mann som troner øverst akkurat nå – Simon!"
   },
   {
     "vert": "Ada",
-    "tekst": "Nei, for å si det pent. Det er én mann som troner øverst, og det er Simon med tretti poeng. Simon er alene i ledelsen, og han ser ganske komfortabel ut der oppe, vil jeg si."
+    "tekst": "Simon! Med tjuesju poeng. Tjuesju! Mannen sitter der og smiler bredt, det er jeg ganske sikker på."
   },
   {
     "vert": "Jonas",
-    "tekst": "Tretti poeng og helt alene i toppen. Det er nesten litt ensomt, Simon. Men jeg er sikker på at han ikke klager. Hvem liker vel ikke å lede en konkurranse?"
+    "tekst": "Helt alene på topp, ingen over, ingen ved siden. Det er litt ensomt der oppe, Simon – men jeg skjønner at du klarer deg."
   },
   {
     "vert": "Ada",
-    "tekst": "Ja, han sitter nok hjemme og smiler bredt akkurat nå. Men altså, vi har mange runder igjen av VM, så dette er langt ifra avgjort. Det kan snu fort, det vet vi alle."
+    "tekst": "Det som er litt spesielt denne uken er at vi faktisk bare har én deltaker i stillingen. Enten er det tekniske greier, eller så har alle andre rett og slett valgt å skjule skammen sin."
   },
   {
     "vert": "Jonas",
-    "tekst": "Absolutt. Og så var det dette med toppscorere og assist i konkurransen – der er det blankt foreløpig. Ingenting å melde."
+    "tekst": "Haha, ja, kanskje det. Vi regner med at resten av gjengen dukker opp etter hvert. Og da blir det nok litt tøffere for Simon å holde tronen."
   },
   {
     "vert": "Ada",
-    "tekst": "Blankt ja! Det er litt som en statistikkside uten statistikk. Men det kommer seg, det lover vi. Når kampene ruller inn, blir det mer å snakke om der også."
+    "tekst": "Vi kan også nevne at det ikke er registrert noen toppscorere eller assistkonger i konkurransen ennå. Enten har ingen satt opp sånne tips, eller så venter vi på at VM virkelig skal skyte fart."
   },
   {
     "vert": "Jonas",
-    "tekst": "Så oppsummert: Simon leder med tretti poeng, resten av feltet har noe å jobbe med, og toppscorer- og assistlisten er fortsatt jomfruelig. Vi følger med!"
+    "tekst": "Det er jo tidlig i turneringen, så det er absolutt alt å spille om. Simon leder, ja – men i en tippekonkurranse blant venner kan alt snu på én dårlig runde."
   },
   {
     "vert": "Ada",
-    "tekst": "Det gjør vi! Takk for at dere hørte på. Følg med på neste oppdatering, og husk – det er lang vei til finalen. Ha det bra, alle sammen!"
+    "tekst": "Akkurat. Og vi kommer tilbake med ny oppdatering så snart det skjer noe nytt. Takk for at dere hørte på, og Simon – nyt det mens det varer!"
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Ha det bra, alle sammen – og lykke til med tipsene!"
   }
 ]
