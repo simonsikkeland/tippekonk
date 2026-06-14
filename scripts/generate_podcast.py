@@ -134,6 +134,10 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"TONE: Morsomt, energisk, personlig. Bruk deltakernavn, ha meninger, veer opinionated. "
         f"Vev inn konkret data — lagnavn, spillernavn, resultater, score, poeng. "
         f"Lengde: rundt 14-20 replikker totalt (ca 5-7 minutter tale). "
+        f"VIKTIG SPRAK: Skriv pa NORSK BOKMAL. Bruk norske ord og uttrykk, IKKE danske. "
+        f"Eksempler: 'ikke' (ikke 'ik'), 'jeg' (ikke 'jæ'), 'hva' (ikke 'hvad'), "
+        f"'også' (ikke 'ogsaa'), 'veldig' (ikke 'meget'), 'gøy' (ikke 'sjovt'), "
+        f"'kamp' (ikke 'kamp'), 'lag' (ikke 'hold'). "
         f"Svar KUN med gyldig JSON: en liste av objekter med feltene 'vert' (enten '{a}' eller '{b}') "
         f"og 'tekst'. Ingen markdown, ingen forklaring. Skriv tall som ord der det er naturlig for opplesing."
     )
