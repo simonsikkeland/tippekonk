@@ -1,42 +1,46 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og med meg har jeg selvfølgelig Ada. Hei, Ada!"
+    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her er Ada ved siden av meg."
   },
   {
     "vert": "Ada",
-    "tekst": "Hei hei! Klart for VM-action, eller i hvert fall for å snakke om hvem som er best i tippekonkurransen vår. Og per nå er svaret ganske enkelt."
+    "tekst": "Hei alle sammen! Og Jonas, jeg må si, vi er i gang med VM, stemningen er på topp, og konkurransen er allerede i gang."
   },
   {
     "vert": "Jonas",
-    "tekst": "Ja, det er ikke akkurat noen thriller i toppen akkurat nå. Simon sitter på førsteplassen med seks poeng, og det er... ja, det er egentlig hele listen."
+    "tekst": "Ja, og per fjortende juni, klokka ni og førti i kveld, er stillingen faktisk ganske... oversiktlig. Det er én person på toppen, og det er ingen ringere enn Simon."
   },
   {
     "vert": "Ada",
-    "tekst": "Haha, ja. Simon leder solo. Ingen over seg, ingen under seg. Han er både topp og bunn, slik sett. Det er en ganske komfortabel situasjon!"
+    "tekst": "Simon! Seks poeng allerede. Han er ute av startblokkene som en lynet torpedorakett. Og resten av feltet? Vel... der er det litt taust."
   },
   {
     "vert": "Jonas",
-    "tekst": "Veldig komfortabel. Null press fra konkurrentene. Selv om man jo lurer litt på om det kommer flere inn i konkurransen etter hvert, eller om dette er hele gjengen vi skal heie på fremover."
+    "tekst": "Ja, altså, Simon er den eneste som er registrert på lista akkurat nå. Så enten er han alene om å ha tippa, eller så er det noen der ute som skjuler seg bak sofaputen og venter."
   },
   {
     "vert": "Ada",
-    "tekst": "Ja, og med tanke på toppscorere og assist i konkurransen, så er det blankt der også per nå. Ingen har klart å rake til seg noe ekstra på den fronten ennå."
+    "tekst": "Kall det strategisk tilbakeholdenhet, Jonas. Eller, hva heter det, å observere fienden fra avstand."
   },
   {
     "vert": "Jonas",
-    "tekst": "Alt er fortsatt åpent, da! Seks poeng er jo ikke akkurat uoverkommelig å ta igjen for de som kanskje melder seg på eller begynner å levere inn tipsene sine skikkelig."
+    "tekst": "Akkurat! Og vi har ingen toppscorere eller assist å melde om ennå, så det er jo litt rolig på den statistikkfronten, for å si det pent."
   },
   {
     "vert": "Ada",
-    "tekst": "Akkurat. Simon kan slappe av i kveld, men VM er langt ifra over. Det kan fort snu seg. Det er jo det som er morsomt med sånne her konkurransen, ikke sant?"
+    "tekst": "Det betyr bare at alt kan skje! Men foreløpig er det Simon som sitter med kronen, smiler bredt, og sannsynligvis allerede har sendt en skrytende melding i gruppa."
   },
   {
     "vert": "Jonas",
-    "tekst": "Absolutt! Vi følger spent med. Takk for at dere hørte på denne raske oppdateringen fra Piggy's VM-konkurranse to tusen og tjueseks. Vi er tilbake når det skjer noe nytt!"
+    "tekst": "Garantert. Så oppfordringen herfra er: kom dere på banen, folk! Seks poeng er ikke uoverkommelig å ta igjen. Det er fortsatt VM, det er fortsatt masse fotball igjen."
   },
   {
     "vert": "Ada",
-    "tekst": "Lykke til til alle deltakerne, og ikke minst til Simon som foreløpig bare trenger å lykke til med å holde ryggen fri. Ha det!"
+    "tekst": "Og vi holder dere oppdatert etter hvert som stillingen utvikler seg. Takk for at dere hørte på denne runden av Piggy's VM-konkurranse to tusen og tjueseks. Ha det bra!"
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Ha det godt, og Simon – nyt det mens det varer!"
   }
 ]
