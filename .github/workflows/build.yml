@@ -33,7 +33,7 @@ jobs:
 
       - name: Hent resultater og bygg stilling for alle turneringer
         env:
-          API_FOOTBALL_KEY: ${{ secrets.FOTAPI }}
+          FOOTBALL_DATA_TOKEN: ${{ secrets.DATAAPI }}
         run: |
           for t in tournaments/*/; do
             if [ -f "$t/tournament.json" ]; then
