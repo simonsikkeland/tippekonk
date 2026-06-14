@@ -254,11 +254,21 @@ def main(tournament_dir: str, lag_lyd_flag: bool):
         stemmer = cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES
         with tempfile.TemporaryDirectory() as tmp:
             klipp = []
+            # Intro-jingle
+            jingle_intro = pod_dir / "jingle-intro.mp3"
+            if jingle_intro.exists():
+                klipp.append(jingle_intro)
+                print("  Intro-jingle lagt til")
             for i, m in enumerate(manus):
                 vid = stemmer.get(m["vert"]) or list(stemmer.values())[i % len(stemmer)]
                 kp = Path(tmp) / f"{i:03d}.mp3"
                 eleven_tts(eleven_key, vid, m["tekst"], kp)
                 klipp.append(kp)
+            # Outro-jingle
+            jingle_outro = pod_dir / "jingle-outro.mp3"
+            if jingle_outro.exists():
+                klipp.append(jingle_outro)
+                print("  Outro-jingle lagt til")
             lyd_fil = f"episode-{ep_id}.mp3"
             sett_sammen(klipp, pod_dir / lyd_fil)
         print(f"  Lyd: {lyd_fil}")
