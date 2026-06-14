@@ -33,7 +33,7 @@ jobs:
 
       - name: Hent resultater og bygg stilling for alle turneringer
         env:
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.FOTAPI }}
         run: |
           for t in tournaments/*/; do
             if [ -f "$t/tournament.json" ]; then
@@ -46,8 +46,8 @@ jobs:
       - name: Generer podcast (manus + lyd)
         if: ${{ env.ANTHROPIC_API_KEY != '' }}
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTAPI }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENAPI }}
         run: |
           python scripts/generate_podcast.py tournaments/vm-2026 || true
 
