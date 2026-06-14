@@ -106,7 +106,7 @@ def fetch_competition(cfg: dict, token: str) -> dict:
                 group_finished_count += 1
                 if h_goals is not None and a_goals is not None:
                     res = "H" if h_goals > a_goals else ("B" if a_goals > h_goals else "U")
-                    group_matches.append(res)
+                    fact["matches"].append({"home": home, "away": away, "result": res})
 
         key = stage_map.get(stage)
         if key and home:
@@ -125,10 +125,6 @@ def fetch_competition(cfg: dict, token: str) -> dict:
                     fact["bronse_vinner"] = home
                 elif winner == "AWAY_TEAM":
                     fact["bronse_vinner"] = away
-
-    # H/U/B-resultater teller alltid med en gang
-    for i, res in enumerate(group_matches, 1):
-        fact["matches"].append({"n": i, "result": res})
 
     fact["gruppespill_ferdig"] = group_finished_count == group_total_count and group_total_count > 0
     print(f"  Gruppespill: {group_finished_count}/{group_total_count} kamper ferdig")

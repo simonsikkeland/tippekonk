@@ -106,12 +106,13 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         lines.append({"label": label, "pts": pts, "detail": detail})
         total += pts
 
-    # Gruppespill (H/U/B). Fasit-kamper bruker feltet "result".
+    # Gruppespill (H/U/B). Match by home+away team names.
     if fact.get("matches"):
-        fact_by_n = {m["n"]: _norm(m.get("result")) for m in fact["matches"]}
+        fact_by_teams = {(_norm(m["home"]), _norm(m["away"])): _norm(m["result"]) for m in fact["matches"]}
         correct = sum(
             1 for m in pred["matches"]
-            if fact_by_n.get(m["n"]) and _norm(m["pick"]) == fact_by_n[m["n"]]
+            if fact_by_teams.get((_norm(m["home"]), _norm(m["away"]))) and
+               _norm(m["pick"]) == fact_by_teams[(_norm(m["home"]), _norm(m["away"]))]
         )
         add(f"Gruppespill ({correct} riktige)", correct * rules["kamp"], f'{correct} x {rules["kamp"]}p')
 
