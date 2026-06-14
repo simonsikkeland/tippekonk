@@ -34,7 +34,7 @@ RSS_FEEDS = [
 ]
 
 # To verter. Stemme-ID-ene kan overstyres i tournament.json -> podcast.stemmer.
-# Standard er ElevenLabs innebygde stemmer (tilgjengelig pa alle planer).
+# Standard er ElevenLabs premade stemmer (tilgjengelig pa alle planer).
 DEFAULT_VOICES = {
     "Ada": "EXAVITQu4vr4xnSDxMaL",     # rolig, kvinnelig
     "Jonas": "TxGEqnHWrfWFTfGW9XjX",   # varm, mannlig
@@ -178,8 +178,17 @@ def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path):
         "content-type": "application/json",
         "accept": "audio/mpeg",
     })
-    with urllib.request.urlopen(req, timeout=120) as r:
-        ut.write_bytes(r.read())
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            data = r.read()
+            ut.write_bytes(data)
+            print(f"    TTS ok: {len(data)} bytes, voice={voice_id}")
+            if len(data) < 1000:
+                print(f"    ADVARSEL: veldig liten fil ({len(data)} bytes) — mulig tom lyd")
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode("utf-8", errors="replace")[:300]
+        print(f"    TTS FEIL {e.code}: {err_body}")
+        raise
 
 
 def sett_sammen(klipp: list[Path], ut: Path):
