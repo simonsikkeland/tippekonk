@@ -126,13 +126,12 @@ def fetch_competition(cfg: dict, token: str) -> dict:
                 elif winner == "AWAY_TEAM":
                     fact["bronse_vinner"] = away
 
+    # H/U/B-resultater teller alltid med en gang
+    for i, res in enumerate(group_matches, 1):
+        fact["matches"].append({"n": i, "result": res})
+
     fact["gruppespill_ferdig"] = group_finished_count == group_total_count and group_total_count > 0
-    if fact["gruppespill_ferdig"]:
-        for i, res in enumerate(group_matches, 1):
-            fact["matches"].append({"n": i, "result": res})
-        print(f"  Gruppespill ferdig ({group_finished_count}/{group_total_count})")
-    else:
-        print(f"  Gruppespill pågår ({group_finished_count}/{group_total_count}) - poeng deles ikke ut ennå")
+    print(f"  Gruppespill: {group_finished_count}/{group_total_count} kamper ferdig")
 
     # Sluttspill-lister (kumulativt)
     all_finale = stage_teams["finale"]
