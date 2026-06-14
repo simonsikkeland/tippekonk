@@ -1,8 +1,41 @@
 {
-  "matches": [],
+  "matches": [
+    {
+      "n": 1,
+      "result": "H"
+    },
+    {
+      "n": 2,
+      "result": "H"
+    },
+    {
+      "n": 3,
+      "result": "H"
+    },
+    {
+      "n": 4,
+      "result": "U"
+    },
+    {
+      "n": 5,
+      "result": "U"
+    },
+    {
+      "n": 6,
+      "result": "B"
+    },
+    {
+      "n": 7,
+      "result": "H"
+    },
+    {
+      "n": 8,
+      "result": "H"
+    }
+  ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Canada",
+    "Gruppe B": "Qatar",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -49,8 +82,8 @@
       "home": "Canada",
       "away": "Bosnia-Herzegovina",
       "dato": "2026-06-12",
-      "home_score": 1,
-      "away_score": 1,
+      "home_score": null,
+      "away_score": null,
       "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
@@ -1099,20 +1132,6 @@
     ],
     "Gruppe B": [
       {
-        "lag": "Canada",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
-        "lag": "Bosnia-Herzegovina",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
         "lag": "Qatar",
         "poeng": 1,
         "mf": 0,
@@ -1125,6 +1144,20 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
+      },
+      {
+        "lag": "Canada",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
+      },
+      {
+        "lag": "Bosnia-Herzegovina",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
       }
     ],
     "Gruppe C": [
