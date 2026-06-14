@@ -42,6 +42,7 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         "matches": [], "group_winners": {}, "r16": [], "r8": [],
         "kvart": [], "semi": [], "bronse": [], "bronse_vinner": "",
         "finale": [], "vm_vinner": "", "toppscorer": "", "antall_maal": 0,
+        "kamper": [], "grupper": {},
     }
 
     # --- Alle kamper ---
@@ -70,13 +71,25 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         status = m.get("status", "")
         home = to_no(m.get("homeTeam", {}).get("name", ""))
         away = to_no(m.get("awayTeam", {}).get("name", ""))
+        dato = m.get("utcDate", "")[:10]
+        grp = m.get("group", "")
 
-        # Gruppespill
+        ft = m.get("score", {}).get("fullTime", {})
+        h_goals = ft.get("home")
+        a_goals = ft.get("away")
+
+        # Detaljert kampinfo
+        kamp = {
+            "home": home, "away": away, "dato": dato,
+            "home_score": h_goals, "away_score": a_goals,
+            "status": status, "stage": stage, "group": grp,
+        }
+        fact["kamper"].append(kamp)
+
+        # Gruppespill H/U/B for scoring
         if stage == "GROUP_STAGE" and status == "FINISHED":
-            ft = m.get("score", {}).get("fullTime", {})
-            h, a = ft.get("home"), ft.get("away")
-            if h is not None and a is not None:
-                res = "H" if h > a else ("B" if a > h else "U")
+            if h_goals is not None and a_goals is not None:
+                res = "H" if h_goals > a_goals else ("B" if a_goals > h_goals else "U")
                 group_matches.append(res)
 
         # Sluttspill
@@ -118,7 +131,7 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     fact["finale"] = sorted(all_finale)
 
     # --- Gruppevinnere beregnet fra kampresultater ---
-    group_tables: dict[str, dict[str, list]] = {}  # group -> team -> [pts, gd, gf]
+    group_tables: dict[str, dict[str, list]] = {}  # group -> team -> [pts, gd, gf, played]
     for m in all_matches:
         grp = m.get("group", "")
         if not grp or m.get("stage") != "GROUP_STAGE":
@@ -126,15 +139,17 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         home = to_no(m.get("homeTeam", {}).get("name", ""))
         away = to_no(m.get("awayTeam", {}).get("name", ""))
         if home not in group_tables.setdefault(grp, {}):
-            group_tables[grp][home] = [0, 0, 0]
+            group_tables[grp][home] = [0, 0, 0, 0]
         if away not in group_tables[grp]:
-            group_tables[grp][away] = [0, 0, 0]
+            group_tables[grp][away] = [0, 0, 0, 0]
         if m.get("status") != "FINISHED":
             continue
         ft = m.get("score", {}).get("fullTime", {})
         h, a = ft.get("home"), ft.get("away")
         if h is None or a is None:
             continue
+        group_tables[grp][home][3] += 1
+        group_tables[grp][away][3] += 1
         group_tables[grp][home][2] += h
         group_tables[grp][away][2] += a
         group_tables[grp][home][1] += h - a
@@ -147,12 +162,17 @@ def fetch_competition(cfg: dict, token: str) -> dict:
             group_tables[grp][home][0] += 1
             group_tables[grp][away][0] += 1
 
-    for grp_name, teams in group_tables.items():
+    for grp_name, teams in sorted(group_tables.items()):
         sorted_teams = sorted(teams.items(), key=lambda x: (x[1][0], x[1][1], x[1][2]), reverse=True)
+        label = "Gruppe " + grp_name.split("_")[-1]
         if sorted_teams:
-            label = "Gruppe " + grp_name.split("_")[-1]
             fact["group_winners"][label] = sorted_teams[0][0]
+        fact["grupper"][label] = [
+            {"lag": t, "poeng": s[0], "mf": s[1], "maal_for": s[2], "spilt": s[3]}
+            for t, s in sorted_teams
+        ]
     print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet fra kamper")
+    print(f"  Grupper med tabelldata: {len(fact['grupper'])}")
 
     # --- Toppscorer ---
     try:
