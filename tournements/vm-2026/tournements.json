@@ -1,0 +1,28 @@
+{
+  "id": "vm-2026",
+  "navn": "Piggy's VM-konkurranse 2026",
+  "kort_navn": "VM 2026",
+  "vert": "USA, Canada og Mexico",
+  "start_dato": "2026-06-11",
+  "slutt_dato": "2026-07-19",
+  "football_data_competition": "WC",
+  "deltakeravgift_nok": 250,
+  "regler": {
+    "kamp": 1,
+    "gruppevinner": 3,
+    "r16": 1,
+    "r8": 2,
+    "kvart": 3,
+    "semi": 4,
+    "bronse_lag": 1,
+    "bronse_vinner": 3,
+    "finale_lag": 5,
+    "vm_vinner": 10,
+    "toppscorer": 10,
+    "flest_assist": 7,
+    "antall_maal": 20,
+    "antall_kort": 20
+  },
+  "manuelle_fasit_felt": ["assist", "antall_kort"],
+  "notat": "Resultater, gruppevinnere, sluttspill og toppscorer auto-hentes fra football-data.org. Assist og antall kort fylles inn manuelt i data/manuell.json (ikke gratis via API)."
+}
