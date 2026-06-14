@@ -1,11 +1,10 @@
 """
-Henter ferske resultater fra football-data.org og bygger fasit.json
-for en turnering. Oversetter engelske API-lagnavn til norske via
-team_map.no.json. Fletter inn manuelle felt (assist, kort) fra manuell.json.
+Henter ferske resultater fra api-football.com (api-sports.io) og bygger fasit.json
+for en turnering. Oversetter engelske API-lagnavn til norske via team_map.no.json.
+Fletter inn manuelle felt (assist, kort) fra manuell.json.
 
-Kjøres av GitHub Action. Krever miljøvariabel FOOTBALL_DATA_TOKEN.
-Hvis token mangler, hopper den pent over auto-henting og beholder
-det som ligger i manuell.json — så bygget aldri kræsjer.
+Kjøres av GitHub Action. Krever miljøvariabel API_FOOTBALL_KEY.
+Hvis nøkkel mangler, hopper den pent over auto-henting.
 
 Bruk: python scripts/fetch_results.py tournaments/vm-2026
 """
@@ -17,115 +16,128 @@ import time
 import urllib.request
 from pathlib import Path
 
-API_BASE = "https://api.football-data.org/v4"
+API_BASE = "https://v3.football.api-sports.io"
 HERE = Path(__file__).resolve().parent
 TEAM_MAP = json.loads((HERE / "team_map.no.json").read_text(encoding="utf-8"))
 
 
 def to_no(name: str) -> str:
-    """Engelsk API-navn -> norsk arknavn. Faller tilbake til original."""
     if not name:
         return ""
     return TEAM_MAP.get(name.strip(), name.strip())
 
 
-def _get(path: str, token: str) -> dict:
-    req = urllib.request.Request(f"{API_BASE}{path}", headers={"X-Auth-Token": token})
+def _get(path: str, key: str) -> dict:
+    url = f"{API_BASE}{path}"
+    req = urllib.request.Request(url, headers={"x-apisports-key": key})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.loads(r.read().decode("utf-8"))
 
 
-def fetch_competition(cfg: dict, token: str) -> dict:
-    comp = cfg["football_data_competition"]
+def fetch_competition(cfg: dict, key: str) -> dict:
+    league = cfg["api_football_league"]
+    season = cfg["api_football_season"]
+
     fact = {
         "matches": [], "group_winners": {}, "r16": [], "r8": [],
         "kvart": [], "semi": [], "bronse": [], "bronse_vinner": "",
-        "finale": [], "vm_vinner": "", "toppscorer": "",
+        "finale": [], "vm_vinner": "", "toppscorer": "", "antall_maal": 0,
     }
 
-    # --- Kamper (gruppespill) -> H/U/B ---
-    data = _get(f"/competitions/{comp}/matches", token)
-    time.sleep(6)  # respekter 10 req/min
-    n = 0
-    for m in data.get("matches", []):
-        if m.get("stage") != "GROUP_STAGE" or m.get("status") != "FINISHED":
-            continue
-        n += 1
-        ft = m["score"]["fullTime"]
-        h, a = ft.get("home"), ft.get("away")
-        if h is None or a is None:
-            continue
-        res = "H" if h > a else ("B" if a > h else "U")
-        fact["matches"].append({"n": n, "result": res})
+    # --- Hent alle kamper ---
+    data = _get(f"/fixtures?league={league}&season={season}", key)
+    time.sleep(7)
+    fixtures = data.get("response", [])
 
-    # --- Gruppevinnere fra tabeller ---
+    group_matches = []
+    stage_teams: dict[str, set] = {
+        "r16": set(), "r8": set(), "kvart": set(), "semi": set(),
+        "bronse": set(), "finale": set(),
+    }
+
+    round_map = {
+        "Round of 16": "r16",
+        "Round of 32": "r16",
+        "Quarter-finals": "r8",
+        "Semi-finals": "kvart",
+        "3rd Place Final": "bronse",
+        "Final": "finale",
+    }
+
+    for f in fixtures:
+        rnd = f.get("league", {}).get("round", "")
+        status = f.get("fixture", {}).get("status", {}).get("short", "")
+        home = to_no(f.get("teams", {}).get("home", {}).get("name", ""))
+        away = to_no(f.get("teams", {}).get("away", {}).get("name", ""))
+
+        # Gruppespill
+        if rnd.startswith("Group Stage") and status == "FT":
+            goals = f.get("goals", {})
+            h, a = goals.get("home"), goals.get("away")
+            if h is not None and a is not None:
+                res = "H" if h > a else ("B" if a > h else "U")
+                group_matches.append(res)
+
+            # Gruppevinner via standings (hentes separat)
+
+        # Sluttspill
+        key2 = round_map.get(rnd)
+        if key2 and home:
+            stage_teams[key2].add(home)
+            stage_teams[key2].add(away)
+
+        if status == "FT":
+            winner_home = f.get("teams", {}).get("home", {}).get("winner")
+            if rnd == "Final":
+                fact["vm_vinner"] = home if winner_home else away
+            if rnd == "3rd Place Final":
+                fact["bronse_vinner"] = home if winner_home else away
+
+    # Kampresultater med løpenummer
+    for i, res in enumerate(group_matches, 1):
+        fact["matches"].append({"n": i, "result": res})
+
+    # Sluttspill-lister (kumulativt: alle som nådde en runde eller lenger)
+    all_finale = stage_teams["finale"]
+    all_bronse = stage_teams["bronse"]
+    all_semi = stage_teams["kvart"] | all_finale | all_bronse
+    all_kvart = stage_teams["r8"] | all_semi
+    all_r16 = stage_teams["r16"] | all_kvart
+
+    fact["r16"] = sorted(all_r16)
+    fact["r8"] = sorted(all_kvart)
+    fact["kvart"] = sorted(all_semi)
+    fact["semi"] = sorted(all_finale | all_bronse)
+    fact["bronse"] = sorted(all_bronse)
+    fact["finale"] = sorted(all_finale)
+
+    # --- Gruppevinnere fra standings ---
     try:
-        st = _get(f"/competitions/{comp}/standings", token)
-        time.sleep(6)
-        for grp in st.get("standings", []):
-            if grp.get("type") != "TOTAL":
-                continue
-            label = grp.get("group", "")
-            table = grp.get("table", [])
-            if label and table:
-                # "GROUP_A" -> "Gruppe A"
-                norm_label = label.replace("GROUP_", "Gruppe ").title().replace("Gruppe ", "Gruppe ")
-                norm_label = "Gruppe " + label.split("_")[-1]
-                fact["group_winners"][norm_label] = to_no(table[0]["team"]["name"])
+        st = _get(f"/standings?league={league}&season={season}", key)
+        time.sleep(7)
+        for grp in st.get("response", [{}])[0].get("league", {}).get("standings", []):
+            if grp:
+                leader = grp[0]
+                group_name = leader.get("group", "")
+                team_name = to_no(leader.get("team", {}).get("name", ""))
+                if group_name and team_name:
+                    fact["group_winners"][group_name] = team_name
     except Exception as e:
         print(f"  (standings hoppet over: {e})")
 
-    # --- Sluttspill: hvilke lag nådde hver runde ---
-    stage_map = {
-        "LAST_16": "r16", "QUARTER_FINALS": "kvart",
-        "SEMI_FINALS": "semi", "THIRD_PLACE": "bronse", "FINAL": "finale",
-    }
-    seen = {k: set() for k in stage_map.values()}
-    for m in data.get("matches", []):
-        key = stage_map.get(m.get("stage"))
-        if not key:
-            continue
-        for side in ("homeTeam", "awayTeam"):
-            t = m.get(side, {}).get("name")
-            if t:
-                seen[key].add(to_no(t))
-    # r8 i arket = "videre til 8-dels" = de som spiller LAST_16 (16 lag).
-    # r16 i arket = "videre til 16-dels" = 32 lag (alle som nådde sluttspill).
-    fact["r16"] = sorted(seen["r16"] | seen["kvart"] | seen["semi"] | seen["bronse"] | seen["finale"])
-    fact["r8"] = sorted(seen["kvart"] | seen["semi"] | seen["finale"])
-    fact["kvart"] = sorted(seen["semi"] | seen["finale"] | seen["bronse"])
-    fact["semi"] = sorted(seen["finale"] | seen["bronse"])
-    fact["bronse"] = sorted(seen["bronse"])
-    fact["finale"] = sorted(seen["finale"])
-
-    # Vinnere av finale/bronsefinale
-    for m in data.get("matches", []):
-        if m.get("status") != "FINISHED":
-            continue
-        if m.get("stage") == "FINAL":
-            w = m.get("score", {}).get("winner")
-            if w == "HOME_TEAM":
-                fact["vm_vinner"] = to_no(m["homeTeam"]["name"])
-            elif w == "AWAY_TEAM":
-                fact["vm_vinner"] = to_no(m["awayTeam"]["name"])
-        if m.get("stage") == "THIRD_PLACE":
-            w = m.get("score", {}).get("winner")
-            if w == "HOME_TEAM":
-                fact["bronse_vinner"] = to_no(m["homeTeam"]["name"])
-            elif w == "AWAY_TEAM":
-                fact["bronse_vinner"] = to_no(m["awayTeam"]["name"])
-
     # --- Toppscorer ---
     try:
-        sc = _get(f"/competitions/{comp}/scorers?limit=1", token)
-        time.sleep(6)
-        scorers = sc.get("scorers", [])
+        sc = _get(f"/players/topscorers?league={league}&season={season}", key)
+        scorers = sc.get("response", [])
         if scorers:
-            fact["toppscorer"] = scorers[0]["player"]["name"]
-            fact["antall_maal"] = sum(s.get("goals", 0) for s in _get(
-                f"/competitions/{comp}/scorers?limit=100", token).get("scorers", []))
+            top = scorers[0]
+            fact["toppscorer"] = top["player"]["name"]
+            fact["antall_maal"] = sum(
+                s.get("statistics", [{}])[0].get("goals", {}).get("total", 0) or 0
+                for s in scorers
+            )
     except Exception as e:
-        print(f"  (scorers hoppet over: {e})")
+        print(f"  (toppscorer hoppet over: {e})")
 
     return fact
 
@@ -133,19 +145,22 @@ def fetch_competition(cfg: dict, token: str) -> dict:
 def main(tournament_dir: str):
     tdir = Path(tournament_dir)
     cfg = json.loads((tdir / "tournament.json").read_text(encoding="utf-8"))
-    manuell = json.loads((tdir / "data" / "manuell.json").read_text(encoding="utf-8"))
-    token = os.environ.get("FOOTBALL_DATA_TOKEN", "").strip()
+    manuell_path = tdir / "data" / "manual.json"
+    manuell = json.loads(manuell_path.read_text(encoding="utf-8")) if manuell_path.exists() else {}
+    key = os.environ.get("API_FOOTBALL_KEY", "").strip()
 
-    if token:
-        print(f"Henter resultater for {cfg['kort_navn']} fra football-data.org ...")
+    if key:
+        print(f"Henter resultater for {cfg['kort_navn']} fra api-football.com ...")
         try:
-            fact = fetch_competition(cfg, token)
+            fact = fetch_competition(cfg, key)
         except Exception as e:
-            print(f"  Auto-henting feilet ({e}); bygger tom fasit.")
-            fact = {}
+            print(f"  Auto-henting feilet ({e}); beholder eksisterende fasit.")
+            fasit_path = tdir / "data" / "fasit.json"
+            fact = json.loads(fasit_path.read_text(encoding="utf-8")) if fasit_path.exists() else {}
     else:
-        print("  Ingen FOOTBALL_DATA_TOKEN satt - hopper over auto-henting.")
-        fact = {}
+        print("  Ingen API_FOOTBALL_KEY satt - hopper over auto-henting.")
+        fasit_path = tdir / "data" / "fasit.json"
+        fact = json.loads(fasit_path.read_text(encoding="utf-8")) if fasit_path.exists() else {}
 
     # Flett inn manuelle felt
     if manuell.get("assist"):
