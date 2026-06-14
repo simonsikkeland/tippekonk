@@ -188,15 +188,21 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet")
     print(f"  Grupper med tabelldata: {len(fact['grupper'])}")
 
+    # --- Antall mål totalt fra alle ferdige kamper ---
+    total_goals = 0
+    for k in fact["kamper"]:
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            total_goals += (k["home_score"] or 0) + (k["away_score"] or 0)
+    fact["antall_maal"] = total_goals
+    print(f"  Totalt antall mål: {total_goals}")
+
     # --- Toppscorere (topp 10 med detaljer) ---
     try:
         sc = _get(f"/competitions/{comp}/scorers?season={season}&limit=10", token)
         time.sleep(6)
         scorers = sc.get("scorers", [])
-        total_goals = 0
         for s in scorers:
             goals = s.get("goals", 0) or 0
-            total_goals += goals
             fact["topp_scorere"].append({
                 "navn": s["player"]["name"],
                 "lag": to_no(s.get("team", {}).get("name", "")),
@@ -204,8 +210,7 @@ def fetch_competition(cfg: dict, token: str) -> dict:
             })
         if scorers:
             fact["toppscorer"] = scorers[0]["player"]["name"]
-        fact["antall_maal"] = total_goals
-        print(f"  Toppscorere: {len(fact['topp_scorere'])} hentet, totalt {total_goals} mål")
+        print(f"  Toppscorere: {len(fact['topp_scorere'])} hentet")
     except Exception as e:
         print(f"  (toppscorer hoppet over: {e})")
 
