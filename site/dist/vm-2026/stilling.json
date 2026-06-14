@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T20:50:41+00:00",
+  "oppdatert": "2026-06-14T20:50:40+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1650,6 +1650,28 @@
     },
     {
       "plass": 4,
+      "navn": "Jonas",
+      "poeng": 5,
+      "linjer": [
+        {
+          "label": "Gruppespill (5 riktige)",
+          "pts": 5,
+          "detail": "5 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 306 (fasit 12)"
+        }
+      ]
+    },
+    {
+      "plass": 5,
       "navn": "Bjørn",
       "poeng": 5,
       "linjer": [
@@ -1671,7 +1693,29 @@
       ]
     },
     {
-      "plass": 5,
+      "plass": 6,
+      "navn": "Ringstad",
+      "poeng": 4,
+      "linjer": [
+        {
+          "label": "Gruppespill (4 riktige)",
+          "pts": 4,
+          "detail": "4 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 262 (fasit 12)"
+        }
+      ]
+    },
+    {
+      "plass": 7,
       "navn": "Tobias",
       "poeng": 4,
       "linjer": [
@@ -1693,7 +1737,7 @@
       ]
     },
     {
-      "plass": 6,
+      "plass": 8,
       "navn": "Håkon",
       "poeng": 4,
       "linjer": [
@@ -1715,29 +1759,7 @@
       ]
     },
     {
-      "plass": 7,
-      "navn": "Jonas",
-      "poeng": 4,
-      "linjer": [
-        {
-          "label": "Gruppespill (4 riktige)",
-          "pts": 4,
-          "detail": "4 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Kane"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 306 (fasit 12)"
-        }
-      ]
-    },
-    {
-      "plass": 8,
+      "plass": 9,
       "navn": "Øystein",
       "poeng": 4,
       "linjer": [
@@ -1759,7 +1781,7 @@
       ]
     },
     {
-      "plass": 9,
+      "plass": 10,
       "navn": "Arya",
       "poeng": 4,
       "linjer": [
@@ -1777,28 +1799,6 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 298 (fasit 12)"
-        }
-      ]
-    },
-    {
-      "plass": 10,
-      "navn": "Ringstad",
-      "poeng": 3,
-      "linjer": [
-        {
-          "label": "Gruppespill (3 riktige)",
-          "pts": 3,
-          "detail": "3 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 262 (fasit 12)"
         }
       ]
     },
