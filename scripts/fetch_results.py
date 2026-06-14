@@ -48,6 +48,17 @@ def fetch_competition(cfg: dict, key: str) -> dict:
     data = _get(f"/fixtures?league={league}&season={season}", key)
     time.sleep(7)
     fixtures = data.get("response", [])
+    print(f"  Totalt {len(fixtures)} kamper hentet fra API")
+
+    # Debug: vis unike runder og statuser
+    rounds_seen = set()
+    statuses_seen = set()
+    for f in fixtures[:5]:
+        rounds_seen.add(f.get("league", {}).get("round", "?"))
+        statuses_seen.add(f.get("fixture", {}).get("status", {}).get("short", "?"))
+    if fixtures:
+        print(f"  Eksempel runder: {rounds_seen}")
+        print(f"  Eksempel statuser: {statuses_seen}")
 
     group_matches = []
     stage_teams: dict[str, set] = {
