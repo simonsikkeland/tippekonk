@@ -117,36 +117,42 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     fact["bronse"] = sorted(all_bronse)
     fact["finale"] = sorted(all_finale)
 
-    # --- Gruppevinnere fra standings ---
-    try:
-        st = _get(f"/competitions/{comp}/standings?season={season}", token)
-        time.sleep(6)
-        standings = st.get("standings", [])
-        print(f"  Standings typer: {[g.get('type') for g in standings]}")
-        # Debug: vis strukturen på første TOTAL-oppføring
-        for grp in standings:
-            if grp.get("type") == "TOTAL":
-                table = grp.get("table", [])
-                if table:
-                    first = table[0]
-                    print(f"  Første rad-nøkler: {list(first.keys())}")
-                    print(f"  gruppe-felt: {first.get('group','INGEN')}, team: {first.get('team',{}).get('name','?')}")
-                break
-        for grp in standings:
-            if grp.get("type") != "TOTAL":
-                continue
-            table = grp.get("table", [])
-            # Grupper kan ligge som `group` på hvert lag i tabellen
-            seen_groups: dict[str, str] = {}
-            for row in table:
-                grp_name = row.get("group", "")
-                team_name = to_no(row.get("team", {}).get("name", ""))
-                if grp_name and grp_name not in seen_groups:
-                    seen_groups[grp_name] = team_name
-            fact["group_winners"].update(seen_groups)
-        print(f"  Gruppevinnere: {len(fact['group_winners'])} hentet")
-    except Exception as e:
-        print(f"  (standings hoppet over: {e})")
+    # --- Gruppevinnere beregnet fra kampresultater ---
+    group_tables: dict[str, dict[str, list]] = {}  # group -> team -> [pts, gd, gf]
+    for m in all_matches:
+        grp = m.get("group", "")
+        if not grp or m.get("stage") != "GROUP_STAGE":
+            continue
+        home = to_no(m.get("homeTeam", {}).get("name", ""))
+        away = to_no(m.get("awayTeam", {}).get("name", ""))
+        if home not in group_tables.setdefault(grp, {}):
+            group_tables[grp][home] = [0, 0, 0]
+        if away not in group_tables[grp]:
+            group_tables[grp][away] = [0, 0, 0]
+        if m.get("status") != "FINISHED":
+            continue
+        ft = m.get("score", {}).get("fullTime", {})
+        h, a = ft.get("home"), ft.get("away")
+        if h is None or a is None:
+            continue
+        group_tables[grp][home][2] += h
+        group_tables[grp][away][2] += a
+        group_tables[grp][home][1] += h - a
+        group_tables[grp][away][1] += a - h
+        if h > a:
+            group_tables[grp][home][0] += 3
+        elif a > h:
+            group_tables[grp][away][0] += 3
+        else:
+            group_tables[grp][home][0] += 1
+            group_tables[grp][away][0] += 1
+
+    for grp_name, teams in group_tables.items():
+        sorted_teams = sorted(teams.items(), key=lambda x: (x[1][0], x[1][1], x[1][2]), reverse=True)
+        if sorted_teams:
+            label = "Gruppe " + grp_name.split("_")[-1]
+            fact["group_winners"][label] = sorted_teams[0][0]
+    print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet fra kamper")
 
     # --- Toppscorer ---
     try:
