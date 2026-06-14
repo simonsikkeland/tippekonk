@@ -29,7 +29,9 @@ jobs:
           python-version: "3.12"
 
       - name: Installer avhengigheter
-        run: pip install openpyxl
+        run: |
+          pip install openpyxl
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - name: Hent resultater og bygg stilling for alle turneringer
         env:
