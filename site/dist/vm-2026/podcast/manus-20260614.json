@@ -1,42 +1,66 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny episode av tippekonkurransen vi alle elsker å hate – Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas."
+    "tekst": "Hei og velkommen tilbake til Piggy's VM-konkurranse-podden! Jeg er Jonas, her er Ada, og vi er inne i det som bare er en helt rå dag med VM-fotball. Ada, hva synes du – hvor skal vi begynne?"
   },
   {
     "vert": "Ada",
-    "tekst": "Og jeg er Ada. Og Jonas, jeg må si – det er fjorten juni, VM er knapt i gang, og allerede er det én person som stikker seg ut på toppen."
+    "tekst": "Vi begynner med det åpenbare: Tyskland sju – Curaçao én. Sju! Jeg mener, stakkars Curaçao, men samtidig – de scoret faktisk sitt første VM-mål noensinne! Livano Comenencia satte ballen i nota mot verdens kanskje mest effektive maskin for øyeblikket. Det er litt rørende, egentlig."
   },
   {
     "vert": "Jonas",
-    "tekst": "Ja, og hvem er det? Det er selvfølgelig Simon. Seks poeng, førsteplass, og sannsynligvis sitter han hjemme nå og er fornøyd med seg selv."
+    "tekst": "Rørende ja, men det hjalp jo ikke akkurat på stillingen. Kai Havertz er allerede oppe i to mål i turneringen, og Tyskland leder Gruppe E. De ser skumle ut. Veldig skumle. Jeg sa det før turneringen, og jeg sier det igjen."
   },
   {
     "vert": "Ada",
-    "tekst": "Seks poeng! Og hva gjør resten av feltet? Jo, de ligger... et sted under Simon. For akkurat nå er det bare Simon på lista. Han er nummer én, to og tre samtidig."
+    "tekst": "Du sa det ikke, Jonas. Det sa du absolutt ikke. Men la oss ta USA fire – Paraguay én! Det er vertsnasjonene som virkelig varmer opp hjemmepublikumet. Folarin Balogun med to mål – han er jo på delt topp i toppscorerlisten allerede. Hvem hadde trodd at det var han som skulle være USAs store mann?"
   },
   {
     "vert": "Jonas",
-    "tekst": "Haha, teknisk sett leder han konkurransen med uendelig margin. Det er faktisk imponerende på en veldig trist måte for alle andre."
+    "tekst": "Altså, Balogun er engelsk-amerikaner som spiller i Frankrike, og nå redder han VM-drømmen til USA. Fotball er virkelig et merkelig og fantastisk spill. USA topper Gruppe D, så det begynner veldig bra for dem."
   },
   {
     "vert": "Ada",
-    "tekst": "Vi kan jo slå fast at det ikke er noen toppscorere eller assist å snakke om ennå. Tabellen er like tom som min kunnskap om gruppefase-statistikk på dette tidspunktet."
+    "tekst": "Og så har vi Brasil én – Marokko én. Det var ikke akkurat den oppvisningen Brasil-fansen hadde håpet på. Marokko er bare så organiserte defensivt. Jeg er imponert. Brasil får virkelig jobbe for det her."
   },
   {
     "vert": "Jonas",
-    "tekst": "Ja, det kommer nok til å endre seg raskt de neste dagene. Men akkurat nå handler alt om Simon. Simon med store S. Simon med seks poeng."
+    "tekst": "Og Scotland! Endelig! John McGinn scorer, og Skottland slår Haiti én – null. Deres første VM-seier på seks og tredve år, Jonas! Unnskyld, jeg mener Ada. Ben Gannon-Doak, tyve år gammel, født etter sist Skottland var i VM – han var visstnok fremragende. Det er sånne historier man elsker."
   },
   {
     "vert": "Ada",
-    "tekst": "Og den store spørsmålet er jo – klarer de andre å ta igjen mannen? Vi krysser fingrene og håper resten av gjengen snart melder seg på statistikken."
+    "tekst": "Haha, du sier deg selv altså. Men ja, det er nydelig. Og Australia to – Tyrkia null med Nestory Irankunda som scoret – gutten er født som flyktning i Tanzania og er nå australsk rekordbryter. Jeg gråt litt, skal jeg være ærlig."
   },
   {
     "vert": "Jonas",
-    "tekst": "Det er alt vi har for deg i dag! Følg med, for VM er akkurat begynt og alt kan skje. Bortsett fra at Simon slipper førsteplassen med det første, kanskje."
+    "tekst": "Det tror jeg på. Okei, la oss ta tippekonkurransen! Simon leder med seks poeng og er den eneste i tabellen vi har data på. Simon, hvis du hører på dette – nyt det mens det varer."
   },
   {
     "vert": "Ada",
-    "tekst": "Ha det bra alle sammen – og Simon, nyt det mens det varer! Vi sees neste gang i Piggy's VM-konkurranse to tusen og tjueseks!"
+    "tekst": "Ja, vi kommer for deg, Simon. Det er tidlig i turneringen, og det skjer mye rart. Brasil klarer bare uavgjort mot Marokko, Qatar tar poeng mot Sveits – det er ikke lett å tippe dette VM-et altså."
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Og apropos nyheter – Real Madrid har visst sikret seg Marc Cucurella fra Chelsea for over femti millioner pund etter VM. Altså, den mannen spiller knakende godt for Spania, og Real Madrid sitter og klapper seg på lårene. Smart timing."
+  },
+  {
+    "vert": "Ada",
+    "tekst": "Spania ser jo stygge ut, de topper Gruppe H allerede. Men la oss snakke om hva vi skal følge med på i morgen! Nederland mot Japan i Gruppe F er en kamp jeg gleder meg veldig til. Japan er jo nevnt som mørk hest i turneringen, og de har bevist gang på gang at de kan overraske de store nasjonene."
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Nederland er favoritter, men jeg ville ikke vært trygg hvis jeg var dem. Japan er raskt, disiplinerte og teknisk sterke. Gi meg den kampen! Og så er det Belgia mot Egypt i Gruppe G – Belgia leder gruppen, men Egypt kan absolutt skape trøbbel."
+  },
+  {
+    "vert": "Ada",
+    "tekst": "Og Sverige mot Tunisia, Spania mot Kapp Verde, Saudi-Arabia mot Uruguay. Det er mye å glede seg til. Okei, Jonas – din spådom for i morgen?"
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Japan slår Nederland. Der sa jeg det. Skriv det ned. Ada?"
+  },
+  {
+    "vert": "Ada",
+    "tekst": "Jeg tror Nederland vinner, men at Japan gjør det skikkelig vanskelig og imponerer alle. Uansett – følg med, tips klokt, og husk: Simon leder, men alt kan skje i Piggy's VM-konkurranse. Vi sees i neste episode!"
   }
 ]
