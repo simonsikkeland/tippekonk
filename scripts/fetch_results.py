@@ -48,17 +48,25 @@ def fetch_competition(cfg: dict, key: str) -> dict:
     data = _get(f"/fixtures?league={league}&season={season}", key)
     time.sleep(7)
     fixtures = data.get("response", [])
-    print(f"  Totalt {len(fixtures)} kamper hentet fra API")
+    errors = data.get("errors", {})
+    results_count = data.get("results", "?")
+    print(f"  API svar: results={results_count}, errors={errors}, fixtures={len(fixtures)}")
+
+    if not fixtures:
+        # Prøv å liste tilgjengelige sesonger for denne ligaen
+        try:
+            seasons_data = _get(f"/leagues?id={league}", key)
+            seasons = [s["year"] for s in seasons_data.get("response", [{}])[0].get("seasons", [])]
+            print(f"  Tilgjengelige sesonger for liga {league}: {seasons[-5:]}")
+        except Exception as e2:
+            print(f"  (klarte ikke hente sesonger: {e2})")
+        return fact
 
     # Debug: vis unike runder og statuser
-    rounds_seen = set()
-    statuses_seen = set()
-    for f in fixtures[:5]:
-        rounds_seen.add(f.get("league", {}).get("round", "?"))
-        statuses_seen.add(f.get("fixture", {}).get("status", {}).get("short", "?"))
-    if fixtures:
-        print(f"  Eksempel runder: {rounds_seen}")
-        print(f"  Eksempel statuser: {statuses_seen}")
+    rounds_seen = set(f.get("league", {}).get("round", "?") for f in fixtures[:10])
+    statuses_seen = set(f.get("fixture", {}).get("status", {}).get("short", "?") for f in fixtures[:10])
+    print(f"  Eksempel runder: {rounds_seen}")
+    print(f"  Eksempel statuser: {statuses_seen}")
 
     group_matches = []
     stage_teams: dict[str, set] = {
