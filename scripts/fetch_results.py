@@ -42,8 +42,21 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         "matches": [], "group_winners": {}, "r16": [], "r8": [],
         "kvart": [], "semi": [], "bronse": [], "bronse_vinner": "",
         "finale": [], "vm_vinner": "", "toppscorer": "", "antall_maal": 0,
-        "kamper": [], "grupper": {},
+        "kamper": [], "grupper": {}, "flagg": {}, "topp_scorere": [],
     }
+
+    # --- Lag med flagg/crest ---
+    try:
+        teams_data = _get(f"/competitions/{comp}/teams?season={season}", token)
+        time.sleep(6)
+        for t in teams_data.get("teams", []):
+            norsk = to_no(t.get("name", ""))
+            crest = t.get("crest", "")
+            if norsk and crest:
+                fact["flagg"][norsk] = crest
+        print(f"  Flagg: {len(fact['flagg'])} lag")
+    except Exception as e:
+        print(f"  (flagg hoppet over: {e})")
 
     # --- Alle kamper ---
     data = _get(f"/competitions/{comp}/matches?season={season}", token)
@@ -66,6 +79,8 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     }
 
     group_matches = []
+    group_finished_count = 0
+    group_total_count = 0
     for m in all_matches:
         stage = m.get("stage", "")
         status = m.get("status", "")
@@ -78,7 +93,6 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         h_goals = ft.get("home")
         a_goals = ft.get("away")
 
-        # Detaljert kampinfo
         kamp = {
             "home": home, "away": away, "dato": dato,
             "home_score": h_goals, "away_score": a_goals,
@@ -86,19 +100,19 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         }
         fact["kamper"].append(kamp)
 
-        # Gruppespill H/U/B for scoring
-        if stage == "GROUP_STAGE" and status == "FINISHED":
-            if h_goals is not None and a_goals is not None:
-                res = "H" if h_goals > a_goals else ("B" if a_goals > h_goals else "U")
-                group_matches.append(res)
+        if stage == "GROUP_STAGE":
+            group_total_count += 1
+            if status == "FINISHED":
+                group_finished_count += 1
+                if h_goals is not None and a_goals is not None:
+                    res = "H" if h_goals > a_goals else ("B" if a_goals > h_goals else "U")
+                    group_matches.append(res)
 
-        # Sluttspill
         key = stage_map.get(stage)
         if key and home:
             stage_teams[key].add(home)
             stage_teams[key].add(away)
 
-        # Vinnere
         if status == "FINISHED":
             winner = m.get("score", {}).get("winner")
             if stage == "FINAL":
@@ -112,8 +126,14 @@ def fetch_competition(cfg: dict, token: str) -> dict:
                 elif winner == "AWAY_TEAM":
                     fact["bronse_vinner"] = away
 
-    for i, res in enumerate(group_matches, 1):
-        fact["matches"].append({"n": i, "result": res})
+    # Only emit match results for scoring when group stage is complete
+    fact["gruppespill_ferdig"] = group_finished_count == group_total_count and group_total_count > 0
+    if fact["gruppespill_ferdig"]:
+        for i, res in enumerate(group_matches, 1):
+            fact["matches"].append({"n": i, "result": res})
+        print(f"  Gruppespill ferdig ({group_finished_count}/{group_total_count})")
+    else:
+        print(f"  Gruppespill pågår ({group_finished_count}/{group_total_count}) - poeng deles ikke ut ennå")
 
     # Sluttspill-lister (kumulativt)
     all_finale = stage_teams["finale"]
@@ -130,8 +150,8 @@ def fetch_competition(cfg: dict, token: str) -> dict:
     fact["bronse"] = sorted(all_bronse)
     fact["finale"] = sorted(all_finale)
 
-    # --- Gruppevinnere beregnet fra kampresultater ---
-    group_tables: dict[str, dict[str, list]] = {}  # group -> team -> [pts, gd, gf, played]
+    # --- Gruppetabeller ---
+    group_tables: dict[str, dict[str, list]] = {}
     for m in all_matches:
         grp = m.get("group", "")
         if not grp or m.get("stage") != "GROUP_STAGE":
@@ -171,17 +191,27 @@ def fetch_competition(cfg: dict, token: str) -> dict:
             {"lag": t, "poeng": s[0], "mf": s[1], "maal_for": s[2], "spilt": s[3]}
             for t, s in sorted_teams
         ]
-    print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet fra kamper")
+    print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet")
     print(f"  Grupper med tabelldata: {len(fact['grupper'])}")
 
-    # --- Toppscorer ---
+    # --- Toppscorere (topp 10 med detaljer) ---
     try:
-        sc = _get(f"/competitions/{comp}/scorers?season={season}&limit=20", token)
+        sc = _get(f"/competitions/{comp}/scorers?season={season}&limit=10", token)
+        time.sleep(6)
         scorers = sc.get("scorers", [])
+        total_goals = 0
+        for s in scorers:
+            goals = s.get("goals", 0) or 0
+            total_goals += goals
+            fact["topp_scorere"].append({
+                "navn": s["player"]["name"],
+                "lag": to_no(s.get("team", {}).get("name", "")),
+                "maal": goals,
+            })
         if scorers:
             fact["toppscorer"] = scorers[0]["player"]["name"]
-            fact["antall_maal"] = sum(s.get("goals", 0) or 0 for s in scorers)
-            print(f"  Toppscorer: {fact['toppscorer']} ({fact['antall_maal']} mål totalt)")
+        fact["antall_maal"] = total_goals
+        print(f"  Toppscorere: {len(fact['topp_scorere'])} hentet, totalt {total_goals} mål")
     except Exception as e:
         print(f"  (toppscorer hoppet over: {e})")
 
@@ -209,7 +239,6 @@ def main(tournament_dir: str):
         print("  Ingen FOOTBALL_DATA_TOKEN eller competition-kode - hopper over.")
         fact = existing
 
-    # Flett inn manuelle felt
     if manual.get("assist"):
         fact["assist"] = manual["assist"]
     if manual.get("antall_kort") is not None:
