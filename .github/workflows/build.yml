@@ -49,7 +49,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTAPI }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENAPI }}
         run: |
-          python scripts/generate_podcast.py tournaments/vm-2026 || true
+          python scripts/generate_podcast.py tournaments/vm-2026 --lyd || true
 
       - name: Bygg nettsiden
         run: python scripts/build_site.py
