@@ -123,12 +123,27 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         time.sleep(6)
         standings = st.get("standings", [])
         print(f"  Standings typer: {[g.get('type') for g in standings]}")
+        # Debug: vis strukturen på første TOTAL-oppføring
         for grp in standings:
-            label = grp.get("group", "")
+            if grp.get("type") == "TOTAL":
+                table = grp.get("table", [])
+                if table:
+                    first = table[0]
+                    print(f"  Første rad-nøkler: {list(first.keys())}")
+                    print(f"  gruppe-felt: {first.get('group','INGEN')}, team: {first.get('team',{}).get('name','?')}")
+                break
+        for grp in standings:
+            if grp.get("type") != "TOTAL":
+                continue
             table = grp.get("table", [])
-            if label and table:
-                group_label = "Gruppe " + label.split("_")[-1]
-                fact["group_winners"][group_label] = to_no(table[0]["team"]["name"])
+            # Grupper kan ligge som `group` på hvert lag i tabellen
+            seen_groups: dict[str, str] = {}
+            for row in table:
+                grp_name = row.get("group", "")
+                team_name = to_no(row.get("team", {}).get("name", ""))
+                if grp_name and grp_name not in seen_groups:
+                    seen_groups[grp_name] = team_name
+            fact["group_winners"].update(seen_groups)
         print(f"  Gruppevinnere: {len(fact['group_winners'])} hentet")
     except Exception as e:
         print(f"  (standings hoppet over: {e})")
