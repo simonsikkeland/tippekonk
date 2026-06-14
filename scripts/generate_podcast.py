@@ -168,6 +168,7 @@ def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path):
     body = json.dumps({
         "text": tekst,
         "model_id": "eleven_multilingual_v2",
+        "language_code": "nb",
         "voice_settings": {"stability": 0.4, "similarity_boost": 0.75},
     }).encode("utf-8")
     req = urllib.request.Request(f"{ELEVEN_URL}/{voice_id}", data=body, headers={
