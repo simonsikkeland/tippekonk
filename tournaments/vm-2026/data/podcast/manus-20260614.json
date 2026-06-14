@@ -1,42 +1,46 @@
 [
   {
     "vert": "Jonas",
-    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og her er Ada, og vi er klare til å gå gjennom dagens stilling. Ada, hvordan har dagen vært?"
+    "tekst": "Hei og velkommen til en ny oppdatering fra Piggy's VM-konkurranse to tusen og tjueseks! Jeg er Jonas, og med meg har jeg den uunnværlige Ada. Hei Ada!"
   },
   {
     "vert": "Ada",
-    "tekst": "Jo takk, Jonas, den har vært akkurat passe dramatisk for en VM-dag! Og med 'dramatisk' mener jeg selvfølgelig at vi har en knivskarp tabell med én person på den. Én! Simon styrer showet helt alene der oppe."
+    "tekst": "Hei Jonas! Uunnværlig, det liker jeg. Jeg er ferdig med å være beskjeden, så det godtar jeg fullt ut."
   },
   {
     "vert": "Jonas",
-    "tekst": "Ja, Simon sitter på toppen med tre poeng, og vet du hva? Det er faktisk nok til å lede. Det er litt som å vinne en eating contest når du er den eneste som møtte opp."
+    "tekst": "Som det seg hør og bør. Okay, la oss ta en titt på stillingen. Vi er oppdatert per fjortende juni, klokken syv om kvelden, og det er én mann som troner øverst på tabellen akkurat nå."
   },
   {
     "vert": "Ada",
-    "tekst": "Haha, ja men æren er æren! Simon skal ha ros. Tre poeng er tre poeng, og foreløpig er det ingen som truer. Alle de andre ligger på null, så det er faktisk litt av en luke allerede."
+    "tekst": "Og den mannen er... Simon! Med tre poeng. Gratulerer, Simon. Du leder Piggy's VM-konkurranse!"
   },
   {
     "vert": "Jonas",
-    "tekst": "Det stemmer. Og vi er jo tidlig i konkurransen, så det er absolutt håp for alle dere som henger etter Simon akkurat nå. Men altså, tre mot null er ikke det man drømmer om å se på leaderboardet som deltaker."
+    "tekst": "Tre poeng. Det er altså ikke akkurat en voldsom margin opp til... nei vent, han er jo alene på toppen. Det er bare Simon der. Én deltaker i stillingen."
   },
   {
     "vert": "Ada",
-    "tekst": "Nei, og det morsomste er at vi ikke har noen toppscorere eller assistleder å snakke om ennå heller. Tabellen er litt... spartansk, skal vi si."
+    "tekst": "Haha, ja, enten har ikke resten kommet i gang ennå, eller så er Simon så dominerende at de andre rett og slett nekter å vise seg. Begge deler er mulige forklaringer."
   },
   {
     "vert": "Jonas",
-    "tekst": "Spartansk er et pent ord for det, Ada! Men det betyr jo at alt fremdeles er åpent. Neste runde kan snu alt fullstendig. Noen kan gå fra null til helt på et blunk."
+    "tekst": "Jeg lener meg mot den første teorien, men la Simon få nyte øyeblikket. Han er uslåelig i dag. Ubeseiret. Nummer én. Det er ikke alle forunt."
   },
   {
     "vert": "Ada",
-    "tekst": "Akkurat! Og det er jo det som gjør tippekonkurranser så vanedannende. Den dagen du tenker det er over, er gjerne dagen noen plutselig tipper tre rette på rad og raner til seg seieren. Simon bør ikke slappe av for mye."
+    "tekst": "Og så til toppscorere og assist-ligaen, da. Her er det... stille. Helt tomt. Ingen har scoret, ingen har lagt opp. Det er enten tidlig i turneringen, eller alle er litt blaut i kantene ennå."
   },
   {
     "vert": "Jonas",
-    "tekst": "Godt poeng. Så til deg, Simon: kos deg i føringen, men pass deg i ryggen! Og til alle dere andre: det er på tide å våkne. Piggy's VM-konkurranse er i gang for alvor."
+    "tekst": "Tidlig dager, folk! VM har knapt kommet i gang, og Simon har allerede stukket av gårde med ledelsen. Vi får se om noen klarer å henge seg på etter hvert."
   },
   {
     "vert": "Ada",
-    "tekst": "Takk for at dere hørte på! Vi er tilbake med ny oppdatering snart. Heier på alle – bortsett fra kanskje Simon. Han klarer seg fint selv. Ha det!"
+    "tekst": "Det er alt fra oss for denne gang! Følg med for neste oppdatering, og husk: det er fortsatt lang vei til mål. Bortsett fra for Simon, da, som tydeligvis allerede har funnet veien."
+  },
+  {
+    "vert": "Jonas",
+    "tekst": "Ha det bra, alle sammen! Og Simon, nyt ledelsen mens den varer."
   }
 ]
