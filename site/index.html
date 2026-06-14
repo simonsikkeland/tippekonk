@@ -120,6 +120,30 @@
   .pl-item.active{background:rgba(255,255,255,.15);font-weight:700}
   .pl-item .pl-date{color:rgba(255,255,255,.5);font-size:12px;min-width:50px}
   .pl-item .pl-play{color:var(--gold);font-size:16px}
+  /* Tippefordeling (hvem tippet hva) */
+  .fchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .fchip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--slate)}
+  .fchip b{color:var(--ink);font-weight:800}
+  .fday{margin-bottom:18px}
+  .fday h3{font-family:'Archivo';font-size:14px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
+  .fmatch{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:6px}
+  .fmatch .fhead{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;margin-bottom:8px}
+  .fmatch .fhead img{width:18px;height:12px;object-fit:contain;border-radius:1px}
+  .fmatch .fhead .vs{color:var(--slate);font-weight:600;margin:0 2px}
+  .fmatch .fhead .grp{margin-left:auto;font-size:10px;color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .fbar{display:flex;height:26px;border-radius:6px;overflow:hidden;background:#F3ECE0}
+  .fseg{display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:12px;color:#fff;min-width:0;transition:width .3s;position:relative}
+  .fseg.h{background:#3F6CB5}
+  .fseg.u{background:#E08A2B}
+  .fseg.b{background:#7C8696}
+  .fseg.win{box-shadow:inset 0 0 0 3px var(--gold)}
+  .fseg span{padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .flegend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--slate);margin:2px 0 14px}
+  .flegend b{font-weight:800}
+  .flegend .sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .fcheck{font-size:11px;color:var(--slate);margin-top:5px}
+  .fcheck.hit{color:var(--pitch);font-weight:700}
+  .fcheck.miss{color:var(--red);font-weight:700}
   .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
   .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
   footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
@@ -146,18 +170,22 @@
   </div>
 
   <div class="meta" id="meta"></div>
-  <div id="podcast"></div>
 
+  <!-- 1. Pall (topp 3) + toppscorere -->
   <div class="top-area">
-    <div>
-      <div id="kamper"></div>
-      <div id="grupper"></div>
-    </div>
+    <div id="board"></div>
     <div id="scorers"></div>
   </div>
 
-  <h2>Tabell</h2>
-  <div id="board"></div>
+  <!-- 2. Podcast -->
+  <div id="podcast"></div>
+
+  <!-- 3. Dagens kamper + tippefordeling -->
+  <div id="kamper"></div>
+  <div id="fordeling"></div>
+
+  <!-- 4. Grupper + øvrig statistikk -->
+  <div id="grupper"></div>
   <div id="stats"></div>
 </main>
 <footer id="foot"></footer>
@@ -194,34 +222,28 @@ async function load(id){
   $("#subtitle").textContent = d.turnering.navn + (d.turnering.vert?` · ${d.turnering.vert}`:"");
   $("#updated").textContent = d.oppdatert ? "Oppdatert "+new Date(d.oppdatert).toLocaleString("no-NO") : "";
 
-  const leder = d.stilling[0];
   const gruppeFerdig = (d.fasit||{}).gruppespill_ferdig;
   const statusText = gruppeFerdig ? '<span class="pill">I gang</span>' : d.har_fasit ? '<span class="pill" style="background:#5a9;color:#042">Gruppespill</span>' : 'Ikke startet';
   $("#meta").innerHTML = `
     <div><div class="k">Deltakere</div><div class="v">${d.stilling.length}</div></div>
-    <div><div class="k">Status</div><div class="v">${statusText}</div></div>
-    ${d.har_fasit&&leder?`<div><div class="k">Leder</div><div class="v">${esc(leder.navn)} · ${leder.poeng}p</div></div>`:''}`;
+    <div><div class="k">Status</div><div class="v">${statusText}</div></div>`;
 
-  // Topp 3 podium
+  // Pall (topp 3)
+  let bHtml = '<h2 style="margin-top:0">Stilling</h2>';
   if(d.har_fasit && d.stilling.length >= 3){
     const medals = ['🥇','🥈','🥉'];
-    let podHtml = '<div class="podium">';
-    d.stilling.slice(0,3).forEach((s,i)=>{
-      podHtml += `<div class="podium-card ${i===0?'gold':i===1?'silver':'bronze'}">
+    bHtml += '<div class="podium">' + d.stilling.slice(0,3).map((s,i)=>`
+      <div class="podium-card ${i===0?'gold':i===1?'silver':'bronze'}">
         <span class="podium-medal">${medals[i]}</span>
         <span class="podium-name">${esc(s.navn)}</span>
         <span class="podium-pts">${s.poeng}p</span>
-      </div>`;
-    });
-    podHtml += '</div>';
-    $("#board").innerHTML = podHtml;
+      </div>`).join('') + '</div>';
   }
 
-  // Full tabell (collapsed by default, show top 3 + expand button)
-  let html = `<div class="board"><div class="hrow"><span>Plass</span><span>Deltaker</span><span style="text-align:right">Poeng</span><span></span></div>`;
+  // Full tabell (skjult bak knapp)
+  let rows = `<div class="board"><div class="hrow"><span>Plass</span><span>Deltaker</span><span style="text-align:right">Poeng</span><span></span></div>`;
   d.stilling.forEach((s,i)=>{
-    const hidden = i >= 3 ? ' style="display:none"' : '';
-    html += `<div class="row board-row" data-idx="${i}"${hidden} onclick="toggle(${i})">
+    rows += `<div class="row board-row" data-idx="${i}" onclick="toggle(${i})">
       <span class="pos ${i===0&&d.har_fasit?'lead':''}">${d.har_fasit?s.plass:'–'}</span>
       <span class="nm">${esc(s.navn)}</span>
       <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
@@ -230,25 +252,25 @@ async function load(id){
         <div class="dl"><span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span></span>
         <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`).join("")}</div>`;
   });
-  if(d.stilling.length > 3){
-    html += `<div class="row" style="justify-content:center;cursor:pointer;color:var(--slate);font-weight:700;font-size:14px" onclick="expandBoard(this)">Vis alle ${d.stilling.length} deltakere ▾</div>`;
+  rows += `</div>`;
+  if(d.har_fasit){
+    bHtml += `<button class="old-toggle" onclick="toggleF(this,'full-board')">Vis hele tabellen (${d.stilling.length}) ▾</button>
+      <div id="full-board" style="display:none">${rows}</div>`;
+  } else {
+    bHtml += rows;
   }
-  html += `</div>`;
-  $("#board").innerHTML += html;
+  $("#board").innerHTML = bHtml;
 
   renderKamper(d);
   renderGrupper(d);
   renderScorers(d);
   renderStats(d);
+  renderFordeling(d);
   renderPodcast(id, d);
   $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
 }
 
 function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
-function expandBoard(btn){
-  document.querySelectorAll('.board-row').forEach(el=>el.style.display='');
-  btn.style.display='none';
-}
 
 function renderKamper(d){
   const kamper = (d.fasit||{}).kamper||[];
@@ -273,11 +295,11 @@ function renderKamper(d){
     return `${days[d.getDay()]} ${d.getDate()}.${d.getMonth()+1}`;
   };
 
-  // Today and tomorrow are always visible; older days are collapsed
-  const recentDates = dates.filter(d=> d>=today);
+  // I dag først, så i morgen; eldre dager kollapses
+  const recentDates = dates.filter(d=> d>=today).sort();
   const olderDates = dates.filter(d=> d<today);
 
-  let html = '<h2>Kamper</h2>';
+  let html = '<h2>Dagens kamper</h2>';
 
   // Today + tomorrow
   recentDates.forEach(dato=>{
@@ -387,6 +409,103 @@ function renderStats(d){
   if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
+}
+
+const PICK_LBL = {H:'Hjemme', U:'Uavgjort', B:'Borte'};
+
+function renderFordeling(d){
+  const tf = (d.statistikk||{}).tippefordeling;
+  if(!tf || !tf.dager || !tf.dager.length){ $("#fordeling").innerHTML=''; return; }
+  const N = tf.antall_deltakere || 1;
+  const dateLabel = dato => {
+    const x = new Date(dato+'T12:00:00');
+    const days=['søn','man','tir','ons','tor','fre','lør'];
+    return `${days[x.getDay()]} ${x.getDate()}.${x.getMonth()+1}`;
+  };
+
+  // Flat liste over alle kamper for innsikter
+  const alle = [];
+  tf.dager.forEach(dag => dag.kamper.forEach(k => alle.push(k)));
+
+  // --- Innsikter ---
+  const pct = (k,p) => Math.round(100*k[p]/N);
+  const maxPick = k => ['H','U','B'].reduce((a,b)=> k[b]>k[a]?b:a, 'H');
+  const enig = [...alle].sort((a,b)=> pct(b,maxPick(b)) - pct(a,maxPick(a)))[0];
+  const splittet = [...alle].sort((a,b)=> pct(a,maxPick(a)) - pct(b,maxPick(b)))[0];
+  const ferdige = alle.filter(k=> k.fasit);
+  const folketRiktig = ferdige.filter(k=> maxPick(k)===k.fasit).length;
+  const overrasket = ferdige.filter(k=> maxPick(k)!==k.fasit)
+    .sort((a,b)=> pct(b,maxPick(b)) - pct(a,maxPick(a)))[0];
+
+  // Bare de mest relevante innsiktene, kort oppsummert
+  const navnK = k => `${esc(k.home)}–${esc(k.away)}`;
+  const chips = [];
+  if(enig) chips.push(`<span class="fchip"><b>Mest enige:</b> ${navnK(enig)} (${pct(enig,maxPick(enig))}% ${PICK_LBL[maxPick(enig)].toLowerCase()})</span>`);
+  if(splittet) chips.push(`<span class="fchip"><b>Mest splittet:</b> ${navnK(splittet)}</span>`);
+  if(ferdige.length) chips.push(`<span class="fchip"><b>Folkets favoritt:</b> ${folketRiktig}/${ferdige.length} rett</span>`);
+  if(overrasket) chips.push(`<span class="fchip"><b>Bombe:</b> ${navnK(overrasket)} ble ${PICK_LBL[overrasket.fasit].toLowerCase()}</span>`);
+  const ins = `<div class="fchips">${chips.join('')}</div>`;
+
+  const legend = `<div class="flegend">
+    <span><span class="sw" style="background:#3F6CB5"></span><b>H</b> Hjemme</span>
+    <span><span class="sw" style="background:#E08A2B"></span><b>U</b> Uavgjort</span>
+    <span><span class="sw" style="background:#7C8696"></span><b>B</b> Borte</span>
+    <span style="margin-left:auto">Gulkant = riktig utfall</span>
+  </div>`;
+
+  const seg = (k,p) => {
+    const n = k[p], w = 100*n/N;
+    if(!n) return '';
+    const win = k.fasit===p ? ' win' : '';
+    return `<div class="fseg ${p.toLowerCase()}${win}" style="width:${w}%" title="${PICK_LBL[p]}: ${n} av ${N}"><span>${p} ${Math.round(w)}%</span></div>`;
+  };
+  const matchHtml = k => {
+    let check = '';
+    if(k.fasit){
+      const hit = maxPick(k)===k.fasit;
+      check = `<div class="fcheck ${hit?'hit':'miss'}">${hit?'✓ flertallet hadde rett':'✗ flertallet bommet'} · fasit: ${PICK_LBL[k.fasit]}</div>`;
+    }
+    return `<div class="fmatch">
+      <div class="fhead">${flag(k.home)} ${esc(k.home)} <span class="vs">–</span> ${esc(k.away)} ${flag(k.away)}
+        ${k.group?`<span class="grp">Gr. ${esc(k.group)}</span>`:''}</div>
+      <div class="fbar">${seg(k,'H')}${seg(k,'U')}${seg(k,'B')}</div>
+      ${check}</div>`;
+  };
+  const dayHtml = (dag,label) => `<div class="fday"><h3>${label||dateLabel(dag.dato)}</h3>${dag.kamper.map(matchHtml).join('')}</div>`;
+
+  // Del opp i tidligere / i dag / kommende
+  const today = new Date().toISOString().slice(0,10);
+  const past = tf.dager.filter(x=> x.dato < today);
+  const todayDag = tf.dager.find(x=> x.dato === today);
+  const future = tf.dager.filter(x=> x.dato > today);
+
+  let synlig = '';
+  if(todayDag){ synlig = dayHtml(todayDag, 'I dag'); }
+  else if(future.length){ synlig = dayHtml(future[0], 'Neste: '+dateLabel(future[0].dato)); }
+  else if(past.length){ synlig = dayHtml(past[past.length-1]); }
+
+  const restFuture = todayDag ? future : future.slice(1);
+  const futureCount = restFuture.reduce((a,x)=>a+x.kamper.length,0);
+  const pastCount = past.reduce((a,x)=>a+x.kamper.length,0);
+
+  let toggles = '';
+  if(restFuture.length){
+    toggles += `<button class="old-toggle" onclick="toggleF(this,'f-future')">Vis kommende kamper (${futureCount}) ▾</button>
+      <div id="f-future" style="display:none">${restFuture.map(x=>dayHtml(x)).join('')}</div>`;
+  }
+  if(past.length){
+    toggles += `<button class="old-toggle" onclick="toggleF(this,'f-past')">Vis tidligere kamper (${pastCount}) ▾</button>
+      <div id="f-past" style="display:none">${[...past].reverse().map(x=>dayHtml(x)).join('')}</div>`;
+  }
+
+  $("#fordeling").innerHTML = `<h2>Tippefordeling</h2>${ins}${legend}${synlig}${toggles}`;
+}
+
+function toggleF(btn, id){
+  const el = document.getElementById(id);
+  const open = el.style.display==='none';
+  el.style.display = open ? '' : 'none';
+  btn.textContent = btn.textContent.replace(open?'Vis':'Skjul', open?'Skjul':'Vis').replace(open?'▾':'▴', open?'▴':'▾');
 }
 
 let _podId = null;

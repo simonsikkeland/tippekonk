@@ -246,7 +246,7 @@ def lag_feed(pod_dir: Path, cfg: dict, episoder: list, base_url: str):
     (pod_dir / "feed.xml").write_text(feed, encoding="utf-8")
 
 
-def main(tournament_dir: str, lag_lyd_flag: bool):
+def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
     tdir = Path(tournament_dir)
     cfg = json.loads((tdir / "tournament.json").read_text(encoding="utf-8"))
     stilling_p = tdir / "data" / "stilling.json"
@@ -260,14 +260,19 @@ def main(tournament_dir: str, lag_lyd_flag: bool):
         print("  Ingen ANTHROPIC_API_KEY - kan ikke lage manus.")
         return
 
-    print("Skriver manus med Claude ...")
-    manus = claude_manus(anthropic_key, data, cfg)
-    print(f"  {len(manus)} replikker.")
-
     pod_dir = tdir / "data" / "podcast"
     pod_dir.mkdir(parents=True, exist_ok=True)
     dato = datetime.now(timezone.utc)
     ep_id = dato.strftime("%Y%m%d")
+
+    # En episode per dag: hopp over hvis dagens allerede finnes (--force overstyrer).
+    if not force and (pod_dir / f"manus-{ep_id}.json").exists():
+        print(f"  Episode for {ep_id} finnes allerede - hopper over (bruk --force for a regenerere).")
+        return
+
+    print("Skriver manus med Claude ...")
+    manus = claude_manus(anthropic_key, data, cfg)
+    print(f"  {len(manus)} replikker.")
 
     # Lagre manuset alltid (gratis)
     (pod_dir / f"manus-{ep_id}.json").write_text(
@@ -330,5 +335,6 @@ def main(tournament_dir: str, lag_lyd_flag: bool):
 if __name__ == "__main__":
     args = sys.argv[1:]
     lyd = "--lyd" in args or os.environ.get("LAG_LYD") == "1"
+    force = "--force" in args or os.environ.get("FORCE_PODCAST") == "1"
     dirs = [a for a in args if not a.startswith("--")]
-    main(dirs[0] if dirs else "tournaments/vm-2026", lyd)
+    main(dirs[0] if dirs else "tournaments/vm-2026", lyd, force)

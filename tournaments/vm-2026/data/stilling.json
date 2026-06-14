@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T23:10:32+00:00",
+  "oppdatert": "2026-06-14T23:43:33+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1891,6 +1891,749 @@
         }
       ]
     },
-    "toppscorer_treff": []
+    "toppscorer_treff": [],
+    "tippefordeling": {
+      "antall_deltakere": 11,
+      "dager": [
+        {
+          "dato": "2026-06-11",
+          "kamper": [
+            {
+              "home": "Mexico",
+              "away": "Sør-Afrika",
+              "group": "A",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": "H"
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-12",
+          "kamper": [
+            {
+              "home": "Sør-Korea",
+              "away": "Tsjekkia",
+              "group": "A",
+              "H": 2,
+              "U": 6,
+              "B": 3,
+              "fasit": "H"
+            },
+            {
+              "home": "Canada",
+              "away": "Bosnia-Hercegovina",
+              "group": "B",
+              "H": 5,
+              "U": 3,
+              "B": 3,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-13",
+          "kamper": [
+            {
+              "home": "USA",
+              "away": "Paraguay",
+              "group": "D",
+              "H": 8,
+              "U": 3,
+              "B": 0,
+              "fasit": "H"
+            },
+            {
+              "home": "Brasil",
+              "away": "Marokko",
+              "group": "C",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": "U"
+            },
+            {
+              "home": "Qatar",
+              "away": "Sveits",
+              "group": "B",
+              "H": 0,
+              "U": 1,
+              "B": 10,
+              "fasit": "U"
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-14",
+          "kamper": [
+            {
+              "home": "Haiti",
+              "away": "Skottland",
+              "group": "C",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": "B"
+            },
+            {
+              "home": "Australia",
+              "away": "Tyrkia",
+              "group": "D",
+              "H": 0,
+              "U": 3,
+              "B": 8,
+              "fasit": "H"
+            },
+            {
+              "home": "Elfenbenskysten",
+              "away": "Ecuador",
+              "group": "E",
+              "H": 1,
+              "U": 8,
+              "B": 2,
+              "fasit": null
+            },
+            {
+              "home": "Tyskland",
+              "away": "Curaçao",
+              "group": "E",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": "H"
+            },
+            {
+              "home": "Nederland",
+              "away": "Japan",
+              "group": "F",
+              "H": 10,
+              "U": 0,
+              "B": 1,
+              "fasit": "U"
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-15",
+          "kamper": [
+            {
+              "home": "Sverige",
+              "away": "Tunisia",
+              "group": "F",
+              "H": 5,
+              "U": 5,
+              "B": 1,
+              "fasit": null
+            },
+            {
+              "home": "Saudi-Arabia",
+              "away": "Uruguay",
+              "group": "H",
+              "H": 0,
+              "U": 1,
+              "B": 10,
+              "fasit": null
+            },
+            {
+              "home": "Spania",
+              "away": "Kapp Verde",
+              "group": "H",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Belgia",
+              "away": "Egypt",
+              "group": "G",
+              "H": 10,
+              "U": 1,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-16",
+          "kamper": [
+            {
+              "home": "Iran",
+              "away": "New Zealand",
+              "group": "G",
+              "H": 8,
+              "U": 1,
+              "B": 2,
+              "fasit": null
+            },
+            {
+              "home": "Frankrike",
+              "away": "Senegal",
+              "group": "I",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Irak",
+              "away": "Norge",
+              "group": "I",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-17",
+          "kamper": [
+            {
+              "home": "Argentina",
+              "away": "Algerie",
+              "group": "J",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Østerrike",
+              "away": "Jordan",
+              "group": "J",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Ghana",
+              "away": "Panama",
+              "group": "L",
+              "H": 7,
+              "U": 4,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "England",
+              "away": "Kroatia",
+              "group": "L",
+              "H": 6,
+              "U": 5,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Portugal",
+              "away": "DR Kongo",
+              "group": "K",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-18",
+          "kamper": [
+            {
+              "home": "Usbekistan",
+              "away": "Colombia",
+              "group": "K",
+              "H": 0,
+              "U": 2,
+              "B": 9,
+              "fasit": null
+            },
+            {
+              "home": "Tsjekkia",
+              "away": "Sør-Afrika",
+              "group": "A",
+              "H": 8,
+              "U": 2,
+              "B": 1,
+              "fasit": null
+            },
+            {
+              "home": "Sveits",
+              "away": "Bosnia-Hercegovina",
+              "group": "B",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Canada",
+              "away": "Qatar",
+              "group": "B",
+              "H": 8,
+              "U": 3,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-19",
+          "kamper": [
+            {
+              "home": "Mexico",
+              "away": "Sør-Korea",
+              "group": "A",
+              "H": 8,
+              "U": 3,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Skottland",
+              "away": "Marokko",
+              "group": "C",
+              "H": 0,
+              "U": 2,
+              "B": 9,
+              "fasit": null
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "group": "D",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-20",
+          "kamper": [
+            {
+              "home": "Brasil",
+              "away": "Haiti",
+              "group": "C",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Tyrkia",
+              "away": "Paraguay",
+              "group": "D",
+              "H": 7,
+              "U": 4,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Tyskland",
+              "away": "Elfenbenskysten",
+              "group": "E",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Nederland",
+              "away": "Sverige",
+              "group": "F",
+              "H": 9,
+              "U": 1,
+              "B": 1,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-21",
+          "kamper": [
+            {
+              "home": "Ecuador",
+              "away": "Curaçao",
+              "group": "E",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Tunisia",
+              "away": "Japan",
+              "group": "F",
+              "H": 0,
+              "U": 4,
+              "B": 7,
+              "fasit": null
+            },
+            {
+              "home": "Uruguay",
+              "away": "Kapp Verde",
+              "group": "H",
+              "H": 10,
+              "U": 1,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Spania",
+              "away": "Saudi-Arabia",
+              "group": "H",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Belgia",
+              "away": "Iran",
+              "group": "G",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-22",
+          "kamper": [
+            {
+              "home": "New Zealand",
+              "away": "Egypt",
+              "group": "G",
+              "H": 0,
+              "U": 4,
+              "B": 7,
+              "fasit": null
+            },
+            {
+              "home": "Frankrike",
+              "away": "Irak",
+              "group": "I",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Argentina",
+              "away": "Østerrike",
+              "group": "J",
+              "H": 10,
+              "U": 1,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-23",
+          "kamper": [
+            {
+              "home": "Norge",
+              "away": "Senegal",
+              "group": "I",
+              "H": 5,
+              "U": 6,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Jordan",
+              "away": "Algerie",
+              "group": "J",
+              "H": 2,
+              "U": 3,
+              "B": 6,
+              "fasit": null
+            },
+            {
+              "home": "England",
+              "away": "Ghana",
+              "group": "L",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Panama",
+              "away": "Kroatia",
+              "group": "L",
+              "H": 0,
+              "U": 1,
+              "B": 10,
+              "fasit": null
+            },
+            {
+              "home": "Portugal",
+              "away": "Usbekistan",
+              "group": "K",
+              "H": 11,
+              "U": 0,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-24",
+          "kamper": [
+            {
+              "home": "Colombia",
+              "away": "DR Kongo",
+              "group": "K",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Skottland",
+              "away": "Brasil",
+              "group": "C",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            },
+            {
+              "home": "Marokko",
+              "away": "Haiti",
+              "group": "C",
+              "H": 9,
+              "U": 2,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Sveits",
+              "away": "Canada",
+              "group": "B",
+              "H": 6,
+              "U": 5,
+              "B": 0,
+              "fasit": null
+            },
+            {
+              "home": "Bosnia-Hercegovina",
+              "away": "Qatar",
+              "group": "B",
+              "H": 8,
+              "U": 3,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-25",
+          "kamper": [
+            {
+              "home": "Tsjekkia",
+              "away": "Mexico",
+              "group": "A",
+              "H": 0,
+              "U": 3,
+              "B": 8,
+              "fasit": null
+            },
+            {
+              "home": "Sør-Afrika",
+              "away": "Sør-Korea",
+              "group": "A",
+              "H": 1,
+              "U": 4,
+              "B": 6,
+              "fasit": null
+            },
+            {
+              "home": "Curaçao",
+              "away": "Elfenbenskysten",
+              "group": "E",
+              "H": 0,
+              "U": 1,
+              "B": 10,
+              "fasit": null
+            },
+            {
+              "home": "Ecuador",
+              "away": "Tyskland",
+              "group": "E",
+              "H": 0,
+              "U": 1,
+              "B": 10,
+              "fasit": null
+            },
+            {
+              "home": "Japan",
+              "away": "Sverige",
+              "group": "F",
+              "H": 3,
+              "U": 4,
+              "B": 4,
+              "fasit": null
+            },
+            {
+              "home": "Tunisia",
+              "away": "Nederland",
+              "group": "F",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-26",
+          "kamper": [
+            {
+              "home": "Tyrkia",
+              "away": "USA",
+              "group": "D",
+              "H": 3,
+              "U": 7,
+              "B": 1,
+              "fasit": null
+            },
+            {
+              "home": "Paraguay",
+              "away": "Australia",
+              "group": "D",
+              "H": 3,
+              "U": 6,
+              "B": 2,
+              "fasit": null
+            },
+            {
+              "home": "Norge",
+              "away": "Frankrike",
+              "group": "I",
+              "H": 0,
+              "U": 6,
+              "B": 5,
+              "fasit": null
+            },
+            {
+              "home": "Senegal",
+              "away": "Irak",
+              "group": "I",
+              "H": 10,
+              "U": 1,
+              "B": 0,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-27",
+          "kamper": [
+            {
+              "home": "Egypt",
+              "away": "Iran",
+              "group": "G",
+              "H": 3,
+              "U": 7,
+              "B": 1,
+              "fasit": null
+            },
+            {
+              "home": "New Zealand",
+              "away": "Belgia",
+              "group": "G",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            },
+            {
+              "home": "Kapp Verde",
+              "away": "Saudi-Arabia",
+              "group": "H",
+              "H": 0,
+              "U": 5,
+              "B": 6,
+              "fasit": null
+            },
+            {
+              "home": "Uruguay",
+              "away": "Spania",
+              "group": "H",
+              "H": 0,
+              "U": 4,
+              "B": 7,
+              "fasit": null
+            },
+            {
+              "home": "Panama",
+              "away": "England",
+              "group": "L",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            },
+            {
+              "home": "Kroatia",
+              "away": "Ghana",
+              "group": "L",
+              "H": 8,
+              "U": 2,
+              "B": 1,
+              "fasit": null
+            },
+            {
+              "home": "Colombia",
+              "away": "Portugal",
+              "group": "K",
+              "H": 0,
+              "U": 3,
+              "B": 8,
+              "fasit": null
+            },
+            {
+              "home": "DR Kongo",
+              "away": "Usbekistan",
+              "group": "K",
+              "H": 1,
+              "U": 7,
+              "B": 3,
+              "fasit": null
+            }
+          ]
+        },
+        {
+          "dato": "2026-06-28",
+          "kamper": [
+            {
+              "home": "Algerie",
+              "away": "Østerrike",
+              "group": "J",
+              "H": 0,
+              "U": 5,
+              "B": 6,
+              "fasit": null
+            },
+            {
+              "home": "Jordan",
+              "away": "Argentina",
+              "group": "J",
+              "H": 0,
+              "U": 0,
+              "B": 11,
+              "fasit": null
+            }
+          ]
+        }
+      ]
+    }
   }
 }

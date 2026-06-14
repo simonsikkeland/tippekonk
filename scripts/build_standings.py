@@ -84,6 +84,11 @@ def main(tournament_dir: str):
         stats["vinner_treff"] = [d["navn"] for d in deltakere
                                  if d["pred"]["vm_vinner"].strip().lower() == fact["vm_vinner"].strip().lower()]
 
+    # Tippefordeling per kamp (H/U/B), gruppert på dato — driver stat-grafene på siden
+    fordeling = tippefordeling(deltakere, fact)
+    if fordeling:
+        stats["tippefordeling"] = fordeling
+
     out = {
         "turnering": {"navn": cfg["navn"], "kort_navn": cfg["kort_navn"], "vert": cfg.get("vert", "")},
         "oppdatert": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -98,6 +103,51 @@ def main(tournament_dir: str):
     out_path = tdir / "data" / "stilling.json"
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Skrev {out_path} ({len(deltakere)} deltakere)")
+
+
+def _norm(s):
+    return str(s).strip().lower() if s is not None else ""
+
+
+def tippefordeling(deltakere, fact):
+    """For hver gruppespillkamp: hvor mange tippet H/U/B, gruppert på dato."""
+    kamper = fact.get("kamper") or []
+    if not kamper or not deltakere:
+        return None
+    # Resultat (H/U/B) per kamp fra fasit.matches
+    res_by_teams = {(_norm(m["home"]), _norm(m["away"])): _norm(m["result"]).upper()
+                    for m in fact.get("matches", [])}
+    # Datoer i kronologisk rekkefølge for gruppespillkamper
+    kamp_meta = {(_norm(k["home"]), _norm(k["away"])): k for k in kamper}
+
+    rader = {}  # key (home,away) -> teller
+    for d in deltakere:
+        for m in d["pred"]["matches"]:
+            key = (_norm(m["home"]), _norm(m["away"]))
+            if key not in kamp_meta:
+                continue
+            r = rader.setdefault(key, {"H": 0, "U": 0, "B": 0})
+            pick = (m["pick"] or "").strip().upper()
+            if pick in r:
+                r[pick] += 1
+
+    dager = {}
+    for key, teller in rader.items():
+        k = kamp_meta[key]
+        dato = k.get("dato", "")
+        fasit = res_by_teams.get(key)
+        dager.setdefault(dato, []).append({
+            "home": k["home"], "away": k["away"],
+            "group": (k.get("group") or "").replace("GROUP_", ""),
+            "H": teller["H"], "U": teller["U"], "B": teller["B"],
+            "fasit": fasit if k.get("status") == "FINISHED" else None,
+        })
+
+    antall = len(deltakere)
+    out = []
+    for dato in sorted(d for d in dager if d):
+        out.append({"dato": dato, "kamper": dager[dato]})
+    return {"antall_deltakere": antall, "dager": out}
 
 
 if __name__ == "__main__":

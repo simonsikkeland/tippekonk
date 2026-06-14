@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.claude/
+
+# Vi bruker kun MASTER.xlsx - individuelle deltakerark ignoreres
+tournaments/*/ark/*.xlsx
+!tournaments/*/ark/MASTER.xlsx
