@@ -28,5 +28,12 @@
   ],
   "notat": "Resultater, gruppevinnere, sluttspill, topp 10 scorere og topp 10 assist auto-hentes fra API-Football. Antall kort fylles inn manuelt (ikke palitelig gratis).",
   "api_football_league": 1,
-  "api_football_season": 2026
+  "api_football_season": 2026,
+  "podcast": {
+    "base_url": "https://simonsikkeland.github.io/tippekonk/vm-2026/podcast",
+    "stemmer": {
+      "Jonas": "ikwOHnCcqQJgOoz5Wxex",
+      "Ada": "uNsWM1StCcpydKYOjKyu"
+    }
+  }
 }
