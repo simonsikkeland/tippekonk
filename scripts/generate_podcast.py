@@ -28,8 +28,8 @@ ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 ELEVEN_URL = "https://api.elevenlabs.io/v1/text-to-speech"
 
 RSS_FEEDS = [
-    "https://www.vg.no/rss/feed/sport/fotball/?format=rss",
-    "https://www.nrk.no/sport/fotball/toppsaker.rss",
+    "https://www.vg.no/rss/feed/?categories=sport&format=rss",
+    "https://www.nrk.no/toppsaker.rss",
     "https://feeds.bbci.co.uk/sport/football/rss.xml",
 ]
 
