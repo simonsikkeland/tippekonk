@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-15T08:03:44+00:00",
+  "oppdatert": "2026-06-15T08:10:16+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -59,6 +59,11 @@
         "result": "U"
       },
       {
+        "home": "Elfenbenskysten",
+        "away": "Ecuador",
+        "result": "H"
+      },
+      {
         "home": "Sverige",
         "away": "Tunisia",
         "result": "H"
@@ -87,7 +92,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Folarin Balogun",
-    "antall_maal": 37,
+    "antall_maal": 38,
     "kamper": [
       {
         "home": "Mexico",
@@ -195,7 +200,7 @@
         "dato": "2026-06-14",
         "home_score": 1,
         "away_score": 0,
-        "status": "IN_PLAY",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_E"
       },
@@ -1261,17 +1266,17 @@
         },
         {
           "lag": "Elfenbenskysten",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
+          "poeng": 3,
+          "mf": 1,
+          "maal_for": 1,
+          "spilt": 1
         },
         {
           "lag": "Ecuador",
           "poeng": 0,
-          "mf": 0,
+          "mf": -1,
           "maal_for": 0,
-          "spilt": 0
+          "spilt": 1
         },
         {
           "lag": "Curaçao",
@@ -1615,12 +1620,34 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 37)"
+          "detail": "tippet 304 (fasit 38)"
         }
       ]
     },
     {
       "plass": 2,
+      "navn": "Tobias",
+      "poeng": 6,
+      "linjer": [
+        {
+          "label": "Gruppespill (6 riktige)",
+          "pts": 6,
+          "detail": "6 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 161 (fasit 38)"
+        }
+      ]
+    },
+    {
+      "plass": 3,
       "navn": "Jonas",
       "poeng": 6,
       "linjer": [
@@ -1637,12 +1664,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 37)"
+          "detail": "tippet 306 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 3,
+      "plass": 4,
       "navn": "Andrè",
       "poeng": 5,
       "linjer": [
@@ -1659,12 +1686,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 37)"
+          "detail": "tippet 169 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 4,
+      "plass": 5,
       "navn": "Marius",
       "poeng": 5,
       "linjer": [
@@ -1681,29 +1708,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 37)"
-        }
-      ]
-    },
-    {
-      "plass": 5,
-      "navn": "Tobias",
-      "poeng": 5,
-      "linjer": [
-        {
-          "label": "Gruppespill (5 riktige)",
-          "pts": 5,
-          "detail": "5 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 161 (fasit 37)"
+          "detail": "tippet 302 (fasit 38)"
         }
       ]
     },
@@ -1725,7 +1730,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 37)"
+          "detail": "tippet 264 (fasit 38)"
         }
       ]
     },
@@ -1747,7 +1752,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 37)"
+          "detail": "tippet 300 (fasit 38)"
         }
       ]
     },
@@ -1769,7 +1774,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 37)"
+          "detail": "tippet 298 (fasit 38)"
         }
       ]
     },
@@ -1791,7 +1796,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 262 (fasit 37)"
+          "detail": "tippet 262 (fasit 38)"
         }
       ]
     },
@@ -1813,7 +1818,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 37)"
+          "detail": "tippet 286 (fasit 38)"
         }
       ]
     },
@@ -1835,69 +1840,69 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 37)"
+          "detail": "tippet 200 (fasit 38)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 37,
+      "fasit": 38,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 124
+          "diff": 123
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 132
+          "diff": 131
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 163
+          "diff": 162
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 225
+          "diff": 224
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 227
+          "diff": 226
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 249
+          "diff": 248
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 261
+          "diff": 260
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 263
+          "diff": 262
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 265
+          "diff": 264
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 267
+          "diff": 266
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 269
+          "diff": 268
         }
       ]
     },
@@ -1918,10 +1923,10 @@
               "fasit": "H",
               "riktig": [
                 "Simon",
+                "Tobias",
                 "Jonas",
                 "Andrè",
                 "Marius",
-                "Tobias",
                 "Håkon",
                 "Bjørn",
                 "Arya",
@@ -1977,10 +1982,10 @@
               "fasit": "H",
               "riktig": [
                 "Simon",
+                "Tobias",
                 "Jonas",
                 "Andrè",
                 "Marius",
-                "Tobias",
                 "Håkon",
                 "Bjørn",
                 "Øystein"
@@ -2026,10 +2031,10 @@
               "fasit": "B",
               "riktig": [
                 "Simon",
+                "Tobias",
                 "Jonas",
                 "Andrè",
                 "Marius",
-                "Tobias",
                 "Håkon",
                 "Bjørn",
                 "Arya",
@@ -2055,8 +2060,10 @@
               "H": 1,
               "U": 8,
               "B": 2,
-              "fasit": null,
-              "riktig": null
+              "fasit": "H",
+              "riktig": [
+                "Tobias"
+              ]
             },
             {
               "home": "Tyskland",
@@ -2068,10 +2075,10 @@
               "fasit": "H",
               "riktig": [
                 "Simon",
+                "Tobias",
                 "Jonas",
                 "Andrè",
                 "Marius",
-                "Tobias",
                 "Håkon",
                 "Bjørn",
                 "Arya",
@@ -2105,8 +2112,8 @@
               "fasit": "H",
               "riktig": [
                 "Simon",
-                "Jonas",
                 "Tobias",
+                "Jonas",
                 "Håkon",
                 "Arya"
               ]

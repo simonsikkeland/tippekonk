@@ -51,6 +51,11 @@
       "result": "U"
     },
     {
+      "home": "Elfenbenskysten",
+      "away": "Ecuador",
+      "result": "H"
+    },
+    {
       "home": "Sverige",
       "away": "Tunisia",
       "result": "H"
@@ -79,7 +84,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 37,
+  "antall_maal": 38,
   "kamper": [
     {
       "home": "Mexico",
@@ -187,7 +192,7 @@
       "dato": "2026-06-14",
       "home_score": 1,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E"
     },
@@ -1253,17 +1258,17 @@
       },
       {
         "lag": "Elfenbenskysten",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 1,
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Ecuador",
         "poeng": 0,
-        "mf": 0,
+        "mf": -1,
         "maal_for": 0,
-        "spilt": 0
+        "spilt": 1
       },
       {
         "lag": "Curaçao",
