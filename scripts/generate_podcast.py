@@ -70,12 +70,12 @@ _TALL_NO = ["null", "én", "to", "tre", "fire", "fem", "seks", "sju", "åtte",
 
 
 def _tall(n) -> str:
-    """Tall som norsk ord (0–16) for TTS-vennlig opplesing, uten sifre/bindestrek."""
+    """Tall til og med ti som norsk ord (mer naturlig i tale); over ti som siffer."""
     try:
         n = int(n)
     except (TypeError, ValueError):
         return str(n)
-    return _TALL_NO[n] if 0 <= n < len(_TALL_NO) else str(n)
+    return _TALL_NO[n] if 0 <= n <= 10 else str(n)
 
 
 def _nn(s) -> str:
@@ -178,11 +178,17 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, tips, navn eller tall. "
         f"Bruk kun det som faktisk står i dataene under.\n"
         f"- Deltakerne tipper KUN utfall: hjemmeseier, uavgjort eller borteseier — IKKE eksakt "
-        f"resultat. Si derfor aldri at noen 'tippet to-én' e.l. Si f.eks. 'Jonas tror Norge vinner' "
-        f"eller 'Bjørn tippet uavgjort'. Feltet 'tipping' viser nøyaktig hvem som tippet hva.\n"
-        f"- TTS-VENNLIG FORMAT: Skriv ALDRI sifre og bruk ALDRI bindestrek eller tankestrek "
-        f"(verken - eller —). Skriv resultater som ord med 'til', f.eks. 'tre til null', "
-        f"ALDRI '3-0' eller 'tre-null'. Bruk komma og punktum for pauser, aldri streker.\n\n"
+        f"resultat. Si derfor aldri at noen 'tippet to til én' e.l. Si f.eks. 'Jonas tror Norge "
+        f"vinner' eller 'Bjørn tippet uavgjort'. Feltet 'tipping' viser nøyaktig hvem som tippet hva.\n"
+        f"- IKKE rams opp lange navnelister. Bruk heller gruppebegreper: 'gjengen', 'folket', "
+        f"'majoriteten', 'flertallet', 'de fleste', 'halve gjengen', 'en håndfull'. Nevn enkeltnavn "
+        f"sparsomt — kun for å fremheve én eller to som skiller seg ut (lederen, den eneste som "
+        f"traff, en som bommet stygt). Heller 'nesten hele gjengen tror Norge vinner' enn å lese "
+        f"opp elleve navn.\n"
+        f"- TTS-VENNLIG FORMAT: Bruk ALDRI bindestrek eller tankestrek (verken - eller —); bruk "
+        f"komma og punktum for pauser. Tall til og med ti skrives som ord (f.eks. 'tre til null'); "
+        f"tall over ti skrives med siffer (f.eks. 12 mål, 20 poeng). Skriv resultater med 'til', "
+        f"f.eks. 'tre til null', aldri 'tre-null'.\n\n"
         f"STRUKTUR (følg denne rekkefølgen):\n"
         f"1. INTRO — Kort, energisk velkomst. Kommenter intro-jingelen på en morsom måte "
         f"(f.eks. 'For en intro!', 'Den jingelen blir aldri gammel!'). Sett stemningen.\n"
@@ -199,7 +205,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"som et signal til outro-jingelen. Gjør det naturlig og morsomt.\n\n"
         f"TONE: Morsom, energisk, personlig. Samspillet mellom de to vertene er hjertet i showet. "
         f"Vev inn konkrete data — lagnavn, spillernavn, resultater, stillinger, poeng. "
-        f"Lengde: rundt 14-20 replikker totalt (ca. 5-7 minutter tale). "
+        f"Lengde: rundt 14 til 20 replikker totalt (cirka fem til sju minutter tale). "
         f"Svar KUN med gyldig JSON: en liste med objekter med feltene 'vert' (enten '{a}' eller '{b}') "
         f"og 'tekst'. Ingen markdown, ingen forklaring. Skriv tall som ord der det er naturlig for tale."
     )
