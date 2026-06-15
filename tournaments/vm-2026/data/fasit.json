@@ -64,6 +64,11 @@
       "home": "Spania",
       "away": "Kapp Verde",
       "result": "U"
+    },
+    {
+      "home": "Belgia",
+      "away": "Egypt",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -89,7 +94,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 38,
+  "antall_maal": 40,
   "kamper": [
     {
       "home": "Mexico",
@@ -227,7 +232,7 @@
       "dato": "2026-06-15",
       "home_score": 1,
       "away_score": 1,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G"
     },
@@ -1316,17 +1321,17 @@
     "Gruppe G": [
       {
         "lag": "Belgia",
-        "poeng": 0,
+        "poeng": 1,
         "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Egypt",
-        "poeng": 0,
+        "poeng": 1,
         "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Iran",
