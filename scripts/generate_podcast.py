@@ -178,10 +178,11 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     return out
 
 
-def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path):
+def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path,
+               modell: str = "eleven_turbo_v2_5"):
     body = json.dumps({
         "text": tekst,
-        "model_id": "eleven_multilingual_v2",
+        "model_id": modell,
         "voice_settings": {"stability": 0.4, "similarity_boost": 0.75},
     }).encode("utf-8")
     req = urllib.request.Request(f"{ELEVEN_URL}/{voice_id}", data=body, headers={
@@ -281,7 +282,8 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
     eleven_key = os.environ.get("ELEVENLABS_API_KEY", "").strip()
     lyd_fil = None
     if lag_lyd_flag and eleven_key:
-        print("Genererer lyd med ElevenLabs ...")
+        tts_modell = cfg.get("podcast", {}).get("tts_modell", "eleven_turbo_v2_5")
+        print(f"Genererer lyd med ElevenLabs ({tts_modell}) ...")
         stemmer = cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES
         with tempfile.TemporaryDirectory() as tmp:
             klipp = []
@@ -293,7 +295,7 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
             for i, m in enumerate(manus):
                 vid = stemmer.get(m["vert"]) or list(stemmer.values())[i % len(stemmer)]
                 kp = Path(tmp) / f"{i:03d}.mp3"
-                eleven_tts(eleven_key, vid, m["tekst"], kp)
+                eleven_tts(eleven_key, vid, m["tekst"], kp, tts_modell)
                 klipp.append(kp)
             # Outro-jingle
             jingle_outro = pod_dir / "jingle-outro.mp3"

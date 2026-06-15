@@ -32,6 +32,7 @@
   "football_data_competition": "WC",
   "podcast": {
     "base_url": "https://simonsikkeland.github.io/tippekonk/vm-2026/podcast",
+    "tts_modell": "eleven_turbo_v2_5",
     "stemmer": {
       "Liam": "VCgLBmBjldJmfphyB8sZ",
       "Mitch": "gU0LNdkMOQCOrPrwtbee"
