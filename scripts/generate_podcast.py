@@ -71,7 +71,7 @@ _TALL_NO = ["null", "én", "to", "tre", "fire", "fem", "seks", "sju", "åtte",
 
 
 def _tall(n) -> str:
-    """Tall til og med ti som norsk ord (mer naturlig i tale); over ti som siffer."""
+    """Generelle tall i tale: til og med ti som ord, over ti som siffer."""
     try:
         n = int(n)
     except (TypeError, ValueError):
@@ -79,13 +79,64 @@ def _tall(n) -> str:
     return _TALL_NO[n] if 0 <= n <= 10 else str(n)
 
 
+_SCORE_ORD = {
+    0: "null",
+    1: "én",
+    2: "to",
+    3: "tre",
+    4: "fire",
+    5: "fem",
+    6: "seks",
+    7: "sju",
+    8: "åtte",
+    9: "ni",
+    10: "ti",
+    11: "elve",
+    12: "tolv",
+}
+
+
+def _score(n) -> str:
+    """Score-tall slik de bør uttales i norsk fotballprat."""
+    try:
+        n = int(n)
+    except (TypeError, ValueError):
+        return str(n)
+    return _SCORE_ORD.get(n, str(n))
+
+
+def _scoreline(home_score, away_score) -> str:
+    """Naturlig norsk scoreuttale: én, én / to, null / tre, én."""
+    return f"{_score(home_score)}, {_score(away_score)}"
+
+
 def _nn(s) -> str:
     return str(s).strip().lower() if s is not None else ""
 
 
-# Tallord over ti -> siffer (modellen skal aldri skrive "elleve" o.l. i tale)
+def _fold(s: str) -> str:
+    """Aksent-uavhengig nøkkel for filnavn-matching."""
+    return (str(s).lower().replace("ø", "o").replace("æ", "a").replace("å", "a"))
+
+
+def _finn_jingle(pod_dir: Path, navn: str):
+    """Finn en jingle-fil aksent-/store-bokstav-uavhengig (så 'dagens_broler.mp3'
+    matcher 'dagens_brøler.mp3'). Returnerer Path eller None."""
+    if not navn:
+        return None
+    p = pod_dir / navn
+    if p.exists():
+        return p
+    mål = _fold(navn)
+    for f in pod_dir.glob("*.mp3"):
+        if _fold(f.name) == mål:
+            return f
+    return None
+
+
+# Tallord over ti -> TTS-vennlig form. Vi vil ha "elve" for 11 i norsk tale.
 _TALLORD = {
-    "elleve": "11", "tolv": "12", "tretten": "13", "fjorten": "14", "femten": "15",
+    "elleve": "elve", "tolv": "12", "tretten": "13", "fjorten": "14", "femten": "15",
     "seksten": "16", "sytten": "17", "atten": "18", "nitten": "19",
     "tjueén": "21", "tjueen": "21", "tjueto": "22", "tjuetre": "23", "tjuefire": "24",
     "tjuefem": "25", "tjueseks": "26", "tjuesju": "27", "tjuesyv": "27",
@@ -101,8 +152,89 @@ _TALLORD_RE = re.compile(
 
 
 def normaliser_tallord(tekst: str) -> str:
-    """Bytt ut tallord over ti med siffer (11, 12, 20 ...) — TTS-vennlig."""
+    """Gjør tallord mer TTS-vennlige, blant annet elleve -> elve."""
     return _TALLORD_RE.sub(lambda m: _TALLORD[m.group(1).lower()], tekst)
+
+
+_SCORE_TIL_RE = re.compile(
+    r"\b(null|én|en|to|tre|fire|fem|seks|sju|syv|åtte|ni|ti|elve|tolv|\d+)\s+til\s+"
+    r"(null|én|en|to|tre|fire|fem|seks|sju|syv|åtte|ni|ti|elve|tolv|\d+)\b",
+    re.IGNORECASE,
+)
+
+
+def normaliser_tts_tekst(tekst: str) -> str:
+    """Siste vask før TTS: naturlig scoreuttale og ønsket norsk uttale av 11."""
+    tekst = normaliser_tallord(tekst)
+
+    # ElevenLabs uttaler ofte "elleve" mer bokstavlig enn ønsket.
+    tekst = re.sub(r"\belleve\b", "elve", tekst, flags=re.IGNORECASE)
+    tekst = re.sub(r"\b11\b", "elve", tekst)
+
+    # Gjør "én til én" / "to til null" om til mer naturlig norsk score: "én, én" / "to, null".
+    tekst = _SCORE_TIL_RE.sub(lambda m: f"{m.group(1)}, {m.group(2)}", tekst)
+
+    # Rydd opp i ubestemt "en" når det åpenbart står som scoretall.
+    tekst = re.sub(r"\ben, en\b", "én, én", tekst, flags=re.IGNORECASE)
+    tekst = re.sub(r"\ben, null\b", "én, null", tekst, flags=re.IGNORECASE)
+    tekst = re.sub(r"\bnull, en\b", "null, én", tekst, flags=re.IGNORECASE)
+
+    return tekst
+
+
+def spalte_kandidater(tipp: dict, kamper: list, window: tuple) -> dict:
+    """Beregn grunnlag for spaltene, så vertene slipper å finne på noe:
+      - modige_treff: tippere som traff på et minoritetsutfall (gikk mot flokken)
+      - storste_sjokk: kamper der få/ingen traff, + hvilket lag som skuffet
+      - tippere_som_bommet_mest: hvem bommet på flest utfall
+    Bruker ferske kamper (window) hvis mulig, ellers alle ferdigspilte.
+    """
+    ferdige = [k for k in kamper if k.get("status") == "FINISHED" and k.get("dato") in window]
+    if not ferdige:
+        ferdige = [k for k in kamper if k.get("status") == "FINISHED"]
+
+    modige, sjokk, bom_teller = [], [], {}
+    for k in ferdige:
+        pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
+        if not pk or not pk.get("fasit"):
+            continue
+        navn = pk.get("navn", {})
+        fasit = pk["fasit"]
+        riktige = navn.get(fasit, [])
+        alle = navn.get("H", []) + navn.get("U", []) + navn.get("B", [])
+        total = len(alle)
+        if not total:
+            continue
+        andel = len(riktige) / total
+        hs, as_ = k.get("home_score"), k.get("away_score")
+        res = _scoreline(hs, as_) if hs is not None else ""
+        utfall = (f"{k['home']} vant" if fasit == "H"
+                  else f"{k['away']} vant" if fasit == "B" else "uavgjort")
+        kampnavn = f"{k['home']} mot {k['away']}"
+
+        # Modige treff: et mindretall (<= 40 %) som traff
+        if riktige and andel <= 0.4:
+            modige.append({"kamp": kampnavn, "utfall": utfall,
+                           "modige_tippere": riktige, "andel_prosent": round(andel * 100)})
+
+        # Sjokk: hvilket lag skuffet flertallet?
+        flertall = max(("H", "U", "B"), key=lambda p: len(navn.get(p, [])))
+        skuffet = ""
+        if flertall != fasit:
+            skuffet = k["home"] if flertall == "H" else k["away"] if flertall == "B" else ""
+        sjokk.append({"kamp": kampnavn, "resultat": res, "antall_traff": len(riktige),
+                      "antall_bommet": total - len(riktige), "skuffet_lag": skuffet})
+
+        for n in alle:
+            if n not in riktige:
+                bom_teller[n] = bom_teller.get(n, 0) + 1
+
+    modige.sort(key=lambda x: x["andel_prosent"])
+    sjokk.sort(key=lambda x: x["antall_traff"])
+    dagens_bom = sorted(({"navn": n, "antall_bom": c} for n, c in bom_teller.items()),
+                        key=lambda x: -x["antall_bom"])[:4]
+    return {"modige_treff": modige[:5], "storste_sjokk": sjokk[:5],
+            "tippere_som_bommet_mest": dagens_bom}
 
 
 def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
@@ -133,11 +265,11 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
             continue
         hs, as_ = k.get("home_score"), k.get("away_score")
         if hs > as_:
-            rtekst = f"{k['home']} vant {_tall(hs)} til {_tall(as_)} over {k['away']}"
+            rtekst = f"{k['home']} slo {k['away']} {_scoreline(hs, as_)}"
         elif hs < as_:
-            rtekst = f"{k['away']} vant {_tall(as_)} til {_tall(hs)} over {k['home']}"
+            rtekst = f"{k['away']} slo {k['home']} {_scoreline(as_, hs)}"
         else:
-            rtekst = f"{k['home']} og {k['away']} spilte {_tall(hs)} til {_tall(as_)} uavgjort"
+            rtekst = f"{k['home']} og {k['away']} spilte {_scoreline(hs, as_)}"
         obj = {"kamp": f"{k['home']} mot {k['away']}", "resultat": rtekst}
         pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
         if pk and pk.get("fasit"):
@@ -164,6 +296,9 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
             }
         kommende.append(obj)
 
+    # Grunnlag for spaltene (Gullhår / Dagens Brøler)
+    spalte_data = spalte_kandidater(tipp, kamper, (today, yesterday))
+
     # Gruppetabeller - hvem leder?
     grupper = fasit.get("grupper", {})
     gruppeledere = {g: rows[0]["lag"] for g, rows in grupper.items() if rows}
@@ -178,6 +313,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         "stilling_konkurranse": [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]} for s in stilling],
         "ferske_resultater": resultater,
         "kommende_kamper": kommende,
+        "spalte_data": spalte_data,
         "toppscorere": [{"navn": x["navn"], "lag": x.get("lag",""), "maal": x.get("maal",0)} for x in topp_sc],
         "gruppeledere": gruppeledere,
         "nyheter_fra_media": nyheter,
@@ -208,11 +344,11 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"sparsomt — kun for å fremheve én eller to som skiller seg ut (lederen, den eneste som "
         f"traff, en som bommet stygt). Heller 'nesten hele gjengen tror Norge vinner' enn å lese "
         f"opp elleve navn.\n"
-        f"- TTS-VENNLIG FORMAT: Bruk ALDRI bindestrek eller tankestrek (verken - eller —); bruk "
-        f"komma og punktum for pauser. Tall til og med ti skrives som ord (f.eks. 'tre til null'). "
-        f"Tall over ti skrives ALLTID med siffer — skriv ALDRI tallord som 'elleve', 'tolv', "
-        f"'tjue' osv. Skriv 11, 12, 20. Skriv resultater med 'til', f.eks. 'tre til null', "
-        f"aldri 'tre-null'.\n\n"
+        f"- TTS-VENNLIG FORMAT: Bruk ALDRI bindestrek eller tankestrek; bruk "
+        f"komma og punktum for pauser. Kampresultater skal skrives slik de sies "
+        f"i norsk fotballprat: 'én, én', 'to, null', 'tre, én', ikke 'én til én' "
+        f"og ikke 'tre-null'. Tallet 11 skal skrives som 'elve', ikke 'elleve' og ikke '11'. "
+        f"Andre tall over 12 kan skrives med siffer der det er mest naturlig.\n\n"
         f"STRUKTUR (følg denne rekkefølgen):\n"
         f"1. INTRO — Kort, energisk velkomst. Kommenter intro-jingelen på en morsom måte "
         f"(f.eks. 'For en intro!', 'Den jingelen blir aldri gammel!'). Sett stemningen.\n"
@@ -221,11 +357,22 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"Trekk fram morsomme fakta fra kampene (storseire, sjokkresultater, målfester). "
         f"Sammenlign tippingen mot fasit — vær konkret med navn og tips. "
         f"{a} blir gira på mål og overraskelser, {b} kommer med den tørre analysen.\n"
-        f"3. NESTE RUNDE — Kommende kamper og hva man skal følge med på. "
+        f"3. GULLHÅR I RÆVA! (fast spalte) — En hyllest til å gå mot flokken. Bruk "
+        f"'spalte_data.modige_treff': tippere som traff på et utfall få andre turte å satse på. "
+        f"Nominer 1 til 3 slike modige sjeler, drodle om hvem som er mest fortjent, og LAND til "
+        f"slutt på ÉN verdig vinner (en deltaker). Sett feltet 'jingle_foran' til \"gull\" på den "
+        f"ALLER FØRSTE replikken i denne spalten.\n"
+        f"4. DAGENS BRØLER (fast spalte) — Dagens største tabbe. Bruk 'spalte_data.storste_sjokk' "
+        f"(kamper der få/ingen traff, og hvilket lag som skuffet) og "
+        f"'spalte_data.tippere_som_bommet_mest'. Skjell gjerne ut både lag og tippere med frekk "
+        f"snert. Nominer kandidater og KÅR til slutt ÉN 'Dagens Brøler' — det kan være enten et "
+        f"fotballag eller en deltaker. Sett 'jingle_foran' til \"broler\" på den ALLER FØRSTE "
+        f"replikken i denne spalten.\n"
+        f"5. NESTE RUNDE — Kommende kamper og hva man skal følge med på. "
         f"Hvem har gjort smarte/dumme tips som kan slå til eller smelle? "
         f"Stjernespillere å følge med på, spennende oppgjør, bygg forventning. "
         f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
-        f"4. OUTRO — Aller siste replikk skal ALLTID avsluttes med ordene 'Spill av outroen!' "
+        f"6. OUTRO — Aller siste replikk skal ALLTID avsluttes med ordene 'Spill av outroen!' "
         f"som et signal til outro-jingelen. Gjør det naturlig og morsomt.\n\n"
         f"TONE: Kul, frekk og høyt tempo. Vertene er selvsikre og lar munnen gå — frekke jokes, "
         f"syrlige stikk og lett politisk ukorrekt humor. De roaster kompisene og lagene uten "
@@ -234,9 +381,11 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"Hold brodden til ertende kompis-roast og fotball.) "
         f"Samspillet mellom de to vertene er hjertet i showet. "
         f"Vev inn konkrete data — lagnavn, spillernavn, resultater, stillinger, poeng. "
-        f"Lengde: rundt 14 til 20 replikker totalt (cirka fem til sju minutter tale). "
-        f"Svar KUN med gyldig JSON: en liste med objekter med feltene 'vert' (enten '{a}' eller '{b}') "
-        f"og 'tekst'. Ingen markdown, ingen forklaring. Skriv tall som ord der det er naturlig for tale."
+        f"Lengde: rundt 20 til 28 replikker totalt (cirka seks til ni minutter tale). "
+        f"Svar KUN med gyldig JSON: en liste med objekter med feltene 'vert' (enten '{a}' eller "
+        f"'{b}') og 'tekst'. Et objekt kan i tillegg ha feltet 'jingle_foran' med verdien \"gull\" "
+        f"eller \"broler\" — sett det KUN på den aller første replikken i hver av de to spaltene. "
+        f"Ingen markdown, ingen forklaring. Skriv tall som ord der det er naturlig for tale."
     )
     user = f"Dagens data:\n{json.dumps(sammendrag, ensure_ascii=False, indent=2)}\n\nSkriv manuset nå."
 
@@ -260,11 +409,15 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     if text.startswith("```"):
         text = text.split("```")[1].lstrip("json").strip()
     manus = json.loads(text)
-    # valider + normaliser tallord (>10 -> siffer)
+    # valider + normaliser tekst; behold ev. jingle_foran
     out = []
     for m in manus:
         if m.get("vert") and m.get("tekst"):
-            out.append({"vert": m["vert"], "tekst": normaliser_tallord(m["tekst"])})
+            replikk = {"vert": m["vert"], "tekst": normaliser_tts_tekst(m["tekst"])}
+            jf = m.get("jingle_foran")
+            if jf in ("gull", "broler"):
+                replikk["jingle_foran"] = jf
+            out.append(replikk)
     return out
 
 
@@ -386,6 +539,8 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
         stemmer = cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES
         tempo = cfg.get("podcast", {}).get("tempo", {})
         tempo_std = tempo.get("_standard", 1.08)
+        # Spalte-id -> jingle-filnavn
+        spalte_jingle = {s["id"]: s.get("jingle") for s in cfg.get("podcast", {}).get("spalter", [])}
         with tempfile.TemporaryDirectory() as tmp:
             klipp = []
             # Intro-jingle
@@ -394,6 +549,15 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
                 klipp.append(jingle_intro)
                 print("  Intro-jingle lagt til")
             for i, m in enumerate(manus):
+                # Spalte-jingle foran første replikk i en spalte
+                jf = m.get("jingle_foran")
+                if jf and spalte_jingle.get(jf):
+                    jp = _finn_jingle(pod_dir, spalte_jingle[jf])
+                    if jp:
+                        klipp.append(jp)
+                        print(f"  Spalte-jingle '{jf}' lagt til ({jp.name})")
+                    else:
+                        print(f"  ADVARSEL: fant ikke jingle for spalte '{jf}' ({spalte_jingle[jf]})")
                 vid = stemmer.get(m["vert"]) or list(stemmer.values())[i % len(stemmer)]
                 spd = tempo.get(m["vert"], tempo_std)
                 kp = Path(tmp) / f"{i:03d}.mp3"

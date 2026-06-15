@@ -40,6 +40,10 @@
     "tempo": {
       "_standard": 1.1,
       "Frank": 1.2
-    }
+    },
+    "spalter": [
+      { "id": "gull", "navn": "Gullhår i Ræva!", "jingle": "spalte_gull.mp3" },
+      { "id": "broler", "navn": "Dagens Brøler", "jingle": "dagens_brøler.mp3" }
+    ]
   }
 }
