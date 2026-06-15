@@ -11,7 +11,8 @@ on:
       - "site/**"
   workflow_dispatch: {}        # lar deg kjøre manuelt fra GitHub
   schedule:
-    - cron: "0 6 * * *"        # hver dag kl 06:00 UTC under VM (henter nattens resultater)
+    - cron: "10 */3 * * *"     # hver 3. time: hent resultater + bygg side
+    - cron: "30 6 * * *"       # 1x/dag (08:30 norsk): + podcast (Claude + ElevenLabs)
 
 permissions:
   contents: write
@@ -45,8 +46,12 @@ jobs:
             fi
           done
 
+      # Podcast (Claude-tekst + ElevenLabs) kun 1x/dag: den daglige cron-en eller
+      # manuell kjøring. De 3-timers kjøringene hopper over dette steget.
       - name: Generer podcast (manus + lyd)
-        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        if: >-
+          env.ANTHROPIC_API_KEY != '' &&
+          (github.event_name != 'schedule' || github.event.schedule == '30 6 * * *')
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTAPI }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENAPI }}
