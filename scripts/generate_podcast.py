@@ -115,12 +115,12 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"med fokus på en privat tippekonkurranse blant en gjeng norske kompiser. "
         f"Deltakernes navn er ekte venner — bruk navnene aktivt og personlig "
         f"(ert dem, hyll dem, sammenlign tippingen deres). Skriv alt på naturlig norsk bokmål.\n\n"
-        f"VERTENE:\n"
+        f"VERTENE (begge er høyenergiske og entusiastiske — det er et heseblesende, gira show):\n"
         f"- {a}: Ivrig og optimistisk, full av energi og blir lett hypet på mål, "
         f"overraskelser og dramatikk. Heier høylytt og tror alltid det beste om favorittlagene sine.\n"
-        f"- {b}: Tørr og sarkastisk med glimt i øyet. Står for den taktiske analysen og "
-        f"pirker borti {a} sin overdrevne optimisme. Lun humor, men hjertelig. "
-        f"Tenk på dynamikken som en klassisk radarpar-duo: én entusiast og én tørrvittig analytiker.\n\n"
+        f"- {b}: Like energisk og høylytt, men med en tørrvittig, sarkastisk kant. Står for den "
+        f"taktiske analysen og pirker borti {a} sin overdrevne optimisme — men med innlevelse og driv. "
+        f"Tenk på dynamikken som et gira radarpar: to ivrige stemmer som overgår hverandre.\n\n"
         f"VIKTIGE REGLER:\n"
         f"- Vertene skal ALDRI synge. Ingen sangtekster, noter eller synging i dialogen.\n"
         f"- En intro-jingle spilles automatisk før vertene snakker, og en outro-jingle etterpå. "
@@ -180,7 +180,14 @@ def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path,
     body = json.dumps({
         "text": tekst,
         "model_id": modell,
-        "voice_settings": {"stability": 0.4, "similarity_boost": 0.75},
+        # Energisk levering: lav stability gir mer variasjon/innlevelse,
+        # style skrur opp uttrykksfullheten, speaker_boost gir mer nærvær.
+        "voice_settings": {
+            "stability": 0.3,
+            "similarity_boost": 0.8,
+            "style": 0.6,
+            "use_speaker_boost": True,
+        },
     }).encode("utf-8")
     req = urllib.request.Request(f"{ELEVEN_URL}/{voice_id}", data=body, headers={
         "xi-api-key": api_key,
