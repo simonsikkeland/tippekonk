@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-15T09:26:06+00:00",
+  "oppdatert": "2026-06-15T15:25:00+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -91,7 +91,7 @@
     "bronse_vinner": "",
     "finale": [],
     "vm_vinner": "",
-    "toppscorer": "",
+    "toppscorer": "Folarin Balogun",
     "antall_maal": 38,
     "kamper": [
       {
@@ -1547,7 +1547,58 @@
       "Skottland": "https://crests.football-data.org/814.svg",
       "Curaçao": "https://crests.football-data.org/curacao.svg"
     },
-    "topp_scorere": [],
+    "topp_scorere": [
+      {
+        "navn": "Folarin Balogun",
+        "lag": "USA",
+        "maal": 2
+      },
+      {
+        "navn": "Kai Havertz",
+        "lag": "Tyskland",
+        "maal": 2
+      },
+      {
+        "navn": "Yasin Ayari",
+        "lag": "Sverige",
+        "maal": 2
+      },
+      {
+        "navn": "Julián Quiñones",
+        "lag": "Mexico",
+        "maal": 1
+      },
+      {
+        "navn": "Raúl Jiménez",
+        "lag": "Mexico",
+        "maal": 1
+      },
+      {
+        "navn": "Ladislav Krejčí",
+        "lag": "Tsjekkia",
+        "maal": 1
+      },
+      {
+        "navn": "In-beom Hwang",
+        "lag": "Sør-Korea",
+        "maal": 1
+      },
+      {
+        "navn": "Hyun-Gyu Oh",
+        "lag": "Sør-Korea",
+        "maal": 1
+      },
+      {
+        "navn": "Jovo Lukić",
+        "lag": "Bosnia-Hercegovina",
+        "maal": 1
+      },
+      {
+        "navn": "Cyle Larin",
+        "lag": "Canada",
+        "maal": 1
+      }
+    ],
     "gruppespill_ferdig": false
   },
   "stilling": [
@@ -1560,6 +1611,11 @@
           "label": "Gruppespill (7 riktige)",
           "pts": 7,
           "detail": "7 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
         },
         {
           "label": "Antall mål",
@@ -1579,6 +1635,11 @@
           "detail": "6 x 1p"
         },
         {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 161 (fasit 38)"
@@ -1594,6 +1655,11 @@
           "label": "Gruppespill (6 riktige)",
           "pts": 6,
           "detail": "6 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
         },
         {
           "label": "Antall mål",
@@ -1613,6 +1679,11 @@
           "detail": "5 x 1p"
         },
         {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
+        },
+        {
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 169 (fasit 38)"
@@ -1628,6 +1699,11 @@
           "label": "Gruppespill (5 riktige)",
           "pts": 5,
           "detail": "5 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
         },
         {
           "label": "Antall mål",
@@ -1647,6 +1723,11 @@
           "detail": "5 x 1p"
         },
         {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Haaland"
+        },
+        {
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 264 (fasit 38)"
@@ -1662,6 +1743,11 @@
           "label": "Gruppespill (5 riktige)",
           "pts": 5,
           "detail": "5 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
         },
         {
           "label": "Antall mål",
@@ -1681,6 +1767,11 @@
           "detail": "5 x 1p"
         },
         {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 298 (fasit 38)"
@@ -1696,6 +1787,11 @@
           "label": "Gruppespill (4 riktige)",
           "pts": 4,
           "detail": "4 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
         },
         {
           "label": "Antall mål",
@@ -1715,6 +1811,11 @@
           "detail": "4 x 1p"
         },
         {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 286 (fasit 38)"
@@ -1730,6 +1831,11 @@
           "label": "Gruppespill (3 riktige)",
           "pts": 3,
           "detail": "3 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Haaland"
         },
         {
           "label": "Antall mål",
@@ -1800,6 +1906,7 @@
         }
       ]
     },
+    "toppscorer_treff": [],
     "tippefordeling": {
       "antall_deltakere": 11,
       "dager": [
