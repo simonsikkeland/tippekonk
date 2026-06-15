@@ -65,6 +65,23 @@ def hent_nyheter() -> list[str]:
     return nyheter[:15]
 
 
+_TALL_NO = ["null", "én", "to", "tre", "fire", "fem", "seks", "sju", "åtte",
+            "ni", "ti", "elleve", "tolv", "tretten", "fjorten", "femten", "seksten"]
+
+
+def _tall(n) -> str:
+    """Tall som norsk ord (0–16) for TTS-vennlig opplesing, uten sifre/bindestrek."""
+    try:
+        n = int(n)
+    except (TypeError, ValueError):
+        return str(n)
+    return _TALL_NO[n] if 0 <= n < len(_TALL_NO) else str(n)
+
+
+def _nn(s) -> str:
+    return str(s).strip().lower() if s is not None else ""
+
+
 def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     """Be Claude skrive dialogmanus. Returnerer [{vert, tekst}, ...]."""
     vert_navn = list((cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES).keys())
@@ -80,16 +97,49 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
     tomorrow = (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%d")
 
-    resultater = [
-        f"{k['home']} {k['home_score']}-{k['away_score']} {k['away']}"
-        for k in kamper
-        if k.get("status") == "FINISHED" and k.get("dato") in (today, yesterday)
-    ]
-    kommende = [
-        f"{k['home']} vs {k['away']} ({k.get('group','').replace('GROUP_','Gr. ')})"
-        for k in kamper
-        if k.get("status") in ("TIMED", "SCHEDULED") and k.get("dato") in (today, tomorrow)
-    ]
+    # Faktisk tipping per kamp (hvem tippet H/U/B) fra tippefordeling
+    tf = (data.get("statistikk") or {}).get("tippefordeling") or {}
+    tipp = {}
+    for dag in tf.get("dager", []):
+        for kk in dag.get("kamper", []):
+            tipp[(_nn(kk["home"]), _nn(kk["away"]))] = kk
+
+    resultater = []
+    for k in kamper:
+        if k.get("status") != "FINISHED" or k.get("dato") not in (today, yesterday):
+            continue
+        hs, as_ = k.get("home_score"), k.get("away_score")
+        if hs > as_:
+            rtekst = f"{k['home']} vant {_tall(hs)} til {_tall(as_)} over {k['away']}"
+        elif hs < as_:
+            rtekst = f"{k['away']} vant {_tall(as_)} til {_tall(hs)} over {k['home']}"
+        else:
+            rtekst = f"{k['home']} og {k['away']} spilte {_tall(hs)} til {_tall(as_)} uavgjort"
+        obj = {"kamp": f"{k['home']} mot {k['away']}", "resultat": rtekst}
+        pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
+        if pk and pk.get("fasit"):
+            navn = pk.get("navn", {})
+            riktig = navn.get(pk["fasit"], [])
+            alle = navn.get("H", []) + navn.get("U", []) + navn.get("B", [])
+            obj["tippet_riktig_utfall"] = riktig
+            obj["bommet_pa_utfall"] = [n for n in alle if n not in riktig]
+        resultater.append(obj)
+
+    kommende = []
+    for k in kamper:
+        if k.get("status") not in ("TIMED", "SCHEDULED") or k.get("dato") not in (today, tomorrow):
+            continue
+        obj = {"kamp": f"{k['home']} mot {k['away']}",
+               "gruppe": k.get("group", "").replace("GROUP_", "Gr. ")}
+        pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
+        if pk:
+            navn = pk.get("navn", {})
+            obj["tipping"] = {
+                f"{k['home']} vinner": navn.get("H", []),
+                "uavgjort": navn.get("U", []),
+                f"{k['away']} vinner": navn.get("B", []),
+            }
+        kommende.append(obj)
 
     # Gruppetabeller - hvem leder?
     grupper = fasit.get("grupper", {})
@@ -124,7 +174,15 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"VIKTIGE REGLER:\n"
         f"- Vertene skal ALDRI synge. Ingen sangtekster, noter eller synging i dialogen.\n"
         f"- En intro-jingle spilles automatisk før vertene snakker, og en outro-jingle etterpå. "
-        f"Vertene trenger IKKE lage disse lydene selv.\n\n"
+        f"Vertene trenger IKKE lage disse lydene selv.\n"
+        f"- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, tips, navn eller tall. "
+        f"Bruk kun det som faktisk står i dataene under.\n"
+        f"- Deltakerne tipper KUN utfall: hjemmeseier, uavgjort eller borteseier — IKKE eksakt "
+        f"resultat. Si derfor aldri at noen 'tippet to-én' e.l. Si f.eks. 'Jonas tror Norge vinner' "
+        f"eller 'Bjørn tippet uavgjort'. Feltet 'tipping' viser nøyaktig hvem som tippet hva.\n"
+        f"- TTS-VENNLIG FORMAT: Skriv ALDRI sifre og bruk ALDRI bindestrek eller tankestrek "
+        f"(verken - eller —). Skriv resultater som ord med 'til', f.eks. 'tre til null', "
+        f"ALDRI '3-0' eller 'tre-null'. Bruk komma og punktum for pauser, aldri streker.\n\n"
         f"STRUKTUR (følg denne rekkefølgen):\n"
         f"1. INTRO — Kort, energisk velkomst. Kommenter intro-jingelen på en morsom måte "
         f"(f.eks. 'For en intro!', 'Den jingelen blir aldri gammel!'). Sett stemningen.\n"
