@@ -462,8 +462,10 @@ function renderFordeling(d){
   const matchHtml = k => {
     let check = '';
     if(k.fasit){
-      const hit = maxPick(k)===k.fasit;
-      check = `<div class="fcheck ${hit?'hit':'miss'}">${hit?'✓ flertallet hadde rett':'✗ flertallet bommet'} · fasit: ${PICK_LBL[k.fasit]}</div>`;
+      const riktig = k.riktig || [];
+      check = riktig.length
+        ? `<div class="fcheck hit">✓ Riktig (${PICK_LBL[k.fasit].toLowerCase()}): ${riktig.map(esc).join(', ')}</div>`
+        : `<div class="fcheck miss">✗ Ingen tippet riktig · fasit: ${PICK_LBL[k.fasit]}</div>`;
     }
     return `<div class="fmatch">
       <div class="fhead">${flag(k.home)} ${esc(k.home)} <span class="vs">–</span> ${esc(k.away)} ${flag(k.away)}

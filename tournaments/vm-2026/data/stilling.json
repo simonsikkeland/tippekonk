@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-15T07:32:32+00:00",
+  "oppdatert": "2026-06-15T07:49:54+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1920,7 +1920,20 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Simon",
+                "Tobias",
+                "Jonas",
+                "Andrè",
+                "Marius",
+                "Håkon",
+                "Bjørn",
+                "Arya",
+                "Ringstad",
+                "Øystein",
+                "Robin"
+              ]
             }
           ]
         },
@@ -1934,7 +1947,11 @@
               "H": 2,
               "U": 6,
               "B": 3,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Bjørn",
+                "Arya"
+              ]
             },
             {
               "home": "Canada",
@@ -1943,7 +1960,12 @@
               "H": 5,
               "U": 3,
               "B": 3,
-              "fasit": "U"
+              "fasit": "U",
+              "riktig": [
+                "Simon",
+                "Jonas",
+                "Ringstad"
+              ]
             }
           ]
         },
@@ -1957,7 +1979,17 @@
               "H": 8,
               "U": 3,
               "B": 0,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Simon",
+                "Tobias",
+                "Jonas",
+                "Andrè",
+                "Marius",
+                "Håkon",
+                "Bjørn",
+                "Øystein"
+              ]
             },
             {
               "home": "Brasil",
@@ -1966,7 +1998,11 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": "U"
+              "fasit": "U",
+              "riktig": [
+                "Simon",
+                "Marius"
+              ]
             },
             {
               "home": "Qatar",
@@ -1975,7 +2011,10 @@
               "H": 0,
               "U": 1,
               "B": 10,
-              "fasit": "U"
+              "fasit": "U",
+              "riktig": [
+                "Andrè"
+              ]
             }
           ]
         },
@@ -1989,7 +2028,20 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": "B"
+              "fasit": "B",
+              "riktig": [
+                "Simon",
+                "Tobias",
+                "Jonas",
+                "Andrè",
+                "Marius",
+                "Håkon",
+                "Bjørn",
+                "Arya",
+                "Ringstad",
+                "Øystein",
+                "Robin"
+              ]
             },
             {
               "home": "Australia",
@@ -1998,7 +2050,8 @@
               "H": 0,
               "U": 3,
               "B": 8,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": []
             },
             {
               "home": "Elfenbenskysten",
@@ -2007,7 +2060,10 @@
               "H": 1,
               "U": 8,
               "B": 2,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Tobias"
+              ]
             },
             {
               "home": "Tyskland",
@@ -2016,7 +2072,20 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Simon",
+                "Tobias",
+                "Jonas",
+                "Andrè",
+                "Marius",
+                "Håkon",
+                "Bjørn",
+                "Arya",
+                "Ringstad",
+                "Øystein",
+                "Robin"
+              ]
             },
             {
               "home": "Nederland",
@@ -2025,7 +2094,8 @@
               "H": 10,
               "U": 0,
               "B": 1,
-              "fasit": "U"
+              "fasit": "U",
+              "riktig": []
             }
           ]
         },
@@ -2039,7 +2109,14 @@
               "H": 5,
               "U": 5,
               "B": 1,
-              "fasit": "H"
+              "fasit": "H",
+              "riktig": [
+                "Simon",
+                "Tobias",
+                "Jonas",
+                "Håkon",
+                "Arya"
+              ]
             },
             {
               "home": "Saudi-Arabia",
@@ -2048,7 +2125,8 @@
               "H": 0,
               "U": 1,
               "B": 10,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Spania",
@@ -2057,7 +2135,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Belgia",
@@ -2066,7 +2145,8 @@
               "H": 10,
               "U": 1,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2080,7 +2160,8 @@
               "H": 8,
               "U": 1,
               "B": 2,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Frankrike",
@@ -2089,7 +2170,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Irak",
@@ -2098,7 +2180,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2112,7 +2195,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Østerrike",
@@ -2121,7 +2205,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Ghana",
@@ -2130,7 +2215,8 @@
               "H": 7,
               "U": 4,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "England",
@@ -2139,7 +2225,8 @@
               "H": 6,
               "U": 5,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Portugal",
@@ -2148,7 +2235,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2162,7 +2250,8 @@
               "H": 0,
               "U": 2,
               "B": 9,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Tsjekkia",
@@ -2171,7 +2260,8 @@
               "H": 8,
               "U": 2,
               "B": 1,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Sveits",
@@ -2180,7 +2270,8 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Canada",
@@ -2189,7 +2280,8 @@
               "H": 8,
               "U": 3,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2203,7 +2295,8 @@
               "H": 8,
               "U": 3,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Skottland",
@@ -2212,7 +2305,8 @@
               "H": 0,
               "U": 2,
               "B": 9,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "USA",
@@ -2221,7 +2315,8 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2235,7 +2330,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Tyrkia",
@@ -2244,7 +2340,8 @@
               "H": 7,
               "U": 4,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Tyskland",
@@ -2253,7 +2350,8 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Nederland",
@@ -2262,7 +2360,8 @@
               "H": 9,
               "U": 1,
               "B": 1,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2276,7 +2375,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Tunisia",
@@ -2285,7 +2385,8 @@
               "H": 0,
               "U": 4,
               "B": 7,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Uruguay",
@@ -2294,7 +2395,8 @@
               "H": 10,
               "U": 1,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Spania",
@@ -2303,7 +2405,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Belgia",
@@ -2312,7 +2415,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2326,7 +2430,8 @@
               "H": 0,
               "U": 4,
               "B": 7,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Frankrike",
@@ -2335,7 +2440,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Argentina",
@@ -2344,7 +2450,8 @@
               "H": 10,
               "U": 1,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2358,7 +2465,8 @@
               "H": 5,
               "U": 6,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Jordan",
@@ -2367,7 +2475,8 @@
               "H": 2,
               "U": 3,
               "B": 6,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "England",
@@ -2376,7 +2485,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Panama",
@@ -2385,7 +2495,8 @@
               "H": 0,
               "U": 1,
               "B": 10,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Portugal",
@@ -2394,7 +2505,8 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2408,7 +2520,8 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Skottland",
@@ -2417,7 +2530,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Marokko",
@@ -2426,7 +2540,8 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Sveits",
@@ -2435,7 +2550,8 @@
               "H": 6,
               "U": 5,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Bosnia-Hercegovina",
@@ -2444,7 +2560,8 @@
               "H": 8,
               "U": 3,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2458,7 +2575,8 @@
               "H": 0,
               "U": 3,
               "B": 8,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Sør-Afrika",
@@ -2467,7 +2585,8 @@
               "H": 1,
               "U": 4,
               "B": 6,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Curaçao",
@@ -2476,7 +2595,8 @@
               "H": 0,
               "U": 1,
               "B": 10,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Ecuador",
@@ -2485,7 +2605,8 @@
               "H": 0,
               "U": 1,
               "B": 10,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Japan",
@@ -2494,7 +2615,8 @@
               "H": 3,
               "U": 4,
               "B": 4,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Tunisia",
@@ -2503,7 +2625,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2517,7 +2640,8 @@
               "H": 3,
               "U": 7,
               "B": 1,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Paraguay",
@@ -2526,7 +2650,8 @@
               "H": 3,
               "U": 6,
               "B": 2,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Norge",
@@ -2535,7 +2660,8 @@
               "H": 0,
               "U": 6,
               "B": 5,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Senegal",
@@ -2544,7 +2670,8 @@
               "H": 10,
               "U": 1,
               "B": 0,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2558,7 +2685,8 @@
               "H": 3,
               "U": 7,
               "B": 1,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "New Zealand",
@@ -2567,7 +2695,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Kapp Verde",
@@ -2576,7 +2705,8 @@
               "H": 0,
               "U": 5,
               "B": 6,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Uruguay",
@@ -2585,7 +2715,8 @@
               "H": 0,
               "U": 4,
               "B": 7,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Panama",
@@ -2594,7 +2725,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Kroatia",
@@ -2603,7 +2735,8 @@
               "H": 8,
               "U": 2,
               "B": 1,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Colombia",
@@ -2612,7 +2745,8 @@
               "H": 0,
               "U": 3,
               "B": 8,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "DR Kongo",
@@ -2621,7 +2755,8 @@
               "H": 1,
               "U": 7,
               "B": 3,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         },
@@ -2635,7 +2770,8 @@
               "H": 0,
               "U": 5,
               "B": 6,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             },
             {
               "home": "Jordan",
@@ -2644,7 +2780,8 @@
               "H": 0,
               "U": 0,
               "B": 11,
-              "fasit": null
+              "fasit": null,
+              "riktig": null
             }
           ]
         }

@@ -120,27 +120,33 @@ def tippefordeling(deltakere, fact):
     # Datoer i kronologisk rekkefølge for gruppespillkamper
     kamp_meta = {(_norm(k["home"]), _norm(k["away"])): k for k in kamper}
 
-    rader = {}  # key (home,away) -> teller
+    rader = {}      # key (home,away) -> teller
+    navn_pick = {}  # key (home,away) -> {H/U/B: [navn]}
     for d in deltakere:
         for m in d["pred"]["matches"]:
             key = (_norm(m["home"]), _norm(m["away"]))
             if key not in kamp_meta:
                 continue
             r = rader.setdefault(key, {"H": 0, "U": 0, "B": 0})
+            np_ = navn_pick.setdefault(key, {"H": [], "U": [], "B": []})
             pick = (m["pick"] or "").strip().upper()
             if pick in r:
                 r[pick] += 1
+                np_[pick].append(d["navn"])
 
     dager = {}
     for key, teller in rader.items():
         k = kamp_meta[key]
         dato = k.get("dato", "")
-        fasit = res_by_teams.get(key)
+        ferdig = k.get("status") == "FINISHED"
+        fasit = res_by_teams.get(key) if ferdig else None
         dager.setdefault(dato, []).append({
             "home": k["home"], "away": k["away"],
             "group": (k.get("group") or "").replace("GROUP_", ""),
             "H": teller["H"], "U": teller["U"], "B": teller["B"],
-            "fasit": fasit if k.get("status") == "FINISHED" else None,
+            "fasit": fasit,
+            # Hvem tippet riktig utfall (kun ferdigspilte kamper)
+            "riktig": navn_pick[key].get(fasit, []) if fasit else None,
         })
 
     antall = len(deltakere)
