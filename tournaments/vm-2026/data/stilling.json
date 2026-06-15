@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-14T23:44:44+00:00",
+  "oppdatert": "2026-06-15T07:32:32+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -57,6 +57,16 @@
         "home": "Nederland",
         "away": "Japan",
         "result": "U"
+      },
+      {
+        "home": "Elfenbenskysten",
+        "away": "Ecuador",
+        "result": "H"
+      },
+      {
+        "home": "Sverige",
+        "away": "Tunisia",
+        "result": "H"
       }
     ],
     "group_winners": {
@@ -65,7 +75,7 @@
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
-      "Gruppe F": "Nederland",
+      "Gruppe F": "Sverige",
       "Gruppe G": "Belgia",
       "Gruppe H": "Spania",
       "Gruppe I": "Frankrike",
@@ -82,7 +92,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Folarin Balogun",
-    "antall_maal": 31,
+    "antall_maal": 38,
     "kamper": [
       {
         "home": "Mexico",
@@ -188,9 +198,9 @@
         "home": "Elfenbenskysten",
         "away": "Ecuador",
         "dato": "2026-06-14",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 1,
+        "away_score": 0,
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_E"
       },
@@ -198,9 +208,9 @@
         "home": "Sverige",
         "away": "Tunisia",
         "dato": "2026-06-15",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 5,
+        "away_score": 1,
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_F"
       },
@@ -1256,17 +1266,17 @@
         },
         {
           "lag": "Elfenbenskysten",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
+          "poeng": 3,
+          "mf": 1,
+          "maal_for": 1,
+          "spilt": 1
         },
         {
           "lag": "Ecuador",
           "poeng": 0,
-          "mf": 0,
+          "mf": -1,
           "maal_for": 0,
-          "spilt": 0
+          "spilt": 1
         },
         {
           "lag": "Curaçao",
@@ -1277,6 +1287,13 @@
         }
       ],
       "Gruppe F": [
+        {
+          "lag": "Sverige",
+          "poeng": 3,
+          "mf": 4,
+          "maal_for": 5,
+          "spilt": 1
+        },
         {
           "lag": "Nederland",
           "poeng": 1,
@@ -1292,18 +1309,11 @@
           "spilt": 1
         },
         {
-          "lag": "Sverige",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
-        },
-        {
           "lag": "Tunisia",
           "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
+          "mf": -4,
+          "maal_for": 1,
+          "spilt": 1
         }
       ],
       "Gruppe G": [
@@ -1549,6 +1559,11 @@
         "maal": 2
       },
       {
+        "navn": "Yasin Ayari",
+        "lag": "Sverige",
+        "maal": 2
+      },
+      {
         "navn": "Julián Quiñones",
         "lag": "Mexico",
         "maal": 1
@@ -1582,11 +1597,6 @@
         "navn": "Cyle Larin",
         "lag": "Canada",
         "maal": 1
-      },
-      {
-        "navn": "Mauricio",
-        "lag": "Paraguay",
-        "maal": 1
       }
     ],
     "gruppespill_ferdig": false
@@ -1595,6 +1605,28 @@
     {
       "plass": 1,
       "navn": "Simon",
+      "poeng": 7,
+      "linjer": [
+        {
+          "label": "Gruppespill (7 riktige)",
+          "pts": 7,
+          "detail": "7 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 304 (fasit 38)"
+        }
+      ]
+    },
+    {
+      "plass": 2,
+      "navn": "Tobias",
       "poeng": 6,
       "linjer": [
         {
@@ -1610,12 +1642,34 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 31)"
+          "detail": "tippet 161 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 2,
+      "plass": 3,
+      "navn": "Jonas",
+      "poeng": 6,
+      "linjer": [
+        {
+          "label": "Gruppespill (6 riktige)",
+          "pts": 6,
+          "detail": "6 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 306 (fasit 38)"
+        }
+      ]
+    },
+    {
+      "plass": 4,
       "navn": "Andrè",
       "poeng": 5,
       "linjer": [
@@ -1632,12 +1686,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 31)"
+          "detail": "tippet 169 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 3,
+      "plass": 5,
       "navn": "Marius",
       "poeng": 5,
       "linjer": [
@@ -1654,13 +1708,13 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 31)"
+          "detail": "tippet 302 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 4,
-      "navn": "Jonas",
+      "plass": 6,
+      "navn": "Håkon",
       "poeng": 5,
       "linjer": [
         {
@@ -1671,17 +1725,17 @@
         {
           "label": "Toppscorer",
           "pts": 0,
-          "detail": "tippet Kane"
+          "detail": "tippet Haaland"
         },
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 31)"
+          "detail": "tippet 264 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 5,
+      "plass": 7,
       "navn": "Bjørn",
       "poeng": 5,
       "linjer": [
@@ -1698,12 +1752,34 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 31)"
+          "detail": "tippet 300 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 6,
+      "plass": 8,
+      "navn": "Arya",
+      "poeng": 5,
+      "linjer": [
+        {
+          "label": "Gruppespill (5 riktige)",
+          "pts": 5,
+          "detail": "5 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 298 (fasit 38)"
+        }
+      ]
+    },
+    {
+      "plass": 9,
       "navn": "Ringstad",
       "poeng": 4,
       "linjer": [
@@ -1720,56 +1796,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 262 (fasit 31)"
+          "detail": "tippet 262 (fasit 38)"
         }
       ]
     },
     {
-      "plass": 7,
-      "navn": "Tobias",
-      "poeng": 4,
-      "linjer": [
-        {
-          "label": "Gruppespill (4 riktige)",
-          "pts": 4,
-          "detail": "4 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 161 (fasit 31)"
-        }
-      ]
-    },
-    {
-      "plass": 8,
-      "navn": "Håkon",
-      "poeng": 4,
-      "linjer": [
-        {
-          "label": "Gruppespill (4 riktige)",
-          "pts": 4,
-          "detail": "4 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Haaland"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 264 (fasit 31)"
-        }
-      ]
-    },
-    {
-      "plass": 9,
+      "plass": 10,
       "navn": "Øystein",
       "poeng": 4,
       "linjer": [
@@ -1786,29 +1818,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 31)"
-        }
-      ]
-    },
-    {
-      "plass": 10,
-      "navn": "Arya",
-      "poeng": 4,
-      "linjer": [
-        {
-          "label": "Gruppespill (4 riktige)",
-          "pts": 4,
-          "detail": "4 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 298 (fasit 31)"
+          "detail": "tippet 286 (fasit 38)"
         }
       ]
     },
@@ -1830,69 +1840,69 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 31)"
+          "detail": "tippet 200 (fasit 38)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 31,
+      "fasit": 38,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 130
+          "diff": 123
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 138
+          "diff": 131
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 169
+          "diff": 162
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 231
+          "diff": 224
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 233
+          "diff": 226
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 255
+          "diff": 248
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 267
+          "diff": 260
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 269
+          "diff": 262
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 271
+          "diff": 264
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 273
+          "diff": 266
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 275
+          "diff": 268
         }
       ]
     },
@@ -1997,7 +2007,7 @@
               "H": 1,
               "U": 8,
               "B": 2,
-              "fasit": null
+              "fasit": "H"
             },
             {
               "home": "Tyskland",
@@ -2029,7 +2039,7 @@
               "H": 5,
               "U": 5,
               "B": 1,
-              "fasit": null
+              "fasit": "H"
             },
             {
               "home": "Saudi-Arabia",

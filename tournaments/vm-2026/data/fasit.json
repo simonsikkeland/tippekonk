@@ -49,6 +49,16 @@
       "home": "Nederland",
       "away": "Japan",
       "result": "U"
+    },
+    {
+      "home": "Elfenbenskysten",
+      "away": "Ecuador",
+      "result": "H"
+    },
+    {
+      "home": "Sverige",
+      "away": "Tunisia",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -57,7 +67,7 @@
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
-    "Gruppe F": "Nederland",
+    "Gruppe F": "Sverige",
     "Gruppe G": "Belgia",
     "Gruppe H": "Spania",
     "Gruppe I": "Frankrike",
@@ -74,7 +84,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 31,
+  "antall_maal": 38,
   "kamper": [
     {
       "home": "Mexico",
@@ -180,9 +190,9 @@
       "home": "Elfenbenskysten",
       "away": "Ecuador",
       "dato": "2026-06-14",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E"
     },
@@ -190,9 +200,9 @@
       "home": "Sverige",
       "away": "Tunisia",
       "dato": "2026-06-15",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F"
     },
@@ -1248,17 +1258,17 @@
       },
       {
         "lag": "Elfenbenskysten",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 1,
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Ecuador",
         "poeng": 0,
-        "mf": 0,
+        "mf": -1,
         "maal_for": 0,
-        "spilt": 0
+        "spilt": 1
       },
       {
         "lag": "Curaçao",
@@ -1269,6 +1279,13 @@
       }
     ],
     "Gruppe F": [
+      {
+        "lag": "Sverige",
+        "poeng": 3,
+        "mf": 4,
+        "maal_for": 5,
+        "spilt": 1
+      },
       {
         "lag": "Nederland",
         "poeng": 1,
@@ -1284,18 +1301,11 @@
         "spilt": 1
       },
       {
-        "lag": "Sverige",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
         "lag": "Tunisia",
         "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "mf": -4,
+        "maal_for": 1,
+        "spilt": 1
       }
     ],
     "Gruppe G": [
@@ -1541,6 +1551,11 @@
       "maal": 2
     },
     {
+      "navn": "Yasin Ayari",
+      "lag": "Sverige",
+      "maal": 2
+    },
+    {
       "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
@@ -1573,11 +1588,6 @@
     {
       "navn": "Cyle Larin",
       "lag": "Canada",
-      "maal": 1
-    },
-    {
-      "navn": "Mauricio",
-      "lag": "Paraguay",
       "maal": 1
     }
   ],
