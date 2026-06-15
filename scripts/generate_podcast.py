@@ -16,6 +16,7 @@ Bruk: python scripts/generate_podcast.py tournaments/vm-2026 [--lyd]
 from __future__ import annotations
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -80,6 +81,28 @@ def _tall(n) -> str:
 
 def _nn(s) -> str:
     return str(s).strip().lower() if s is not None else ""
+
+
+# Tallord over ti -> siffer (modellen skal aldri skrive "elleve" o.l. i tale)
+_TALLORD = {
+    "elleve": "11", "tolv": "12", "tretten": "13", "fjorten": "14", "femten": "15",
+    "seksten": "16", "sytten": "17", "atten": "18", "nitten": "19",
+    "tjueén": "21", "tjueen": "21", "tjueto": "22", "tjuetre": "23", "tjuefire": "24",
+    "tjuefem": "25", "tjueseks": "26", "tjuesju": "27", "tjuesyv": "27",
+    "tjueåtte": "28", "tjueni": "29", "tjue": "20",
+    "tretti": "30", "førti": "40", "femti": "50", "seksti": "60", "sytti": "70",
+    "åtti": "80", "nitti": "90", "hundre": "100",
+}
+# Lengste først, så "tjuefem" matcher før "tjue"
+_TALLORD_RE = re.compile(
+    r"(?<![a-zæøåA-ZÆØÅ])(" +
+    "|".join(sorted((re.escape(k) for k in _TALLORD), key=len, reverse=True)) +
+    r")(?![a-zæøåA-ZÆØÅ])", re.IGNORECASE)
+
+
+def normaliser_tallord(tekst: str) -> str:
+    """Bytt ut tallord over ti med siffer (11, 12, 20 ...) — TTS-vennlig."""
+    return _TALLORD_RE.sub(lambda m: _TALLORD[m.group(1).lower()], tekst)
 
 
 def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
@@ -237,11 +260,11 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     if text.startswith("```"):
         text = text.split("```")[1].lstrip("json").strip()
     manus = json.loads(text)
-    # valider
+    # valider + normaliser tallord (>10 -> siffer)
     out = []
     for m in manus:
         if m.get("vert") and m.get("tekst"):
-            out.append({"vert": m["vert"], "tekst": m["tekst"]})
+            out.append({"vert": m["vert"], "tekst": normaliser_tallord(m["tekst"])})
     return out
 
 
