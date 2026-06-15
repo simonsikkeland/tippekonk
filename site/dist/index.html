@@ -144,6 +144,8 @@
   .fcheck{font-size:11px;color:var(--slate);margin-top:5px}
   .fcheck.hit{color:var(--pitch);font-weight:700}
   .fcheck.miss{color:var(--red);font-weight:700}
+  .fpicks{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:7px;font-size:12px;color:var(--slate)}
+  .ftip b{display:inline-block;min-width:15px;text-align:center;font-family:'Archivo';font-weight:900;color:var(--ink);margin-right:3px}
   .empty{text-align:center;padding:54px 20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--slate)}
   .empty .big{font-family:'Archivo';font-size:20px;font-weight:800;color:var(--ink)}
   footer{max-width:1000px;margin:0 auto;padding:10px 20px 40px;color:var(--slate);font-size:12px}
@@ -460,12 +462,20 @@ function renderFordeling(d){
     return `<div class="fseg ${p.toLowerCase()}${win}" style="width:${w}%" title="${PICK_LBL[p]}: ${n} av ${N}"><span>${p} ${Math.round(w)}%</span></div>`;
   };
   const matchHtml = k => {
+    const navn = k.navn || {H:[],U:[],B:[]};
     let check = '';
     if(k.fasit){
-      const riktig = k.riktig || [];
+      // Ferdigspilt: vis hvem som tok riktig
+      const riktig = navn[k.fasit] || [];
       check = riktig.length
         ? `<div class="fcheck hit">✓ Riktig (${PICK_LBL[k.fasit].toLowerCase()}): ${riktig.map(esc).join(', ')}</div>`
         : `<div class="fcheck miss">✗ Ingen tippet riktig · fasit: ${PICK_LBL[k.fasit]}</div>`;
+    } else {
+      // Ikke spilt: vis hvem som har tippet hva
+      const linje = p => (navn[p]||[]).length
+        ? `<span class="ftip"><b>${p}</b> ${(navn[p]).map(esc).join(', ')}</span>` : '';
+      const deler = ['H','U','B'].map(linje).filter(Boolean).join('');
+      if(deler) check = `<div class="fpicks">${deler}</div>`;
     }
     return `<div class="fmatch">
       <div class="fhead">${flag(k.home)} ${esc(k.home)} <span class="vs">–</span> ${esc(k.away)} ${flag(k.away)}

@@ -145,8 +145,9 @@ def tippefordeling(deltakere, fact):
             "group": (k.get("group") or "").replace("GROUP_", ""),
             "H": teller["H"], "U": teller["U"], "B": teller["B"],
             "fasit": fasit,
-            # Hvem tippet riktig utfall (kun ferdigspilte kamper)
-            "riktig": navn_pick[key].get(fasit, []) if fasit else None,
+            # Hvem tippet hva (navn per utfall). Siden viser dette på uspilte kamper,
+            # og "hvem tok riktig" (navn[fasit]) når kampen er ferdig.
+            "navn": navn_pick[key],
         })
 
     antall = len(deltakere)

@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-15T08:10:47+00:00",
+  "oppdatert": "2026-06-15T08:36:56+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1921,19 +1921,23 @@
               "U": 0,
               "B": 0,
               "fasit": "H",
-              "riktig": [
-                "Simon",
-                "Tobias",
-                "Jonas",
-                "Andrè",
-                "Marius",
-                "Håkon",
-                "Bjørn",
-                "Arya",
-                "Ringstad",
-                "Øystein",
-                "Robin"
-              ]
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             }
           ]
         },
@@ -1948,10 +1952,25 @@
               "U": 6,
               "B": 3,
               "fasit": "H",
-              "riktig": [
-                "Bjørn",
-                "Arya"
-              ]
+              "navn": {
+                "H": [
+                  "Bjørn",
+                  "Arya"
+                ],
+                "U": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Ringstad"
+                ],
+                "B": [
+                  "Tobias",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Canada",
@@ -1961,11 +1980,25 @@
               "U": 3,
               "B": 3,
               "fasit": "U",
-              "riktig": [
-                "Simon",
-                "Jonas",
-                "Ringstad"
-              ]
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Bjørn",
+                  "Arya",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Simon",
+                  "Jonas",
+                  "Ringstad"
+                ],
+                "B": [
+                  "Andrè",
+                  "Marius",
+                  "Håkon"
+                ]
+              }
             }
           ]
         },
@@ -1980,16 +2013,24 @@
               "U": 3,
               "B": 0,
               "fasit": "H",
-              "riktig": [
-                "Simon",
-                "Tobias",
-                "Jonas",
-                "Andrè",
-                "Marius",
-                "Håkon",
-                "Bjørn",
-                "Øystein"
-              ]
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Øystein"
+                ],
+                "U": [
+                  "Arya",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Brasil",
@@ -1999,10 +2040,24 @@
               "U": 2,
               "B": 0,
               "fasit": "U",
-              "riktig": [
-                "Simon",
-                "Marius"
-              ]
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Simon",
+                  "Marius"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Qatar",
@@ -2012,9 +2067,24 @@
               "U": 1,
               "B": 10,
               "fasit": "U",
-              "riktig": [
-                "Andrè"
-              ]
+              "navn": {
+                "H": [],
+                "U": [
+                  "Andrè"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             }
           ]
         },
@@ -2029,19 +2099,23 @@
               "U": 0,
               "B": 11,
               "fasit": "B",
-              "riktig": [
-                "Simon",
-                "Tobias",
-                "Jonas",
-                "Andrè",
-                "Marius",
-                "Håkon",
-                "Bjørn",
-                "Arya",
-                "Ringstad",
-                "Øystein",
-                "Robin"
-              ]
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Australia",
@@ -2051,7 +2125,24 @@
               "U": 3,
               "B": 8,
               "fasit": "H",
-              "riktig": []
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias",
+                  "Jonas",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "Elfenbenskysten",
@@ -2061,9 +2152,25 @@
               "U": 8,
               "B": 2,
               "fasit": "H",
-              "riktig": [
-                "Tobias"
-              ]
+              "navn": {
+                "H": [
+                  "Tobias"
+                ],
+                "U": [
+                  "Simon",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "B": [
+                  "Jonas",
+                  "Andrè"
+                ]
+              }
             },
             {
               "home": "Tyskland",
@@ -2073,19 +2180,23 @@
               "U": 0,
               "B": 0,
               "fasit": "H",
-              "riktig": [
-                "Simon",
-                "Tobias",
-                "Jonas",
-                "Andrè",
-                "Marius",
-                "Håkon",
-                "Bjørn",
-                "Arya",
-                "Ringstad",
-                "Øystein",
-                "Robin"
-              ]
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Nederland",
@@ -2095,7 +2206,24 @@
               "U": 0,
               "B": 1,
               "fasit": "U",
-              "riktig": []
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": [
+                  "Simon"
+                ]
+              }
             }
           ]
         },
@@ -2110,13 +2238,25 @@
               "U": 5,
               "B": 1,
               "fasit": "H",
-              "riktig": [
-                "Simon",
-                "Tobias",
-                "Jonas",
-                "Håkon",
-                "Arya"
-              ]
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Håkon",
+                  "Arya"
+                ],
+                "U": [
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "B": [
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Saudi-Arabia",
@@ -2126,7 +2266,24 @@
               "U": 1,
               "B": 10,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Spania",
@@ -2136,7 +2293,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Belgia",
@@ -2146,7 +2319,24 @@
               "U": 1,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Håkon"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2161,7 +2351,25 @@
               "U": 1,
               "B": 2,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Håkon"
+                ],
+                "B": [
+                  "Jonas",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Frankrike",
@@ -2171,7 +2379,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Irak",
@@ -2181,7 +2405,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             }
           ]
         },
@@ -2196,7 +2436,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Østerrike",
@@ -2206,7 +2462,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Ghana",
@@ -2216,7 +2488,24 @@
               "U": 4,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Arya",
+                  "Øystein"
+                ],
+                "U": [
+                  "Tobias",
+                  "Bjørn",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "England",
@@ -2226,7 +2515,24 @@
               "U": 5,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Marius",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Jonas",
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Portugal",
@@ -2236,7 +2542,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             }
           ]
         },
@@ -2251,7 +2573,24 @@
               "U": 2,
               "B": 9,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "Tsjekkia",
@@ -2261,7 +2600,25 @@
               "U": 2,
               "B": 1,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Jonas",
+                  "Bjørn"
+                ],
+                "B": [
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Sveits",
@@ -2271,7 +2628,24 @@
               "U": 2,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Marius",
+                  "Håkon",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Andrè",
+                  "Bjørn"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Canada",
@@ -2281,7 +2655,24 @@
               "U": 3,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Andrè",
+                  "Marius",
+                  "Håkon"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2296,7 +2687,24 @@
               "U": 3,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Jonas",
+                  "Marius",
+                  "Arya"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Skottland",
@@ -2306,7 +2714,24 @@
               "U": 2,
               "B": 9,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias",
+                  "Arya"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "USA",
@@ -2316,7 +2741,24 @@
               "U": 2,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Marius",
+                  "Robin"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2331,7 +2773,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Tyrkia",
@@ -2341,7 +2799,24 @@
               "U": 4,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Arya",
+                  "Øystein"
+                ],
+                "U": [
+                  "Håkon",
+                  "Bjørn",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Tyskland",
@@ -2351,7 +2826,24 @@
               "U": 2,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Håkon",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Nederland",
@@ -2361,7 +2853,25 @@
               "U": 1,
               "B": 1,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Robin"
+                ],
+                "B": [
+                  "Tobias"
+                ]
+              }
             }
           ]
         },
@@ -2376,7 +2886,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Tunisia",
@@ -2386,7 +2912,24 @@
               "U": 4,
               "B": 7,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Øystein"
+                ],
+                "B": [
+                  "Simon",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Uruguay",
@@ -2396,7 +2939,24 @@
               "U": 1,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "U": [
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Spania",
@@ -2406,7 +2966,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Belgia",
@@ -2416,7 +2992,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             }
           ]
         },
@@ -2431,7 +3023,24 @@
               "U": 4,
               "B": 7,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias",
+                  "Marius",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "Frankrike",
@@ -2441,7 +3050,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Argentina",
@@ -2451,7 +3076,24 @@
               "U": 1,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Tobias"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2466,7 +3108,24 @@
               "U": 6,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Jonas",
+                  "Håkon",
+                  "Bjørn",
+                  "Robin"
+                ],
+                "U": [
+                  "Simon",
+                  "Andrè",
+                  "Marius",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Jordan",
@@ -2476,7 +3135,25 @@
               "U": 3,
               "B": 6,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Håkon"
+                ],
+                "U": [
+                  "Arya",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "England",
@@ -2486,7 +3163,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             },
             {
               "home": "Panama",
@@ -2496,7 +3189,24 @@
               "U": 1,
               "B": 10,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Portugal",
@@ -2506,7 +3216,23 @@
               "U": 0,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [],
+                "B": []
+              }
             }
           ]
         },
@@ -2521,7 +3247,24 @@
               "U": 2,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Tobias",
+                  "Ringstad"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Skottland",
@@ -2531,7 +3274,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Marokko",
@@ -2541,7 +3300,24 @@
               "U": 2,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Tobias",
+                  "Bjørn"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Sveits",
@@ -2551,7 +3327,24 @@
               "U": 5,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Arya",
+                  "Ringstad"
+                ],
+                "U": [
+                  "Simon",
+                  "Jonas",
+                  "Bjørn",
+                  "Øystein",
+                  "Robin"
+                ],
+                "B": []
+              }
             },
             {
               "home": "Bosnia-Hercegovina",
@@ -2561,7 +3354,24 @@
               "U": 3,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Håkon",
+                  "Arya",
+                  "Ringstad"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2576,7 +3386,24 @@
               "U": 3,
               "B": 8,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Marius",
+                  "Håkon",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "Sør-Afrika",
@@ -2586,7 +3413,25 @@
               "U": 4,
               "B": 6,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Øystein"
+                ],
+                "U": [
+                  "Tobias",
+                  "Jonas",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya"
+                ]
+              }
             },
             {
               "home": "Curaçao",
@@ -2596,7 +3441,24 @@
               "U": 1,
               "B": 10,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Håkon"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Ecuador",
@@ -2606,7 +3468,24 @@
               "U": 1,
               "B": 10,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Japan",
@@ -2616,7 +3495,25 @@
               "U": 4,
               "B": 4,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Marius",
+                  "Ringstad"
+                ],
+                "U": [
+                  "Andrè",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya"
+                ],
+                "B": [
+                  "Tobias",
+                  "Jonas",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Tunisia",
@@ -2626,7 +3523,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             }
           ]
         },
@@ -2641,7 +3554,25 @@
               "U": 7,
               "B": 1,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Andrè",
+                  "Marius",
+                  "Øystein"
+                ],
+                "U": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Robin"
+                ],
+                "B": [
+                  "Ringstad"
+                ]
+              }
             },
             {
               "home": "Paraguay",
@@ -2651,7 +3582,25 @@
               "U": 6,
               "B": 2,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Tobias",
+                  "Marius",
+                  "Håkon"
+                ],
+                "U": [
+                  "Simon",
+                  "Andrè",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "B": [
+                  "Jonas",
+                  "Bjørn"
+                ]
+              }
             },
             {
               "home": "Norge",
@@ -2661,7 +3610,24 @@
               "U": 6,
               "B": 5,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon"
+                ],
+                "B": [
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Senegal",
@@ -2671,7 +3637,24 @@
               "U": 1,
               "B": 0,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Tobias"
+                ],
+                "B": []
+              }
             }
           ]
         },
@@ -2686,7 +3669,25 @@
               "U": 7,
               "B": 1,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Jonas",
+                  "Andrè",
+                  "Øystein"
+                ],
+                "U": [
+                  "Simon",
+                  "Tobias",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Ringstad",
+                  "Robin"
+                ],
+                "B": [
+                  "Arya"
+                ]
+              }
             },
             {
               "home": "New Zealand",
@@ -2696,7 +3697,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Kapp Verde",
@@ -2706,7 +3723,24 @@
               "U": 5,
               "B": 6,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Håkon",
+                  "Ringstad"
+                ],
+                "B": [
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Uruguay",
@@ -2716,7 +3750,24 @@
               "U": 4,
               "B": 7,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Tobias",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn"
+                ],
+                "B": [
+                  "Simon",
+                  "Jonas",
+                  "Andrè",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Panama",
@@ -2726,7 +3777,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Kroatia",
@@ -2736,7 +3803,25 @@
               "U": 2,
               "B": 1,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Simon",
+                  "Jonas",
+                  "Marius",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ],
+                "U": [
+                  "Tobias",
+                  "Andrè"
+                ],
+                "B": [
+                  "Håkon"
+                ]
+              }
             },
             {
               "home": "Colombia",
@@ -2746,7 +3831,24 @@
               "U": 3,
               "B": 8,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Håkon",
+                  "Arya",
+                  "Robin"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Bjørn",
+                  "Ringstad",
+                  "Øystein"
+                ]
+              }
             },
             {
               "home": "DR Kongo",
@@ -2756,7 +3858,25 @@
               "U": 7,
               "B": 3,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [
+                  "Jonas"
+                ],
+                "U": [
+                  "Simon",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad"
+                ],
+                "B": [
+                  "Tobias",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             }
           ]
         },
@@ -2771,7 +3891,24 @@
               "U": 5,
               "B": 6,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Ringstad",
+                  "Øystein"
+                ],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Robin"
+                ]
+              }
             },
             {
               "home": "Jordan",
@@ -2781,7 +3918,23 @@
               "U": 0,
               "B": 11,
               "fasit": null,
-              "riktig": null
+              "navn": {
+                "H": [],
+                "U": [],
+                "B": [
+                  "Simon",
+                  "Tobias",
+                  "Jonas",
+                  "Andrè",
+                  "Marius",
+                  "Håkon",
+                  "Bjørn",
+                  "Arya",
+                  "Ringstad",
+                  "Øystein",
+                  "Robin"
+                ]
+              }
             }
           ]
         }
