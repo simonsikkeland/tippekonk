@@ -83,7 +83,7 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "Folarin Balogun",
+  "toppscorer": "",
   "antall_maal": 38,
   "kamper": [
     {
@@ -1539,57 +1539,6 @@
     "Skottland": "https://crests.football-data.org/814.svg",
     "Curaçao": "https://crests.football-data.org/curacao.svg"
   },
-  "topp_scorere": [
-    {
-      "navn": "Folarin Balogun",
-      "lag": "USA",
-      "maal": 2
-    },
-    {
-      "navn": "Kai Havertz",
-      "lag": "Tyskland",
-      "maal": 2
-    },
-    {
-      "navn": "Yasin Ayari",
-      "lag": "Sverige",
-      "maal": 2
-    },
-    {
-      "navn": "Julián Quiñones",
-      "lag": "Mexico",
-      "maal": 1
-    },
-    {
-      "navn": "Raúl Jiménez",
-      "lag": "Mexico",
-      "maal": 1
-    },
-    {
-      "navn": "Ladislav Krejčí",
-      "lag": "Tsjekkia",
-      "maal": 1
-    },
-    {
-      "navn": "In-beom Hwang",
-      "lag": "Sør-Korea",
-      "maal": 1
-    },
-    {
-      "navn": "Hyun-Gyu Oh",
-      "lag": "Sør-Korea",
-      "maal": 1
-    },
-    {
-      "navn": "Jovo Lukić",
-      "lag": "Bosnia-Hercegovina",
-      "maal": 1
-    },
-    {
-      "navn": "Cyle Larin",
-      "lag": "Canada",
-      "maal": 1
-    }
-  ],
+  "topp_scorere": [],
   "gruppespill_ferdig": false
 }
