@@ -36,6 +36,10 @@
     "stemmer": {
       "Erik": "EpYEY8MWJrUGskHBoNMA",
       "Frank": "9pRpxWU0T7UFt2oEMH6n"
+    },
+    "tempo": {
+      "_standard": 1.1,
+      "Frank": 1.2
     }
   }
 }

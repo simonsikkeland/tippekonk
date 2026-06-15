@@ -186,9 +186,10 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"traff, en som bommet stygt). Heller 'nesten hele gjengen tror Norge vinner' enn å lese "
         f"opp elleve navn.\n"
         f"- TTS-VENNLIG FORMAT: Bruk ALDRI bindestrek eller tankestrek (verken - eller —); bruk "
-        f"komma og punktum for pauser. Tall til og med ti skrives som ord (f.eks. 'tre til null'); "
-        f"tall over ti skrives med siffer (f.eks. 12 mål, 20 poeng). Skriv resultater med 'til', "
-        f"f.eks. 'tre til null', aldri 'tre-null'.\n\n"
+        f"komma og punktum for pauser. Tall til og med ti skrives som ord (f.eks. 'tre til null'). "
+        f"Tall over ti skrives ALLTID med siffer — skriv ALDRI tallord som 'elleve', 'tolv', "
+        f"'tjue' osv. Skriv 11, 12, 20. Skriv resultater med 'til', f.eks. 'tre til null', "
+        f"aldri 'tre-null'.\n\n"
         f"STRUKTUR (følg denne rekkefølgen):\n"
         f"1. INTRO — Kort, energisk velkomst. Kommenter intro-jingelen på en morsom måte "
         f"(f.eks. 'For en intro!', 'Den jingelen blir aldri gammel!'). Sett stemningen.\n"
@@ -203,7 +204,12 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
         f"4. OUTRO — Aller siste replikk skal ALLTID avsluttes med ordene 'Spill av outroen!' "
         f"som et signal til outro-jingelen. Gjør det naturlig og morsomt.\n\n"
-        f"TONE: Morsom, energisk, personlig. Samspillet mellom de to vertene er hjertet i showet. "
+        f"TONE: Kul, frekk og høyt tempo. Vertene er selvsikre og lar munnen gå — frekke jokes, "
+        f"syrlige stikk og lett politisk ukorrekt humor. De roaster kompisene og lagene uten "
+        f"filter, og er ikke redde for å være litt drøye. (Grense: ikke hatefullt eller "
+        f"diskriminerende — ikke angrip folk på etnisitet, religion, legning eller kjønn. "
+        f"Hold brodden til ertende kompis-roast og fotball.) "
+        f"Samspillet mellom de to vertene er hjertet i showet. "
         f"Vev inn konkrete data — lagnavn, spillernavn, resultater, stillinger, poeng. "
         f"Lengde: rundt 14 til 20 replikker totalt (cirka fem til sju minutter tale). "
         f"Svar KUN med gyldig JSON: en liste med objekter med feltene 'vert' (enten '{a}' eller '{b}') "
@@ -240,17 +246,19 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
 
 
 def eleven_tts(api_key: str, voice_id: str, tekst: str, ut: Path,
-               modell: str = "eleven_turbo_v2_5"):
+               modell: str = "eleven_turbo_v2_5", speed: float = 1.0):
     body = json.dumps({
         "text": tekst,
         "model_id": modell,
         # Energisk levering: lav stability gir mer variasjon/innlevelse,
-        # style skrur opp uttrykksfullheten, speaker_boost gir mer nærvær.
+        # style skrur opp uttrykksfullheten, speaker_boost gir mer nærvær,
+        # speed styrer taletempo (0.7–1.2; 1.0 = normalt).
         "voice_settings": {
             "stability": 0.3,
             "similarity_boost": 0.8,
             "style": 0.6,
             "use_speaker_boost": True,
+            "speed": max(0.7, min(1.2, speed)),
         },
     }).encode("utf-8")
     req = urllib.request.Request(f"{ELEVEN_URL}/{voice_id}", data=body, headers={
@@ -353,6 +361,8 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
         tts_modell = cfg.get("podcast", {}).get("tts_modell", "eleven_turbo_v2_5")
         print(f"Genererer lyd med ElevenLabs ({tts_modell}) ...")
         stemmer = cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES
+        tempo = cfg.get("podcast", {}).get("tempo", {})
+        tempo_std = tempo.get("_standard", 1.08)
         with tempfile.TemporaryDirectory() as tmp:
             klipp = []
             # Intro-jingle
@@ -362,8 +372,9 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
                 print("  Intro-jingle lagt til")
             for i, m in enumerate(manus):
                 vid = stemmer.get(m["vert"]) or list(stemmer.values())[i % len(stemmer)]
+                spd = tempo.get(m["vert"], tempo_std)
                 kp = Path(tmp) / f"{i:03d}.mp3"
-                eleven_tts(eleven_key, vid, m["tekst"], kp, tts_modell)
+                eleven_tts(eleven_key, vid, m["tekst"], kp, tts_modell, spd)
                 klipp.append(kp)
             # Outro-jingle
             jingle_outro = pod_dir / "jingle-outro.mp3"
