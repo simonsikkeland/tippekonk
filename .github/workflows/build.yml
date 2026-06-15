@@ -9,7 +9,12 @@ on:
       - "tournaments/**/data/manuell.json"
       - "scripts/**"
       - "site/**"
-  workflow_dispatch: {}        # lar deg kjøre manuelt fra GitHub
+  workflow_dispatch:           # lar deg kjøre manuelt fra GitHub
+    inputs:
+      force_podcast:
+        description: "Regenerer dagens podcast selv om den allerede finnes"
+        type: boolean
+        default: false
   schedule:
     - cron: "10 */3 * * *"     # hver 3. time: hent resultater + bygg side
     - cron: "30 6 * * *"       # 1x/dag (08:30 norsk): + podcast (Claude + ElevenLabs)
@@ -55,6 +60,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTAPI }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENAPI }}
+          FORCE_PODCAST: ${{ inputs.force_podcast && '1' || '' }}
         run: |
           python scripts/generate_podcast.py tournaments/vm-2026 --lyd || true
 
