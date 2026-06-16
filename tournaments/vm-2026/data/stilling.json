@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-16T11:40:52+00:00",
+  "oppdatert": "2026-06-16T17:19:51+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -17,6 +17,11 @@
         "home": "Sør-Korea",
         "away": "Tsjekkia",
         "result": "H"
+      },
+      {
+        "home": "Canada",
+        "away": "Bosnia-Hercegovina",
+        "result": "U"
       },
       {
         "home": "USA",
@@ -86,7 +91,7 @@
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Qatar",
+      "Gruppe B": "Canada",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -107,7 +112,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Folarin Balogun",
-    "antall_maal": 44,
+    "antall_maal": 46,
     "kamper": [
       {
         "home": "Mexico",
@@ -133,8 +138,8 @@
         "home": "Canada",
         "away": "Bosnia-Hercegovina",
         "dato": "2026-06-12",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 1,
         "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B"
@@ -1183,6 +1188,20 @@
       ],
       "Gruppe B": [
         {
+          "lag": "Canada",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1195,20 +1214,6 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
-        },
-        {
-          "lag": "Canada",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
-        },
-        {
-          "lag": "Bosnia-Hercegovina",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -1619,6 +1624,28 @@
   "stilling": [
     {
       "plass": 1,
+      "navn": "Simon",
+      "poeng": 7,
+      "linjer": [
+        {
+          "label": "Gruppespill (7 riktige)",
+          "pts": 7,
+          "detail": "7 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 304 (fasit 46)"
+        }
+      ]
+    },
+    {
+      "plass": 2,
       "navn": "Tobias",
       "poeng": 7,
       "linjer": [
@@ -1635,12 +1662,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 161 (fasit 44)"
+          "detail": "tippet 161 (fasit 46)"
         }
       ]
     },
     {
-      "plass": 2,
+      "plass": 3,
       "navn": "Håkon",
       "poeng": 7,
       "linjer": [
@@ -1657,13 +1684,13 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 44)"
+          "detail": "tippet 264 (fasit 46)"
         }
       ]
     },
     {
-      "plass": 3,
-      "navn": "Simon",
+      "plass": 4,
+      "navn": "Jonas",
       "poeng": 6,
       "linjer": [
         {
@@ -1674,17 +1701,17 @@
         {
           "label": "Toppscorer",
           "pts": 0,
-          "detail": "tippet Mbappe"
+          "detail": "tippet Kane"
         },
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 44)"
+          "detail": "tippet 306 (fasit 46)"
         }
       ]
     },
     {
-      "plass": 4,
+      "plass": 5,
       "navn": "Andrè",
       "poeng": 5,
       "linjer": [
@@ -1701,12 +1728,12 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 44)"
+          "detail": "tippet 169 (fasit 46)"
         }
       ]
     },
     {
-      "plass": 5,
+      "plass": 6,
       "navn": "Marius",
       "poeng": 5,
       "linjer": [
@@ -1723,29 +1750,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 44)"
-        }
-      ]
-    },
-    {
-      "plass": 6,
-      "navn": "Jonas",
-      "poeng": 5,
-      "linjer": [
-        {
-          "label": "Gruppespill (5 riktige)",
-          "pts": 5,
-          "detail": "5 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Kane"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 306 (fasit 44)"
+          "detail": "tippet 302 (fasit 46)"
         }
       ]
     },
@@ -1767,7 +1772,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 44)"
+          "detail": "tippet 300 (fasit 46)"
         }
       ]
     },
@@ -1789,12 +1794,34 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 44)"
+          "detail": "tippet 298 (fasit 46)"
         }
       ]
     },
     {
       "plass": 9,
+      "navn": "Ringstad",
+      "poeng": 4,
+      "linjer": [
+        {
+          "label": "Gruppespill (4 riktige)",
+          "pts": 4,
+          "detail": "4 x 1p"
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 262 (fasit 46)"
+        }
+      ]
+    },
+    {
+      "plass": 10,
       "navn": "Øystein",
       "poeng": 4,
       "linjer": [
@@ -1811,29 +1838,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 44)"
-        }
-      ]
-    },
-    {
-      "plass": 10,
-      "navn": "Ringstad",
-      "poeng": 3,
-      "linjer": [
-        {
-          "label": "Gruppespill (3 riktige)",
-          "pts": 3,
-          "detail": "3 x 1p"
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 262 (fasit 44)"
+          "detail": "tippet 286 (fasit 46)"
         }
       ]
     },
@@ -1855,69 +1860,69 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 44)"
+          "detail": "tippet 200 (fasit 46)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 44,
+      "fasit": 46,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 117
+          "diff": 115
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 125
+          "diff": 123
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 156
+          "diff": 154
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 218
+          "diff": 216
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 220
+          "diff": 218
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 242
+          "diff": 240
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 254
+          "diff": 252
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 256
+          "diff": 254
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 258
+          "diff": 256
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 260
+          "diff": 258
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 262
+          "diff": 260
         }
       ]
     },
@@ -1938,16 +1943,16 @@
               "fasit": "H",
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -1973,11 +1978,11 @@
                   "Arya"
                 ],
                 "U": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Ringstad"
                 ],
                 "B": [
@@ -1994,7 +1999,7 @@
               "H": 5,
               "U": 3,
               "B": 3,
-              "fasit": null,
+              "fasit": "U",
               "navn": {
                 "H": [
                   "Tobias",
@@ -2030,12 +2035,12 @@
               "fasit": "H",
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Øystein"
                 ],
@@ -2059,12 +2064,12 @@
                 "H": [
                   "Tobias",
                   "Håkon",
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -2088,15 +2093,15 @@
                   "Andrè"
                 ],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
-                  "Marius",
                   "Jonas",
+                  "Marius",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -2118,16 +2123,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -2148,14 +2153,14 @@
                   "Robin"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
                   "Andrè",
                   "Marius",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ]
               }
             },
@@ -2172,18 +2177,18 @@
                   "Tobias"
                 ],
                 "U": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
                   "Marius",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "B": [
-                  "Andrè",
-                  "Jonas"
+                  "Jonas",
+                  "Andrè"
                 ]
               }
             },
@@ -2197,16 +2202,16 @@
               "fasit": "H",
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2225,13 +2230,13 @@
                 "H": [
                   "Tobias",
                   "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2255,9 +2260,9 @@
               "fasit": "H",
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Jonas",
                   "Arya"
                 ],
@@ -2265,8 +2270,8 @@
                   "Andrè",
                   "Marius",
                   "Bjørn",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "B": [
                   "Robin"
@@ -2287,15 +2292,15 @@
                   "Tobias"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -2310,16 +2315,16 @@
               "fasit": "U",
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2336,15 +2341,15 @@
               "fasit": "U",
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -2368,14 +2373,14 @@
               "fasit": "U",
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
                   "Andrè",
                   "Marius",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Håkon"
@@ -2396,16 +2401,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2424,16 +2429,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -2453,16 +2458,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2479,16 +2484,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2505,11 +2510,11 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Arya",
                   "Øystein"
                 ],
@@ -2532,17 +2537,17 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
                   "Marius",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Håkon",
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Bjørn",
                   "Robin"
                 ],
@@ -2559,16 +2564,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2595,12 +2600,12 @@
                   "Robin"
                 ],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
                   "Øystein"
@@ -2617,14 +2622,14 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Andrè",
                   "Marius",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Jonas",
@@ -2645,14 +2650,14 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
-                  "Marius",
                   "Jonas",
+                  "Marius",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -2672,13 +2677,13 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
                   "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -2704,18 +2709,18 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Andrè",
                   "Bjørn",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
-                  "Marius",
                   "Jonas",
+                  "Marius",
                   "Arya"
                 ],
                 "B": []
@@ -2736,14 +2741,14 @@
                   "Arya"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -2758,15 +2763,15 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Marius",
@@ -2790,16 +2795,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2816,11 +2821,11 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Arya",
                   "Øystein"
                 ],
@@ -2843,15 +2848,15 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Håkon",
@@ -2870,15 +2875,15 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Robin"
@@ -2903,16 +2908,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -2931,13 +2936,13 @@
                 "H": [],
                 "U": [
                   "Tobias",
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Øystein"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
                   "Marius",
                   "Bjørn",
                   "Arya",
@@ -2956,16 +2961,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "U": [
                   "Robin"
@@ -2983,16 +2988,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -3009,16 +3014,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -3047,10 +3052,10 @@
                   "Robin"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
-                  "Andrè",
+                  "Håkon",
                   "Jonas",
+                  "Andrè",
                   "Bjørn",
                   "Arya",
                   "Øystein"
@@ -3067,16 +3072,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -3093,15 +3098,15 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -3136,8 +3141,8 @@
                   "Andrè",
                   "Marius",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "B": []
               }
@@ -3162,9 +3167,9 @@
                 ],
                 "B": [
                   "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Øystein"
                 ]
@@ -3180,16 +3185,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -3210,15 +3215,15 @@
                   "Tobias"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3233,16 +3238,16 @@
               "fasit": null,
               "navn": {
                 "H": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [],
@@ -3264,11 +3269,11 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
                   "Øystein",
@@ -3293,16 +3298,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3317,14 +3322,14 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -3371,11 +3376,11 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Øystein",
                   "Robin"
@@ -3409,14 +3414,14 @@
                   "Robin"
                 ],
                 "B": [
-                  "Tobias",
                   "Simon",
-                  "Andrè",
+                  "Tobias",
                   "Jonas",
+                  "Andrè",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ]
               }
             },
@@ -3439,8 +3444,8 @@
                   "Robin"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
                   "Andrè",
                   "Marius",
                   "Bjørn",
@@ -3462,15 +3467,15 @@
                   "Håkon"
                 ],
                 "B": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3489,15 +3494,15 @@
                   "Tobias"
                 ],
                 "B": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3542,16 +3547,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3576,9 +3581,9 @@
                   "Øystein"
                 ],
                 "U": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Jonas",
                   "Bjørn",
                   "Arya",
@@ -3607,8 +3612,8 @@
                   "Simon",
                   "Andrè",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "B": [
@@ -3628,18 +3633,18 @@
               "navn": {
                 "H": [],
                 "U": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
-                  "Marius",
-                  "Jonas"
+                  "Marius"
                 ],
                 "B": [
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3654,15 +3659,15 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -3686,14 +3691,14 @@
               "fasit": null,
               "navn": {
                 "H": [
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Øystein"
                 ],
                 "U": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Marius",
                   "Bjørn",
                   "Ringstad",
@@ -3716,16 +3721,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3741,9 +3746,9 @@
               "navn": {
                 "H": [],
                 "U": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Jonas",
                   "Ringstad"
                 ],
@@ -3775,11 +3780,11 @@
                 ],
                 "B": [
                   "Simon",
-                  "Andrè",
                   "Jonas",
+                  "Andrè",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3796,16 +3801,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
@@ -3821,12 +3826,12 @@
               "navn": {
                 "H": [
                   "Simon",
-                  "Marius",
                   "Jonas",
+                  "Marius",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ],
                 "U": [
@@ -3854,14 +3859,14 @@
                   "Robin"
                 ],
                 "B": [
-                  "Tobias",
                   "Simon",
+                  "Tobias",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ]
               }
             },
@@ -3878,8 +3883,8 @@
                   "Jonas"
                 ],
                 "U": [
-                  "Håkon",
                   "Simon",
+                  "Håkon",
                   "Andrè",
                   "Marius",
                   "Bjørn",
@@ -3909,16 +3914,16 @@
               "navn": {
                 "H": [],
                 "U": [
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
-                  "Øystein",
-                  "Ringstad"
+                  "Ringstad",
+                  "Øystein"
                 ],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
                   "Bjørn",
                   "Arya",
                   "Robin"
@@ -3937,16 +3942,16 @@
                 "H": [],
                 "U": [],
                 "B": [
+                  "Simon",
                   "Tobias",
                   "Håkon",
-                  "Simon",
+                  "Jonas",
                   "Andrè",
                   "Marius",
-                  "Jonas",
                   "Bjørn",
                   "Arya",
-                  "Øystein",
                   "Ringstad",
+                  "Øystein",
                   "Robin"
                 ]
               }
