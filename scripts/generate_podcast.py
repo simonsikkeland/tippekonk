@@ -134,6 +134,28 @@ def _finn_jingle(pod_dir: Path, navn: str):
     return None
 
 
+def lag_vant_nylig(data: dict, lagnavn: str) -> bool:
+    """True hvis <lagnavn> vant en kamp i dag eller i går — ferskt nok til å feire.
+    Bruker samme dagvindu som de ferske resultatene vertene snakker om, så
+    seiers-sangen spilles i episoden som dekker selve seieren (ikke for alltid etterpå)."""
+    if not lagnavn:
+        return False
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
+    mål = _nn(lagnavn)
+    for k in (data.get("fasit") or {}).get("kamper", []):
+        if k.get("status") != "FINISHED" or k.get("dato") not in (today, yesterday):
+            continue
+        hs, as_ = k.get("home_score"), k.get("away_score")
+        if hs is None or as_ is None:
+            continue
+        if _nn(k.get("home")) == mål and hs > as_:
+            return True
+        if _nn(k.get("away")) == mål and as_ > hs:
+            return True
+    return False
+
+
 # Tallord over ti -> TTS-vennlig form. Vi vil ha "elve" for 11 i norsk tale.
 _TALLORD = {
     "elleve": "elve", "tolv": "12", "tretten": "13", "fjorten": "14", "femten": "15",
@@ -553,6 +575,16 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
             if jingle_intro.exists():
                 klipp.append(jingle_intro)
                 print("  Intro-jingle lagt til")
+            # Seiers-sang: spilles rett etter intro-jingelen hvis Norge vant nylig.
+            seierslag = cfg.get("podcast", {}).get("seierslag", "Norge")
+            seiersfil = cfg.get("podcast", {}).get("seierssang", "tre-poeng-til-norge.mp3")
+            if seiersfil and lag_vant_nylig(data, seierslag):
+                sp = _finn_jingle(pod_dir, seiersfil)
+                if sp:
+                    klipp.append(sp)
+                    print(f"  Seiers-sang lagt til ({sp.name}) — {seierslag} vant nylig!")
+                else:
+                    print(f"  ADVARSEL: {seierslag} vant, men fant ikke {seiersfil}")
             for i, m in enumerate(manus):
                 # Spalte-jingle foran første replikk i en spalte
                 jf = m.get("jingle_foran")
