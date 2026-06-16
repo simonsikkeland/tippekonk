@@ -69,6 +69,16 @@
       "home": "Belgia",
       "away": "Egypt",
       "result": "U"
+    },
+    {
+      "home": "Saudi-Arabia",
+      "away": "Uruguay",
+      "result": "U"
+    },
+    {
+      "home": "Iran",
+      "away": "New Zealand",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -78,8 +88,8 @@
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
     "Gruppe F": "Sverige",
-    "Gruppe G": "Belgia",
-    "Gruppe H": "Spania",
+    "Gruppe G": "Iran",
+    "Gruppe H": "Saudi-Arabia",
     "Gruppe I": "Frankrike",
     "Gruppe J": "Argentina",
     "Gruppe K": "Portugal",
@@ -94,7 +104,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 40,
+  "antall_maal": 46,
   "kamper": [
     {
       "home": "Mexico",
@@ -240,9 +250,9 @@
       "home": "Saudi-Arabia",
       "away": "Uruguay",
       "dato": "2026-06-15",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_H"
     },
@@ -250,9 +260,9 @@
       "home": "Iran",
       "away": "New Zealand",
       "dato": "2026-06-16",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G"
     },
@@ -1320,6 +1330,20 @@
     ],
     "Gruppe G": [
       {
+        "lag": "Iran",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 2,
+        "spilt": 1
+      },
+      {
+        "lag": "New Zealand",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 2,
+        "spilt": 1
+      },
+      {
         "lag": "Belgia",
         "poeng": 1,
         "mf": 0,
@@ -1332,23 +1356,23 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
-      },
-      {
-        "lag": "Iran",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "New Zealand",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
       }
     ],
     "Gruppe H": [
+      {
+        "lag": "Saudi-Arabia",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
+        "lag": "Uruguay",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
       {
         "lag": "Spania",
         "poeng": 1,
@@ -1362,20 +1386,6 @@
         "mf": 0,
         "maal_for": 0,
         "spilt": 1
-      },
-      {
-        "lag": "Saudi-Arabia",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Uruguay",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
       }
     ],
     "Gruppe I": [
@@ -1566,6 +1576,11 @@
       "maal": 2
     },
     {
+      "navn": "Elijah Just",
+      "lag": "New Zealand",
+      "maal": 2
+    },
+    {
       "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
@@ -1593,11 +1608,6 @@
     {
       "navn": "Jovo Lukić",
       "lag": "Bosnia-Hercegovina",
-      "maal": 1
-    },
-    {
-      "navn": "Cyle Larin",
-      "lag": "Canada",
       "maal": 1
     }
   ],
