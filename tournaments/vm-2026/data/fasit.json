@@ -79,6 +79,11 @@
       "home": "Iran",
       "away": "New Zealand",
       "result": "U"
+    },
+    {
+      "home": "Frankrike",
+      "away": "Senegal",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -104,7 +109,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 46,
+  "antall_maal": 50,
   "kamper": [
     {
       "home": "Mexico",
@@ -270,9 +275,9 @@
       "home": "Frankrike",
       "away": "Senegal",
       "dato": "2026-06-16",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I"
     },
@@ -1391,17 +1396,10 @@
     "Gruppe I": [
       {
         "lag": "Frankrike",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Senegal",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 2,
+        "maal_for": 3,
+        "spilt": 1
       },
       {
         "lag": "Irak",
@@ -1416,6 +1414,13 @@
         "mf": 0,
         "maal_for": 0,
         "spilt": 0
+      },
+      {
+        "lag": "Senegal",
+        "poeng": 0,
+        "mf": -2,
+        "maal_for": 1,
+        "spilt": 1
       }
     ],
     "Gruppe J": [
@@ -1581,6 +1586,11 @@
       "maal": 2
     },
     {
+      "navn": "Kylian Mbappé",
+      "lag": "Frankrike",
+      "maal": 2
+    },
+    {
       "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
@@ -1603,11 +1613,6 @@
     {
       "navn": "Hyun-Gyu Oh",
       "lag": "Sør-Korea",
-      "maal": 1
-    },
-    {
-      "navn": "Jovo Lukić",
-      "lag": "Bosnia-Hercegovina",
       "maal": 1
     }
   ],
