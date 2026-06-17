@@ -104,6 +104,17 @@
   .kamper-list.open{display:block}
   .km{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:var(--slate)}
   .km-res{font-size:11px;color:var(--pitch);font-weight:700;white-space:nowrap;padding-left:10px}
+  .bk-note{color:var(--slate);font-size:13px;margin:4px 0 10px}
+  .bk-champ{background:linear-gradient(180deg,#FFF9EB,#fff);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:15px;margin-bottom:12px}
+  .bk-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px}
+  .bk-col{flex:0 0 190px;display:flex;flex-direction:column;gap:10px;justify-content:space-around}
+  .bk-round{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);font-weight:700;text-align:center}
+  .bk-match{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .bk-side{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:13px;border-bottom:1px solid var(--line)}
+  .bk-side:last-child{border-bottom:none}
+  .bk-win{background:#F0F9F1;font-weight:700}
+  .bk-seed{font-size:10px;color:var(--slate);background:#F0EEE6;border-radius:4px;padding:1px 4px;font-weight:700;min-width:22px;text-align:center}
+  .bk-tbd{color:var(--slate)}
   h2{font-family:'Archivo';font-size:20px;margin:30px 0 12px}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
@@ -200,6 +211,9 @@
   <!-- 4. Grupper + øvrig statistikk -->
   <div id="grupper"></div>
   <div id="stats"></div>
+
+  <!-- 5. Projisert sluttspill -->
+  <div id="sluttspill"></div>
 </main>
 <footer id="foot"></footer>
 
@@ -285,6 +299,7 @@ async function load(id){
   renderScorers(d);
   renderStats(d);
   renderFordeling(d);
+  renderSluttspill(d);
   renderPodcast(id, d);
   $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
 }
@@ -460,6 +475,31 @@ function renderStats(d){
   if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
+}
+
+function renderSluttspill(d){
+  const ss = d.projisert_sluttspill;
+  if(!ss || !ss.runder){ $("#sluttspill").innerHTML=''; return; }
+  const tip = (t)=> t ? `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span> ${esc(t.navn)}</span>` : `<span class="bk-team bk-tbd">?</span>`;
+  const mester = ss.mester ? `<div class="bk-champ">🏆 Projisert mester: <strong>${esc(ss.mester.navn)}</strong>${ss.bronse?` · 🥉 ${esc(ss.bronse.navn)}`:''}</div>` : '';
+
+  const cols = ss.runder.map(r=>{
+    const kamper = r.kamper.map(k=>{
+      const hw = k.vinner && k.home && k.vinner.navn===k.home.navn;
+      const aw = k.vinner && k.away && k.vinner.navn===k.away.navn;
+      return `<div class="bk-match">
+        <div class="bk-side${hw?' bk-win':''}">${tip(k.home)}</div>
+        <div class="bk-side${aw?' bk-win':''}">${tip(k.away)}</div>
+      </div>`;
+    }).join("");
+    return `<div class="bk-col"><div class="bk-round">${esc(r.navn)}</div>${kamper}</div>`;
+  }).join("");
+
+  $("#sluttspill").innerHTML = `<h2>Projisert sluttspill</h2>
+    <p class="bk-note">Basert på tabellene akkurat nå. Sterkeste lag (poeng/kamp) går videre — en lek, ikke en spådom.</p>
+    ${mester}
+    <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
+    <div id="bk-wrap" style="display:none"><div class="bk-scroll">${cols}</div></div>`;
 }
 
 const PICK_LBL = {H:'Hjemme', U:'Uavgjort', B:'Borte'};

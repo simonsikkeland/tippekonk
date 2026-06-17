@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from engine import parse_sheet, parse_master, score  # noqa: E402
+from bracket import projiser_sluttspill  # noqa: E402
 
 
 def navn_fra_filnavn(p: Path) -> str:
@@ -107,6 +108,9 @@ def main(tournament_dir: str):
     if fordeling:
         stats["tippefordeling"] = fordeling
 
+    # Projisert sluttspill ut fra dagens gruppetabeller
+    sluttspill = projiser_sluttspill(fact)
+
     out = {
         "turnering": {"navn": cfg["navn"], "kort_navn": cfg["kort_navn"], "vert": cfg.get("vert", "")},
         "oppdatert": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -117,6 +121,7 @@ def main(tournament_dir: str):
             for d in deltakere
         ],
         "statistikk": stats,
+        "projisert_sluttspill": sluttspill,
     }
     out_path = tdir / "data" / "stilling.json"
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
