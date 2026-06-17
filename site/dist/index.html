@@ -70,7 +70,8 @@
 
   /* Podium */
   .podium{display:flex;gap:12px;margin-bottom:18px}
-  .podium-card{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .podium-card{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:transform .08s,box-shadow .12s}
+  .podium-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
   .podium-card.gold{border-color:var(--gold);background:linear-gradient(180deg,#FFF9EB,#fff)}
   .podium-card.silver{border-color:#C0C0C0;background:linear-gradient(180deg,#F5F5F5,#fff)}
   .podium-card.bronze{border-color:#CD7F32;background:linear-gradient(180deg,#FFF5EB,#fff)}
@@ -238,7 +239,7 @@ async function load(id){
   if(d.har_fasit && d.stilling.length >= 3){
     const medals = ['🥇','🥈','🥉'];
     bHtml += '<div class="podium">' + d.stilling.slice(0,3).map((s,i)=>`
-      <div class="podium-card ${i===0?'gold':i===1?'silver':'bronze'}">
+      <div class="podium-card ${i===0?'gold':i===1?'silver':'bronze'}" onclick="openPlayer(${i})" title="Klikk for poengfordeling">
         <span class="podium-medal">${medals[i]}</span>
         <span class="podium-name">${esc(s.navn)}</span>
         <span class="podium-pts">${s.poeng}p</span>
@@ -276,6 +277,22 @@ async function load(id){
 }
 
 function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
+
+// Klikk på pall-kort (eller annet): åpne full tabell, vis spillerens
+// poengfordeling, og bla dit.
+function openPlayer(i){
+  const full = document.getElementById('full-board');
+  if(full && full.style.display === 'none'){
+    const btn = full.previousElementSibling;
+    if(btn && btn.classList.contains('old-toggle')) toggleF(btn, 'full-board');
+  }
+  document.querySelectorAll('.detail.open').forEach(d=>{ if(d.id!=='det'+i) d.classList.remove('open'); });
+  const det = document.getElementById('det'+i);
+  if(det){
+    det.classList.add('open');
+    (det.previousElementSibling || det).scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
 
 function renderKamper(d){
   const kamper = (d.fasit||{}).kamper||[];
