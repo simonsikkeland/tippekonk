@@ -11,11 +11,6 @@
       "result": "H"
     },
     {
-      "home": "Canada",
-      "away": "Bosnia-Hercegovina",
-      "result": "U"
-    },
-    {
       "home": "USA",
       "away": "Paraguay",
       "result": "H"
@@ -89,11 +84,21 @@
       "home": "Irak",
       "away": "Norge",
       "result": "B"
+    },
+    {
+      "home": "Argentina",
+      "away": "Algerie",
+      "result": "H"
+    },
+    {
+      "home": "Østerrike",
+      "away": "Jordan",
+      "result": "H"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Canada",
+    "Gruppe B": "Qatar",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -113,8 +118,8 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "Folarin Balogun",
-  "antall_maal": 55,
+  "toppscorer": "Lionel Messi",
+  "antall_maal": 60,
   "kamper": [
     {
       "home": "Mexico",
@@ -140,8 +145,8 @@
       "home": "Canada",
       "away": "Bosnia-Hercegovina",
       "dato": "2026-06-12",
-      "home_score": 1,
-      "away_score": 1,
+      "home_score": null,
+      "away_score": null,
       "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
@@ -300,9 +305,9 @@
       "home": "Argentina",
       "away": "Algerie",
       "dato": "2026-06-17",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_J"
     },
@@ -310,9 +315,9 @@
       "home": "Østerrike",
       "away": "Jordan",
       "dato": "2026-06-17",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_J"
     },
@@ -1190,20 +1195,6 @@
     ],
     "Gruppe B": [
       {
-        "lag": "Canada",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
-        "lag": "Bosnia-Hercegovina",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
         "lag": "Qatar",
         "poeng": 1,
         "mf": 0,
@@ -1216,6 +1207,20 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
+      },
+      {
+        "lag": "Canada",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
+      },
+      {
+        "lag": "Bosnia-Hercegovina",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
       }
     ],
     "Gruppe C": [
@@ -1431,31 +1436,31 @@
     "Gruppe J": [
       {
         "lag": "Argentina",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Algerie",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 3,
+        "maal_for": 3,
+        "spilt": 1
       },
       {
         "lag": "Østerrike",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 2,
+        "maal_for": 3,
+        "spilt": 1
       },
       {
         "lag": "Jordan",
         "poeng": 0,
-        "mf": 0,
+        "mf": -2,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
+        "lag": "Algerie",
+        "poeng": 0,
+        "mf": -3,
         "maal_for": 0,
-        "spilt": 0
+        "spilt": 1
       }
     ],
     "Gruppe K": [
@@ -1571,6 +1576,11 @@
   },
   "topp_scorere": [
     {
+      "navn": "Lionel Messi",
+      "lag": "Argentina",
+      "maal": 3
+    },
+    {
       "navn": "Folarin Balogun",
       "lag": "USA",
       "maal": 2
@@ -1613,11 +1623,6 @@
     {
       "navn": "Ladislav Krejčí",
       "lag": "Tsjekkia",
-      "maal": 1
-    },
-    {
-      "navn": "In-beom Hwang",
-      "lag": "Sør-Korea",
       "maal": 1
     }
   ],
