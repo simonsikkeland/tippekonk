@@ -115,6 +115,26 @@
   .bk-win{background:#F0F9F1;font-weight:700}
   .bk-seed{font-size:10px;color:var(--slate);background:#F0EEE6;border-radius:4px;padding:1px 4px;font-weight:700;min-width:22px;text-align:center}
   .bk-tbd{color:var(--slate)}
+  .pg-svg{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+  .pg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px;font-size:13px}
+  .pg-legend .lg{display:inline-flex;align-items:center;gap:5px}
+  .pg-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .hm-scroll{overflow-x:auto;padding-bottom:8px}
+  .hm-row{display:flex;align-items:center;gap:2px;margin-bottom:2px}
+  .hm-name{flex:0 0 116px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hm-name b{color:var(--slate)}
+  .hm-cell{flex:0 0 16px;height:16px;border-radius:3px;background:#ececec;font-size:9px;text-align:center;color:#aaa;line-height:16px}
+  .hm-cell.hit{background:#46b46a}
+  .hm-cell.wrong{background:#e07a72}
+  .hm-h{background:none;color:var(--slate)}
+  .lk-scroll{overflow-x:auto}
+  .lk-tab{border-collapse:collapse;font-size:11px}
+  .lk-tab th{color:var(--slate);font-weight:700;padding:2px 4px;font-size:10px}
+  .lk-tab td{width:26px;height:24px;text-align:center;border:2px solid #fff;color:#333;font-variant-numeric:tabular-nums}
+  .lk-tab td.lk-self{background:#f3f1ea}
+  .bn-list{margin-top:6px;font-size:13px}
+  .bn-row{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dashed var(--line)}
+  .bn-row:last-child{border-bottom:none}
   h2{font-family:'Archivo';font-size:20px;margin:30px 0 12px}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
@@ -214,6 +234,12 @@
 
   <!-- 5. Projisert sluttspill -->
   <div id="sluttspill"></div>
+
+  <!-- 6. Flere visualiseringer -->
+  <div id="poenggraf"></div>
+  <div id="bonus"></div>
+  <div id="heatmap"></div>
+  <div id="likhet"></div>
 </main>
 <footer id="foot"></footer>
 
@@ -300,6 +326,11 @@ async function load(id){
   renderStats(d);
   renderFordeling(d);
   renderSluttspill(d);
+  let hist=[]; try{ hist = await jget(`${id}/poenghistorikk.json`); }catch(e){}
+  renderPoenggraf(hist);
+  renderBonus(d);
+  renderHeatmap(d);
+  renderLikhet(d);
   renderPodcast(id, d);
   $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
 }
@@ -500,6 +531,102 @@ function renderSluttspill(d){
     ${mester}
     <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
     <div id="bk-wrap" style="display:none"><div class="bk-scroll">${cols}</div></div>`;
+}
+
+// Stabil farge per deltakernavn (hash -> HSL)
+function fargeFor(navn){ let h=0; for(const c of String(navn)) h=(h*31+c.charCodeAt(0))%360; return `hsl(${h} 65% 45%)`; }
+
+function renderPoenggraf(hist){
+  const el=$("#poenggraf");
+  if(!hist || hist.length<2){ el.innerHTML=''; return; }
+  const siste=hist[hist.length-1].poeng;
+  const navn=Object.keys(siste).sort((a,b)=>(siste[b]||0)-(siste[a]||0));
+  const t0=new Date(hist[0].tid).getTime(), t1=new Date(hist[hist.length-1].tid).getTime();
+  const span=Math.max(1,t1-t0);
+  let maxP=1; hist.forEach(s=>Object.values(s.poeng).forEach(p=>{if(p>maxP)maxP=p;}));
+  const W=720,H=340,mL=30,mR=10,mT=10,mB=20;
+  const px=t=>mL+(new Date(t).getTime()-t0)/span*(W-mL-mR);
+  const py=p=>mT+(1-p/maxP)*(H-mT-mB);
+  const top3=new Set(navn.slice(0,3));
+  let grid=''; const step=maxP<=10?2:maxP<=30?5:10;
+  for(let v=0;v<=maxP;v+=step){ const y=py(v); grid+=`<line x1="${mL}" y1="${y.toFixed(1)}" x2="${W-mR}" y2="${y.toFixed(1)}" stroke="#eee"/><text x="${mL-5}" y="${(y+3).toFixed(1)}" text-anchor="end" font-size="9" fill="#aaa">${v}</text>`; }
+  const lines=navn.map(n=>{
+    const pts=hist.map(s=>`${px(s.tid).toFixed(1)},${py(s.poeng[n]||0).toFixed(1)}`).join(' ');
+    return `<polyline points="${pts}" fill="none" stroke="${fargeFor(n)}" stroke-width="${top3.has(n)?2.6:1.3}" stroke-linejoin="round" opacity="${top3.has(n)?1:.65}"/>`;
+  }).join('');
+  const legend=navn.map(n=>`<span class="lg"><i style="background:${fargeFor(n)}"></i>${esc(n)} <b>${siste[n]||0}</b></span>`).join('');
+  el.innerHTML=`<h2>Poengutvikling</h2>
+    <p class="bk-note">Poeng gjennom mesterskapet. Topp 3 er uthevet.</p>
+    <button class="old-toggle" onclick="toggleF(this,'pg-wrap')">Vis graf ▾</button>
+    <div id="pg-wrap" style="display:none"><svg viewBox="0 0 ${W} ${H}" class="pg-svg">${grid}${lines}</svg>
+    <div class="pg-legend">${legend}</div></div>`;
+}
+
+function renderHeatmap(d){
+  const el=$("#heatmap"); const tf=(d.statistikk||{}).tippefordeling;
+  if(!tf||!tf.dager){ el.innerHTML=''; return; }
+  const kamper=[]; tf.dager.forEach(dag=>dag.kamper.forEach(k=>{ if(k.fasit) kamper.push(k); }));
+  if(!kamper.length){ el.innerHTML=''; return; }
+  const navn=(d.stilling||[]).map(s=>s.navn);
+  const pickOf=(k,n)=>{ for(const u of ['H','U','B']) if((k.navn[u]||[]).includes(n)) return u; return null; };
+  const score=n=>{ let t=0,tot=0; kamper.forEach(k=>{const p=pickOf(k,n); if(p){tot++; if(p===k.fasit)t++;}}); return tot?t/tot:-1; };
+  const sorted=[...navn].sort((a,b)=>score(b)-score(a));
+  const head=`<div class="hm-row hm-head"><span class="hm-name"></span>${kamper.map((k,i)=>`<span class="hm-cell hm-h" title="${esc(k.home)}–${esc(k.away)}">${i+1}</span>`).join('')}</div>`;
+  const body=sorted.map(n=>{
+    let t=0,tot=0;
+    const cells=kamper.map(k=>{const p=pickOf(k,n); let cls='miss',tt='ikke tippet'; if(p){tot++; if(p===k.fasit){cls='hit';t++;tt='traff';}else{cls='wrong';tt='bom';}} return `<span class="hm-cell ${cls}" title="${esc(k.home)}–${esc(k.away)}: ${tt}"></span>`;}).join('');
+    return `<div class="hm-row"><span class="hm-name">${esc(n)} <b>${tot?Math.round(t/tot*100):0}%</b></span>${cells}</div>`;
+  }).join('');
+  el.innerHTML=`<h2>Treff-heatmap</h2>
+    <p class="bk-note">Hver rute = en ferdigspilt kamp. Grønn = traff utfallet · rød = bom · grå = ikke tippet. Sortert etter treffprosent.</p>
+    <button class="old-toggle" onclick="toggleF(this,'hm-wrap')">Vis heatmap ▾</button>
+    <div id="hm-wrap" style="display:none"><div class="hm-scroll">${head}${body}</div></div>`;
+}
+
+function renderLikhet(d){
+  const el=$("#likhet"); const tf=(d.statistikk||{}).tippefordeling;
+  if(!tf||!tf.dager){ el.innerHTML=''; return; }
+  const navn=(d.stilling||[]).map(s=>s.navn);
+  const picks={}; navn.forEach(n=>picks[n]={});
+  tf.dager.forEach(dag=>dag.kamper.forEach(k=>{ const key=k.home+'|'+k.away; ['H','U','B'].forEach(u=>(k.navn[u]||[]).forEach(n=>{ if(picks[n]) picks[n][key]=u; })); }));
+  const sim=(a,b)=>{ let same=0,tot=0; for(const key in picks[a]) if(key in picks[b]){ tot++; if(picks[a][key]===picks[b][key]) same++; } return tot?same/tot:null; };
+  let best=null,worst=null;
+  for(let i=0;i<navn.length;i++)for(let j=i+1;j<navn.length;j++){ const s=sim(navn[i],navn[j]); if(s==null)continue; if(!best||s>best.s)best={a:navn[i],b:navn[j],s}; if(!worst||s<worst.s)worst={a:navn[i],b:navn[j],s}; }
+  if(!best){ el.innerHTML=''; return; }
+  const head=`<tr><th></th>${navn.map(n=>`<th title="${esc(n)}">${esc(n.slice(0,3))}</th>`).join('')}</tr>`;
+  const rows=navn.map(a=>`<tr><th title="${esc(a)}">${esc(a.slice(0,6))}</th>${navn.map(b=>{ if(a===b)return '<td class="lk-self"></td>'; const s=sim(a,b); if(s==null)return '<td></td>'; const pct=Math.round(s*100); return `<td style="background:hsl(${Math.round(s*120)} 60% ${(90-s*35).toFixed(0)}%)" title="${esc(a)} vs ${esc(b)}: ${pct}%">${pct}</td>`;}).join('')}</tr>`).join('');
+  el.innerHTML=`<h2>Hvor enige er vi?</h2>
+    <p class="bk-note">Andel kamper to deltakere tippet samme utfall. Grønnere = likere.</p>
+    <p class="bk-note">Mest like: <b>${esc(best.a)} & ${esc(best.b)}</b> (${Math.round(best.s*100)}%) · Mest ulike: <b>${esc(worst.a)} & ${esc(worst.b)}</b> (${Math.round(worst.s*100)}%)</p>
+    <button class="old-toggle" onclick="toggleF(this,'lk-wrap')">Vis matrise ▾</button>
+    <div id="lk-wrap" style="display:none"><div class="lk-scroll"><table class="lk-tab">${head}${rows}</table></div></div>`;
+}
+
+function renderBonus(d){
+  const el=$("#bonus"); const bt=(d.statistikk||{}).bonustips;
+  if(!bt||!bt.length){ el.innerHTML=''; return; }
+  const fact=d.fasit||{}; const norm=s=>String(s||'').trim().toLowerCase();
+  const r16=new Set((fact.r16||[]).map(norm)); const grpPos={}; const ferdig=fact.gruppespill_ferdig;
+  Object.values(fact.grupper||{}).forEach(rows=>rows.forEach((r,i)=>{grpPos[norm(r.lag)]=i;}));
+  const lagStatus=lag=>{ if(!lag)return{dot:'⚪'}; const n=norm(lag);
+    if(ferdig) return r16.has(n)?{dot:'🟢'}:{dot:'🔴'};
+    const pos=grpPos[n]; if(pos==null)return{dot:'⚪'};
+    return pos<=1?{dot:'🟢'}:pos===2?{dot:'🟡'}:{dot:'🔴'}; };
+  const scorers=fact.topp_scorere||[]; const led=scorers.length?scorers[0].maal:0;
+  const scStatus=nv=>{ if(!nv)return{dot:'⚪'}; const h=scorers.find(s=>norm(s.navn).includes(norm(nv))||norm(nv).includes(norm(s.navn))); return h?{dot:h.maal===led?'🟢':'🟡'}:{dot:'🔴'}; };
+  const tell=felt=>{ const m={}; bt.forEach(b=>{const v=(b[felt]||'').trim(); if(v)m[v]=(m[v]||0)+1;}); return Object.entries(m).sort((a,b)=>b[1]-a[1]); };
+  const pop=arr=>arr.slice(0,3).map(([k,v])=>`${esc(k)} (${v})`).join(' · ')||'–';
+  const mester=bt.map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${lagStatus(b.mester).dot} ${esc(b.mester||'–')}</span></div>`).join('');
+  const sc=bt.map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${scStatus(b.toppscorer).dot} ${esc(b.toppscorer||'–')}</span></div>`).join('');
+  const maal=[...bt].sort((a,b)=>(a.antall_maal??1e9)-(b.antall_maal??1e9)).map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${b.antall_maal??'–'}</span></div>`).join('');
+  el.innerHTML=`<h2>Bonus-tips</h2>
+    <p class="bk-note">🟢 fortsatt med · 🟡 vipper / nær · 🔴 ute. Hvem satset på hva.</p>
+    <button class="old-toggle" onclick="toggleF(this,'bn-wrap')">Vis bonus-tips ▾</button>
+    <div id="bn-wrap" style="display:none"><div class="cards">
+      <div class="card"><h3>Mester 🏆</h3><p class="muted">Populært: ${pop(tell('mester'))}</p><div class="bn-list">${mester}</div></div>
+      <div class="card"><h3>Toppscorer ⚽</h3><p class="muted">Populært: ${pop(tell('toppscorer'))}</p><div class="bn-list">${sc}</div></div>
+      <div class="card"><h3>Antall mål 🥅</h3><p class="muted">Fasit så langt: ${(d.statistikk.antall_maal||{}).fasit??'–'}</p><div class="bn-list">${maal}</div></div>
+    </div></div>`;
 }
 
 const PICK_LBL = {H:'Hjemme', U:'Uavgjort', B:'Borte'};

@@ -1,0 +1,402 @@
+[
+  {
+    "tid": "2026-06-14T16:28:17Z",
+    "poeng": {
+      "Simon": 0
+    }
+  },
+  {
+    "tid": "2026-06-14T18:58:09Z",
+    "poeng": {
+      "Simon": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T19:07:34Z",
+    "poeng": {
+      "Simon": 30
+    }
+  },
+  {
+    "tid": "2026-06-14T19:23:57Z",
+    "poeng": {
+      "Simon": 27
+    }
+  },
+  {
+    "tid": "2026-06-14T19:28:17Z",
+    "poeng": {
+      "Simon": 0
+    }
+  },
+  {
+    "tid": "2026-06-14T19:31:39Z",
+    "poeng": {
+      "Simon": 2
+    }
+  },
+  {
+    "tid": "2026-06-14T19:31:41Z",
+    "poeng": {
+      "Simon": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T19:42:42Z",
+    "poeng": {
+      "Simon": 6
+    }
+  },
+  {
+    "tid": "2026-06-14T20:51:27Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Jonas": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T20:51:33Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T20:58:59Z",
+    "poeng": {
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T21:37:46Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Jonas": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T21:43:21Z",
+    "poeng": {
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T21:47:10Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Jonas": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T22:05:20Z",
+    "poeng": {
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T22:16:05Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Jonas": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T22:25:23Z",
+    "poeng": {
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T23:11:44Z",
+    "poeng": {
+      "Simon": 5,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Jonas": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-14T23:44:45Z",
+    "poeng": {
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Ringstad": 4,
+      "Tobias": 4,
+      "Håkon": 4,
+      "Øystein": 4,
+      "Arya": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-15T07:33:40Z",
+    "poeng": {
+      "Simon": 7,
+      "Tobias": 6,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Håkon": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-15T07:50:56Z",
+    "poeng": {
+      "Simon": 7,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Tobias": 5,
+      "Håkon": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-15T08:10:17Z",
+    "poeng": {
+      "Simon": 7,
+      "Tobias": 6,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Håkon": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-15T21:07:46Z",
+    "poeng": {
+      "Simon": 7,
+      "Tobias": 6,
+      "Håkon": 6,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-16T05:28:42Z",
+    "poeng": {
+      "Simon": 7,
+      "Tobias": 7,
+      "Håkon": 7,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-16T11:40:53Z",
+    "poeng": {
+      "Tobias": 7,
+      "Håkon": 7,
+      "Simon": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Jonas": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Øystein": 4,
+      "Ringstad": 3,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-16T17:19:51Z",
+    "poeng": {
+      "Simon": 7,
+      "Tobias": 7,
+      "Håkon": 7,
+      "Jonas": 6,
+      "Andrè": 5,
+      "Marius": 5,
+      "Bjørn": 5,
+      "Arya": 5,
+      "Ringstad": 4,
+      "Øystein": 4,
+      "Robin": 3
+    }
+  },
+  {
+    "tid": "2026-06-16T21:17:19Z",
+    "poeng": {
+      "Simon": 8,
+      "Tobias": 8,
+      "Håkon": 8,
+      "Jonas": 7,
+      "Andrè": 6,
+      "Marius": 6,
+      "Bjørn": 6,
+      "Arya": 6,
+      "Ringstad": 5,
+      "Øystein": 5,
+      "Robin": 4
+    }
+  },
+  {
+    "tid": "2026-06-17T00:08:53Z",
+    "poeng": {
+      "Simon": 9,
+      "Tobias": 9,
+      "Håkon": 9,
+      "Jonas": 8,
+      "Andrè": 7,
+      "Marius": 7,
+      "Bjørn": 7,
+      "Arya": 7,
+      "Ringstad": 6,
+      "Øystein": 6,
+      "Robin": 5
+    }
+  },
+  {
+    "tid": "2026-06-17T10:15:41Z",
+    "poeng": {
+      "Tobias": 11,
+      "Håkon": 11,
+      "Simon": 10,
+      "Andrè": 9,
+      "Marius": 9,
+      "Jonas": 9,
+      "Bjørn": 9,
+      "Arya": 9,
+      "Øystein": 8,
+      "Ringstad": 7,
+      "Robin": 7
+    }
+  },
+  {
+    "tid": "2026-06-17T15:11:33+02:00",
+    "poeng": {
+      "Simon": 11,
+      "Tobias": 11,
+      "Håkon": 11,
+      "Jonas": 10,
+      "Andrè": 9,
+      "Marius": 9,
+      "Bjørn": 9,
+      "Arya": 9,
+      "Ringstad": 8,
+      "Øystein": 8,
+      "Robin": 7
+    }
+  }
+]

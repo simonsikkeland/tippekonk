@@ -37,6 +37,9 @@ def main():
         stilling = tdir / "data" / "stilling.json"
         if stilling.exists():
             shutil.copy(stilling, out_dir / "stilling.json")
+        historikk = tdir / "data" / "poenghistorikk.json"
+        if historikk.exists():
+            shutil.copy(historikk, out_dir / "poenghistorikk.json")
         # podcast-mappe hvis den finnes
         pod = tdir / "data" / "podcast"
         if pod.exists():

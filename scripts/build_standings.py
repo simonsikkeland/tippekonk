@@ -108,6 +108,16 @@ def main(tournament_dir: str):
     if fordeling:
         stats["tippefordeling"] = fordeling
 
+    # Alles bonus-tips (mester/toppscorer/antall mål/kort) — status regnes på siden.
+    stats["bonustips"] = [
+        {"navn": d["navn"],
+         "mester": d["pred"].get("vm_vinner") or "",
+         "toppscorer": d["pred"].get("toppscorer") or "",
+         "antall_maal": d["pred"].get("antall_maal"),
+         "antall_kort": d["pred"].get("antall_kort")}
+        for d in deltakere
+    ]
+
     # Projisert sluttspill ut fra dagens gruppetabeller
     sluttspill = projiser_sluttspill(fact)
 
@@ -126,6 +136,21 @@ def main(tournament_dir: str):
     out_path = tdir / "data" / "stilling.json"
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Skrev {out_path} ({len(deltakere)} deltakere)")
+
+    oppdater_poenghistorikk(tdir, deltakere)
+
+
+def oppdater_poenghistorikk(tdir: Path, deltakere: list):
+    """Legg til et snapshot {tid, poeng} bare når poengene har endret seg siden
+    forrige — så de hyppige 30-min-kjøringene ikke fyller fila med duplikater."""
+    p = tdir / "data" / "poenghistorikk.json"
+    hist = json.loads(p.read_text(encoding="utf-8")) if p.exists() else []
+    poeng = {d["navn"].strip(): d["poeng"] for d in deltakere}
+    if hist and hist[-1].get("poeng") == poeng:
+        return
+    hist.append({"tid": datetime.now(timezone.utc).isoformat(timespec="seconds"), "poeng": poeng})
+    p.write_text(json.dumps(hist, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Poenghistorikk: {len(hist)} snapshots")
 
 
 def _norm(s):
