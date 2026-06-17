@@ -345,8 +345,8 @@
       "home": "England",
       "away": "Kroatia",
       "dato": "2026-06-17",
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 4,
+      "away_score": 2,
       "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L"
@@ -1621,6 +1621,11 @@
       "maal": 2
     },
     {
+      "navn": "Harry Kane",
+      "lag": "England",
+      "maal": 2
+    },
+    {
       "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
@@ -1628,11 +1633,6 @@
     {
       "navn": "Raúl Jiménez",
       "lag": "Mexico",
-      "maal": 1
-    },
-    {
-      "navn": "Ladislav Krejčí",
-      "lag": "Tsjekkia",
       "maal": 1
     }
   ],
