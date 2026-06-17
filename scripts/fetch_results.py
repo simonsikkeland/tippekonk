@@ -34,9 +34,17 @@ def _get(path: str, token: str) -> dict:
         return json.loads(r.read().decode("utf-8"))
 
 
-def fetch_competition(cfg: dict, token: str) -> dict:
+def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> dict:
     comp = cfg["football_data_competition"]
     season = cfg.get("api_football_season", 2026)
+
+    # Tidligere kjente resultater. Beskytter mot at API-et midlertidig
+    # returnerer null på en allerede ferdigspilt kamp — uten dette mister
+    # deltakerne poeng (og målsummen hopper) helt til API-et retter seg.
+    prev_scores = {}
+    for k in (existing or {}).get("kamper", []):
+        if k.get("home_score") is not None and k.get("away_score") is not None:
+            prev_scores[(k.get("home"), k.get("away"))] = (k["home_score"], k["away_score"])
 
     fact = {
         "matches": [], "group_winners": {}, "r16": [], "r8": [],
@@ -92,6 +100,12 @@ def fetch_competition(cfg: dict, token: str) -> dict:
         ft = m.get("score", {}).get("fullTime", {})
         h_goals = ft.get("home")
         a_goals = ft.get("away")
+
+        # Fallback: ferdig kamp uten score fra API -> bruk forrige kjente.
+        if status == "FINISHED" and (h_goals is None or a_goals is None):
+            prev = prev_scores.get((home, away))
+            if prev:
+                h_goals, a_goals = prev
 
         kamp = {
             "home": home, "away": away, "dato": dato,
@@ -230,7 +244,7 @@ def main(tournament_dir: str):
     if token and cfg.get("football_data_competition"):
         print(f"Henter resultater for {cfg['kort_navn']} fra football-data.org ...")
         try:
-            fact = fetch_competition(cfg, token)
+            fact = fetch_competition(cfg, token, existing)
         except Exception as e:
             print(f"  Auto-henting feilet ({e}); beholder eksisterende fasit.")
             fact = existing

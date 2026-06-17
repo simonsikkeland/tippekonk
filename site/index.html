@@ -101,6 +101,7 @@
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
   .card h3{margin:0 0 4px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--slate)}
   .card .big{font-family:'Archivo';font-size:30px;font-weight:900}
+  .card .muted{margin:6px 0;color:var(--slate);font-size:13px}
   .ladder{margin-top:8px;font-size:14px}
   .ladder div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line)}
   .pod{background:var(--pitch);color:#fff;border-radius:12px;padding:18px;margin-top:14px}
@@ -406,7 +407,19 @@ function renderScorers(d){
 function renderStats(d){
   const st = d.statistikk||{}; let cards="";
   const ladder = (arr)=>arr.slice(0,5).map(x=>`<div><span>${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
-  if(st.antall_maal) cards += `<div class="card"><h3>Antall mål</h3><div class="big">${st.antall_maal.fasit}</div><div class="ladder">${ladder(st.antall_maal.tipp)}</div></div>`;
+  if(st.antall_maal){
+    const am = st.antall_maal;
+    let inner = `<div class="big">${am.fasit}</div>`;
+    if(am.spilt!=null && am.totalt) inner += `<p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper spilt</p>`;
+    if(am.projeksjon!=null){
+      inner += `<p class="muted">Projisert sluttsum: <strong style="color:var(--ink)">~${am.projeksjon} mål</strong></p>`;
+      const rows = (am.mot_projeksjon||[]).map((x,i)=>`<div><span>${i+1}. ${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
+      inner += `<div class="ladder">${rows}</div>`;
+    } else {
+      inner += `<div class="ladder">${ladder(am.tipp)}</div>`;
+    }
+    cards += `<div class="card" style="grid-column:1/-1"><h3>Antall mål</h3>${inner}</div>`;
+  }
   if(st.antall_kort) cards += `<div class="card"><h3>Antall kort</h3><div class="big">${st.antall_kort.fasit}</div><div class="ladder">${ladder(st.antall_kort.tipp)}</div></div>`;
   if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;

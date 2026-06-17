@@ -59,14 +59,32 @@ def main(tournament_dir: str):
     # "Nærmer seg"-statistikk for bonusfeltene
     stats = {}
     if fact.get("antall_maal") is not None:
-        stats["antall_maal"] = {
+        # Projisert sluttsum: mål så langt skalert opp til alle kampene.
+        kamper = fact.get("kamper") or []
+        spilt = sum(1 for k in kamper
+                    if k.get("status") == "FINISHED"
+                    and k.get("home_score") is not None and k.get("away_score") is not None)
+        totalt = len(kamper)
+        projeksjon = round(fact["antall_maal"] / spilt * totalt) if spilt and totalt else None
+        am = {
             "fasit": fact["antall_maal"],
+            "spilt": spilt,
+            "totalt": totalt,
+            "projeksjon": projeksjon,
             "tipp": sorted(
                 [{"navn": d["navn"], "tipp": d["pred"]["antall_maal"],
                   "diff": abs((d["pred"]["antall_maal"] or 0) - fact["antall_maal"])}
                  for d in deltakere if d["pred"]["antall_maal"] is not None],
                 key=lambda x: x["diff"]),
         }
+        # Toppliste over ALLE deltakere, rangert på nærhet til projeksjonen.
+        if projeksjon is not None:
+            am["mot_projeksjon"] = sorted(
+                [{"navn": d["navn"], "tipp": d["pred"]["antall_maal"],
+                  "diff": abs((d["pred"]["antall_maal"] or 0) - projeksjon)}
+                 for d in deltakere if d["pred"]["antall_maal"] is not None],
+                key=lambda x: x["diff"])
+        stats["antall_maal"] = am
     if fact.get("antall_kort") is not None:
         stats["antall_kort"] = {
             "fasit": fact["antall_kort"],
