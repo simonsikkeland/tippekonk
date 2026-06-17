@@ -108,7 +108,7 @@
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Qatar",
+    "Gruppe B": "Canada",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -345,9 +345,9 @@
       "home": "England",
       "away": "Kroatia",
       "dato": "2026-06-17",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L"
     },
@@ -1205,6 +1205,20 @@
     ],
     "Gruppe B": [
       {
+        "lag": "Canada",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
+        "lag": "Bosnia-Hercegovina",
+        "poeng": 1,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
         "lag": "Qatar",
         "poeng": 1,
         "mf": 0,
@@ -1217,20 +1231,6 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
-      },
-      {
-        "lag": "Canada",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Bosnia-Hercegovina",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
       }
     ],
     "Gruppe C": [

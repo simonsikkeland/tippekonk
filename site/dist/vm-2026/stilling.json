@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-17T19:47:58+00:00",
+  "oppdatert": "2026-06-17T20:13:24+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -116,7 +116,7 @@
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Qatar",
+      "Gruppe B": "Canada",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -353,9 +353,9 @@
         "home": "England",
         "away": "Kroatia",
         "dato": "2026-06-17",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 0,
+        "away_score": 0,
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_L"
       },
@@ -1213,6 +1213,20 @@
       ],
       "Gruppe B": [
         {
+          "lag": "Canada",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 1,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 1
+        },
+        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1225,20 +1239,6 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
-        },
-        {
-          "lag": "Canada",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
-        },
-        {
-          "lag": "Bosnia-Hercegovina",
-          "poeng": 0,
-          "mf": 0,
-          "maal_for": 0,
-          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -4576,7 +4576,86 @@
           ]
         }
       ]
-    }
+    },
+    "bonustips": [
+      {
+        "navn": "Simon",
+        "mester": "Spania",
+        "toppscorer": "Mbappe",
+        "antall_maal": 304,
+        "antall_kort": 370
+      },
+      {
+        "navn": "Tobias",
+        "mester": "Spania",
+        "toppscorer": "Mbappe",
+        "antall_maal": 161,
+        "antall_kort": 243
+      },
+      {
+        "navn": "Håkon",
+        "mester": "Frankrike",
+        "toppscorer": "Haaland",
+        "antall_maal": 264,
+        "antall_kort": 98
+      },
+      {
+        "navn": "Jonas",
+        "mester": "Spania",
+        "toppscorer": "Kane",
+        "antall_maal": 306,
+        "antall_kort": 371
+      },
+      {
+        "navn": "Andrè",
+        "mester": "Spania",
+        "toppscorer": "Kane",
+        "antall_maal": 169,
+        "antall_kort": 216
+      },
+      {
+        "navn": "Marius",
+        "mester": "England",
+        "toppscorer": "Kane",
+        "antall_maal": 302,
+        "antall_kort": 340
+      },
+      {
+        "navn": "Bjørn",
+        "mester": "Spania",
+        "toppscorer": "Mbappe",
+        "antall_maal": 300,
+        "antall_kort": 300
+      },
+      {
+        "navn": "Arya",
+        "mester": "Portugal",
+        "toppscorer": "Mbappe",
+        "antall_maal": 298,
+        "antall_kort": 412
+      },
+      {
+        "navn": "Ringstad",
+        "mester": "Frankrike",
+        "toppscorer": "Mbappe",
+        "antall_maal": 262,
+        "antall_kort": 354
+      },
+      {
+        "navn": "Øystein",
+        "mester": "Frankrike",
+        "toppscorer": "Mbappe",
+        "antall_maal": 286,
+        "antall_kort": 319
+      },
+      {
+        "navn": "Robin",
+        "mester": "Frankrike",
+        "toppscorer": "Haaland",
+        "antall_maal": 200,
+        "antall_kort": 50
+      }
+    ]
   },
   "projisert_sluttspill": {
     "mester": {
@@ -4598,7 +4677,7 @@
               "seed": "2A"
             },
             "away": {
-              "navn": "Sveits",
+              "navn": "Bosnia-Hercegovina",
               "seed": "2B"
             },
             "vinner": {
@@ -4718,7 +4797,7 @@
               "seed": "1D"
             },
             "away": {
-              "navn": "Canada",
+              "navn": "Qatar",
               "seed": "3B"
             },
             "vinner": {
@@ -4774,7 +4853,7 @@
           {
             "nr": 85,
             "home": {
-              "navn": "Qatar",
+              "navn": "Canada",
               "seed": "1B"
             },
             "away": {
@@ -4782,7 +4861,7 @@
               "seed": "3G"
             },
             "vinner": {
-              "navn": "Qatar",
+              "navn": "Canada",
               "seed": "1B"
             }
           },
@@ -4944,7 +5023,7 @@
           {
             "nr": 96,
             "home": {
-              "navn": "Qatar",
+              "navn": "Canada",
               "seed": "1B"
             },
             "away": {
@@ -4952,8 +5031,8 @@
               "seed": "1K"
             },
             "vinner": {
-              "navn": "Qatar",
-              "seed": "1B"
+              "navn": "Portugal",
+              "seed": "1K"
             }
           }
         ]
@@ -5013,8 +5092,8 @@
               "seed": "1J"
             },
             "away": {
-              "navn": "Qatar",
-              "seed": "1B"
+              "navn": "Portugal",
+              "seed": "1K"
             },
             "vinner": {
               "navn": "Argentina",
