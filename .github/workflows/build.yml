@@ -16,8 +16,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "10 */3 * * *"     # hver 3. time: hent resultater + bygg side
-    - cron: "30 6 * * *"       # 1x/dag (08:30 norsk): + podcast (Claude + ElevenLabs)
+    - cron: "*/30 * * * *"     # hver 30. min: hent resultater + bygg side
 
 permissions:
   contents: write
@@ -51,12 +50,10 @@ jobs:
             fi
           done
 
-      # Podcast (Claude-tekst + ElevenLabs) kun 1x/dag: den daglige cron-en eller
-      # manuell kjøring. De 3-timers kjøringene hopper over dette steget.
+      # Podcast (Claude-tekst + ElevenLabs) kjøres KUN manuelt (workflow_dispatch).
+      # De planlagte kjøringene henter bare resultater og bygger siden.
       - name: Generer podcast (manus + lyd)
-        if: >-
-          env.ANTHROPIC_API_KEY != '' &&
-          (github.event_name != 'schedule' || github.event.schedule == '30 6 * * *')
+        if: env.ANTHROPIC_API_KEY != '' && github.event_name == 'workflow_dispatch'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTAPI }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENAPI }}
