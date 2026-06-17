@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-17T19:39:34+00:00",
+  "oppdatert": "2026-06-17T19:47:58+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -116,7 +116,7 @@
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Canada",
+      "Gruppe B": "Qatar",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -1213,20 +1213,6 @@
       ],
       "Gruppe B": [
         {
-          "lag": "Canada",
-          "poeng": 1,
-          "mf": 0,
-          "maal_for": 1,
-          "spilt": 1
-        },
-        {
-          "lag": "Bosnia-Hercegovina",
-          "poeng": 1,
-          "mf": 0,
-          "maal_for": 1,
-          "spilt": 1
-        },
-        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1239,6 +1225,20 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
+        },
+        {
+          "lag": "Canada",
+          "poeng": 0,
+          "mf": 0,
+          "maal_for": 0,
+          "spilt": 0
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 0,
+          "mf": 0,
+          "maal_for": 0,
+          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -4577,5 +4577,527 @@
         }
       ]
     }
+  },
+  "projisert_sluttspill": {
+    "mester": {
+      "navn": "Tyskland",
+      "seed": "1E"
+    },
+    "bronse": {
+      "navn": "USA",
+      "seed": "1D"
+    },
+    "runder": [
+      {
+        "navn": "16-delsfinale",
+        "kamper": [
+          {
+            "nr": 73,
+            "home": {
+              "navn": "Sør-Korea",
+              "seed": "2A"
+            },
+            "away": {
+              "navn": "Sveits",
+              "seed": "2B"
+            },
+            "vinner": {
+              "navn": "Sør-Korea",
+              "seed": "2A"
+            }
+          },
+          {
+            "nr": 74,
+            "home": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            },
+            "away": {
+              "navn": "Tsjekkia",
+              "seed": "3A"
+            },
+            "vinner": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            }
+          },
+          {
+            "nr": 75,
+            "home": {
+              "navn": "Sverige",
+              "seed": "1F"
+            },
+            "away": {
+              "navn": "Brasil",
+              "seed": "2C"
+            },
+            "vinner": {
+              "navn": "Sverige",
+              "seed": "1F"
+            }
+          },
+          {
+            "nr": 76,
+            "home": {
+              "navn": "Skottland",
+              "seed": "1C"
+            },
+            "away": {
+              "navn": "Nederland",
+              "seed": "2F"
+            },
+            "vinner": {
+              "navn": "Skottland",
+              "seed": "1C"
+            }
+          },
+          {
+            "nr": 77,
+            "home": {
+              "navn": "Norge",
+              "seed": "1I"
+            },
+            "away": {
+              "navn": "Marokko",
+              "seed": "3C"
+            },
+            "vinner": {
+              "navn": "Norge",
+              "seed": "1I"
+            }
+          },
+          {
+            "nr": 78,
+            "home": {
+              "navn": "Elfenbenskysten",
+              "seed": "2E"
+            },
+            "away": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            },
+            "vinner": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            }
+          },
+          {
+            "nr": 79,
+            "home": {
+              "navn": "Mexico",
+              "seed": "1A"
+            },
+            "away": {
+              "navn": "Japan",
+              "seed": "3F"
+            },
+            "vinner": {
+              "navn": "Mexico",
+              "seed": "1A"
+            }
+          },
+          {
+            "nr": 80,
+            "home": {
+              "navn": "England",
+              "seed": "1L"
+            },
+            "away": {
+              "navn": "Usbekistan",
+              "seed": "3K"
+            },
+            "vinner": {
+              "navn": "Usbekistan",
+              "seed": "3K"
+            }
+          },
+          {
+            "nr": 81,
+            "home": {
+              "navn": "USA",
+              "seed": "1D"
+            },
+            "away": {
+              "navn": "Canada",
+              "seed": "3B"
+            },
+            "vinner": {
+              "navn": "USA",
+              "seed": "1D"
+            }
+          },
+          {
+            "nr": 82,
+            "home": {
+              "navn": "Iran",
+              "seed": "1G"
+            },
+            "away": {
+              "navn": "Spania",
+              "seed": "3H"
+            },
+            "vinner": {
+              "navn": "Iran",
+              "seed": "1G"
+            }
+          },
+          {
+            "nr": 83,
+            "home": {
+              "navn": "DR Kongo",
+              "seed": "2K"
+            },
+            "away": {
+              "navn": "Kroatia",
+              "seed": "2L"
+            },
+            "vinner": {
+              "navn": "DR Kongo",
+              "seed": "2K"
+            }
+          },
+          {
+            "nr": 84,
+            "home": {
+              "navn": "Saudi-Arabia",
+              "seed": "1H"
+            },
+            "away": {
+              "navn": "Østerrike",
+              "seed": "2J"
+            },
+            "vinner": {
+              "navn": "Østerrike",
+              "seed": "2J"
+            }
+          },
+          {
+            "nr": 85,
+            "home": {
+              "navn": "Qatar",
+              "seed": "1B"
+            },
+            "away": {
+              "navn": "Belgia",
+              "seed": "3G"
+            },
+            "vinner": {
+              "navn": "Qatar",
+              "seed": "1B"
+            }
+          },
+          {
+            "nr": 86,
+            "home": {
+              "navn": "Argentina",
+              "seed": "1J"
+            },
+            "away": {
+              "navn": "Uruguay",
+              "seed": "2H"
+            },
+            "vinner": {
+              "navn": "Argentina",
+              "seed": "1J"
+            }
+          },
+          {
+            "nr": 87,
+            "home": {
+              "navn": "Portugal",
+              "seed": "1K"
+            },
+            "away": {
+              "navn": "Ghana",
+              "seed": "3L"
+            },
+            "vinner": {
+              "navn": "Portugal",
+              "seed": "1K"
+            }
+          },
+          {
+            "nr": 88,
+            "home": {
+              "navn": "Australia",
+              "seed": "2D"
+            },
+            "away": {
+              "navn": "New Zealand",
+              "seed": "2G"
+            },
+            "vinner": {
+              "navn": "Australia",
+              "seed": "2D"
+            }
+          }
+        ]
+      },
+      {
+        "navn": "8-delsfinale",
+        "kamper": [
+          {
+            "nr": 89,
+            "home": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            },
+            "away": {
+              "navn": "Norge",
+              "seed": "1I"
+            },
+            "vinner": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            }
+          },
+          {
+            "nr": 90,
+            "home": {
+              "navn": "Sør-Korea",
+              "seed": "2A"
+            },
+            "away": {
+              "navn": "Sverige",
+              "seed": "1F"
+            },
+            "vinner": {
+              "navn": "Sverige",
+              "seed": "1F"
+            }
+          },
+          {
+            "nr": 91,
+            "home": {
+              "navn": "Skottland",
+              "seed": "1C"
+            },
+            "away": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            },
+            "vinner": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            }
+          },
+          {
+            "nr": 92,
+            "home": {
+              "navn": "Mexico",
+              "seed": "1A"
+            },
+            "away": {
+              "navn": "Usbekistan",
+              "seed": "3K"
+            },
+            "vinner": {
+              "navn": "Mexico",
+              "seed": "1A"
+            }
+          },
+          {
+            "nr": 93,
+            "home": {
+              "navn": "DR Kongo",
+              "seed": "2K"
+            },
+            "away": {
+              "navn": "Østerrike",
+              "seed": "2J"
+            },
+            "vinner": {
+              "navn": "Østerrike",
+              "seed": "2J"
+            }
+          },
+          {
+            "nr": 94,
+            "home": {
+              "navn": "USA",
+              "seed": "1D"
+            },
+            "away": {
+              "navn": "Iran",
+              "seed": "1G"
+            },
+            "vinner": {
+              "navn": "USA",
+              "seed": "1D"
+            }
+          },
+          {
+            "nr": 95,
+            "home": {
+              "navn": "Argentina",
+              "seed": "1J"
+            },
+            "away": {
+              "navn": "Australia",
+              "seed": "2D"
+            },
+            "vinner": {
+              "navn": "Argentina",
+              "seed": "1J"
+            }
+          },
+          {
+            "nr": 96,
+            "home": {
+              "navn": "Qatar",
+              "seed": "1B"
+            },
+            "away": {
+              "navn": "Portugal",
+              "seed": "1K"
+            },
+            "vinner": {
+              "navn": "Qatar",
+              "seed": "1B"
+            }
+          }
+        ]
+      },
+      {
+        "navn": "Kvartfinale",
+        "kamper": [
+          {
+            "nr": 97,
+            "home": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            },
+            "away": {
+              "navn": "Sverige",
+              "seed": "1F"
+            },
+            "vinner": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            }
+          },
+          {
+            "nr": 98,
+            "home": {
+              "navn": "Østerrike",
+              "seed": "2J"
+            },
+            "away": {
+              "navn": "USA",
+              "seed": "1D"
+            },
+            "vinner": {
+              "navn": "USA",
+              "seed": "1D"
+            }
+          },
+          {
+            "nr": 99,
+            "home": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            },
+            "away": {
+              "navn": "Mexico",
+              "seed": "1A"
+            },
+            "vinner": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            }
+          },
+          {
+            "nr": 100,
+            "home": {
+              "navn": "Argentina",
+              "seed": "1J"
+            },
+            "away": {
+              "navn": "Qatar",
+              "seed": "1B"
+            },
+            "vinner": {
+              "navn": "Argentina",
+              "seed": "1J"
+            }
+          }
+        ]
+      },
+      {
+        "navn": "Semifinale",
+        "kamper": [
+          {
+            "nr": 101,
+            "home": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            },
+            "away": {
+              "navn": "USA",
+              "seed": "1D"
+            },
+            "vinner": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            }
+          },
+          {
+            "nr": 102,
+            "home": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            },
+            "away": {
+              "navn": "Argentina",
+              "seed": "1J"
+            },
+            "vinner": {
+              "navn": "Argentina",
+              "seed": "1J"
+            }
+          }
+        ]
+      },
+      {
+        "navn": "Bronsefinale",
+        "kamper": [
+          {
+            "nr": 103,
+            "home": {
+              "navn": "USA",
+              "seed": "1D"
+            },
+            "away": {
+              "navn": "Frankrike",
+              "seed": "2I"
+            },
+            "vinner": {
+              "navn": "USA",
+              "seed": "1D"
+            }
+          }
+        ]
+      },
+      {
+        "navn": "Finale",
+        "kamper": [
+          {
+            "nr": 104,
+            "home": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            },
+            "away": {
+              "navn": "Argentina",
+              "seed": "1J"
+            },
+            "vinner": {
+              "navn": "Tyskland",
+              "seed": "1E"
+            }
+          }
+        ]
+      }
+    ]
   }
 }
