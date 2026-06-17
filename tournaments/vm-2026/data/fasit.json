@@ -99,6 +99,11 @@
       "home": "Østerrike",
       "away": "Jordan",
       "result": "H"
+    },
+    {
+      "home": "Portugal",
+      "away": "DR Kongo",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -124,7 +129,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 62,
+  "antall_maal": 64,
   "kamper": [
     {
       "home": "Mexico",
@@ -331,8 +336,8 @@
       "away": "DR Kongo",
       "dato": "2026-06-17",
       "home_score": 1,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_K"
     },
@@ -1471,17 +1476,17 @@
     "Gruppe K": [
       {
         "lag": "Portugal",
-        "poeng": 0,
+        "poeng": 1,
         "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "DR Kongo",
-        "poeng": 0,
+        "poeng": 1,
         "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Usbekistan",
