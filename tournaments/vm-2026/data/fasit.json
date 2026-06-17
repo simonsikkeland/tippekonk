@@ -84,6 +84,11 @@
       "home": "Frankrike",
       "away": "Senegal",
       "result": "H"
+    },
+    {
+      "home": "Irak",
+      "away": "Norge",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -95,7 +100,7 @@
     "Gruppe F": "Sverige",
     "Gruppe G": "Iran",
     "Gruppe H": "Saudi-Arabia",
-    "Gruppe I": "Frankrike",
+    "Gruppe I": "Norge",
     "Gruppe J": "Argentina",
     "Gruppe K": "Portugal",
     "Gruppe L": "England"
@@ -109,7 +114,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Folarin Balogun",
-  "antall_maal": 50,
+  "antall_maal": 55,
   "kamper": [
     {
       "home": "Mexico",
@@ -285,9 +290,9 @@
       "home": "Irak",
       "away": "Norge",
       "dato": "2026-06-16",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 4,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I"
     },
@@ -1395,6 +1400,13 @@
     ],
     "Gruppe I": [
       {
+        "lag": "Norge",
+        "poeng": 3,
+        "mf": 3,
+        "maal_for": 4,
+        "spilt": 1
+      },
+      {
         "lag": "Frankrike",
         "poeng": 3,
         "mf": 2,
@@ -1402,23 +1414,16 @@
         "spilt": 1
       },
       {
-        "lag": "Irak",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
-        "lag": "Norge",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
-      },
-      {
         "lag": "Senegal",
         "poeng": 0,
         "mf": -2,
+        "maal_for": 1,
+        "spilt": 1
+      },
+      {
+        "lag": "Irak",
+        "poeng": 0,
+        "mf": -3,
         "maal_for": 1,
         "spilt": 1
       }
@@ -1591,6 +1596,11 @@
       "maal": 2
     },
     {
+      "navn": "Erling Haaland",
+      "lag": "Norge",
+      "maal": 2
+    },
+    {
       "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
@@ -1607,11 +1617,6 @@
     },
     {
       "navn": "In-beom Hwang",
-      "lag": "Sør-Korea",
-      "maal": 1
-    },
-    {
-      "navn": "Hyun-Gyu Oh",
       "lag": "Sør-Korea",
       "maal": 1
     }
