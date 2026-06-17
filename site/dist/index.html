@@ -102,6 +102,8 @@
   .card h3{margin:0 0 4px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--slate)}
   .card .big{font-family:'Archivo';font-size:30px;font-weight:900}
   .card .muted{margin:6px 0;color:var(--slate);font-size:13px}
+  .bigrow{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
+  .bigrow .muted{margin:2px 0 0;max-width:180px}
   .ladder{margin-top:8px;font-size:14px}
   .ladder div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line)}
   .pod{background:var(--pitch);color:#fff;border-radius:12px;padding:18px;margin-top:14px}
@@ -409,13 +411,17 @@ function renderStats(d){
   const ladder = (arr)=>arr.slice(0,5).map(x=>`<div><span>${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
   if(st.antall_maal){
     const am = st.antall_maal;
-    let inner = `<div class="big">${am.fasit}</div>`;
-    if(am.spilt!=null && am.totalt) inner += `<p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper spilt</p>`;
+    let inner = "";
     if(am.projeksjon!=null){
-      inner += `<p class="muted">Projisert sluttsum: <strong style="color:var(--ink)">~${am.projeksjon} mål</strong></p>`;
+      inner += `<div class="bigrow">
+        <div><div class="big">${am.fasit}</div><p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper</p></div>
+        <div><div class="big">~${am.projeksjon}</div><p class="muted">projisert sluttsum</p></div>
+      </div>`;
       const rows = (am.mot_projeksjon||[]).map((x,i)=>`<div><span>${i+1}. ${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
       inner += `<div class="ladder">${rows}</div>`;
     } else {
+      inner += `<div class="big">${am.fasit}</div>`;
+      if(am.spilt!=null && am.totalt) inner += `<p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper spilt</p>`;
       inner += `<div class="ladder">${ladder(am.tipp)}</div>`;
     }
     cards += `<div class="card" style="grid-column:1/-1"><h3>Antall mål</h3>${inner}</div>`;
