@@ -1,5 +1,14 @@
 [
   {
+    "tittel": "VM 2026 - 17.06",
+    "ingress": "Simon leder med 9 poeng.",
+    "lyd": "episode-20260617.mp3",
+    "dato": "2026-06-17T00:10:20.138088+00:00",
+    "id": "20260617",
+    "feed": true,
+    "bytes": 6872546
+  },
+  {
     "tittel": "VM 2026 - 16.06",
     "ingress": "Simon leder med 7 poeng.",
     "lyd": "episode-20260616.mp3",
