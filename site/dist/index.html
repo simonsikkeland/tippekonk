@@ -97,6 +97,13 @@
   .dl .p{font-weight:800;font-variant-numeric:tabular-nums}
   .dl .p.zero{color:var(--slate)}
   .dl .p.win{color:var(--pitch)}
+  .dl.has-k{cursor:pointer}
+  .chev2{color:var(--slate);font-size:11px;display:inline-block;transition:transform .12s}
+  .dl.has-k.open .chev2{transform:rotate(90deg)}
+  .kamper-list{display:none;padding:2px 0 8px 14px}
+  .kamper-list.open{display:block}
+  .km{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:var(--slate)}
+  .km-res{font-size:11px;color:var(--pitch);font-weight:700;white-space:nowrap;padding-left:10px}
   h2{font-family:'Archivo';font-size:20px;margin:30px 0 12px}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
@@ -254,9 +261,15 @@ async function load(id){
       <span class="nm">${esc(s.navn)}</span>
       <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
       <span class="chev">${d.har_fasit?'▸':''}</span></div>
-      <div class="detail" id="det${i}">${(s.linjer||[]).map(l=>`
-        <div class="dl"><span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span></span>
-        <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`).join("")}</div>`;
+      <div class="detail" id="det${i}">${(s.linjer||[]).map(l=>{
+        const hasK = l.kamper && l.kamper.length;
+        let row = `<div class="dl${hasK?' has-k':''}"${hasK?` onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')"`:''}>
+          <span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span>${hasK?' <span class="chev2">▸</span>':''}</span>
+          <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`;
+        if(hasK) row += `<div class="kamper-list">${l.kamper.map(k=>`
+          <div class="km"><span>${esc(k.home)} – ${esc(k.away)}</span><span class="km-res">${PICK_LBL[k.res]||k.res}</span></div>`).join("")}</div>`;
+        return row;
+      }).join("")}</div>`;
   });
   rows += `</div>`;
   if(d.har_fasit){

@@ -185,20 +185,24 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
     """Regn poeng for én prediksjon mot fasit. `rules` = poengverdier."""
     lines, total = [], 0
 
-    def add(label, pts, detail):
+    def add(label, pts, detail, kamper=None):
         nonlocal total
-        lines.append({"label": label, "pts": pts, "detail": detail})
+        line = {"label": label, "pts": pts, "detail": detail}
+        if kamper:
+            line["kamper"] = kamper
+        lines.append(line)
         total += pts
 
     # Gruppespill (H/U/B). Match by home+away team names.
     if fact.get("matches"):
         fact_by_teams = {(_norm(m["home"]), _norm(m["away"])): _norm(m["result"]) for m in fact["matches"]}
-        correct = sum(
-            1 for m in pred["matches"]
-            if fact_by_teams.get((_norm(m["home"]), _norm(m["away"]))) and
-               _norm(m["pick"]) == fact_by_teams[(_norm(m["home"]), _norm(m["away"]))]
-        )
-        add(f"Gruppespill ({correct} riktige)", correct * rules["kamp"], f'{correct} x {rules["kamp"]}p')
+        treff = []
+        for m in pred["matches"]:
+            res = fact_by_teams.get((_norm(m["home"]), _norm(m["away"])))
+            if res and _norm(m["pick"]) == res:
+                treff.append({"home": m["home"], "away": m["away"], "res": res.upper()})
+        add(f"Gruppespill ({len(treff)} riktige)", len(treff) * rules["kamp"],
+            f'{len(treff)} x {rules["kamp"]}p', kamper=treff)
 
     if fact.get("group_winners") and fact.get("gruppespill_ferdig"):
         correct = sum(
