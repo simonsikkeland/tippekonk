@@ -111,6 +111,11 @@
       "result": "H"
     },
     {
+      "home": "Ghana",
+      "away": "Panama",
+      "result": "H"
+    },
+    {
       "home": "Usbekistan",
       "away": "Colombia",
       "result": "B"
@@ -139,7 +144,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 74,
+  "antall_maal": 75,
   "kamper": [
     {
       "home": "Mexico",
@@ -367,7 +372,7 @@
       "dato": "2026-06-17",
       "home_score": 1,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L"
     },
@@ -1523,17 +1528,17 @@
       },
       {
         "lag": "Ghana",
-        "poeng": 0,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 0
+        "poeng": 3,
+        "mf": 1,
+        "maal_for": 1,
+        "spilt": 1
       },
       {
         "lag": "Panama",
         "poeng": 0,
-        "mf": 0,
+        "mf": -1,
         "maal_for": 0,
-        "spilt": 0
+        "spilt": 1
       },
       {
         "lag": "Kroatia",
