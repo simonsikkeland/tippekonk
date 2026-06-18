@@ -124,11 +124,16 @@
       "home": "Tsjekkia",
       "away": "Sør-Afrika",
       "result": "U"
+    },
+    {
+      "home": "Sveits",
+      "away": "Bosnia-Hercegovina",
+      "result": "H"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Canada",
+    "Gruppe B": "Sveits",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -149,7 +154,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 77,
+  "antall_maal": 82,
   "kamper": [
     {
       "home": "Mexico",
@@ -405,9 +410,9 @@
       "home": "Sveits",
       "away": "Bosnia-Hercegovina",
       "dato": "2026-06-18",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
     },
@@ -1225,14 +1230,14 @@
     ],
     "Gruppe B": [
       {
-        "lag": "Canada",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
+        "lag": "Sveits",
+        "poeng": 4,
+        "mf": 3,
+        "maal_for": 5,
+        "spilt": 2
       },
       {
-        "lag": "Bosnia-Hercegovina",
+        "lag": "Canada",
         "poeng": 1,
         "mf": 0,
         "maal_for": 1,
@@ -1246,11 +1251,11 @@
         "spilt": 1
       },
       {
-        "lag": "Sveits",
+        "lag": "Bosnia-Hercegovina",
         "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
+        "mf": -3,
+        "maal_for": 2,
+        "spilt": 2
       }
     ],
     "Gruppe C": [
@@ -1646,12 +1651,12 @@
       "maal": 2
     },
     {
-      "navn": "Julián Quiñones",
-      "lag": "Mexico",
-      "maal": 1
+      "navn": "Johan Manzambi",
+      "lag": "Sveits",
+      "maal": 2
     },
     {
-      "navn": "Raúl Jiménez",
+      "navn": "Julián Quiñones",
       "lag": "Mexico",
       "maal": 1
     }
