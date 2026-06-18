@@ -119,6 +119,11 @@
       "home": "Usbekistan",
       "away": "Colombia",
       "result": "B"
+    },
+    {
+      "home": "Tsjekkia",
+      "away": "Sør-Afrika",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -144,7 +149,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 75,
+  "antall_maal": 77,
   "kamper": [
     {
       "home": "Mexico",
@@ -391,8 +396,8 @@
       "away": "Sør-Afrika",
       "dato": "2026-06-18",
       "home_score": 1,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_A"
     },
@@ -1205,17 +1210,17 @@
       },
       {
         "lag": "Tsjekkia",
-        "poeng": 0,
+        "poeng": 1,
         "mf": -1,
-        "maal_for": 1,
-        "spilt": 1
+        "maal_for": 2,
+        "spilt": 2
       },
       {
         "lag": "Sør-Afrika",
-        "poeng": 0,
+        "poeng": 1,
         "mf": -2,
-        "maal_for": 0,
-        "spilt": 1
+        "maal_for": 1,
+        "spilt": 2
       }
     ],
     "Gruppe B": [
