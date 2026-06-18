@@ -123,7 +123,7 @@
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Canada",
+    "Gruppe B": "Qatar",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -1220,20 +1220,6 @@
     ],
     "Gruppe B": [
       {
-        "lag": "Canada",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
-        "lag": "Bosnia-Hercegovina",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
         "lag": "Qatar",
         "poeng": 1,
         "mf": 0,
@@ -1246,6 +1232,20 @@
         "mf": 0,
         "maal_for": 1,
         "spilt": 1
+      },
+      {
+        "lag": "Canada",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
+      },
+      {
+        "lag": "Bosnia-Hercegovina",
+        "poeng": 0,
+        "mf": 0,
+        "maal_for": 0,
+        "spilt": 0
       }
     ],
     "Gruppe C": [

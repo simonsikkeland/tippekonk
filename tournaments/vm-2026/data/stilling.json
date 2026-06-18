@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-18T05:30:31+00:00",
+  "oppdatert": "2026-06-18T09:49:37+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -131,7 +131,7 @@
     ],
     "group_winners": {
       "Gruppe A": "Mexico",
-      "Gruppe B": "Canada",
+      "Gruppe B": "Qatar",
       "Gruppe C": "Skottland",
       "Gruppe D": "USA",
       "Gruppe E": "Tyskland",
@@ -1228,20 +1228,6 @@
       ],
       "Gruppe B": [
         {
-          "lag": "Canada",
-          "poeng": 1,
-          "mf": 0,
-          "maal_for": 1,
-          "spilt": 1
-        },
-        {
-          "lag": "Bosnia-Hercegovina",
-          "poeng": 1,
-          "mf": 0,
-          "maal_for": 1,
-          "spilt": 1
-        },
-        {
           "lag": "Qatar",
           "poeng": 1,
           "mf": 0,
@@ -1254,6 +1240,20 @@
           "mf": 0,
           "maal_for": 1,
           "spilt": 1
+        },
+        {
+          "lag": "Canada",
+          "poeng": 0,
+          "mf": 0,
+          "maal_for": 0,
+          "spilt": 0
+        },
+        {
+          "lag": "Bosnia-Hercegovina",
+          "poeng": 0,
+          "mf": 0,
+          "maal_for": 0,
+          "spilt": 0
         }
       ],
       "Gruppe C": [
@@ -4802,7 +4802,7 @@
               "seed": "2A"
             },
             "away": {
-              "navn": "Bosnia-Hercegovina",
+              "navn": "Sveits",
               "seed": "2B"
             },
             "vinner": {
@@ -4922,7 +4922,7 @@
               "seed": "1D"
             },
             "away": {
-              "navn": "Qatar",
+              "navn": "Canada",
               "seed": "3B"
             },
             "vinner": {
@@ -4978,7 +4978,7 @@
           {
             "nr": 85,
             "home": {
-              "navn": "Canada",
+              "navn": "Qatar",
               "seed": "1B"
             },
             "away": {
@@ -4986,7 +4986,7 @@
               "seed": "3G"
             },
             "vinner": {
-              "navn": "Canada",
+              "navn": "Qatar",
               "seed": "1B"
             }
           },
@@ -5148,7 +5148,7 @@
           {
             "nr": 96,
             "home": {
-              "navn": "Canada",
+              "navn": "Qatar",
               "seed": "1B"
             },
             "away": {
