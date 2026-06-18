@@ -420,9 +420,9 @@
       "home": "Canada",
       "away": "Qatar",
       "dato": "2026-06-18",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 5,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
     },
@@ -1616,6 +1616,11 @@
       "maal": 3
     },
     {
+      "navn": "Cyle Larin",
+      "lag": "Canada",
+      "maal": 2
+    },
+    {
       "navn": "Folarin Balogun",
       "lag": "USA",
       "maal": 2
@@ -1654,11 +1659,6 @@
       "navn": "Johan Manzambi",
       "lag": "Sveits",
       "maal": 2
-    },
-    {
-      "navn": "Julián Quiñones",
-      "lag": "Mexico",
-      "maal": 1
     }
   ],
   "gruppespill_ferdig": false
