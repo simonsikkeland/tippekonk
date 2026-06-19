@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-19T21:45:12+00:00",
+  "oppdatert": "2026-06-19T22:59:42+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -502,12 +502,12 @@
         "home": "Skottland",
         "away": "Marokko",
         "dato": "2026-06-19",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 0,
+        "away_score": 1,
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_C",
-        "winner": null
+        "winner": "AWAY_TEAM"
       },
       {
         "home": "Brasil",
@@ -1758,6 +1758,11 @@
         "maal": 2
       },
       {
+        "navn": "Ismael Saibari",
+        "lag": "Marokko",
+        "maal": 2
+      },
+      {
         "navn": "Kai Havertz",
         "lag": "Tyskland",
         "maal": 2
@@ -1780,11 +1785,6 @@
       {
         "navn": "Erling Haaland",
         "lag": "Norge",
-        "maal": 2
-      },
-      {
-        "navn": "Harry Kane",
-        "lag": "England",
         "maal": 2
       }
     ],
