@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-19T20:16:06+00:00",
+  "oppdatert": "2026-06-19T21:45:12+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -147,6 +147,11 @@
         "home": "Mexico",
         "away": "Sør-Korea",
         "result": "H"
+      },
+      {
+        "home": "USA",
+        "away": "Australia",
+        "result": "H"
       }
     ],
     "group_winners": {
@@ -172,7 +177,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Lionel Messi",
-    "antall_maal": 89,
+    "antall_maal": 91,
     "kamper": [
       {
         "home": "Mexico",
@@ -488,7 +493,7 @@
         "dato": "2026-06-19",
         "home_score": 2,
         "away_score": 0,
-        "status": "PAUSED",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_D",
         "winner": "HOME_TEAM"
@@ -1413,17 +1418,17 @@
       "Gruppe D": [
         {
           "lag": "USA",
-          "poeng": 3,
-          "mf": 3,
-          "maal_for": 4,
-          "spilt": 1
+          "poeng": 6,
+          "mf": 5,
+          "maal_for": 6,
+          "spilt": 2
         },
         {
           "lag": "Australia",
           "poeng": 3,
-          "mf": 2,
+          "mf": 0,
           "maal_for": 2,
-          "spilt": 1
+          "spilt": 2
         },
         {
           "lag": "Tyrkia",
@@ -1789,12 +1794,12 @@
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 17,
+      "poeng": 18,
       "linjer": [
         {
-          "label": "Gruppespill (17 riktige)",
-          "pts": 17,
-          "detail": "17 x 1p",
+          "label": "Gruppespill (18 riktige)",
+          "pts": 18,
+          "detail": "18 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -1880,6 +1885,11 @@
               "home": "Mexico",
               "away": "Sør-Korea",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -1891,19 +1901,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 89)"
+          "detail": "tippet 304 (fasit 91)"
         }
       ]
     },
     {
       "plass": 2,
       "navn": "Tobias",
-      "poeng": 16,
+      "poeng": 17,
       "linjer": [
         {
-          "label": "Gruppespill (16 riktige)",
-          "pts": 16,
-          "detail": "16 x 1p",
+          "label": "Gruppespill (17 riktige)",
+          "pts": 17,
+          "detail": "17 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -1984,6 +1994,11 @@
               "home": "Mexico",
               "away": "Sør-Korea",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -1995,19 +2010,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 161 (fasit 89)"
+          "detail": "tippet 161 (fasit 91)"
         }
       ]
     },
     {
       "plass": 3,
       "navn": "Håkon",
-      "poeng": 15,
+      "poeng": 16,
       "linjer": [
         {
-          "label": "Gruppespill (15 riktige)",
-          "pts": 15,
-          "detail": "15 x 1p",
+          "label": "Gruppespill (16 riktige)",
+          "pts": 16,
+          "detail": "16 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2083,6 +2098,11 @@
               "home": "Mexico",
               "away": "Sør-Korea",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -2094,19 +2114,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 89)"
+          "detail": "tippet 264 (fasit 91)"
         }
       ]
     },
     {
       "plass": 4,
       "navn": "Jonas",
-      "poeng": 15,
+      "poeng": 16,
       "linjer": [
         {
-          "label": "Gruppespill (15 riktige)",
-          "pts": 15,
-          "detail": "15 x 1p",
+          "label": "Gruppespill (16 riktige)",
+          "pts": 16,
+          "detail": "16 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2182,6 +2202,11 @@
               "home": "Canada",
               "away": "Qatar",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -2193,19 +2218,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 89)"
+          "detail": "tippet 306 (fasit 91)"
         }
       ]
     },
     {
       "plass": 5,
       "navn": "Øystein",
-      "poeng": 14,
+      "poeng": 15,
       "linjer": [
         {
-          "label": "Gruppespill (14 riktige)",
-          "pts": 14,
-          "detail": "14 x 1p",
+          "label": "Gruppespill (15 riktige)",
+          "pts": 15,
+          "detail": "15 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2276,6 +2301,11 @@
               "home": "Mexico",
               "away": "Sør-Korea",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -2287,19 +2317,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 89)"
+          "detail": "tippet 286 (fasit 91)"
         }
       ]
     },
     {
       "plass": 6,
       "navn": "Arya",
-      "poeng": 14,
+      "poeng": 15,
       "linjer": [
         {
-          "label": "Gruppespill (14 riktige)",
-          "pts": 14,
-          "detail": "14 x 1p",
+          "label": "Gruppespill (15 riktige)",
+          "pts": 15,
+          "detail": "15 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2370,6 +2400,11 @@
               "home": "Canada",
               "away": "Qatar",
               "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
             }
           ]
         },
@@ -2381,12 +2416,284 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 89)"
+          "detail": "tippet 298 (fasit 91)"
         }
       ]
     },
     {
       "plass": 7,
+      "navn": "Bjørn",
+      "poeng": 14,
+      "linjer": [
+        {
+          "label": "Gruppespill (14 riktige)",
+          "pts": 14,
+          "detail": "14 x 1p",
+          "kamper": [
+            {
+              "home": "Mexico",
+              "away": "Sør-Afrika",
+              "res": "H"
+            },
+            {
+              "home": "Sør-Korea",
+              "away": "Tsjekkia",
+              "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Paraguay",
+              "res": "H"
+            },
+            {
+              "home": "Haiti",
+              "away": "Skottland",
+              "res": "B"
+            },
+            {
+              "home": "Tyskland",
+              "away": "Curaçao",
+              "res": "H"
+            },
+            {
+              "home": "Frankrike",
+              "away": "Senegal",
+              "res": "H"
+            },
+            {
+              "home": "Irak",
+              "away": "Norge",
+              "res": "B"
+            },
+            {
+              "home": "Argentina",
+              "away": "Algerie",
+              "res": "H"
+            },
+            {
+              "home": "Østerrike",
+              "away": "Jordan",
+              "res": "H"
+            },
+            {
+              "home": "Usbekistan",
+              "away": "Colombia",
+              "res": "B"
+            },
+            {
+              "home": "Tsjekkia",
+              "away": "Sør-Afrika",
+              "res": "U"
+            },
+            {
+              "home": "Canada",
+              "away": "Qatar",
+              "res": "H"
+            },
+            {
+              "home": "Mexico",
+              "away": "Sør-Korea",
+              "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
+            }
+          ]
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 300 (fasit 91)"
+        }
+      ]
+    },
+    {
+      "plass": 8,
+      "navn": "Ringstad",
+      "poeng": 13,
+      "linjer": [
+        {
+          "label": "Gruppespill (13 riktige)",
+          "pts": 13,
+          "detail": "13 x 1p",
+          "kamper": [
+            {
+              "home": "Mexico",
+              "away": "Sør-Afrika",
+              "res": "H"
+            },
+            {
+              "home": "Canada",
+              "away": "Bosnia-Hercegovina",
+              "res": "U"
+            },
+            {
+              "home": "Haiti",
+              "away": "Skottland",
+              "res": "B"
+            },
+            {
+              "home": "Tyskland",
+              "away": "Curaçao",
+              "res": "H"
+            },
+            {
+              "home": "Frankrike",
+              "away": "Senegal",
+              "res": "H"
+            },
+            {
+              "home": "Irak",
+              "away": "Norge",
+              "res": "B"
+            },
+            {
+              "home": "Argentina",
+              "away": "Algerie",
+              "res": "H"
+            },
+            {
+              "home": "Østerrike",
+              "away": "Jordan",
+              "res": "H"
+            },
+            {
+              "home": "England",
+              "away": "Kroatia",
+              "res": "H"
+            },
+            {
+              "home": "Sveits",
+              "away": "Bosnia-Hercegovina",
+              "res": "H"
+            },
+            {
+              "home": "Canada",
+              "away": "Qatar",
+              "res": "H"
+            },
+            {
+              "home": "Mexico",
+              "away": "Sør-Korea",
+              "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
+            }
+          ]
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Mbappe"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 262 (fasit 91)"
+        }
+      ]
+    },
+    {
+      "plass": 9,
+      "navn": "Andrè",
+      "poeng": 13,
+      "linjer": [
+        {
+          "label": "Gruppespill (13 riktige)",
+          "pts": 13,
+          "detail": "13 x 1p",
+          "kamper": [
+            {
+              "home": "Mexico",
+              "away": "Sør-Afrika",
+              "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Paraguay",
+              "res": "H"
+            },
+            {
+              "home": "Haiti",
+              "away": "Skottland",
+              "res": "B"
+            },
+            {
+              "home": "Qatar",
+              "away": "Sveits",
+              "res": "U"
+            },
+            {
+              "home": "Tyskland",
+              "away": "Curaçao",
+              "res": "H"
+            },
+            {
+              "home": "Frankrike",
+              "away": "Senegal",
+              "res": "H"
+            },
+            {
+              "home": "Irak",
+              "away": "Norge",
+              "res": "B"
+            },
+            {
+              "home": "Argentina",
+              "away": "Algerie",
+              "res": "H"
+            },
+            {
+              "home": "Østerrike",
+              "away": "Jordan",
+              "res": "H"
+            },
+            {
+              "home": "Ghana",
+              "away": "Panama",
+              "res": "H"
+            },
+            {
+              "home": "Usbekistan",
+              "away": "Colombia",
+              "res": "B"
+            },
+            {
+              "home": "Mexico",
+              "away": "Sør-Korea",
+              "res": "H"
+            },
+            {
+              "home": "USA",
+              "away": "Australia",
+              "res": "H"
+            }
+          ]
+        },
+        {
+          "label": "Toppscorer",
+          "pts": 0,
+          "detail": "tippet Kane"
+        },
+        {
+          "label": "Antall mål",
+          "pts": 0,
+          "detail": "tippet 169 (fasit 91)"
+        }
+      ]
+    },
+    {
+      "plass": 10,
       "navn": "Marius",
       "poeng": 13,
       "linjer": [
@@ -2470,264 +2777,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 89)"
-        }
-      ]
-    },
-    {
-      "plass": 8,
-      "navn": "Bjørn",
-      "poeng": 13,
-      "linjer": [
-        {
-          "label": "Gruppespill (13 riktige)",
-          "pts": 13,
-          "detail": "13 x 1p",
-          "kamper": [
-            {
-              "home": "Mexico",
-              "away": "Sør-Afrika",
-              "res": "H"
-            },
-            {
-              "home": "Sør-Korea",
-              "away": "Tsjekkia",
-              "res": "H"
-            },
-            {
-              "home": "USA",
-              "away": "Paraguay",
-              "res": "H"
-            },
-            {
-              "home": "Haiti",
-              "away": "Skottland",
-              "res": "B"
-            },
-            {
-              "home": "Tyskland",
-              "away": "Curaçao",
-              "res": "H"
-            },
-            {
-              "home": "Frankrike",
-              "away": "Senegal",
-              "res": "H"
-            },
-            {
-              "home": "Irak",
-              "away": "Norge",
-              "res": "B"
-            },
-            {
-              "home": "Argentina",
-              "away": "Algerie",
-              "res": "H"
-            },
-            {
-              "home": "Østerrike",
-              "away": "Jordan",
-              "res": "H"
-            },
-            {
-              "home": "Usbekistan",
-              "away": "Colombia",
-              "res": "B"
-            },
-            {
-              "home": "Tsjekkia",
-              "away": "Sør-Afrika",
-              "res": "U"
-            },
-            {
-              "home": "Canada",
-              "away": "Qatar",
-              "res": "H"
-            },
-            {
-              "home": "Mexico",
-              "away": "Sør-Korea",
-              "res": "H"
-            }
-          ]
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 300 (fasit 89)"
-        }
-      ]
-    },
-    {
-      "plass": 9,
-      "navn": "Ringstad",
-      "poeng": 12,
-      "linjer": [
-        {
-          "label": "Gruppespill (12 riktige)",
-          "pts": 12,
-          "detail": "12 x 1p",
-          "kamper": [
-            {
-              "home": "Mexico",
-              "away": "Sør-Afrika",
-              "res": "H"
-            },
-            {
-              "home": "Canada",
-              "away": "Bosnia-Hercegovina",
-              "res": "U"
-            },
-            {
-              "home": "Haiti",
-              "away": "Skottland",
-              "res": "B"
-            },
-            {
-              "home": "Tyskland",
-              "away": "Curaçao",
-              "res": "H"
-            },
-            {
-              "home": "Frankrike",
-              "away": "Senegal",
-              "res": "H"
-            },
-            {
-              "home": "Irak",
-              "away": "Norge",
-              "res": "B"
-            },
-            {
-              "home": "Argentina",
-              "away": "Algerie",
-              "res": "H"
-            },
-            {
-              "home": "Østerrike",
-              "away": "Jordan",
-              "res": "H"
-            },
-            {
-              "home": "England",
-              "away": "Kroatia",
-              "res": "H"
-            },
-            {
-              "home": "Sveits",
-              "away": "Bosnia-Hercegovina",
-              "res": "H"
-            },
-            {
-              "home": "Canada",
-              "away": "Qatar",
-              "res": "H"
-            },
-            {
-              "home": "Mexico",
-              "away": "Sør-Korea",
-              "res": "H"
-            }
-          ]
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Mbappe"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 262 (fasit 89)"
-        }
-      ]
-    },
-    {
-      "plass": 10,
-      "navn": "Andrè",
-      "poeng": 12,
-      "linjer": [
-        {
-          "label": "Gruppespill (12 riktige)",
-          "pts": 12,
-          "detail": "12 x 1p",
-          "kamper": [
-            {
-              "home": "Mexico",
-              "away": "Sør-Afrika",
-              "res": "H"
-            },
-            {
-              "home": "USA",
-              "away": "Paraguay",
-              "res": "H"
-            },
-            {
-              "home": "Haiti",
-              "away": "Skottland",
-              "res": "B"
-            },
-            {
-              "home": "Qatar",
-              "away": "Sveits",
-              "res": "U"
-            },
-            {
-              "home": "Tyskland",
-              "away": "Curaçao",
-              "res": "H"
-            },
-            {
-              "home": "Frankrike",
-              "away": "Senegal",
-              "res": "H"
-            },
-            {
-              "home": "Irak",
-              "away": "Norge",
-              "res": "B"
-            },
-            {
-              "home": "Argentina",
-              "away": "Algerie",
-              "res": "H"
-            },
-            {
-              "home": "Østerrike",
-              "away": "Jordan",
-              "res": "H"
-            },
-            {
-              "home": "Ghana",
-              "away": "Panama",
-              "res": "H"
-            },
-            {
-              "home": "Usbekistan",
-              "away": "Colombia",
-              "res": "B"
-            },
-            {
-              "home": "Mexico",
-              "away": "Sør-Korea",
-              "res": "H"
-            }
-          ]
-        },
-        {
-          "label": "Toppscorer",
-          "pts": 0,
-          "detail": "tippet Kane"
-        },
-        {
-          "label": "Antall mål",
-          "pts": 0,
-          "detail": "tippet 169 (fasit 89)"
+          "detail": "tippet 302 (fasit 91)"
         }
       ]
     },
@@ -2801,129 +2851,129 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 89)"
+          "detail": "tippet 200 (fasit 91)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 89,
-      "spilt": 28,
+      "fasit": 91,
+      "spilt": 29,
       "totalt": 104,
-      "projeksjon": 331,
+      "projeksjon": 326,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 72
+          "diff": 70
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 80
+          "diff": 78
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 111
+          "diff": 109
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 173
+          "diff": 171
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 175
+          "diff": 173
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 197
+          "diff": 195
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 209
+          "diff": 207
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 211
+          "diff": 209
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 213
+          "diff": 211
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 215
+          "diff": 213
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 217
+          "diff": 215
         }
       ],
       "mot_projeksjon": [
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 25
+          "diff": 20
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 27
+          "diff": 22
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 29
+          "diff": 24
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 31
+          "diff": 26
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 33
+          "diff": 28
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 45
+          "diff": 40
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 67
+          "diff": 62
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 69
+          "diff": 64
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 131
+          "diff": 126
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 162
+          "diff": 157
         },
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 170
+          "diff": 165
         }
       ]
     },
@@ -2950,10 +3000,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -2982,9 +3032,9 @@
                   "Simon",
                   "Håkon",
                   "Jonas",
-                  "Marius",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": [
                   "Tobias",
@@ -3016,8 +3066,8 @@
                 ],
                 "B": [
                   "Håkon",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             }
@@ -3041,9 +3091,9 @@
                   "Håkon",
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Bjørn",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Arya",
@@ -3100,9 +3150,9 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3130,10 +3180,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3158,10 +3208,10 @@
                   "Håkon",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             },
@@ -3182,9 +3232,9 @@
                   "Håkon",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ],
                 "B": [
@@ -3209,10 +3259,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3234,10 +3284,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3269,10 +3319,10 @@
                 ],
                 "U": [
                   "Øystein",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": [
                   "Robin"
@@ -3298,10 +3348,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3322,10 +3372,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3347,10 +3397,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -3378,10 +3428,10 @@
                   "Tobias",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Håkon"
@@ -3408,10 +3458,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3436,10 +3486,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3465,10 +3515,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3491,10 +3541,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3516,8 +3566,8 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Tobias",
@@ -3542,8 +3592,8 @@
                   "Tobias",
                   "Øystein",
                   "Arya",
-                  "Marius",
-                  "Ringstad"
+                  "Ringstad",
+                  "Marius"
                 ],
                 "U": [
                   "Håkon",
@@ -3571,10 +3621,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3607,9 +3657,9 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             },
@@ -3628,9 +3678,9 @@
                   "Håkon",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Jonas",
@@ -3657,8 +3707,8 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -3689,8 +3739,8 @@
                 ],
                 "U": [
                   "Håkon",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": []
               }
@@ -3746,10 +3796,10 @@
                   "Håkon",
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3761,7 +3811,7 @@
               "H": 9,
               "U": 2,
               "B": 0,
-              "fasit": null,
+              "fasit": "H",
               "navn": {
                 "H": [
                   "Simon",
@@ -3802,10 +3852,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3827,8 +3877,8 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Håkon",
@@ -3854,10 +3904,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Håkon",
@@ -3881,10 +3931,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Robin"
@@ -3915,10 +3965,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -3945,9 +3995,9 @@
                   "Simon",
                   "Håkon",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -3968,10 +4018,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Robin"
@@ -3995,10 +4045,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -4021,10 +4071,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -4048,8 +4098,8 @@
                 "H": [],
                 "U": [
                   "Tobias",
-                  "Marius",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ],
                 "B": [
@@ -4079,10 +4129,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -4104,10 +4154,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4141,9 +4191,9 @@
                   "Simon",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": []
               }
@@ -4170,9 +4220,9 @@
                   "Simon",
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Bjørn",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             },
@@ -4192,10 +4242,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -4221,10 +4271,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4245,10 +4295,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [],
@@ -4275,9 +4325,9 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4305,10 +4355,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4328,9 +4378,9 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4353,9 +4403,9 @@
                   "Tobias",
                   "Håkon",
                   "Arya",
-                  "Marius",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Simon",
@@ -4381,9 +4431,9 @@
                   "Tobias",
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Bjørn",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4448,9 +4498,9 @@
                   "Simon",
                   "Håkon",
                   "Arya",
-                  "Marius",
                   "Bjørn",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             },
@@ -4473,10 +4523,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4500,10 +4550,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4519,8 +4569,8 @@
               "navn": {
                 "H": [
                   "Simon",
-                  "Marius",
-                  "Ringstad"
+                  "Ringstad",
+                  "Marius"
                 ],
                 "U": [
                   "Håkon",
@@ -4554,10 +4604,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4578,8 +4628,8 @@
               "navn": {
                 "H": [
                   "Øystein",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "U": [
                   "Simon",
@@ -4638,8 +4688,8 @@
                   "Tobias",
                   "Håkon",
                   "Jonas",
-                  "Marius",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": [
                   "Øystein",
@@ -4665,10 +4715,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4700,9 +4750,9 @@
                   "Simon",
                   "Tobias",
                   "Håkon",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ],
                 "B": [
@@ -4728,10 +4778,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4756,9 +4806,9 @@
                 "B": [
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4776,8 +4826,8 @@
                 "U": [
                   "Tobias",
                   "Håkon",
-                  "Marius",
-                  "Bjørn"
+                  "Bjørn",
+                  "Marius"
                 ],
                 "B": [
                   "Simon",
@@ -4808,10 +4858,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -4830,9 +4880,9 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
+                  "Marius",
                   "Robin"
                 ],
                 "U": [
@@ -4864,10 +4914,10 @@
                   "Tobias",
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ]
               }
             },
@@ -4887,10 +4937,10 @@
                   "Simon",
                   "Håkon",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": [
                   "Tobias",
@@ -4917,9 +4967,9 @@
                 "U": [
                   "Jonas",
                   "Øystein",
-                  "Marius",
                   "Ringstad",
-                  "Andrè"
+                  "Andrè",
+                  "Marius"
                 ],
                 "B": [
                   "Simon",
@@ -4949,10 +4999,10 @@
                   "Jonas",
                   "Øystein",
                   "Arya",
-                  "Marius",
                   "Bjørn",
                   "Ringstad",
                   "Andrè",
+                  "Marius",
                   "Robin"
                 ]
               }
@@ -5005,13 +5055,6 @@
         "antall_kort": 412
       },
       {
-        "navn": "Marius",
-        "mester": "England",
-        "toppscorer": "Kane",
-        "antall_maal": 302,
-        "antall_kort": 340
-      },
-      {
         "navn": "Bjørn",
         "mester": "Spania",
         "toppscorer": "Mbappe",
@@ -5031,6 +5074,13 @@
         "toppscorer": "Kane",
         "antall_maal": 169,
         "antall_kort": 216
+      },
+      {
+        "navn": "Marius",
+        "mester": "England",
+        "toppscorer": "Kane",
+        "antall_maal": 302,
+        "antall_kort": 340
       },
       {
         "navn": "Robin",
