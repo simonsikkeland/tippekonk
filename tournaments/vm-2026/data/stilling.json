@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-19T18:17:23+00:00",
+  "oppdatert": "2026-06-19T20:16:06+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -486,12 +486,12 @@
         "home": "USA",
         "away": "Australia",
         "dato": "2026-06-19",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 2,
+        "away_score": 0,
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_D",
-        "winner": null
+        "winner": "HOME_TEAM"
       },
       {
         "home": "Skottland",
