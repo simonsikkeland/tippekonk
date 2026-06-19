@@ -38,13 +38,24 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     comp = cfg["football_data_competition"]
     season = cfg.get("api_football_season", 2026)
 
-    # Tidligere kjente resultater. Beskytter mot at API-et midlertidig
-    # returnerer null på en allerede ferdigspilt kamp — uten dette mister
-    # deltakerne poeng (og målsummen hopper) helt til API-et retter seg.
-    prev_scores = {}
+    # Hardt lås på ferdigspilte kamper. Når en kamp først er sett som
+    # FINISHED med begge måltall i lagret fasit.json, fryses resultatet
+    # permanent: senere API-svar med null, et annet tall, eller en flippet
+    # status ignoreres for den kampen. Bare kamper som ennå ikke er låst
+    # oppdateres fra API-et. Dette gjør tabellen stabil selv om API-et er
+    # ustabilt — vi henter alt, men beholder kun det nyeste for u-låste kamper.
+    locked: dict[tuple, dict] = {}
     for k in (existing or {}).get("kamper", []):
-        if k.get("home_score") is not None and k.get("away_score") is not None:
-            prev_scores[(k.get("home"), k.get("away"))] = (k["home_score"], k["away_score"])
+        if (k.get("status") == "FINISHED"
+                and k.get("home_score") is not None
+                and k.get("away_score") is not None):
+            locked[(k.get("home"), k.get("away"))] = k
+
+    def apply_lock(home, away, h, a, status, winner=None):
+        lk = locked.get((home, away))
+        if lk:
+            return lk["home_score"], lk["away_score"], "FINISHED", lk.get("winner", winner)
+        return h, a, status, winner
 
     fact = {
         "matches": [], "group_winners": {}, "r16": [], "r8": [],
@@ -100,17 +111,17 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
         ft = m.get("score", {}).get("fullTime", {})
         h_goals = ft.get("home")
         a_goals = ft.get("away")
+        winner = m.get("score", {}).get("winner")
 
-        # Fallback: ferdig kamp uten score fra API -> bruk forrige kjente.
-        if status == "FINISHED" and (h_goals is None or a_goals is None):
-            prev = prev_scores.get((home, away))
-            if prev:
-                h_goals, a_goals = prev
+        # Bruk låst resultat hvis kampen allerede er ferdigspilt og lagret.
+        h_goals, a_goals, status, winner = apply_lock(
+            home, away, h_goals, a_goals, status, winner)
 
         kamp = {
             "home": home, "away": away, "dato": dato,
             "home_score": h_goals, "away_score": a_goals,
             "status": status, "stage": stage, "group": grp,
+            "winner": winner,
         }
         fact["kamper"].append(kamp)
 
@@ -128,7 +139,6 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
             stage_teams[key].add(away)
 
         if status == "FINISHED":
-            winner = m.get("score", {}).get("winner")
             if stage == "FINAL":
                 if winner == "HOME_TEAM":
                     fact["vm_vinner"] = home
@@ -170,11 +180,10 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
             group_tables[grp][home] = [0, 0, 0, 0]
         if away not in group_tables[grp]:
             group_tables[grp][away] = [0, 0, 0, 0]
-        if m.get("status") != "FINISHED":
-            continue
         ft = m.get("score", {}).get("fullTime", {})
         h, a = ft.get("home"), ft.get("away")
-        if h is None or a is None:
+        h, a, gstatus, _ = apply_lock(home, away, h, a, m.get("status", ""))
+        if gstatus != "FINISHED" or h is None or a is None:
             continue
         group_tables[grp][home][3] += 1
         group_tables[grp][away][3] += 1

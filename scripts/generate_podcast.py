@@ -329,6 +329,27 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     nyheter = hent_nyheter()
     print(f"  {len(nyheter)} VM-nyheter hentet fra RSS")
 
+    # Seiers-sang: hvis seierslaget (Norge) vant nylig spilles «Tre poeng til
+    # Norge» rett etter intro-jingelen — og da MÅ vertene anerkjenne den.
+    # Samme dagvindu som lyd-genereringen i main(), så manus og lyd er enige.
+    seierslag = cfg.get("podcast", {}).get("seierslag", "Norge")
+    seierssang_spilles = lag_vant_nylig(data, seierslag)
+    if seierssang_spilles:
+        seiers_instruks = (
+            f"- SEIERS-SANG: Rett etter intro-jingelen spilles seiers-sangen "
+            f"«Tre poeng til {seierslag}» fordi {seierslag} nettopp vant en kamp "
+            f"(en seier = tre poeng). I den aller FØRSTE replikken MÅ vertene "
+            f"anerkjenne sangen og feire kort at {seierslag} tok tre poeng, før de "
+            f"går videre med velkomsten.\n"
+        )
+        intro_seier_note = (
+            f" Anerkjenn først seiers-sangen «Tre poeng til {seierslag}» som nettopp "
+            f"spilte — {seierslag} vant og tok tre poeng — og feire det kort."
+        )
+    else:
+        seiers_instruks = ""
+        intro_seier_note = ""
+
     sammendrag = {
         "turnering": data.get("turnering", {}).get("navn"),
         "oppdatert": data.get("oppdatert"),
@@ -355,7 +376,9 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"VIKTIGE REGLER:\n"
         f"- Vertene skal ALDRI synge. Ingen sangtekster, noter eller synging i dialogen.\n"
         f"- En intro-jingle spilles automatisk før vertene snakker, og en outro-jingle etterpå. "
-        f"Vertene trenger IKKE lage disse lydene selv.\n"
+        f"Vertene trenger IKKE lage disse lydene selv, og skal IKKE kommentere eller anerkjenne "
+        f"selve jingelen — bare gå rett på velkomsten.\n"
+        f"{seiers_instruks}"
         f"- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, tips, navn eller tall. "
         f"Bruk kun det som faktisk står i dataene under.\n"
         f"- Deltakerne tipper KUN utfall: hjemmeseier, uavgjort eller borteseier — IKKE eksakt "
@@ -372,8 +395,9 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"og ikke 'tre-null'. Tallet 11 skal skrives som 'elve', ikke 'elleve' og ikke '11'. "
         f"Andre tall over 12 kan skrives med siffer der det er mest naturlig.\n\n"
         f"STRUKTUR (følg denne rekkefølgen):\n"
-        f"1. INTRO — Kort, energisk velkomst. Kommenter intro-jingelen på en morsom måte "
-        f"(f.eks. 'For en intro!', 'Den jingelen blir aldri gammel!'). Sett stemningen.\n"
+        f"1. INTRO — Kort, energisk velkomst rett etter at intro-jingelen har spilt. "
+        f"IKKE kommenter eller anerkjenn selve jingelen; ønsk heller velkommen og sett "
+        f"stemningen.{intro_seier_note}\n"
         f"2. OPPSUMMERING — Gå gjennom de ferske kampresultatene. "
         f"Hvem i kompisgjengen traff blink på tippingen? Hvem bommet fullstendig? "
         f"Trekk fram morsomme fakta fra kampene (storseire, sjokkresultater, målfester). "
@@ -399,8 +423,9 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
         f"Hvem har gjort smarte/dumme tips som kan slå til eller smelle? "
         f"Stjernespillere å følge med på, spennende oppgjør, bygg forventning. "
         f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
-        f"6. OUTRO — Aller siste replikk skal ALLTID avsluttes med ordene 'Spill av outroen!' "
-        f"som et signal til outro-jingelen. Gjør det naturlig og morsomt.\n\n"
+        f"6. OUTRO — Aller siste replikk skal være en naturlig, varm avskjed: takk for nå og "
+        f"at vi høres neste gang (gjerne med en frekk vri). IKKE skriv 'Spill av outroen!' eller "
+        f"andre lyd-signaler — outro-jingelen spilles automatisk etterpå.\n\n"
         f"TONE: Kul, frekk og høyt tempo. Vertene er selvsikre og lar munnen gå — frekke jokes, "
         f"syrlige stikk og lett politisk ukorrekt humor. De roaster kompisene og lagene uten "
         f"filter, og er ikke redde for å være litt drøye. (Grense: ikke hatefullt eller "
