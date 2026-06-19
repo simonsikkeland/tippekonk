@@ -259,8 +259,129 @@ def spalte_kandidater(tipp: dict, kamper: list, window: tuple) -> dict:
             "tippere_som_bommet_mest": dagens_bom}
 
 
-def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
-    """Be Claude skrive dialogmanus. Returnerer [{vert, tekst}, ...]."""
+def tavle_endringer(data: dict, historikk: list) -> dict:
+    """Sammenlign dagens stilling mot snapshot ~24t tilbake, så oppsummeringen
+    kan si hvor mange poeng lederen fikk og hva som har endret seg på tavla."""
+    stilling = data.get("stilling", [])
+    if not stilling:
+        return {}
+    try:
+        naa_tid = datetime.fromisoformat((data.get("oppdatert") or "").replace("Z", "+00:00"))
+    except ValueError:
+        naa_tid = datetime.now(timezone.utc)
+    mål = naa_tid - timedelta(hours=24)
+
+    # Siste snapshot på eller før målet (ellers det aller første vi har).
+    forrige = None
+    for snap in historikk:
+        try:
+            t = datetime.fromisoformat(snap["tid"].replace("Z", "+00:00"))
+        except (ValueError, KeyError):
+            continue
+        if t <= mål:
+            forrige = snap
+    if forrige is None and historikk:
+        forrige = historikk[0]
+    før = (forrige or {}).get("poeng", {})
+
+    leder = stilling[0]
+    endringer = []
+    for s in stilling:
+        d = s["poeng"] - før.get(s["navn"], s["poeng"])
+        if d:
+            endringer.append({"navn": s["navn"], "pluss": d})
+    forrige_leder = max(før, key=før.get) if før else leder["navn"]
+    return {
+        "leder": leder["navn"],
+        "leder_poeng": leder["poeng"],
+        "leder_fikk_siste_doegn": leder["poeng"] - før.get(leder["navn"], leder["poeng"]),
+        "forrige_leder": forrige_leder,
+        "ny_leder": forrige_leder != leder["navn"],
+        "poengendringer_siste_doegn": sorted(endringer, key=lambda x: -x["pluss"]),
+    }
+
+
+def claude_oppsummering(api_key: str, data: dict, cfg: dict,
+                        nyheter: list[str], historikk: list) -> str:
+    """Egen Claude-prompt: kort tekst-oppsummering for nettsiden. Returnerer ren
+    løpende tekst (ingen markdown) — resultater, highlights og tavle-endringer."""
+    fasit = data.get("fasit", {})
+    kamper = fasit.get("kamper", [])
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
+
+    resultater = []
+    for k in kamper:
+        if k.get("status") != "FINISHED" or k.get("dato") not in (today, yesterday):
+            continue
+        hs, as_ = k.get("home_score"), k.get("away_score")
+        if hs is None or as_ is None:
+            continue
+        resultater.append(f"{k['home']} {hs}-{as_} {k['away']}")
+
+    tavle = tavle_endringer(data, historikk)
+    topp_sc = [{"navn": x["navn"], "lag": x.get("lag", ""), "maal": x.get("maal", 0)}
+               for x in fasit.get("topp_scorere", [])[:5]]
+    stilling = [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]}
+                for s in data.get("stilling", [])]
+
+    sammendrag = {
+        "turnering": data.get("turnering", {}).get("navn"),
+        "dato": today,
+        "kampresultater_siste_doegn": resultater,
+        "totalt_antall_maal_i_mesterskapet": fasit.get("antall_maal"),
+        "toppscorere": topp_sc,
+        "tavle_endringer": tavle,
+        "stilling": stilling,
+        "nyheter_fra_media": nyheter,
+    }
+
+    system = (
+        "Du skriver en kort, poengtert oppsummering på naturlig norsk bokmål av siste "
+        "døgns hendelser i fotball-VM 2026, for forsiden til en privat tippekonkurranse "
+        "blant norske kompiser. Teksten skal være lett å lese og lett å kopiere.\n\n"
+        "INNHOLD (få med alt dette):\n"
+        "- Resultatet av ALLE kampene i 'kampresultater_siste_doegn'. Nevn hver kamp med "
+        "lag og siffer-resultat (f.eks. 'Mexico vant 1-0 over Sør-Korea').\n"
+        "- Highlights og store øyeblikk: målfester, store seire, hat trick, dramatikk, "
+        "skader/brukne bein, kontroverser. Bruk KUN det som faktisk fremgår av "
+        "kampresultatene, toppscorerlista og overskriftene i 'nyheter_fra_media'.\n"
+        "- Hvor mange poeng lederen fikk det siste døgnet ('tavle_endringer."
+        "leder_fikk_siste_doegn') og hva som har endret seg på tavla — ny leder hvis "
+        "'ny_leder' er sann, hvem som klatret mest, osv. Hvis ingenting endret seg, si "
+        "det kort.\n\n"
+        "REGLER:\n"
+        "- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, navn, tall eller "
+        "hendelser. Ikke anta et hat trick eller en skade med mindre det fremgår av "
+        "dataene/overskriftene.\n"
+        "- Skriv kampresultater med siffer (4-1, 1-0), ikke som ord.\n"
+        "- Ren løpende tekst i 2 til 3 korte avsnitt. INGEN markdown, ingen punktlister, "
+        "ingen overskrift, ingen emoji. Ikke for langt — rundt 8 til 12 setninger.\n"
+        "- Tone: engasjert og lett humoristisk, men informativ.\n"
+        "- Svar KUN med selve oppsummeringsteksten, ingenting annet."
+    )
+    user = f"Dagens data:\n{json.dumps(sammendrag, ensure_ascii=False, indent=2)}\n\nSkriv oppsummeringen nå."
+
+    body = json.dumps({
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 1200,
+        "system": system,
+        "messages": [{"role": "user", "content": user}],
+    }).encode("utf-8")
+    req = urllib.request.Request(ANTHROPIC_URL, data=body, headers={
+        "x-api-key": api_key,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    })
+    with urllib.request.urlopen(req, timeout=90) as r:
+        resp = json.loads(r.read().decode("utf-8"))
+    text = "".join(b.get("text", "") for b in resp.get("content", []) if b.get("type") == "text")
+    return text.strip()
+
+
+def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> list[dict]:
+    """Be Claude skrive dialogmanus. Returnerer [{vert, tekst}, ...].
+    `nyheter` hentes én gang i main() og deles med oppsummeringen."""
     vert_navn = list((cfg.get("podcast", {}).get("stemmer") or DEFAULT_VOICES).keys())
     a, b = (vert_navn + ["Ada", "Jonas"])[:2]
 
@@ -324,10 +445,6 @@ def claude_manus(api_key: str, data: dict, cfg: dict) -> list[dict]:
     # Gruppetabeller - hvem leder?
     grupper = fasit.get("grupper", {})
     gruppeledere = {g: rows[0]["lag"] for g, rows in grupper.items() if rows}
-
-    # Nyheter
-    nyheter = hent_nyheter()
-    print(f"  {len(nyheter)} VM-nyheter hentet fra RSS")
 
     # Seiers-sang: hvis seierslaget (Norge) vant nylig spilles «Tre poeng til
     # Norge» rett etter intro-jingelen — og da MÅ vertene anerkjenne den.
@@ -575,13 +692,30 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
         print(f"  Episode for {ep_id} finnes allerede - hopper over (bruk --force for a regenerere).")
         return
 
+    # RSS hentes én gang og deles av manus + oppsummering.
+    nyheter = hent_nyheter()
+    print(f"  {len(nyheter)} VM-nyheter hentet fra RSS")
+
     print("Skriver manus med Claude ...")
-    manus = claude_manus(anthropic_key, data, cfg)
+    manus = claude_manus(anthropic_key, data, cfg, nyheter)
     print(f"  {len(manus)} replikker.")
 
     # Lagre manuset alltid (gratis)
     (pod_dir / f"manus-{ep_id}.json").write_text(
         json.dumps(manus, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Oppsummering for nettsiden — bygges hver gang podcasten kjøres (egen prompt).
+    oppsummering = ""
+    try:
+        hist_p = tdir / "data" / "poenghistorikk.json"
+        historikk = json.loads(hist_p.read_text(encoding="utf-8")) if hist_p.exists() else []
+        oppsummering = claude_oppsummering(anthropic_key, data, cfg, nyheter, historikk)
+        (pod_dir / f"oppsummering-{ep_id}.json").write_text(
+            json.dumps({"tekst": oppsummering, "id": ep_id, "dato": dato.isoformat()},
+                       ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"  Oppsummering: {len(oppsummering)} tegn")
+    except Exception as e:
+        print(f"  (oppsummering hoppet over: {e})")
 
     eleven_key = os.environ.get("ELEVENLABS_API_KEY", "").strip()
     lyd_fil = None
@@ -643,6 +777,7 @@ def main(tournament_dir: str, lag_lyd_flag: bool, force: bool = False):
     siste = {
         "tittel": f"{cfg['kort_navn']} - {dato.strftime('%d.%m')}",
         "ingress": ingress,
+        "oppsummering": oppsummering,
         "lyd": lyd_fil,
         "dato": dato.isoformat(),
         "id": ep_id,

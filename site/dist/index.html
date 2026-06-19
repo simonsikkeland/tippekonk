@@ -152,6 +152,12 @@
   .manus-toggle:hover{background:rgba(255,255,255,.25)}
   .manus-box{margin-top:12px;padding:14px;background:rgba(0,0,0,.2);border-radius:10px;display:none}
   .manus-box.open{display:block}
+  .oppsummering{margin-top:14px;padding:14px;background:rgba(0,0,0,.2);border-radius:10px}
+  .opp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .opp-head h4{margin:0;font-size:14px;color:#D8E8DC}
+  .opp-tekst{margin:0;font-size:14px;line-height:1.55;color:#E8F2EA;white-space:pre-wrap}
+  .kopier-btn{background:var(--gold);border:none;border-radius:8px;padding:5px 12px;font:inherit;font-size:12px;font-weight:700;color:#1a1a1a;cursor:pointer;flex:none}
+  .kopier-btn:hover{filter:brightness(1.08)}
   .replikk{margin-bottom:10px;font-size:14px;line-height:1.5;color:#D8E8DC}
   .replikk:last-child{margin-bottom:0}
   .replikk .vert-navn{font-weight:800;color:var(--gold);margin-right:6px}
@@ -750,6 +756,15 @@ async function renderPodcast(id, d){
   let manus=null;
   try{ manus = await jget(`${id}/podcast/manus-${pod.id}.json`); }catch(e){}
 
+  let oppsummeringHtml = '';
+  if(pod.oppsummering){
+    oppsummeringHtml = `<div class="oppsummering">
+      <div class="opp-head"><h4>📋 Oppsummering</h4>
+        <button class="kopier-btn" onclick="kopierOppsummering(this)">Kopier</button></div>
+      <p class="opp-tekst" id="opp-tekst">${esc(pod.oppsummering)}</p>
+    </div>`;
+  }
+
   let manusHtml = '';
   if(manus && manus.length){
     manusHtml = `<button class="manus-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent=this.nextElementSibling.classList.contains('open')?'Skjul manus':'Les manus'">Les manus</button>
@@ -775,8 +790,18 @@ async function renderPodcast(id, d){
     <audio id="pod-audio" controls ${pod.lyd?`src="${id}/podcast/${esc(pod.lyd)}"`:''} style="width:100%;margin-top:6px"></audio>
     <p style="margin:8px 0 0;font-size:13px;color:#D8E8DC" id="pod-ingress">${esc(pod.ingress||'')}
     ${pod.feed?` · <a style="color:var(--gold)" href="${id}/feed.xml">RSS-feed</a>`:''}</p>
+    ${oppsummeringHtml}
     ${manusHtml}
     ${playlistHtml}</div>`;
+}
+
+function kopierOppsummering(btn){
+  const t = document.getElementById('opp-tekst');
+  if(!t) return;
+  navigator.clipboard.writeText(t.textContent).then(()=>{
+    const o = btn.textContent; btn.textContent = 'Kopiert!';
+    setTimeout(()=>{ btn.textContent = o; }, 1500);
+  }).catch(()=>{});
 }
 
 async function playEpisode(epId, lyd, tittel){
@@ -800,6 +825,15 @@ async function playEpisode(epId, lyd, tittel){
       const m = await jget(`${_podId}/podcast/manus-${epId}.json`);
       box.innerHTML = m.map(r=>`<div class="replikk"><span class="vert-navn">${esc(r.vert)}:</span>${esc(r.tekst)}</div>`).join('');
     }catch(e){ box.innerHTML = '<div class="replikk" style="color:rgba(255,255,255,.4)">Manus ikke tilgjengelig</div>'; }
+  }
+
+  // Oppdater oppsummering for valgt episode
+  const opp = document.getElementById('opp-tekst');
+  if(opp){
+    try{
+      const o = await jget(`${_podId}/podcast/oppsummering-${epId}.json`);
+      opp.textContent = o.tekst || 'Ingen oppsummering for denne episoden.';
+    }catch(e){ opp.textContent = 'Ingen oppsummering for denne episoden.'; }
   }
 }
 init();
