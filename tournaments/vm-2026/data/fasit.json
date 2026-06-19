@@ -129,11 +129,21 @@
       "home": "Sveits",
       "away": "Bosnia-Hercegovina",
       "result": "H"
+    },
+    {
+      "home": "Canada",
+      "away": "Qatar",
+      "result": "H"
+    },
+    {
+      "home": "Mexico",
+      "away": "Sør-Korea",
+      "result": "H"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Sveits",
+    "Gruppe B": "Canada",
     "Gruppe C": "Skottland",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -154,7 +164,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 82,
+  "antall_maal": 89,
   "kamper": [
     {
       "home": "Mexico",
@@ -420,9 +430,9 @@
       "home": "Canada",
       "away": "Qatar",
       "dato": "2026-06-18",
-      "home_score": 5,
+      "home_score": 6,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B"
     },
@@ -430,9 +440,9 @@
       "home": "Mexico",
       "away": "Sør-Korea",
       "dato": "2026-06-19",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_A"
     },
@@ -1201,17 +1211,17 @@
     "Gruppe A": [
       {
         "lag": "Mexico",
-        "poeng": 3,
-        "mf": 2,
-        "maal_for": 2,
-        "spilt": 1
+        "poeng": 6,
+        "mf": 3,
+        "maal_for": 3,
+        "spilt": 2
       },
       {
         "lag": "Sør-Korea",
         "poeng": 3,
-        "mf": 1,
+        "mf": 0,
         "maal_for": 2,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Tsjekkia",
@@ -1230,6 +1240,13 @@
     ],
     "Gruppe B": [
       {
+        "lag": "Canada",
+        "poeng": 4,
+        "mf": 6,
+        "maal_for": 7,
+        "spilt": 2
+      },
+      {
         "lag": "Sveits",
         "poeng": 4,
         "mf": 3,
@@ -1237,24 +1254,17 @@
         "spilt": 2
       },
       {
-        "lag": "Canada",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
-        "lag": "Qatar",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
         "lag": "Bosnia-Hercegovina",
         "poeng": 1,
         "mf": -3,
         "maal_for": 2,
+        "spilt": 2
+      },
+      {
+        "lag": "Qatar",
+        "poeng": 1,
+        "mf": -6,
+        "maal_for": 1,
         "spilt": 2
       }
     ],
@@ -1616,6 +1626,11 @@
       "maal": 3
     },
     {
+      "navn": "Jonathan David",
+      "lag": "Canada",
+      "maal": 3
+    },
+    {
       "navn": "Cyle Larin",
       "lag": "Canada",
       "maal": 2
@@ -1653,11 +1668,6 @@
     {
       "navn": "Harry Kane",
       "lag": "England",
-      "maal": 2
-    },
-    {
-      "navn": "Johan Manzambi",
-      "lag": "Sveits",
       "maal": 2
     }
   ],
