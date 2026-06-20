@@ -159,6 +159,11 @@
       "home": "Tyrkia",
       "away": "Paraguay",
       "result": "B"
+    },
+    {
+      "home": "Nederland",
+      "away": "Sverige",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -167,7 +172,7 @@
     "Gruppe C": "Brasil",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
-    "Gruppe F": "Sverige",
+    "Gruppe F": "Nederland",
     "Gruppe G": "Iran",
     "Gruppe H": "Saudi-Arabia",
     "Gruppe I": "Norge",
@@ -184,7 +189,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 96,
+  "antall_maal": 102,
   "kamper": [
     {
       "home": "Mexico",
@@ -544,7 +549,7 @@
       "dato": "2026-06-20",
       "home_score": 5,
       "away_score": 1,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "winner": "HOME_TEAM"
@@ -553,12 +558,12 @@
       "home": "Tyskland",
       "away": "Elfenbenskysten",
       "dato": "2026-06-20",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Ecuador",
@@ -1484,18 +1489,18 @@
     ],
     "Gruppe F": [
       {
-        "lag": "Sverige",
-        "poeng": 3,
+        "lag": "Nederland",
+        "poeng": 4,
         "mf": 4,
-        "maal_for": 5,
-        "spilt": 1
+        "maal_for": 7,
+        "spilt": 2
       },
       {
-        "lag": "Nederland",
-        "poeng": 1,
+        "lag": "Sverige",
+        "poeng": 3,
         "mf": 0,
-        "maal_for": 2,
-        "spilt": 1
+        "maal_for": 6,
+        "spilt": 2
       },
       {
         "lag": "Japan",
