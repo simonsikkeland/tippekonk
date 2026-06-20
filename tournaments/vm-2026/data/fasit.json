@@ -542,12 +542,12 @@
       "home": "Nederland",
       "away": "Sverige",
       "dato": "2026-06-20",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Tyskland",
