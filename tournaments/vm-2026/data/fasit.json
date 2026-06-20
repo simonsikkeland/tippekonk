@@ -149,12 +149,17 @@
       "home": "Skottland",
       "away": "Marokko",
       "result": "B"
+    },
+    {
+      "home": "Brasil",
+      "away": "Haiti",
+      "result": "H"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
     "Gruppe B": "Canada",
-    "Gruppe C": "Marokko",
+    "Gruppe C": "Brasil",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
     "Gruppe F": "Sverige",
@@ -174,7 +179,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 92,
+  "antall_maal": 95,
   "kamper": [
     {
       "home": "Mexico",
@@ -510,23 +515,23 @@
       "home": "Brasil",
       "away": "Haiti",
       "dato": "2026-06-20",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Tyrkia",
       "away": "Paraguay",
       "dato": "2026-06-20",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Nederland",
@@ -1384,6 +1389,13 @@
     ],
     "Gruppe C": [
       {
+        "lag": "Brasil",
+        "poeng": 4,
+        "mf": 3,
+        "maal_for": 4,
+        "spilt": 2
+      },
+      {
         "lag": "Marokko",
         "poeng": 4,
         "mf": 1,
@@ -1398,18 +1410,11 @@
         "spilt": 2
       },
       {
-        "lag": "Brasil",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
         "lag": "Haiti",
         "poeng": 0,
-        "mf": -1,
+        "mf": -4,
         "maal_for": 0,
-        "spilt": 1
+        "spilt": 2
       }
     ],
     "Gruppe D": [
@@ -1760,6 +1765,11 @@
       "maal": 2
     },
     {
+      "navn": "Vinicius Junior",
+      "lag": "Brasil",
+      "maal": 2
+    },
+    {
       "navn": "Kai Havertz",
       "lag": "Tyskland",
       "maal": 2
@@ -1777,11 +1787,6 @@
     {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
-      "maal": 2
-    },
-    {
-      "navn": "Erling Haaland",
-      "lag": "Norge",
       "maal": 2
     }
   ],
