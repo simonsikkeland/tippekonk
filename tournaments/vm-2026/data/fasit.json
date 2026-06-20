@@ -144,12 +144,17 @@
       "home": "USA",
       "away": "Australia",
       "result": "H"
+    },
+    {
+      "home": "Skottland",
+      "away": "Marokko",
+      "result": "B"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
     "Gruppe B": "Canada",
-    "Gruppe C": "Skottland",
+    "Gruppe C": "Marokko",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
     "Gruppe F": "Sverige",
@@ -169,7 +174,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 91,
+  "antall_maal": 92,
   "kamper": [
     {
       "home": "Mexico",
@@ -496,7 +501,7 @@
       "dato": "2026-06-19",
       "home_score": 0,
       "away_score": 1,
-      "status": "PAUSED",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "winner": "AWAY_TEAM"
@@ -1379,21 +1384,21 @@
     ],
     "Gruppe C": [
       {
+        "lag": "Marokko",
+        "poeng": 4,
+        "mf": 1,
+        "maal_for": 2,
+        "spilt": 2
+      },
+      {
         "lag": "Skottland",
         "poeng": 3,
-        "mf": 1,
+        "mf": 0,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Brasil",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
-      },
-      {
-        "lag": "Marokko",
         "poeng": 1,
         "mf": 0,
         "maal_for": 1,
