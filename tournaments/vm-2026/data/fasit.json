@@ -154,6 +154,11 @@
       "home": "Brasil",
       "away": "Haiti",
       "result": "H"
+    },
+    {
+      "home": "Tyrkia",
+      "away": "Paraguay",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -179,7 +184,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 95,
+  "antall_maal": 96,
   "kamper": [
     {
       "home": "Mexico",
@@ -528,7 +533,7 @@
       "dato": "2026-06-20",
       "home_score": 0,
       "away_score": 1,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
       "winner": "AWAY_TEAM"
@@ -1433,18 +1438,18 @@
         "spilt": 2
       },
       {
-        "lag": "Tyrkia",
-        "poeng": 0,
+        "lag": "Paraguay",
+        "poeng": 3,
         "mf": -2,
-        "maal_for": 0,
-        "spilt": 1
+        "maal_for": 2,
+        "spilt": 2
       },
       {
-        "lag": "Paraguay",
+        "lag": "Tyrkia",
         "poeng": 0,
         "mf": -3,
-        "maal_for": 1,
-        "spilt": 1
+        "maal_for": 0,
+        "spilt": 2
       }
     ],
     "Gruppe E": [

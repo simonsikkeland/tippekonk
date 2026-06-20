@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-20T04:52:48+00:00",
+  "oppdatert": "2026-06-20T08:07:21+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -162,6 +162,11 @@
         "home": "Brasil",
         "away": "Haiti",
         "result": "H"
+      },
+      {
+        "home": "Tyrkia",
+        "away": "Paraguay",
+        "result": "B"
       }
     ],
     "group_winners": {
@@ -187,7 +192,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Lionel Messi",
-    "antall_maal": 95,
+    "antall_maal": 96,
     "kamper": [
       {
         "home": "Mexico",
@@ -536,7 +541,7 @@
         "dato": "2026-06-20",
         "home_score": 0,
         "away_score": 1,
-        "status": "IN_PLAY",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_D",
         "winner": "AWAY_TEAM"
@@ -1441,18 +1446,18 @@
           "spilt": 2
         },
         {
-          "lag": "Tyrkia",
-          "poeng": 0,
+          "lag": "Paraguay",
+          "poeng": 3,
           "mf": -2,
-          "maal_for": 0,
-          "spilt": 1
+          "maal_for": 2,
+          "spilt": 2
         },
         {
-          "lag": "Paraguay",
+          "lag": "Tyrkia",
           "poeng": 0,
           "mf": -3,
-          "maal_for": 1,
-          "spilt": 1
+          "maal_for": 0,
+          "spilt": 2
         }
       ],
       "Gruppe E": [
@@ -1921,7 +1926,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 95)"
+          "detail": "tippet 304 (fasit 96)"
         }
       ]
     },
@@ -2035,7 +2040,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 161 (fasit 95)"
+          "detail": "tippet 161 (fasit 96)"
         }
       ]
     },
@@ -2149,7 +2154,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 95)"
+          "detail": "tippet 264 (fasit 96)"
         }
       ]
     },
@@ -2263,7 +2268,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 95)"
+          "detail": "tippet 306 (fasit 96)"
         }
       ]
     },
@@ -2372,7 +2377,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 95)"
+          "detail": "tippet 286 (fasit 96)"
         }
       ]
     },
@@ -2476,7 +2481,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 95)"
+          "detail": "tippet 300 (fasit 96)"
         }
       ]
     },
@@ -2580,7 +2585,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 95)"
+          "detail": "tippet 298 (fasit 96)"
         }
       ]
     },
@@ -2679,7 +2684,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 262 (fasit 95)"
+          "detail": "tippet 262 (fasit 96)"
         }
       ]
     },
@@ -2778,7 +2783,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 95)"
+          "detail": "tippet 169 (fasit 96)"
         }
       ]
     },
@@ -2877,7 +2882,7 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 95)"
+          "detail": "tippet 302 (fasit 96)"
         }
       ]
     },
@@ -2961,129 +2966,129 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 95)"
+          "detail": "tippet 200 (fasit 96)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 95,
-      "spilt": 31,
+      "fasit": 96,
+      "spilt": 32,
       "totalt": 104,
-      "projeksjon": 319,
+      "projeksjon": 312,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 66
+          "diff": 65
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 74
+          "diff": 73
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 105
+          "diff": 104
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 167
+          "diff": 166
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 169
+          "diff": 168
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 191
+          "diff": 190
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 203
+          "diff": 202
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 205
+          "diff": 204
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 207
+          "diff": 206
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 209
+          "diff": 208
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 211
+          "diff": 210
         }
       ],
       "mot_projeksjon": [
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 13
+          "diff": 6
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 15
+          "diff": 8
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 17
+          "diff": 10
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 19
+          "diff": 12
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 21
+          "diff": 14
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 33
+          "diff": 26
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 55
+          "diff": 48
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 57
+          "diff": 50
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 119
+          "diff": 112
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 150
+          "diff": 143
         },
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 158
+          "diff": 151
         }
       ]
     },
@@ -3979,7 +3984,7 @@
               "H": 7,
               "U": 4,
               "B": 0,
-              "fasit": null,
+              "fasit": "B",
               "navn": {
                 "H": [
                   "Simon",
@@ -5431,8 +5436,8 @@
               "seed": "1K"
             },
             "away": {
-              "navn": "Panama",
-              "seed": "3L"
+              "navn": "Paraguay",
+              "seed": "3D"
             },
             "vinner": {
               "navn": "Colombia",
