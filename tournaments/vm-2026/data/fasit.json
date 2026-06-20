@@ -558,8 +558,8 @@
       "home": "Tyskland",
       "away": "Elfenbenskysten",
       "dato": "2026-06-20",
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 1,
+      "away_score": 1,
       "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
@@ -1785,6 +1785,11 @@
       "maal": 2
     },
     {
+      "navn": "Deniz Undav",
+      "lag": "Tyskland",
+      "maal": 2
+    },
+    {
       "navn": "Yasin Ayari",
       "lag": "Sverige",
       "maal": 2
@@ -1792,11 +1797,6 @@
     {
       "navn": "Elijah Just",
       "lag": "New Zealand",
-      "maal": 2
-    },
-    {
-      "navn": "Kylian Mbappé",
-      "lag": "Frankrike",
       "maal": 2
     }
   ],

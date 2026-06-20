@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-20T20:16:00+00:00",
+  "oppdatert": "2026-06-20T21:48:19+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -566,8 +566,8 @@
         "home": "Tyskland",
         "away": "Elfenbenskysten",
         "dato": "2026-06-20",
-        "home_score": 0,
-        "away_score": 0,
+        "home_score": 1,
+        "away_score": 1,
         "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_E",
@@ -1793,6 +1793,11 @@
         "maal": 2
       },
       {
+        "navn": "Deniz Undav",
+        "lag": "Tyskland",
+        "maal": 2
+      },
+      {
         "navn": "Yasin Ayari",
         "lag": "Sverige",
         "maal": 2
@@ -1800,11 +1805,6 @@
       {
         "navn": "Elijah Just",
         "lag": "New Zealand",
-        "maal": 2
-      },
-      {
-        "navn": "Kylian Mbappé",
-        "lag": "Frankrike",
         "maal": 2
       }
     ],
