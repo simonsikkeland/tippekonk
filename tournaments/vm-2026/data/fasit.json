@@ -164,6 +164,11 @@
       "home": "Nederland",
       "away": "Sverige",
       "result": "H"
+    },
+    {
+      "home": "Tyskland",
+      "away": "Elfenbenskysten",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -188,8 +193,8 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "Lionel Messi",
-  "antall_maal": 102,
+  "toppscorer": "Deniz Undav",
+  "antall_maal": 105,
   "kamper": [
     {
       "home": "Mexico",
@@ -558,12 +563,12 @@
       "home": "Tyskland",
       "away": "Elfenbenskysten",
       "dato": "2026-06-20",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Ecuador",
@@ -1460,17 +1465,17 @@
     "Gruppe E": [
       {
         "lag": "Tyskland",
-        "poeng": 3,
-        "mf": 6,
-        "maal_for": 7,
-        "spilt": 1
+        "poeng": 6,
+        "mf": 7,
+        "maal_for": 9,
+        "spilt": 2
       },
       {
         "lag": "Elfenbenskysten",
         "poeng": 3,
-        "mf": 1,
-        "maal_for": 1,
-        "spilt": 1
+        "mf": 0,
+        "maal_for": 2,
+        "spilt": 2
       },
       {
         "lag": "Ecuador",
@@ -1750,6 +1755,11 @@
   },
   "topp_scorere": [
     {
+      "navn": "Deniz Undav",
+      "lag": "Tyskland",
+      "maal": 3
+    },
+    {
       "navn": "Lionel Messi",
       "lag": "Argentina",
       "maal": 3
@@ -1781,11 +1791,6 @@
     },
     {
       "navn": "Kai Havertz",
-      "lag": "Tyskland",
-      "maal": 2
-    },
-    {
-      "navn": "Deniz Undav",
       "lag": "Tyskland",
       "maal": 2
     },
