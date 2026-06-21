@@ -169,6 +169,16 @@
       "home": "Tyskland",
       "away": "Elfenbenskysten",
       "result": "H"
+    },
+    {
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "result": "U"
+    },
+    {
+      "home": "Tunisia",
+      "away": "Japan",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -194,7 +204,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Deniz Undav",
-  "antall_maal": 105,
+  "antall_maal": 109,
   "kamper": [
     {
       "home": "Mexico",
@@ -576,7 +586,7 @@
       "dato": "2026-06-21",
       "home_score": 0,
       "away_score": 0,
-      "status": "PAUSED",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "winner": "DRAW"
@@ -585,12 +595,12 @@
       "home": "Tunisia",
       "away": "Japan",
       "dato": "2026-06-21",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 4,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Spania",
@@ -1479,17 +1489,17 @@
       },
       {
         "lag": "Ecuador",
-        "poeng": 0,
+        "poeng": 1,
         "mf": -1,
         "maal_for": 0,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Curaçao",
-        "poeng": 0,
+        "poeng": 1,
         "mf": -6,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       }
     ],
     "Gruppe F": [
@@ -1501,6 +1511,13 @@
         "spilt": 2
       },
       {
+        "lag": "Japan",
+        "poeng": 4,
+        "mf": 4,
+        "maal_for": 6,
+        "spilt": 2
+      },
+      {
         "lag": "Sverige",
         "poeng": 3,
         "mf": 0,
@@ -1508,18 +1525,11 @@
         "spilt": 2
       },
       {
-        "lag": "Japan",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 2,
-        "spilt": 1
-      },
-      {
         "lag": "Tunisia",
         "poeng": 0,
-        "mf": -4,
+        "mf": -8,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       }
     ],
     "Gruppe G": [
@@ -1795,13 +1805,13 @@
       "maal": 2
     },
     {
-      "navn": "Yasin Ayari",
-      "lag": "Sverige",
+      "navn": "Daichi Kamada",
+      "lag": "Japan",
       "maal": 2
     },
     {
-      "navn": "Elijah Just",
-      "lag": "New Zealand",
+      "navn": "Yasin Ayari",
+      "lag": "Sverige",
       "maal": 2
     }
   ],
