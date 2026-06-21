@@ -184,6 +184,11 @@
       "home": "Spania",
       "away": "Saudi-Arabia",
       "result": "H"
+    },
+    {
+      "home": "Belgia",
+      "away": "Iran",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -624,7 +629,7 @@
       "dato": "2026-06-21",
       "home_score": 0,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "winner": "DRAW"
@@ -633,12 +638,12 @@
       "home": "Uruguay",
       "away": "Kapp Verde",
       "dato": "2026-06-21",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "New Zealand",
@@ -1540,23 +1545,23 @@
     "Gruppe G": [
       {
         "lag": "Iran",
-        "poeng": 1,
+        "poeng": 2,
         "mf": 0,
         "maal_for": 2,
-        "spilt": 1
+        "spilt": 2
+      },
+      {
+        "lag": "Belgia",
+        "poeng": 2,
+        "mf": 0,
+        "maal_for": 1,
+        "spilt": 2
       },
       {
         "lag": "New Zealand",
         "poeng": 1,
         "mf": 0,
         "maal_for": 2,
-        "spilt": 1
-      },
-      {
-        "lag": "Belgia",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
         "spilt": 1
       },
       {

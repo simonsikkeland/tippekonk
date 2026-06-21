@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-21T20:53:43+00:00",
+  "oppdatert": "2026-06-21T22:16:15+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -192,6 +192,11 @@
         "home": "Spania",
         "away": "Saudi-Arabia",
         "result": "H"
+      },
+      {
+        "home": "Belgia",
+        "away": "Iran",
+        "result": "U"
       }
     ],
     "group_winners": {
@@ -632,7 +637,7 @@
         "dato": "2026-06-21",
         "home_score": 0,
         "away_score": 0,
-        "status": "IN_PLAY",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_G",
         "winner": "DRAW"
@@ -641,12 +646,12 @@
         "home": "Uruguay",
         "away": "Kapp Verde",
         "dato": "2026-06-21",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 0,
+        "away_score": 0,
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_H",
-        "winner": null
+        "winner": "DRAW"
       },
       {
         "home": "New Zealand",
@@ -1548,23 +1553,23 @@
       "Gruppe G": [
         {
           "lag": "Iran",
-          "poeng": 1,
+          "poeng": 2,
           "mf": 0,
           "maal_for": 2,
-          "spilt": 1
+          "spilt": 2
+        },
+        {
+          "lag": "Belgia",
+          "poeng": 2,
+          "mf": 0,
+          "maal_for": 1,
+          "spilt": 2
         },
         {
           "lag": "New Zealand",
           "poeng": 1,
           "mf": 0,
           "maal_for": 2,
-          "spilt": 1
-        },
-        {
-          "lag": "Belgia",
-          "poeng": 1,
-          "mf": 0,
-          "maal_for": 1,
           "spilt": 1
         },
         {
@@ -3179,9 +3184,9 @@
   "statistikk": {
     "antall_maal": {
       "fasit": 114,
-      "spilt": 37,
+      "spilt": 38,
       "totalt": 104,
-      "projeksjon": 320,
+      "projeksjon": 312,
       "tipp": [
         {
           "navn": "Tobias",
@@ -3243,57 +3248,57 @@
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 14
+          "diff": 6
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 16
+          "diff": 8
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 18
+          "diff": 10
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 20
+          "diff": 12
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 22
+          "diff": 14
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 34
+          "diff": 26
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 56
+          "diff": 48
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 58
+          "diff": 50
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 120
+          "diff": 112
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 151
+          "diff": 143
         },
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 159
+          "diff": 151
         }
       ]
     },
@@ -4382,7 +4387,7 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null,
+              "fasit": "U",
               "navn": {
                 "H": [
                   "Simon",
@@ -5611,7 +5616,7 @@
               "seed": "1B"
             },
             "away": {
-              "navn": "Belgia",
+              "navn": "New Zealand",
               "seed": "3G"
             },
             "vinner": {
@@ -5656,7 +5661,7 @@
               "seed": "2D"
             },
             "away": {
-              "navn": "New Zealand",
+              "navn": "Belgia",
               "seed": "2G"
             },
             "vinner": {
