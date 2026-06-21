@@ -179,6 +179,11 @@
       "home": "Tunisia",
       "away": "Japan",
       "result": "B"
+    },
+    {
+      "home": "Spania",
+      "away": "Saudi-Arabia",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -189,7 +194,7 @@
     "Gruppe E": "Tyskland",
     "Gruppe F": "Nederland",
     "Gruppe G": "Iran",
-    "Gruppe H": "Saudi-Arabia",
+    "Gruppe H": "Spania",
     "Gruppe I": "Norge",
     "Gruppe J": "Argentina",
     "Gruppe K": "Colombia",
@@ -204,7 +209,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Deniz Undav",
-  "antall_maal": 109,
+  "antall_maal": 114,
   "kamper": [
     {
       "home": "Mexico",
@@ -606,9 +611,9 @@
       "home": "Spania",
       "away": "Saudi-Arabia",
       "dato": "2026-06-21",
-      "home_score": 3,
+      "home_score": 5,
       "away_score": 0,
-      "status": "PAUSED",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "winner": "HOME_TEAM"
@@ -1564,11 +1569,11 @@
     ],
     "Gruppe H": [
       {
-        "lag": "Saudi-Arabia",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
+        "lag": "Spania",
+        "poeng": 4,
+        "mf": 5,
+        "maal_for": 5,
+        "spilt": 2
       },
       {
         "lag": "Uruguay",
@@ -1578,18 +1583,18 @@
         "spilt": 1
       },
       {
-        "lag": "Spania",
+        "lag": "Kapp Verde",
         "poeng": 1,
         "mf": 0,
         "maal_for": 0,
         "spilt": 1
       },
       {
-        "lag": "Kapp Verde",
+        "lag": "Saudi-Arabia",
         "poeng": 1,
-        "mf": 0,
-        "maal_for": 0,
-        "spilt": 1
+        "mf": -5,
+        "maal_for": 1,
+        "spilt": 2
       }
     ],
     "Gruppe I": [
