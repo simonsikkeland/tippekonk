@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-21T22:16:15+00:00",
+  "oppdatert": "2026-06-21T23:52:20+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -646,8 +646,8 @@
         "home": "Uruguay",
         "away": "Kapp Verde",
         "dato": "2026-06-21",
-        "home_score": 0,
-        "away_score": 0,
+        "home_score": 2,
+        "away_score": 2,
         "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_H",
