@@ -199,6 +199,11 @@
       "home": "New Zealand",
       "away": "Egypt",
       "result": "B"
+    },
+    {
+      "home": "Argentina",
+      "away": "Østerrike",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -223,8 +228,8 @@
   "bronse_vinner": "",
   "finale": [],
   "vm_vinner": "",
-  "toppscorer": "Deniz Undav",
-  "antall_maal": 122,
+  "toppscorer": "Lionel Messi",
+  "antall_maal": 124,
   "kamper": [
     {
       "home": "Mexico",
@@ -670,12 +675,12 @@
       "home": "Argentina",
       "away": "Østerrike",
       "dato": "2026-06-22",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Frankrike",
@@ -1645,17 +1650,17 @@
     "Gruppe J": [
       {
         "lag": "Argentina",
-        "poeng": 3,
-        "mf": 3,
-        "maal_for": 3,
-        "spilt": 1
+        "poeng": 6,
+        "mf": 5,
+        "maal_for": 5,
+        "spilt": 2
       },
       {
         "lag": "Østerrike",
         "poeng": 3,
-        "mf": 2,
+        "mf": 0,
         "maal_for": 3,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Jordan",
@@ -1785,13 +1790,13 @@
   },
   "topp_scorere": [
     {
-      "navn": "Deniz Undav",
-      "lag": "Tyskland",
-      "maal": 3
-    },
-    {
       "navn": "Lionel Messi",
       "lag": "Argentina",
+      "maal": 5
+    },
+    {
+      "navn": "Deniz Undav",
+      "lag": "Tyskland",
       "maal": 3
     },
     {
