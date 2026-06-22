@@ -189,6 +189,16 @@
       "home": "Belgia",
       "away": "Iran",
       "result": "U"
+    },
+    {
+      "home": "Uruguay",
+      "away": "Kapp Verde",
+      "result": "U"
+    },
+    {
+      "home": "New Zealand",
+      "away": "Egypt",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -198,7 +208,7 @@
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
     "Gruppe F": "Nederland",
-    "Gruppe G": "Iran",
+    "Gruppe G": "Egypt",
     "Gruppe H": "Spania",
     "Gruppe I": "Norge",
     "Gruppe J": "Argentina",
@@ -214,7 +224,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Deniz Undav",
-  "antall_maal": 114,
+  "antall_maal": 122,
   "kamper": [
     {
       "home": "Mexico",
@@ -640,7 +650,7 @@
       "dato": "2026-06-21",
       "home_score": 2,
       "away_score": 2,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "winner": "DRAW"
@@ -649,12 +659,12 @@
       "home": "New Zealand",
       "away": "Egypt",
       "dato": "2026-06-22",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Argentina",
@@ -1544,6 +1554,13 @@
     ],
     "Gruppe G": [
       {
+        "lag": "Egypt",
+        "poeng": 4,
+        "mf": 2,
+        "maal_for": 4,
+        "spilt": 2
+      },
+      {
         "lag": "Iran",
         "poeng": 2,
         "mf": 0,
@@ -1560,16 +1577,9 @@
       {
         "lag": "New Zealand",
         "poeng": 1,
-        "mf": 0,
-        "maal_for": 2,
-        "spilt": 1
-      },
-      {
-        "lag": "Egypt",
-        "poeng": 1,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
+        "mf": -2,
+        "maal_for": 3,
+        "spilt": 2
       }
     ],
     "Gruppe H": [
@@ -1582,17 +1592,17 @@
       },
       {
         "lag": "Uruguay",
-        "poeng": 1,
+        "poeng": 2,
         "mf": 0,
-        "maal_for": 1,
-        "spilt": 1
+        "maal_for": 3,
+        "spilt": 2
       },
       {
         "lag": "Kapp Verde",
-        "poeng": 1,
+        "poeng": 2,
         "mf": 0,
-        "maal_for": 0,
-        "spilt": 1
+        "maal_for": 2,
+        "spilt": 2
       },
       {
         "lag": "Saudi-Arabia",
