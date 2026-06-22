@@ -688,7 +688,7 @@
       "dato": "2026-06-22",
       "home_score": 1,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "winner": "HOME_TEAM"

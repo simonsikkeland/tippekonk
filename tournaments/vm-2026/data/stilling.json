@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-22T21:42:07+00:00",
+  "oppdatert": "2026-06-22T23:21:18+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -696,7 +696,7 @@
         "dato": "2026-06-22",
         "home_score": 1,
         "away_score": 0,
-        "status": "IN_PLAY",
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_I",
         "winner": "HOME_TEAM"
