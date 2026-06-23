@@ -750,12 +750,12 @@
       "home": "England",
       "away": "Ghana",
       "dato": "2026-06-23",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "LIVE",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Panama",
