@@ -204,6 +204,11 @@
       "home": "Argentina",
       "away": "Østerrike",
       "result": "H"
+    },
+    {
+      "home": "Frankrike",
+      "away": "Irak",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -215,7 +220,7 @@
     "Gruppe F": "Nederland",
     "Gruppe G": "Egypt",
     "Gruppe H": "Spania",
-    "Gruppe I": "Norge",
+    "Gruppe I": "Frankrike",
     "Gruppe J": "Argentina",
     "Gruppe K": "Colombia",
     "Gruppe L": "England"
@@ -229,7 +234,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 124,
+  "antall_maal": 127,
   "kamper": [
     {
       "home": "Mexico",
@@ -686,9 +691,9 @@
       "home": "Frankrike",
       "away": "Irak",
       "dato": "2026-06-22",
-      "home_score": 1,
+      "home_score": 3,
       "away_score": 0,
-      "status": "PAUSED",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "winner": "HOME_TEAM"
@@ -697,12 +702,12 @@
       "home": "Norge",
       "away": "Senegal",
       "dato": "2026-06-23",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Jordan",
@@ -1619,17 +1624,17 @@
     ],
     "Gruppe I": [
       {
+        "lag": "Frankrike",
+        "poeng": 6,
+        "mf": 5,
+        "maal_for": 6,
+        "spilt": 2
+      },
+      {
         "lag": "Norge",
         "poeng": 3,
         "mf": 3,
         "maal_for": 4,
-        "spilt": 1
-      },
-      {
-        "lag": "Frankrike",
-        "poeng": 3,
-        "mf": 2,
-        "maal_for": 3,
         "spilt": 1
       },
       {
@@ -1642,9 +1647,9 @@
       {
         "lag": "Irak",
         "poeng": 0,
-        "mf": -3,
+        "mf": -6,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       }
     ],
     "Gruppe J": [
@@ -1795,13 +1800,18 @@
       "maal": 5
     },
     {
-      "navn": "Deniz Undav",
-      "lag": "Tyskland",
-      "maal": 3
-    },
-    {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
+      "maal": 4
+    },
+    {
+      "navn": "Erling Haaland",
+      "lag": "Norge",
+      "maal": 4
+    },
+    {
+      "navn": "Deniz Undav",
+      "lag": "Tyskland",
       "maal": 3
     },
     {
@@ -1832,11 +1842,6 @@
     {
       "navn": "Kai Havertz",
       "lag": "Tyskland",
-      "maal": 2
-    },
-    {
-      "navn": "Daichi Kamada",
-      "lag": "Japan",
       "maal": 2
     }
   ],

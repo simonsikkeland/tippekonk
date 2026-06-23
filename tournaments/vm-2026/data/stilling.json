@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-22T23:21:18+00:00",
+  "oppdatert": "2026-06-23T01:32:23+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -212,6 +212,11 @@
         "home": "Argentina",
         "away": "Østerrike",
         "result": "H"
+      },
+      {
+        "home": "Frankrike",
+        "away": "Irak",
+        "result": "H"
       }
     ],
     "group_winners": {
@@ -223,7 +228,7 @@
       "Gruppe F": "Nederland",
       "Gruppe G": "Egypt",
       "Gruppe H": "Spania",
-      "Gruppe I": "Norge",
+      "Gruppe I": "Frankrike",
       "Gruppe J": "Argentina",
       "Gruppe K": "Colombia",
       "Gruppe L": "England"
@@ -237,7 +242,7 @@
     "finale": [],
     "vm_vinner": "",
     "toppscorer": "Lionel Messi",
-    "antall_maal": 124,
+    "antall_maal": 127,
     "kamper": [
       {
         "home": "Mexico",
@@ -694,9 +699,9 @@
         "home": "Frankrike",
         "away": "Irak",
         "dato": "2026-06-22",
-        "home_score": 1,
+        "home_score": 3,
         "away_score": 0,
-        "status": "PAUSED",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_I",
         "winner": "HOME_TEAM"
@@ -705,12 +710,12 @@
         "home": "Norge",
         "away": "Senegal",
         "dato": "2026-06-23",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 3,
+        "away_score": 1,
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_I",
-        "winner": null
+        "winner": "HOME_TEAM"
       },
       {
         "home": "Jordan",
@@ -1627,17 +1632,17 @@
       ],
       "Gruppe I": [
         {
+          "lag": "Frankrike",
+          "poeng": 6,
+          "mf": 5,
+          "maal_for": 6,
+          "spilt": 2
+        },
+        {
           "lag": "Norge",
           "poeng": 3,
           "mf": 3,
           "maal_for": 4,
-          "spilt": 1
-        },
-        {
-          "lag": "Frankrike",
-          "poeng": 3,
-          "mf": 2,
-          "maal_for": 3,
           "spilt": 1
         },
         {
@@ -1650,9 +1655,9 @@
         {
           "lag": "Irak",
           "poeng": 0,
-          "mf": -3,
+          "mf": -6,
           "maal_for": 1,
-          "spilt": 1
+          "spilt": 2
         }
       ],
       "Gruppe J": [
@@ -1803,13 +1808,18 @@
         "maal": 5
       },
       {
-        "navn": "Deniz Undav",
-        "lag": "Tyskland",
-        "maal": 3
-      },
-      {
         "navn": "Kylian Mbappé",
         "lag": "Frankrike",
+        "maal": 4
+      },
+      {
+        "navn": "Erling Haaland",
+        "lag": "Norge",
+        "maal": 4
+      },
+      {
+        "navn": "Deniz Undav",
+        "lag": "Tyskland",
         "maal": 3
       },
       {
@@ -1841,11 +1851,6 @@
         "navn": "Kai Havertz",
         "lag": "Tyskland",
         "maal": 2
-      },
-      {
-        "navn": "Daichi Kamada",
-        "lag": "Japan",
-        "maal": 2
       }
     ],
     "gruppespill_ferdig": false
@@ -1854,12 +1859,12 @@
     {
       "plass": 1,
       "navn": "Simon",
-      "poeng": 26,
+      "poeng": 27,
       "linjer": [
         {
-          "label": "Gruppespill (26 riktige)",
-          "pts": 26,
-          "detail": "26 x 1p",
+          "label": "Gruppespill (27 riktige)",
+          "pts": 27,
+          "detail": "27 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -1987,6 +1992,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2001,19 +2011,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 304 (fasit 124)"
+          "detail": "tippet 304 (fasit 127)"
         }
       ]
     },
     {
       "plass": 2,
       "navn": "Håkon",
-      "poeng": 23,
+      "poeng": 24,
       "linjer": [
         {
-          "label": "Gruppespill (23 riktige)",
-          "pts": 23,
-          "detail": "23 x 1p",
+          "label": "Gruppespill (24 riktige)",
+          "pts": 24,
+          "detail": "24 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2126,6 +2136,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2140,19 +2155,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 264 (fasit 124)"
+          "detail": "tippet 264 (fasit 127)"
         }
       ]
     },
     {
       "plass": 3,
       "navn": "Jonas",
-      "poeng": 23,
+      "poeng": 24,
       "linjer": [
         {
-          "label": "Gruppespill (23 riktige)",
-          "pts": 23,
-          "detail": "23 x 1p",
+          "label": "Gruppespill (24 riktige)",
+          "pts": 24,
+          "detail": "24 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2263,6 +2278,11 @@
               "home": "New Zealand",
               "away": "Egypt",
               "res": "B"
+            },
+            {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
             },
             {
               "home": "Argentina",
@@ -2279,19 +2299,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 306 (fasit 124)"
+          "detail": "tippet 306 (fasit 127)"
         }
       ]
     },
     {
       "plass": 4,
       "navn": "Bjørn",
-      "poeng": 22,
+      "poeng": 23,
       "linjer": [
         {
-          "label": "Gruppespill (22 riktige)",
-          "pts": 22,
-          "detail": "22 x 1p",
+          "label": "Gruppespill (23 riktige)",
+          "pts": 23,
+          "detail": "23 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2399,6 +2419,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2413,19 +2438,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 300 (fasit 124)"
+          "detail": "tippet 300 (fasit 127)"
         }
       ]
     },
     {
       "plass": 5,
       "navn": "Øystein",
-      "poeng": 22,
+      "poeng": 23,
       "linjer": [
         {
-          "label": "Gruppespill (22 riktige)",
-          "pts": 22,
-          "detail": "22 x 1p",
+          "label": "Gruppespill (23 riktige)",
+          "pts": 23,
+          "detail": "23 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2533,6 +2558,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2547,19 +2577,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 286 (fasit 124)"
+          "detail": "tippet 286 (fasit 127)"
         }
       ]
     },
     {
       "plass": 6,
       "navn": "Arya",
-      "poeng": 22,
+      "poeng": 23,
       "linjer": [
         {
-          "label": "Gruppespill (22 riktige)",
-          "pts": 22,
-          "detail": "22 x 1p",
+          "label": "Gruppespill (23 riktige)",
+          "pts": 23,
+          "detail": "23 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2667,6 +2697,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2681,19 +2716,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 298 (fasit 124)"
+          "detail": "tippet 298 (fasit 127)"
         }
       ]
     },
     {
       "plass": 7,
       "navn": "Ringstad",
-      "poeng": 20,
+      "poeng": 21,
       "linjer": [
         {
-          "label": "Gruppespill (20 riktige)",
-          "pts": 20,
-          "detail": "20 x 1p",
+          "label": "Gruppespill (21 riktige)",
+          "pts": 21,
+          "detail": "21 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2791,6 +2826,11 @@
               "res": "H"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2805,19 +2845,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 262 (fasit 124)"
+          "detail": "tippet 262 (fasit 127)"
         }
       ]
     },
     {
       "plass": 8,
       "navn": "Andrè",
-      "poeng": 20,
+      "poeng": 21,
       "linjer": [
         {
-          "label": "Gruppespill (20 riktige)",
-          "pts": 20,
-          "detail": "20 x 1p",
+          "label": "Gruppespill (21 riktige)",
+          "pts": 21,
+          "detail": "21 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -2915,6 +2955,11 @@
               "res": "B"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -2929,19 +2974,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 169 (fasit 124)"
+          "detail": "tippet 169 (fasit 127)"
         }
       ]
     },
     {
       "plass": 9,
       "navn": "Marius",
-      "poeng": 20,
+      "poeng": 21,
       "linjer": [
         {
-          "label": "Gruppespill (20 riktige)",
-          "pts": 20,
-          "detail": "20 x 1p",
+          "label": "Gruppespill (21 riktige)",
+          "pts": 21,
+          "detail": "21 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -3039,6 +3084,11 @@
               "res": "H"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -3053,19 +3103,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 302 (fasit 124)"
+          "detail": "tippet 302 (fasit 127)"
         }
       ]
     },
     {
       "plass": 10,
       "navn": "Tobias",
-      "poeng": 20,
+      "poeng": 21,
       "linjer": [
         {
-          "label": "Gruppespill (20 riktige)",
-          "pts": 20,
-          "detail": "20 x 1p",
+          "label": "Gruppespill (21 riktige)",
+          "pts": 21,
+          "detail": "21 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -3166,6 +3216,11 @@
               "home": "Spania",
               "away": "Saudi-Arabia",
               "res": "H"
+            },
+            {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
             }
           ]
         },
@@ -3177,19 +3232,19 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 161 (fasit 124)"
+          "detail": "tippet 161 (fasit 127)"
         }
       ]
     },
     {
       "plass": 11,
       "navn": "Robin",
-      "poeng": 16,
+      "poeng": 17,
       "linjer": [
         {
-          "label": "Gruppespill (16 riktige)",
-          "pts": 16,
-          "detail": "16 x 1p",
+          "label": "Gruppespill (17 riktige)",
+          "pts": 17,
+          "detail": "17 x 1p",
           "kamper": [
             {
               "home": "Mexico",
@@ -3267,6 +3322,11 @@
               "res": "H"
             },
             {
+              "home": "Frankrike",
+              "away": "Irak",
+              "res": "H"
+            },
+            {
               "home": "Argentina",
               "away": "Østerrike",
               "res": "H"
@@ -3281,129 +3341,129 @@
         {
           "label": "Antall mål",
           "pts": 0,
-          "detail": "tippet 200 (fasit 124)"
+          "detail": "tippet 200 (fasit 127)"
         }
       ]
     }
   ],
   "statistikk": {
     "antall_maal": {
-      "fasit": 124,
-      "spilt": 41,
+      "fasit": 127,
+      "spilt": 42,
       "totalt": 104,
-      "projeksjon": 315,
+      "projeksjon": 314,
       "tipp": [
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 37
+          "diff": 34
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 45
+          "diff": 42
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 76
+          "diff": 73
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 138
+          "diff": 135
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 140
+          "diff": 137
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 162
+          "diff": 159
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 174
+          "diff": 171
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 176
+          "diff": 173
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 178
+          "diff": 175
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 180
+          "diff": 177
         },
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 182
+          "diff": 179
         }
       ],
       "mot_projeksjon": [
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 9
+          "diff": 8
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 11
+          "diff": 10
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 13
+          "diff": 12
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 15
+          "diff": 14
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 17
+          "diff": 16
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 29
+          "diff": 28
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 51
+          "diff": 50
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 53
+          "diff": 52
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 115
+          "diff": 114
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 146
+          "diff": 145
         },
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 154
+          "diff": 153
         }
       ]
     },
@@ -4550,7 +4610,7 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null,
+              "fasit": "H",
               "navn": {
                 "H": [
                   "Simon",
@@ -5597,7 +5657,7 @@
           {
             "nr": 77,
             "home": {
-              "navn": "Norge",
+              "navn": "Frankrike",
               "seed": "1I"
             },
             "away": {
@@ -5605,7 +5665,7 @@
               "seed": "3C"
             },
             "vinner": {
-              "navn": "Norge",
+              "navn": "Frankrike",
               "seed": "1I"
             }
           },
@@ -5616,11 +5676,11 @@
               "seed": "2E"
             },
             "away": {
-              "navn": "Frankrike",
+              "navn": "Norge",
               "seed": "2I"
             },
             "vinner": {
-              "navn": "Frankrike",
+              "navn": "Norge",
               "seed": "2I"
             }
           },
@@ -5786,7 +5846,7 @@
               "seed": "1E"
             },
             "away": {
-              "navn": "Norge",
+              "navn": "Frankrike",
               "seed": "1I"
             },
             "vinner": {
@@ -5816,11 +5876,11 @@
               "seed": "2F"
             },
             "away": {
-              "navn": "Frankrike",
+              "navn": "Norge",
               "seed": "2I"
             },
             "vinner": {
-              "navn": "Frankrike",
+              "navn": "Norge",
               "seed": "2I"
             }
           },
@@ -5937,7 +5997,7 @@
           {
             "nr": 99,
             "home": {
-              "navn": "Frankrike",
+              "navn": "Norge",
               "seed": "2I"
             },
             "away": {
@@ -5945,8 +6005,8 @@
               "seed": "1L"
             },
             "vinner": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Norge",
+              "seed": "2I"
             }
           },
           {
@@ -5987,16 +6047,16 @@
           {
             "nr": 102,
             "home": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Norge",
+              "seed": "2I"
             },
             "away": {
               "navn": "Argentina",
               "seed": "1J"
             },
             "vinner": {
-              "navn": "Argentina",
-              "seed": "1J"
+              "navn": "Norge",
+              "seed": "2I"
             }
           }
         ]
@@ -6011,8 +6071,8 @@
               "seed": "1D"
             },
             "away": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Argentina",
+              "seed": "1J"
             },
             "vinner": {
               "navn": "USA",
@@ -6031,8 +6091,8 @@
               "seed": "1E"
             },
             "away": {
-              "navn": "Argentina",
-              "seed": "1J"
+              "navn": "Norge",
+              "seed": "2I"
             },
             "vinner": {
               "navn": "Tyskland",
