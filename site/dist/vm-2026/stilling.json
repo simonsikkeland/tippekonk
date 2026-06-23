@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-23T13:22:20+00:00",
+  "oppdatert": "2026-06-23T16:10:44+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1069,7 +1069,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "Tyskland",
         "away": "",
         "dato": "2026-06-29",
         "home_score": null,
@@ -1113,7 +1113,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "Mexico",
         "away": "",
         "dato": "2026-07-01",
         "home_score": null,
@@ -1146,7 +1146,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "USA",
         "away": "",
         "dato": "2026-07-02",
         "home_score": null,
