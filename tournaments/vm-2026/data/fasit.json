@@ -224,6 +224,11 @@
       "home": "Portugal",
       "away": "Usbekistan",
       "result": "H"
+    },
+    {
+      "home": "England",
+      "away": "Ghana",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -752,7 +757,7 @@
       "dato": "2026-06-23",
       "home_score": 0,
       "away_score": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "winner": "DRAW"
@@ -1730,17 +1735,17 @@
     "Gruppe L": [
       {
         "lag": "England",
-        "poeng": 3,
+        "poeng": 4,
         "mf": 2,
         "maal_for": 4,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Ghana",
-        "poeng": 3,
+        "poeng": 4,
         "mf": 1,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Panama",

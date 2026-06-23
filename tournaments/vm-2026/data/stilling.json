@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-23T20:33:39+00:00",
+  "oppdatert": "2026-06-23T22:14:56+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -232,6 +232,11 @@
         "home": "Portugal",
         "away": "Usbekistan",
         "result": "H"
+      },
+      {
+        "home": "England",
+        "away": "Ghana",
+        "result": "U"
       }
     ],
     "group_winners": {
@@ -760,7 +765,7 @@
         "dato": "2026-06-23",
         "home_score": 0,
         "away_score": 0,
-        "status": "LIVE",
+        "status": "FINISHED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_L",
         "winner": "DRAW"
@@ -1738,17 +1743,17 @@
       "Gruppe L": [
         {
           "lag": "England",
-          "poeng": 3,
+          "poeng": 4,
           "mf": 2,
           "maal_for": 4,
-          "spilt": 1
+          "spilt": 2
         },
         {
           "lag": "Ghana",
-          "poeng": 3,
+          "poeng": 4,
           "mf": 1,
           "maal_for": 1,
-          "spilt": 1
+          "spilt": 2
         },
         {
           "lag": "Panama",
@@ -3474,9 +3479,9 @@
   "statistikk": {
     "antall_maal": {
       "fasit": 140,
-      "spilt": 45,
+      "spilt": 46,
       "totalt": 104,
-      "projeksjon": 324,
+      "projeksjon": 317,
       "tipp": [
         {
           "navn": "Tobias",
@@ -3538,57 +3543,57 @@
         {
           "navn": "Jonas",
           "tipp": 306,
-          "diff": 18
+          "diff": 11
         },
         {
           "navn": "Simon",
           "tipp": 304,
-          "diff": 20
+          "diff": 13
         },
         {
           "navn": "Marius",
           "tipp": 302,
-          "diff": 22
+          "diff": 15
         },
         {
           "navn": "Bjørn",
           "tipp": 300,
-          "diff": 24
+          "diff": 17
         },
         {
           "navn": "Arya",
           "tipp": 298,
-          "diff": 26
+          "diff": 19
         },
         {
           "navn": "Øystein",
           "tipp": 286,
-          "diff": 38
+          "diff": 31
         },
         {
           "navn": "Håkon",
           "tipp": 264,
-          "diff": 60
+          "diff": 53
         },
         {
           "navn": "Ringstad",
           "tipp": 262,
-          "diff": 62
+          "diff": 55
         },
         {
           "navn": "Robin",
           "tipp": 200,
-          "diff": 124
+          "diff": 117
         },
         {
           "navn": "Andrè",
           "tipp": 169,
-          "diff": 155
+          "diff": 148
         },
         {
           "navn": "Tobias",
           "tipp": 161,
-          "diff": 163
+          "diff": 156
         }
       ]
     },
@@ -4848,7 +4853,7 @@
               "H": 11,
               "U": 0,
               "B": 0,
-              "fasit": null,
+              "fasit": "U",
               "navn": {
                 "H": [
                   "Simon",
@@ -6020,8 +6025,8 @@
               "seed": "1L"
             },
             "vinner": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Mexico",
+              "seed": "1A"
             }
           },
           {
@@ -6126,12 +6131,12 @@
               "seed": "2I"
             },
             "away": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Mexico",
+              "seed": "1A"
             },
             "vinner": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Norge",
+              "seed": "2I"
             }
           },
           {
@@ -6172,8 +6177,8 @@
           {
             "nr": 102,
             "home": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Norge",
+              "seed": "2I"
             },
             "away": {
               "navn": "Argentina",
@@ -6196,8 +6201,8 @@
               "seed": "1D"
             },
             "away": {
-              "navn": "England",
-              "seed": "1L"
+              "navn": "Norge",
+              "seed": "2I"
             },
             "vinner": {
               "navn": "USA",
