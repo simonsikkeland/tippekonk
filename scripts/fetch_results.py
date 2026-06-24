@@ -18,6 +18,9 @@ API_BASE = "https://api.football-data.org/v4"
 HERE = Path(__file__).resolve().parent
 TEAM_MAP = json.loads((HERE / "team_map.no.json").read_text(encoding="utf-8"))
 
+sys.path.insert(0, str(HERE))
+from fetch_cards import hent_kort  # noqa: E402
+
 
 def to_no(name: str) -> str:
     if not name:
@@ -311,9 +314,16 @@ def main(tournament_dir: str):
             print("  ADVARSEL: ny fasit er degradert (færre kamper/mål) — beholder eksisterende.")
             fact = existing
 
+    # Kort-statistikk (gule/røde) scrapes uavhengig av football-data-API-et, så
+    # det oppdateres selv om resultat-API-et er rate-limited. antall_kort = total.
+    kort = hent_kort(cfg.get("kort_url", ""), existing)
+    if kort:
+        fact["kort"] = kort
+        fact["antall_kort"] = kort.get("total")
+
     if manual.get("assist"):
         fact["assist"] = manual["assist"]
-    if manual.get("antall_kort") is not None:
+    if manual.get("antall_kort") is not None:   # manuell verdi overstyrer scrapingen
         fact["antall_kort"] = manual["antall_kort"]
 
     # Atomisk skriv: skriv til temp og bytt inn, så en avbrutt kjøring aldri

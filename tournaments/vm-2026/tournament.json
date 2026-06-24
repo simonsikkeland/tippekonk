@@ -30,6 +30,7 @@
   "api_football_league": 1,
   "api_football_season": 2026,
   "football_data_competition": "WC",
+  "kort_url": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/",
   "podcast": {
     "base_url": "https://simonsikkeland.github.io/tippekonk/vm-2026/podcast",
     "tts_modell": "eleven_turbo_v2_5",

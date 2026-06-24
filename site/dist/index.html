@@ -39,6 +39,21 @@
   .scorer-row .goals{font-family:'Archivo';font-weight:900;color:var(--pitch);margin-left:auto;font-size:16px}
   .scorer-row .team-name{color:var(--slate);font-size:12px}
 
+  /* Kort (gule/røde) */
+  .kort-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.kort-grid{grid-template-columns:1fr}}
+  .kort-sum{float:right;font-family:'Archivo';font-weight:900;color:var(--pitch)}
+  .kort-list{max-height:320px;overflow:auto;margin-top:8px}
+  .kort-row{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .kort-row:last-child{border-bottom:none}
+  .kort-row img{width:20px;height:14px;object-fit:contain;border-radius:1px}
+  .kort-row .team-name{color:var(--slate);font-size:12px}
+  .kort-row .kort-n{margin-left:auto;display:flex;align-items:center;gap:5px;font-family:'Archivo';font-weight:900}
+  .kort-dot{width:13px;height:17px;border-radius:2px;display:inline-block}
+  .kort-dot.gul{background:#f4c20d}
+  .kort-dot.rod{background:#d83a34}
+  .kort-total{margin-top:16px;text-align:center}
+
   /* Matches */
   .match-day{margin-bottom:16px}
   .match-day h3{font-family:'Archivo';font-size:14px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
@@ -237,6 +252,7 @@
   <!-- 4. Grupper + øvrig statistikk -->
   <div id="grupper"></div>
   <div id="stats"></div>
+  <div id="kort"></div>
 
   <!-- 5. Projisert sluttspill -->
   <div id="sluttspill"></div>
@@ -330,6 +346,7 @@ async function load(id){
   renderGrupper(d);
   renderScorers(d);
   renderStats(d);
+  renderKort(d);
   renderFordeling(d);
   renderSluttspill(d);
   let hist=[]; try{ hist = await jget(`${id}/poenghistorikk.json`); }catch(e){}
@@ -512,6 +529,28 @@ function renderStats(d){
   if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
+}
+
+function renderKort(d){
+  const k = (d.fasit||{}).kort;
+  if(!k){ $("#kort").innerHTML=''; return; }
+  const tbl = (rows,farge)=> (rows&&rows.length)
+    ? `<div class="kort-list">`+rows.map(r=>`
+        <div class="kort-row">${flag(r.lag)}
+          <span><strong>${esc(r.spiller)}</strong> <span class="team-name">${esc(r.lag)}</span></span>
+          <span class="kort-n">${r.antall>1?r.antall+'×':''}<span class="kort-dot ${farge}"></span></span>
+        </div>`).join("")+`</div>`
+    : `<div style="color:var(--slate);margin-top:8px">Ingen ennå</div>`;
+  const upd = k.hentet
+    ? `<p class="muted" style="margin:8px 0 0;text-align:center">Hentet ${new Date(k.hentet).toLocaleString("no-NO")}${k.kilde?` · <a href="${esc(k.kilde)}" target="_blank" rel="noopener">kilde</a>`:''}</p>`
+    : '';
+  $("#kort").innerHTML = `<h2>Kort</h2>
+    <div class="kort-grid">
+      <div class="card"><h3>🟨 Gule kort <span class="kort-sum">${k.sum_gule}</span></h3>${tbl(k.gule,'gul')}</div>
+      <div class="card"><h3>🟥 Røde kort <span class="kort-sum">${k.sum_rode}</span></h3>${tbl(k.rode,'rod')}</div>
+    </div>
+    <div class="card kort-total"><h3>Totalt antall kort</h3><div class="big">${k.total}</div><p class="muted">${k.sum_gule} gule + ${k.sum_rode} røde</p></div>
+    ${upd}`;
 }
 
 function renderSluttspill(d){
