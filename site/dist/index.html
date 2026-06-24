@@ -671,6 +671,7 @@ function renderBonus(d){
   const mester=bt.map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${lagStatus(b.mester).dot} ${esc(b.mester||'–')}</span></div>`).join('');
   const sc=bt.map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${scStatus(b.toppscorer).dot} ${esc(b.toppscorer||'–')}</span></div>`).join('');
   const maal=[...bt].sort((a,b)=>(a.antall_maal??1e9)-(b.antall_maal??1e9)).map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${b.antall_maal??'–'}</span></div>`).join('');
+  const kort=[...bt].sort((a,b)=>(a.antall_kort??1e9)-(b.antall_kort??1e9)).map(b=>`<div class="bn-row"><span>${esc(b.navn)}</span><span>${b.antall_kort??'–'}</span></div>`).join('');
   el.innerHTML=`<h2>Bonus-tips</h2>
     <p class="bk-note">🟢 fortsatt med · 🟡 vipper / nær · 🔴 ute. Hvem satset på hva.</p>
     <button class="old-toggle" onclick="toggleF(this,'bn-wrap')">Vis bonus-tips ▾</button>
@@ -678,6 +679,7 @@ function renderBonus(d){
       <div class="card"><h3>Mester 🏆</h3><p class="muted">Populært: ${pop(tell('mester'))}</p><div class="bn-list">${mester}</div></div>
       <div class="card"><h3>Toppscorer ⚽</h3><p class="muted">Populært: ${pop(tell('toppscorer'))}</p><div class="bn-list">${sc}</div></div>
       <div class="card"><h3>Antall mål 🥅</h3><p class="muted">Fasit så langt: ${(d.statistikk.antall_maal||{}).fasit??'–'}</p><div class="bn-list">${maal}</div></div>
+      <div class="card"><h3>Antall kort 🟨</h3><p class="muted">Fasit så langt: ${(d.statistikk.antall_kort||{}).fasit??'–'}</p><div class="bn-list">${kort}</div></div>
     </div></div>`;
 }
 
