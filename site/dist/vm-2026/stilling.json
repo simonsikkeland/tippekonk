@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T20:03:35+00:00",
+  "oppdatert": "2026-06-24T20:04:46+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -808,7 +808,7 @@
         "dato": "2026-06-24",
         "home_score": 0,
         "away_score": 0,
-        "status": "IN_PLAY",
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B",
         "winner": "DRAW"
@@ -818,8 +818,8 @@
         "away": "Qatar",
         "dato": "2026-06-24",
         "home_score": 2,
-        "away_score": 0,
-        "status": "IN_PLAY",
+        "away_score": 1,
+        "status": "PAUSED",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B",
         "winner": "HOME_TEAM"
@@ -1089,7 +1089,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "Tyskland",
         "away": "",
         "dato": "2026-06-29",
         "home_score": null,
@@ -1133,7 +1133,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "Mexico",
         "away": "",
         "dato": "2026-07-01",
         "home_score": null,
@@ -1166,7 +1166,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "USA",
         "away": "",
         "dato": "2026-07-02",
         "home_score": null,
@@ -1221,7 +1221,7 @@
         "winner": null
       },
       {
-        "home": "",
+        "home": "Argentina",
         "away": "",
         "dato": "2026-07-03",
         "home_score": null,
@@ -2416,7 +2416,7 @@
       "sum_rode": 8,
       "sum_gult_rodt": 0,
       "total": 105,
-      "hentet": "2026-06-24T20:03:34+00:00",
+      "hentet": "2026-06-24T20:04:46+00:00",
       "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
     },
     "antall_kort": 105
