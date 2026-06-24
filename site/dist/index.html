@@ -505,27 +505,27 @@ function renderScorers(d){
   $("#scorers").innerHTML = html;
 }
 
+function projCard(title, s, enhet){
+  if(!s) return "";
+  const lad = (arr,nr)=>(arr||[]).slice(0, nr?99:5).map((x,i)=>`<div><span>${nr?`${i+1}. `:''}${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
+  let inner;
+  if(s.projeksjon!=null){
+    inner = `<div class="bigrow">
+        <div><div class="big">${s.fasit}</div><p class="muted">${enhet} så langt · ${s.spilt} av ${s.totalt} kamper</p></div>
+        <div><div class="big">~${s.projeksjon}</div><p class="muted">projisert sluttsum</p></div>
+      </div><div class="ladder">${lad(s.mot_projeksjon,true)}</div>`;
+  } else {
+    inner = `<div class="big">${s.fasit}</div>`;
+    if(s.spilt!=null && s.totalt) inner += `<p class="muted">${enhet} så langt · ${s.spilt} av ${s.totalt} kamper</p>`;
+    inner += `<div class="ladder">${lad(s.tipp)}</div>`;
+  }
+  return `<div class="card" style="grid-column:1/-1"><h3>${title}</h3>${inner}</div>`;
+}
+
 function renderStats(d){
   const st = d.statistikk||{}; let cards="";
-  const ladder = (arr)=>arr.slice(0,5).map(x=>`<div><span>${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
-  if(st.antall_maal){
-    const am = st.antall_maal;
-    let inner = "";
-    if(am.projeksjon!=null){
-      inner += `<div class="bigrow">
-        <div><div class="big">${am.fasit}</div><p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper</p></div>
-        <div><div class="big">~${am.projeksjon}</div><p class="muted">projisert sluttsum</p></div>
-      </div>`;
-      const rows = (am.mot_projeksjon||[]).map((x,i)=>`<div><span>${i+1}. ${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
-      inner += `<div class="ladder">${rows}</div>`;
-    } else {
-      inner += `<div class="big">${am.fasit}</div>`;
-      if(am.spilt!=null && am.totalt) inner += `<p class="muted">mål så langt · ${am.spilt} av ${am.totalt} kamper spilt</p>`;
-      inner += `<div class="ladder">${ladder(am.tipp)}</div>`;
-    }
-    cards += `<div class="card" style="grid-column:1/-1"><h3>Antall mål</h3>${inner}</div>`;
-  }
-  if(st.antall_kort) cards += `<div class="card"><h3>Antall kort</h3><div class="big">${st.antall_kort.fasit}</div><div class="ladder">${ladder(st.antall_kort.tipp)}</div></div>`;
+  cards += projCard("Antall mål", st.antall_maal, "mål");
+  cards += projCard("Antall kort", st.antall_kort, "kort");
   if(st.toppscorer_treff) cards += `<div class="card"><h3>Riktig toppscorer</h3><div class="ladder">${st.toppscorer_treff.length?st.toppscorer_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   if(st.vinner_treff) cards += `<div class="card"><h3>Riktig vinner</h3><div class="ladder">${st.vinner_treff.length?st.vinner_treff.map(n=>`<div>${esc(n)}</div>`).join(""):'<div style="color:var(--slate)">Ingen ennå</div>'}</div></div>`;
   $("#stats").innerHTML = cards ? `<h2>Statistikk</h2><div class="cards">${cards}</div>` : "";
@@ -544,12 +544,19 @@ function renderKort(d){
   const upd = k.hentet
     ? `<p class="muted" style="margin:8px 0 0;text-align:center">Hentet ${new Date(k.hentet).toLocaleString("no-NO")}${k.kilde?` · <a href="${esc(k.kilde)}" target="_blank" rel="noopener">kilde</a>`:''}</p>`
     : '';
+  const proj = (d.statistikk||{}).antall_kort||{};
+  const totInner = proj.projeksjon!=null
+    ? `<div class="bigrow">
+        <div><div class="big">${k.total}</div><p class="muted">kort så langt · ${k.sum_gule} gule + ${k.sum_rode} røde</p></div>
+        <div><div class="big">~${proj.projeksjon}</div><p class="muted">projisert ved slutt</p></div>
+      </div>`
+    : `<div class="big">${k.total}</div><p class="muted">${k.sum_gule} gule + ${k.sum_rode} røde</p>`;
   $("#kort").innerHTML = `<h2>Kort</h2>
     <div class="kort-grid">
       <div class="card"><h3>🟨 Gule kort <span class="kort-sum">${k.sum_gule}</span></h3>${tbl(k.gule,'gul')}</div>
       <div class="card"><h3>🟥 Røde kort <span class="kort-sum">${k.sum_rode}</span></h3>${tbl(k.rode,'rod')}</div>
     </div>
-    <div class="card kort-total"><h3>Totalt antall kort</h3><div class="big">${k.total}</div><p class="muted">${k.sum_gule} gule + ${k.sum_rode} røde</p></div>
+    <div class="card kort-total"><h3>Totalt antall kort</h3>${totInner}</div>
     ${upd}`;
 }
 

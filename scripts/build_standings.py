@@ -57,44 +57,34 @@ def main(tournament_dir: str):
     for i, d in enumerate(deltakere):
         d["plass"] = i + 1
 
-    # "Nærmer seg"-statistikk for bonusfeltene
+    # "Nærmer seg"-statistikk for bonusfeltene. Felles for antall mål og kort:
+    # vis fasit så langt, en projisert sluttsum (skalert opp til alle kampene),
+    # og hvem som tippet nærmest både fasit og projeksjonen.
     stats = {}
-    if fact.get("antall_maal") is not None:
-        # Projisert sluttsum: mål så langt skalert opp til alle kampene.
-        kamper = fact.get("kamper") or []
-        spilt = sum(1 for k in kamper
-                    if k.get("status") == "FINISHED"
-                    and k.get("home_score") is not None and k.get("away_score") is not None)
-        totalt = len(kamper)
-        projeksjon = round(fact["antall_maal"] / spilt * totalt) if spilt and totalt else None
-        am = {
-            "fasit": fact["antall_maal"],
-            "spilt": spilt,
-            "totalt": totalt,
-            "projeksjon": projeksjon,
-            "tipp": sorted(
-                [{"navn": d["navn"], "tipp": d["pred"]["antall_maal"],
-                  "diff": abs((d["pred"]["antall_maal"] or 0) - fact["antall_maal"])}
-                 for d in deltakere if d["pred"]["antall_maal"] is not None],
-                key=lambda x: x["diff"]),
-        }
-        # Toppliste over ALLE deltakere, rangert på nærhet til projeksjonen.
+    kamper = fact.get("kamper") or []
+    spilt = sum(1 for k in kamper
+                if k.get("status") == "FINISHED"
+                and k.get("home_score") is not None and k.get("away_score") is not None)
+    totalt = len(kamper)
+
+    def projisert_stat(felt: str) -> dict:
+        fasit = fact[felt]
+        projeksjon = round(fasit / spilt * totalt) if spilt and totalt else None
+        tipp = lambda mål: sorted(  # noqa: E731
+            [{"navn": d["navn"], "tipp": d["pred"][felt],
+              "diff": abs((d["pred"][felt] or 0) - mål)}
+             for d in deltakere if d["pred"].get(felt) is not None],
+            key=lambda x: x["diff"])
+        s = {"fasit": fasit, "spilt": spilt, "totalt": totalt,
+             "projeksjon": projeksjon, "tipp": tipp(fasit)}
         if projeksjon is not None:
-            am["mot_projeksjon"] = sorted(
-                [{"navn": d["navn"], "tipp": d["pred"]["antall_maal"],
-                  "diff": abs((d["pred"]["antall_maal"] or 0) - projeksjon)}
-                 for d in deltakere if d["pred"]["antall_maal"] is not None],
-                key=lambda x: x["diff"])
-        stats["antall_maal"] = am
+            s["mot_projeksjon"] = tipp(projeksjon)
+        return s
+
+    if fact.get("antall_maal") is not None:
+        stats["antall_maal"] = projisert_stat("antall_maal")
     if fact.get("antall_kort") is not None:
-        stats["antall_kort"] = {
-            "fasit": fact["antall_kort"],
-            "tipp": sorted(
-                [{"navn": d["navn"], "tipp": d["pred"]["antall_kort"],
-                  "diff": abs((d["pred"]["antall_kort"] or 0) - fact["antall_kort"])}
-                 for d in deltakere if d["pred"]["antall_kort"] is not None],
-                key=lambda x: x["diff"]),
-        }
+        stats["antall_kort"] = projisert_stat("antall_kort")
     # Hvem tippet fortsatt-levende toppscorer/vinner
     if fact.get("toppscorer"):
         stats["toppscorer_treff"] = [d["navn"] for d in deltakere
