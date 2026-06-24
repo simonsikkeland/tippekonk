@@ -5,6 +5,13 @@
     <description>Daglig oppdatering fra tippekonkurransen.</description>
     <language>no</language>
     <item>
+      <title>VM 2026 - 24.06</title>
+      <description>Simon leder med 31 poeng.</description>
+      <enclosure url="https://simonsikkeland.github.io/tippekonk/vm-2026/podcast/episode-20260624.mp3" type="audio/mpeg" length="7211093"/>
+      <guid isPermaLink="false">20260624</guid>
+      <pubDate>Wed, 24 Jun 2026 07:14:28 +0000</pubDate>
+    </item>
+    <item>
       <title>VM 2026 - 23.06</title>
       <description>Simon leder med 28 poeng.</description>
       <enclosure url="https://simonsikkeland.github.io/tippekonk/vm-2026/podcast/episode-20260623.mp3" type="audio/mpeg" length="7747753"/>

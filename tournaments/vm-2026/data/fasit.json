@@ -234,6 +234,11 @@
       "home": "Panama",
       "away": "Kroatia",
       "result": "B"
+    },
+    {
+      "home": "Colombia",
+      "away": "DR Kongo",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -247,7 +252,7 @@
     "Gruppe H": "Spania",
     "Gruppe I": "Frankrike",
     "Gruppe J": "Argentina",
-    "Gruppe K": "Portugal",
+    "Gruppe K": "Colombia",
     "Gruppe L": "England"
   },
   "r16": [],
@@ -259,7 +264,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 141,
+  "antall_maal": 142,
   "kamper": [
     {
       "home": "Mexico",
@@ -782,12 +787,12 @@
       "home": "Colombia",
       "away": "DR Kongo",
       "dato": "2026-06-24",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Sveits",
@@ -1709,6 +1714,13 @@
     ],
     "Gruppe K": [
       {
+        "lag": "Colombia",
+        "poeng": 6,
+        "mf": 3,
+        "maal_for": 4,
+        "spilt": 2
+      },
+      {
         "lag": "Portugal",
         "poeng": 4,
         "mf": 5,
@@ -1716,18 +1728,11 @@
         "spilt": 2
       },
       {
-        "lag": "Colombia",
-        "poeng": 3,
-        "mf": 2,
-        "maal_for": 3,
-        "spilt": 1
-      },
-      {
         "lag": "DR Kongo",
         "poeng": 1,
-        "mf": 0,
+        "mf": -1,
         "maal_for": 1,
-        "spilt": 1
+        "spilt": 2
       },
       {
         "lag": "Usbekistan",
