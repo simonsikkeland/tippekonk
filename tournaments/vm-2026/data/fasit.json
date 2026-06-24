@@ -811,7 +811,7 @@
       "dato": "2026-06-24",
       "home_score": 2,
       "away_score": 1,
-      "status": "PAUSED",
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "winner": "HOME_TEAM"
@@ -2408,7 +2408,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 105,
-    "hentet": "2026-06-24T20:11:59+00:00",
+    "hentet": "2026-06-24T20:15:31+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 105
