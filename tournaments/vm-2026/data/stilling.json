@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T20:10:33+00:00",
+  "oppdatert": "2026-06-24T20:12:00+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -806,12 +806,12 @@
         "home": "Sveits",
         "away": "Canada",
         "dato": "2026-06-24",
-        "home_score": 0,
+        "home_score": 1,
         "away_score": 0,
-        "status": "PAUSED",
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B",
-        "winner": "DRAW"
+        "winner": "HOME_TEAM"
       },
       {
         "home": "Bosnia-Hercegovina",
@@ -1089,7 +1089,7 @@
         "winner": null
       },
       {
-        "home": "Tyskland",
+        "home": "",
         "away": "",
         "dato": "2026-06-29",
         "home_score": null,
@@ -1133,17 +1133,6 @@
         "winner": null
       },
       {
-        "home": "Mexico",
-        "away": "",
-        "dato": "2026-07-01",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
-        "stage": "LAST_32",
-        "group": null,
-        "winner": null
-      },
-      {
         "home": "",
         "away": "",
         "dato": "2026-07-01",
@@ -1166,7 +1155,18 @@
         "winner": null
       },
       {
-        "home": "USA",
+        "home": "",
+        "away": "",
+        "dato": "2026-07-01",
+        "home_score": null,
+        "away_score": null,
+        "status": "TIMED",
+        "stage": "LAST_32",
+        "group": null,
+        "winner": null
+      },
+      {
+        "home": "",
         "away": "",
         "dato": "2026-07-02",
         "home_score": null,
@@ -1221,7 +1221,7 @@
         "winner": null
       },
       {
-        "home": "Argentina",
+        "home": "",
         "away": "",
         "dato": "2026-07-03",
         "home_score": null,
@@ -2416,7 +2416,7 @@
       "sum_rode": 8,
       "sum_gult_rodt": 0,
       "total": 105,
-      "hentet": "2026-06-24T20:04:46+00:00",
+      "hentet": "2026-06-24T20:11:59+00:00",
       "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
     },
     "antall_kort": 105
