@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T19:23:44+00:00",
+  "oppdatert": "2026-06-24T19:37:42+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -806,23 +806,23 @@
         "home": "Sveits",
         "away": "Canada",
         "dato": "2026-06-24",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 0,
+        "away_score": 0,
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B",
-        "winner": null
+        "winner": "DRAW"
       },
       {
         "home": "Bosnia-Hercegovina",
         "away": "Qatar",
         "dato": "2026-06-24",
-        "home_score": null,
-        "away_score": null,
-        "status": "TIMED",
+        "home_score": 1,
+        "away_score": 0,
+        "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
         "group": "GROUP_B",
-        "winner": null
+        "winner": "HOME_TEAM"
       },
       {
         "home": "Marokko",
@@ -1883,7 +1883,8 @@
         "maal": 2
       }
     ],
-    "gruppespill_ferdig": false
+    "gruppespill_ferdig": false,
+    "turnering_ferdig": false
   },
   "stilling": [
     {
