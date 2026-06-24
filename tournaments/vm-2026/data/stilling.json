@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T20:04:46+00:00",
+  "oppdatert": "2026-06-24T20:10:33+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -4295,6 +4295,9 @@
     },
     "antall_kort": {
       "fasit": 105,
+      "spilt": 48,
+      "totalt": 104,
+      "projeksjon": 228,
       "tipp": [
         {
           "navn": "Håkon",
@@ -4350,6 +4353,63 @@
           "navn": "Arya",
           "tipp": 412,
           "diff": 307
+        }
+      ],
+      "mot_projeksjon": [
+        {
+          "navn": "Andrè",
+          "tipp": 216,
+          "diff": 12
+        },
+        {
+          "navn": "Tobias",
+          "tipp": 243,
+          "diff": 15
+        },
+        {
+          "navn": "Bjørn",
+          "tipp": 300,
+          "diff": 72
+        },
+        {
+          "navn": "Øystein",
+          "tipp": 319,
+          "diff": 91
+        },
+        {
+          "navn": "Marius",
+          "tipp": 340,
+          "diff": 112
+        },
+        {
+          "navn": "Ringstad",
+          "tipp": 354,
+          "diff": 126
+        },
+        {
+          "navn": "Håkon",
+          "tipp": 98,
+          "diff": 130
+        },
+        {
+          "navn": "Simon",
+          "tipp": 370,
+          "diff": 142
+        },
+        {
+          "navn": "Jonas",
+          "tipp": 371,
+          "diff": 143
+        },
+        {
+          "navn": "Robin",
+          "tipp": 50,
+          "diff": 178
+        },
+        {
+          "navn": "Arya",
+          "tipp": 412,
+          "diff": 184
         }
       ]
     },
