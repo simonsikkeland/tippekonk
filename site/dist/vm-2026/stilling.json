@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T20:15:31+00:00",
+  "oppdatert": "2026-06-24T20:22:53+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -806,7 +806,7 @@
         "home": "Sveits",
         "away": "Canada",
         "dato": "2026-06-24",
-        "home_score": 1,
+        "home_score": 2,
         "away_score": 0,
         "status": "IN_PLAY",
         "stage": "GROUP_STAGE",
@@ -1853,6 +1853,11 @@
         "maal": 3
       },
       {
+        "navn": "Johan Manzambi",
+        "lag": "Sveits",
+        "maal": 3
+      },
+      {
         "navn": "Jonathan David",
         "lag": "Canada",
         "maal": 3
@@ -1875,11 +1880,6 @@
       {
         "navn": "Vinicius Junior",
         "lag": "Brasil",
-        "maal": 2
-      },
-      {
-        "navn": "Kai Havertz",
-        "lag": "Tyskland",
         "maal": 2
       }
     ],
@@ -2416,7 +2416,7 @@
       "sum_rode": 8,
       "sum_gult_rodt": 0,
       "total": 105,
-      "hentet": "2026-06-24T20:15:31+00:00",
+      "hentet": "2026-06-24T20:22:53+00:00",
       "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
     },
     "antall_kort": 105
