@@ -5,3 +5,10 @@ __pycache__/
 # Vi bruker kun MASTER.xlsx - individuelle deltakerark ignoreres
 tournaments/*/ark/*.xlsx
 !tournaments/*/ark/MASTER.xlsx
+
+# Genererte filer bygges av CI hver kjøring fra sporede kilder
+# (fasit.json + ark + poenghistorikk + podcast). Vi sporer dem ikke, for å
+# unngå merge-konflikter mellom manuelle push-er og bot-ens auto-commits.
+# NB: fasit.json og poenghistorikk.json er STATEFUL og forblir sporet.
+site/dist/
+tournaments/*/data/stilling.json
