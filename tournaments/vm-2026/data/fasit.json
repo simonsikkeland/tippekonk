@@ -239,11 +239,21 @@
       "home": "Colombia",
       "away": "DR Kongo",
       "result": "H"
+    },
+    {
+      "home": "Sveits",
+      "away": "Canada",
+      "result": "H"
+    },
+    {
+      "home": "Bosnia-Hercegovina",
+      "away": "Qatar",
+      "result": "H"
     }
   ],
   "group_winners": {
     "Gruppe A": "Mexico",
-    "Gruppe B": "Canada",
+    "Gruppe B": "Sveits",
     "Gruppe C": "Brasil",
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
@@ -264,7 +274,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 142,
+  "antall_maal": 149,
   "kamper": [
     {
       "home": "Mexico",
@@ -799,8 +809,8 @@
       "away": "Canada",
       "dato": "2026-06-24",
       "home_score": 2,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "winner": "HOME_TEAM"
@@ -809,9 +819,9 @@
       "home": "Bosnia-Hercegovina",
       "away": "Qatar",
       "dato": "2026-06-24",
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 1,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "winner": "HOME_TEAM"
@@ -1081,7 +1091,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Tyskland",
       "away": "",
       "dato": "2026-06-29",
       "home_score": null,
@@ -1125,7 +1135,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Mexico",
       "away": "",
       "dato": "2026-07-01",
       "home_score": null,
@@ -1158,7 +1168,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "USA",
       "away": "",
       "dato": "2026-07-02",
       "home_score": null,
@@ -1213,7 +1223,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Argentina",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1444,32 +1454,32 @@
     ],
     "Gruppe B": [
       {
-        "lag": "Canada",
-        "poeng": 4,
-        "mf": 6,
+        "lag": "Sveits",
+        "poeng": 7,
+        "mf": 4,
         "maal_for": 7,
-        "spilt": 2
+        "spilt": 3
       },
       {
-        "lag": "Sveits",
+        "lag": "Canada",
         "poeng": 4,
-        "mf": 3,
-        "maal_for": 5,
-        "spilt": 2
+        "mf": 5,
+        "maal_for": 8,
+        "spilt": 3
       },
       {
         "lag": "Bosnia-Hercegovina",
-        "poeng": 1,
-        "mf": -3,
-        "maal_for": 2,
-        "spilt": 2
+        "poeng": 4,
+        "mf": -1,
+        "maal_for": 5,
+        "spilt": 3
       },
       {
         "lag": "Qatar",
         "poeng": 1,
-        "mf": -6,
-        "maal_for": 1,
-        "spilt": 2
+        "mf": -8,
+        "maal_for": 2,
+        "spilt": 3
       }
     ],
     "Gruppe C": [
@@ -2408,7 +2418,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 105,
-    "hentet": "2026-06-24T20:28:04+00:00",
+    "hentet": "2026-06-24T21:24:03+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 105
