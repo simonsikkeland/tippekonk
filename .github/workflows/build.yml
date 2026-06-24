@@ -23,6 +23,13 @@ permissions:
   pages: write
   id-token: write
 
+# Kjør aldri to bygg samtidig. Overlappende push- og cron-kjøringer kunne
+# tidligere skrive over hverandre midt i en oppdatering og gi ustabil stilling.
+# cancel-in-progress: false -> la pågående kjøring fullføre, køylegg den nye.
+concurrency:
+  group: bygg-stilling
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -69,9 +76,18 @@ jobs:
           git config user.name "vm-bot"
           git config user.email "bot@users.noreply.github.com"
           git add -A
-          git commit -m "Auto: oppdatert stilling $(date -u +%FT%TZ)" || echo "ingen endringer"
-          git pull --rebase -X theirs || true
-          git push || echo "ingen push"
+          git commit -m "Auto: oppdatert stilling $(date -u +%FT%TZ)" || { echo "ingen endringer"; exit 0; }
+          # Robust push med retry. Fasit er nå monoton, så et tapt kappløp
+          # repareres uansett av neste kjøring.
+          for i in 1 2 3 4 5; do
+            if git pull --rebase --autostash && git push; then
+              echo "pushet (forsøk $i)"; exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "push forsøk $i feilet, prøver igjen om 5s..."
+            sleep 5
+          done
+          echo "kunne ikke pushe etter 5 forsøk"; exit 1
 
       - name: Last opp Pages-artefakt
         uses: actions/upload-pages-artifact@v3

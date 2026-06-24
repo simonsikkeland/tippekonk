@@ -65,6 +65,8 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     }
 
     # --- Lag med flagg/crest ---
+    # Start fra eksisterende flagg slik at en feilet henting ikke nuller dem.
+    fact["flagg"] = dict((existing or {}).get("flagg", {}))
     try:
         teams_data = _get(f"/competitions/{comp}/teams?season={season}", token)
         time.sleep(6)
@@ -75,7 +77,7 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
                 fact["flagg"][norsk] = crest
         print(f"  Flagg: {len(fact['flagg'])} lag")
     except Exception as e:
-        print(f"  (flagg hoppet over: {e})")
+        print(f"  (flagg hoppet over, beholder forrige: {e})")
 
     # --- Alle kamper ---
     data = _get(f"/competitions/{comp}/matches?season={season}", token)
@@ -153,6 +155,22 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     fact["gruppespill_ferdig"] = group_finished_count == group_total_count and group_total_count > 0
     print(f"  Gruppespill: {group_finished_count}/{group_total_count} kamper ferdig")
 
+    # Hele turneringen ferdig = alle kamper spilt. Styrer når bonusfeltene
+    # (toppscorer/assist/antall mål) gir poeng i engine.score().
+    finished_all = sum(1 for k in fact["kamper"] if k.get("status") == "FINISHED")
+    fact["turnering_ferdig"] = len(fact["kamper"]) > 0 and finished_all == len(fact["kamper"])
+
+    # Monotont resultatsett: en kamp som en gang er registrert som ferdig skal
+    # aldri forsvinne, selv om API-et midlertidig utelater den eller nuller
+    # resultatet. Fyll på med eventuelle gamle kamper som mangler i nytt svar.
+    def _n(s):
+        return str(s).strip().lower()
+    have = {(_n(m["home"]), _n(m["away"])) for m in fact["matches"]}
+    for m in (existing or {}).get("matches", []):
+        if (_n(m["home"]), _n(m["away"])) not in have:
+            fact["matches"].append(m)
+            have.add((_n(m["home"]), _n(m["away"])))
+
     # Sluttspill-lister (kumulativt)
     all_finale = stage_teams["finale"]
     all_bronse = stage_teams["bronse"]
@@ -216,10 +234,14 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     for k in fact["kamper"]:
         if k.get("status") == "FINISHED" and k.get("home_score") is not None:
             total_goals += (k["home_score"] or 0) + (k["away_score"] or 0)
-    fact["antall_maal"] = total_goals
-    print(f"  Totalt antall mål: {total_goals}")
+    # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke den.
+    existing_goals = (existing or {}).get("antall_maal") or 0
+    fact["antall_maal"] = max(total_goals, existing_goals)
+    print(f"  Totalt antall mål: {fact['antall_maal']} (denne henting: {total_goals})")
 
     # --- Toppscorere (topp 10 med detaljer) ---
+    prev_top = (existing or {}).get("toppscorer", "")
+    prev_liste = (existing or {}).get("topp_scorere", [])
     try:
         sc = _get(f"/competitions/{comp}/scorers?season={season}&limit=10", token)
         time.sleep(6)
@@ -231,11 +253,28 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
                 "lag": to_no(s.get("team", {}).get("name", "")),
                 "maal": goals,
             })
-        if scorers:
-            fact["toppscorer"] = scorers[0]["player"]["name"]
-        print(f"  Toppscorere: {len(fact['topp_scorere'])} hentet")
+        if fact["topp_scorere"]:
+            ny_leder = fact["topp_scorere"][0]["navn"]
+            ny_maal = fact["topp_scorere"][0]["maal"]
+            # "Sticky" leder: behold forrige toppscorer med mindre noen nå har
+            # STRENGT flere mål. Hindrer flip-flop på likt antall mål (f.eks.
+            # Messi <-> Undav) som ellers flytter 10 poeng mellom kjøringene.
+            prev_maal_now = next(
+                (p["maal"] for p in fact["topp_scorere"] if p["navn"] == prev_top), None)
+            if prev_top and prev_maal_now is not None and ny_maal <= prev_maal_now:
+                fact["toppscorer"] = prev_top
+            else:
+                fact["toppscorer"] = ny_leder
+        else:
+            # Tomt svar -> behold forrige i stedet for å nulle.
+            fact["toppscorer"] = prev_top
+            fact["topp_scorere"] = prev_liste
+        print(f"  Toppscorere: {len(fact['topp_scorere'])} hentet (leder: {fact['toppscorer'] or '-'})")
     except Exception as e:
-        print(f"  (toppscorer hoppet over: {e})")
+        # Feilet henting (rate limit e.l.) -> behold forrige verdier.
+        fact["toppscorer"] = prev_top
+        fact["topp_scorere"] = prev_liste
+        print(f"  (toppscorer hoppet over, beholder forrige: {e})")
 
     return fact
 
@@ -261,12 +300,27 @@ def main(tournament_dir: str):
         print("  Ingen FOOTBALL_DATA_TOKEN eller competition-kode - hopper over.")
         fact = existing
 
+    # Degraderingsvakt: hvis ny fasit er dårligere enn den lagrede (færre
+    # ferdige kamper eller lavere målsum), er API-svaret sannsynligvis
+    # ufullstendig — behold eksisterende fasit framfor å publisere et tilbakefall.
+    def _finished(d):
+        return sum(1 for k in d.get("kamper", []) if k.get("status") == "FINISHED")
+    if existing and fact is not existing:
+        if _finished(fact) < _finished(existing) or \
+                (fact.get("antall_maal") or 0) < (existing.get("antall_maal") or 0):
+            print("  ADVARSEL: ny fasit er degradert (færre kamper/mål) — beholder eksisterende.")
+            fact = existing
+
     if manual.get("assist"):
         fact["assist"] = manual["assist"]
     if manual.get("antall_kort") is not None:
         fact["antall_kort"] = manual["antall_kort"]
 
-    fasit_path.write_text(json.dumps(fact, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Atomisk skriv: skriv til temp og bytt inn, så en avbrutt kjøring aldri
+    # etterlater en halvskrevet fasit.json.
+    tmp = fasit_path.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(fact, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(tmp, fasit_path)
     print(f"Skrev {fasit_path}")
 
 

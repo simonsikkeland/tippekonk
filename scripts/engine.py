@@ -229,21 +229,37 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         ok = _norm(pred.get("vm_vinner")) == _norm(fact["vm_vinner"])
         add("Vinner", rules["vm_vinner"] if ok else 0, "riktig" if ok else f'tippet {pred.get("vm_vinner") or "-"}')
 
+    # Bonusfelt avgjøres FØRST ved turneringsslutt. De vises live (med
+    # deltakerens tipp), men gir ikke poeng før alt er spilt — slik at en
+    # ustabil "ledende" toppscorer/antall mål ikke flytter poeng fram og
+    # tilbake mellom de hyppige kjøringene.
+    ferdig = bool(fact.get("turnering_ferdig"))
+
     for fkey, rule_key, label in [
         ("toppscorer", "toppscorer", "Toppscorer"),
         ("assist", "flest_assist", "Flest assist"),
     ]:
-        if fact.get(fkey):
+        if not fact.get(fkey):
+            continue
+        tipp = pred.get(fkey) or "-"
+        if not ferdig:
+            add(label, 0, f"tippet {tipp} — teller ved slutt")
+        else:
             ok = _norm(pred.get(fkey)) == _norm(fact[fkey])
-            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f'tippet {pred.get(fkey) or "-"}')
+            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp}")
 
     for fkey, rule_key, label in [
         ("antall_maal", "antall_maal", "Antall mål"),
         ("antall_kort", "antall_kort", "Antall kort"),
     ]:
-        if fact.get(fkey) is not None:
-            ok = pred.get(fkey) == fact[fkey]
-            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f'tippet {pred.get(fkey)} (fasit {fact[fkey]})')
+        if fact.get(fkey) is None:
+            continue
+        tipp = pred.get(fkey)
+        if not ferdig:
+            add(label, 0, f"tippet {tipp} — teller ved slutt")
+        else:
+            ok = tipp == fact[fkey]
+            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp} (fasit {fact[fkey]})")
 
     return {"total": total, "lines": lines}
 
