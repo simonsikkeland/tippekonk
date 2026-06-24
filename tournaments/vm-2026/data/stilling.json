@@ -4,7 +4,7 @@
     "kort_navn": "VM 2026",
     "vert": "USA, Canada og Mexico"
   },
-  "oppdatert": "2026-06-24T19:47:30+00:00",
+  "oppdatert": "2026-06-24T20:03:35+00:00",
   "har_fasit": true,
   "fasit": {
     "matches": [
@@ -1884,7 +1884,542 @@
       }
     ],
     "gruppespill_ferdig": false,
-    "turnering_ferdig": false
+    "turnering_ferdig": false,
+    "kort": {
+      "gule": [
+        {
+          "spiller": "T. Mokoena",
+          "lag": "Sør-Afrika",
+          "antall": 2
+        },
+        {
+          "spiller": "S. Lopes Cabral",
+          "lag": "Kapp Verde",
+          "antall": 2
+        },
+        {
+          "spiller": "R. Bentancur",
+          "lag": "Uruguay",
+          "antall": 1
+        },
+        {
+          "spiller": "Mr. Depay",
+          "lag": "Nederland",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Hickey",
+          "lag": "Skottland",
+          "antall": 1
+        },
+        {
+          "spiller": "R. Ibañez",
+          "lag": "Brasil",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Fathi",
+          "lag": "Qatar",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Circati",
+          "lag": "Australia",
+          "antall": 1
+        },
+        {
+          "spiller": "C. McCowatt",
+          "lag": "New Zealand",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Posch",
+          "lag": "Østerrike",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Singh",
+          "lag": "New Zealand",
+          "antall": 1
+        },
+        {
+          "spiller": "Z. Tahseen",
+          "lag": "Irak",
+          "antall": 1
+        },
+        {
+          "spiller": "Y. Bárcenas",
+          "lag": "Panama",
+          "antall": 1
+        },
+        {
+          "spiller": "I. Diop",
+          "lag": "Marokko",
+          "antall": 1
+        },
+        {
+          "spiller": "M. De Cuyper",
+          "lag": "Belgia",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Ezatolahi",
+          "lag": "Iran",
+          "antall": 1
+        },
+        {
+          "spiller": "D. Cornelius",
+          "lag": "Canada",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Lukic",
+          "lag": "Bosnia Og Herzegovina",
+          "antall": 1
+        },
+        {
+          "spiller": "G. Doue",
+          "lag": "Elfenbenskysten",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Porozo",
+          "lag": "Ecuador",
+          "antall": 1
+        },
+        {
+          "spiller": "F. Balogun",
+          "lag": "Norge",
+          "antall": 1
+        },
+        {
+          "spiller": "F. Pierrot",
+          "lag": "Haiti",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Arce",
+          "lag": "Paraguay",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Robertson",
+          "lag": "Skottland",
+          "antall": 1
+        },
+        {
+          "spiller": "E. Hajsafi",
+          "lag": "Iran",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Paik",
+          "lag": "Korea Republikken",
+          "antall": 1
+        },
+        {
+          "spiller": "pedri",
+          "lag": "Spania",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Kanno",
+          "lag": "Saudi-Arabia",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Lasheen",
+          "lag": "Egypt",
+          "antall": 1
+        },
+        {
+          "spiller": "N. Semedo",
+          "lag": "Portugal",
+          "antall": 1
+        },
+        {
+          "spiller": "F. Curtis",
+          "lag": "Skottland",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Olivera",
+          "lag": "Uruguay",
+          "antall": 1
+        },
+        {
+          "spiller": "C. Yirenkyi",
+          "lag": "Ghana",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Italiano",
+          "lag": "Australia",
+          "antall": 1
+        },
+        {
+          "spiller": "R. Veiga",
+          "lag": "Portugal",
+          "antall": 1
+        },
+        {
+          "spiller": "K. Lee",
+          "lag": "Korea Republikken",
+          "antall": 1
+        },
+        {
+          "spiller": "Y. Akgün",
+          "lag": "Kalkun",
+          "antall": 1
+        },
+        {
+          "spiller": "N. Elvedi",
+          "lag": "Sveits",
+          "antall": 1
+        },
+        {
+          "spiller": "O. Khamrobekov",
+          "lag": "Usbekistan",
+          "antall": 1
+        },
+        {
+          "spiller": "D. Jean Jacques",
+          "lag": "Haiti",
+          "antall": 1
+        },
+        {
+          "spiller": "D. Ris",
+          "lag": "England",
+          "antall": 1
+        },
+        {
+          "spiller": "E. Demirovic",
+          "lag": "Bosnia Og Herzegovina",
+          "antall": 1
+        },
+        {
+          "spiller": "R.Lukaku",
+          "lag": "Belgia",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Sabitzer",
+          "lag": "Østerrike",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Ateya",
+          "lag": "Egypt",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Khusanov",
+          "lag": "Usbekistan",
+          "antall": 1
+        },
+        {
+          "spiller": "G. Lee",
+          "lag": "Korea Republikken",
+          "antall": 1
+        },
+        {
+          "spiller": "P. Sucic",
+          "lag": "Kroatia",
+          "antall": 1
+        },
+        {
+          "spiller": "K. McLean",
+          "lag": "Skottland",
+          "antall": 1
+        },
+        {
+          "spiller": "C.Richards",
+          "lag": "Norge",
+          "antall": 1
+        },
+        {
+          "spiller": "B. Gutierrez",
+          "lag": "Mexico",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Dedic",
+          "lag": "Bosnia Og Herzegovina",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Lerma",
+          "lag": "Colombia",
+          "antall": 1
+        },
+        {
+          "spiller": "T. Araújo",
+          "lag": "Portugal",
+          "antall": 1
+        },
+        {
+          "spiller": "D. Zakaria",
+          "lag": "Sveits",
+          "antall": 1
+        },
+        {
+          "spiller": "G. Gomez",
+          "lag": "Paraguay",
+          "antall": 1
+        },
+        {
+          "spiller": "M. van de Ven",
+          "lag": "Nederland",
+          "antall": 1
+        },
+        {
+          "spiller": "H. Souttar",
+          "lag": "Australia",
+          "antall": 1
+        },
+        {
+          "spiller": "E. Elmali",
+          "lag": "Kalkun",
+          "antall": 1
+        },
+        {
+          "spiller": "K. Laimer",
+          "lag": "Østerrike",
+          "antall": 1
+        },
+        {
+          "spiller": "L. Krejci",
+          "lag": "Tsjekkisk Republikk",
+          "antall": 1
+        },
+        {
+          "spiller": "C. Harvey",
+          "lag": "Panama",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Robinson",
+          "lag": "Norge",
+          "antall": 1
+        },
+        {
+          "spiller": "R. Zerrouki",
+          "lag": "Algerie",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Al-Ammari",
+          "lag": "Irak",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Al-Dawsari",
+          "lag": "Saudi-Arabia",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Bacuna",
+          "lag": "Curaçao",
+          "antall": 1
+        },
+        {
+          "spiller": "B. Silva",
+          "lag": "Portugal",
+          "antall": 1
+        },
+        {
+          "spiller": "C. Blackman",
+          "lag": "Panama",
+          "antall": 1
+        },
+        {
+          "spiller": "Y. Ayari",
+          "lag": "Sverige",
+          "antall": 1
+        },
+        {
+          "spiller": "F. Medina",
+          "lag": "Argentina",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Alonso",
+          "lag": "Paraguay",
+          "antall": 1
+        },
+        {
+          "spiller": "C. Mbemba",
+          "lag": "Dr Kongo",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Al-Amri",
+          "lag": "Saudi-Arabia",
+          "antall": 1
+        },
+        {
+          "spiller": "N. Katic",
+          "lag": "Bosnia Og Herzegovina",
+          "antall": 1
+        },
+        {
+          "spiller": "N. Sibisi",
+          "lag": "Sør-Afrika",
+          "antall": 1
+        },
+        {
+          "spiller": "L. Bergvall",
+          "lag": "Sverige",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Bos",
+          "lag": "Australia",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Johnston",
+          "lag": "Canada",
+          "antall": 1
+        },
+        {
+          "spiller": "S. Fofana",
+          "lag": "Elfenbenskysten",
+          "antall": 1
+        },
+        {
+          "spiller": "G. Kastaneer",
+          "lag": "Curaçao",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Gaber",
+          "lag": "Qatar",
+          "antall": 1
+        },
+        {
+          "spiller": "I. Williams",
+          "lag": "Ghana",
+          "antall": 1
+        },
+        {
+          "spiller": "A. Fatouh",
+          "lag": "Egypt",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Lucumi",
+          "lag": "Colombia",
+          "antall": 1
+        },
+        {
+          "spiller": "L. Bacuna",
+          "lag": "Curaçao",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Bellegarde",
+          "lag": "Haiti",
+          "antall": 1
+        },
+        {
+          "spiller": "T. Adams",
+          "lag": "Norge",
+          "antall": 1
+        },
+        {
+          "spiller": "Casemiro",
+          "lag": "Brasil",
+          "antall": 1
+        },
+        {
+          "spiller": "L.Paredes",
+          "lag": "Argentina",
+          "antall": 1
+        },
+        {
+          "spiller": "T. Castagne",
+          "lag": "Belgia",
+          "antall": 1
+        },
+        {
+          "spiller": "F. Kessié",
+          "lag": "Elfenbenskysten",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Almirón",
+          "lag": "Paraguay",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Abunada",
+          "lag": "Qatar",
+          "antall": 1
+        },
+        {
+          "spiller": "J. Alcívar",
+          "lag": "Ecuador",
+          "antall": 1
+        }
+      ],
+      "rode": [
+        {
+          "spiller": "A. Madibo",
+          "lag": "Qatar",
+          "antall": 1
+        },
+        {
+          "spiller": "N. Ngoy",
+          "lag": "Belgia",
+          "antall": 1
+        },
+        {
+          "spiller": "T. Zwane",
+          "lag": "Sør-Afrika",
+          "antall": 1
+        },
+        {
+          "spiller": "Y. Sithole",
+          "lag": "Sør-Afrika",
+          "antall": 1
+        },
+        {
+          "spiller": "M. Almirón",
+          "lag": "Paraguay",
+          "antall": 1
+        },
+        {
+          "spiller": "T. Muharemovic",
+          "lag": "Bosnia Og Herzegovina",
+          "antall": 1
+        },
+        {
+          "spiller": "C. Montes",
+          "lag": "Mexico",
+          "antall": 1
+        },
+        {
+          "spiller": "H. Al-Amin",
+          "lag": "Qatar",
+          "antall": 1
+        }
+      ],
+      "gult_rodt": [
+        {
+          "spiller": "Herr Gunok",
+          "lag": "Kalkun",
+          "antall": 0
+        }
+      ],
+      "sum_gule": 97,
+      "sum_rode": 8,
+      "sum_gult_rodt": 0,
+      "total": 105,
+      "hentet": "2026-06-24T20:03:34+00:00",
+      "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
+    },
+    "antall_kort": 105
   },
   "stilling": [
     {
@@ -2063,6 +2598,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 304 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 370 — teller ved slutt"
         }
       ]
     },
@@ -2232,6 +2772,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 306 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 371 — teller ved slutt"
         }
       ]
     },
@@ -2396,6 +2941,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 264 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 98 — teller ved slutt"
         }
       ]
     },
@@ -2560,6 +3110,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 300 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 300 — teller ved slutt"
         }
       ]
     },
@@ -2719,6 +3274,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 286 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 319 — teller ved slutt"
         }
       ]
     },
@@ -2873,6 +3433,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 298 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 412 — teller ved slutt"
         }
       ]
     },
@@ -3022,6 +3587,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 169 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 216 — teller ved slutt"
         }
       ]
     },
@@ -3171,6 +3741,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 302 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 340 — teller ved slutt"
         }
       ]
     },
@@ -3310,6 +3885,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 262 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 354 — teller ved slutt"
         }
       ]
     },
@@ -3449,6 +4029,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 161 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 243 — teller ved slutt"
         }
       ]
     },
@@ -3578,6 +4163,11 @@
           "label": "Antall mål",
           "pts": 0,
           "detail": "tippet 200 — teller ved slutt"
+        },
+        {
+          "label": "Antall kort",
+          "pts": 0,
+          "detail": "tippet 50 — teller ved slutt"
         }
       ]
     }
@@ -3700,6 +4290,66 @@
           "navn": "Tobias",
           "tipp": 161,
           "diff": 147
+        }
+      ]
+    },
+    "antall_kort": {
+      "fasit": 105,
+      "tipp": [
+        {
+          "navn": "Håkon",
+          "tipp": 98,
+          "diff": 7
+        },
+        {
+          "navn": "Robin",
+          "tipp": 50,
+          "diff": 55
+        },
+        {
+          "navn": "Andrè",
+          "tipp": 216,
+          "diff": 111
+        },
+        {
+          "navn": "Tobias",
+          "tipp": 243,
+          "diff": 138
+        },
+        {
+          "navn": "Bjørn",
+          "tipp": 300,
+          "diff": 195
+        },
+        {
+          "navn": "Øystein",
+          "tipp": 319,
+          "diff": 214
+        },
+        {
+          "navn": "Marius",
+          "tipp": 340,
+          "diff": 235
+        },
+        {
+          "navn": "Ringstad",
+          "tipp": 354,
+          "diff": 249
+        },
+        {
+          "navn": "Simon",
+          "tipp": 370,
+          "diff": 265
+        },
+        {
+          "navn": "Jonas",
+          "tipp": 371,
+          "diff": 266
+        },
+        {
+          "navn": "Arya",
+          "tipp": 412,
+          "diff": 307
         }
       ]
     },
