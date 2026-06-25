@@ -140,12 +140,23 @@
   .bk-tbd{color:var(--slate)}
   .bk-team{display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
   .bk-team img{width:18px;height:12px;object-fit:contain;flex:none}
-  /* Toveis (speilet) brakett */
-  .bk2{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;align-items:stretch}
-  .bk2-side{display:flex;gap:10px}
-  .bk2 .bk-col{flex:0 0 152px}
-  .bk-center{flex:0 0 160px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  /* Toveis (speilet) brakett — slot-basert layout med forbindelseslinjer */
+  .bk2{--bkgap:32px;--bkline:#c9bfa9;display:flex;gap:16px;overflow-x:auto;padding-bottom:10px;align-items:stretch}
+  .bk2-left,.bk2-right{display:flex;gap:var(--bkgap);align-items:stretch}
+  .bk2 .bk-col{flex:0 0 150px;display:flex;flex-direction:column;gap:0;justify-content:flex-start}
+  .bk-slots{flex:1;display:flex;flex-direction:column}
+  .bk-slot{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:42px}
+  .bk2 .bk-match{width:100%}
+  .bk-center{flex:0 0 168px;display:flex;flex-direction:column;justify-content:center;gap:6px}
   .bk-champ-mini{background:#FFF9EB;border:1px solid var(--gold);border-radius:8px;padding:8px;text-align:center;font-weight:800;font-size:13px}
+  /* Elbow-linjer mellom kampene: utgående (mot neste runde), vertikal (par-kobling), innkommende (til boks) */
+  .bk-jl{display:none}
+  .bk2-left .bk-col:not(:last-child) .bk-slot::after{content:"";position:absolute;top:50%;left:100%;width:calc(var(--bkgap)/2);height:1.5px;background:var(--bkline)}
+  .bk2-left .bk-col:not(:first-child) .bk-slot::before{content:"";position:absolute;top:25%;height:50%;left:calc(var(--bkgap)/-2);width:1.5px;background:var(--bkline)}
+  .bk2-left .bk-col:not(:first-child) .bk-jl{display:block;position:absolute;top:50%;left:calc(var(--bkgap)/-2);width:calc(var(--bkgap)/2);height:1.5px;background:var(--bkline)}
+  .bk2-right .bk-col:not(:first-child) .bk-slot::after{content:"";position:absolute;top:50%;right:100%;width:calc(var(--bkgap)/2);height:1.5px;background:var(--bkline)}
+  .bk2-right .bk-col:not(:last-child) .bk-slot::before{content:"";position:absolute;top:25%;height:50%;right:calc(var(--bkgap)/-2);width:1.5px;background:var(--bkline)}
+  .bk2-right .bk-col:not(:last-child) .bk-jl{display:block;position:absolute;top:50%;right:calc(var(--bkgap)/-2);width:calc(var(--bkgap)/2);height:1.5px;background:var(--bkline)}
   /* Sikker (grønn) / usikker (rød) plass i 16-delsfinalen */
   .bk-sure{background:#EAF4EC;box-shadow:inset 3px 0 0 var(--pitch)}
   .bk-unsure{background:#FBEDEA;box-shadow:inset 3px 0 0 var(--red)}
@@ -154,9 +165,9 @@
   .ss-fs{position:fixed;inset:0;background:var(--paper);z-index:1000;display:flex;flex-direction:column;padding:14px 20px}
   .ss-fs-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex:none}
   .ss-fs-body{flex:1;overflow:auto}
-  .ss-fs-body .bk2{min-height:calc(100vh - 80px)}
-  .ss-fs-body .bk2 .bk-col{flex:0 0 180px}
-  .ss-fs-body .bk-center{flex:0 0 200px}
+  .ss-fs-body .bk2 .bk-col{flex:0 0 150px}
+  .ss-fs-body .bk-center{flex:0 0 172px}
+  .ss-fs-body .bk2{--bkgap:26px}
   /* Gruppe-rutenett under braketten */
   .bk-sub{margin:18px 0 2px}
   .grp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
@@ -633,8 +644,8 @@ function renderKort(d){
     ${upd}`;
 }
 
-// Brakett-HTML lagres her så fullskjerm-knappen kan gjenbruke den.
-let _bracketHTML = '';
+// Sluttspill-innhold (brakett + grupper) lagres her så fullskjerm gjenbruker det.
+let _sluttspillBody = '';
 // Kolonner i den speilede braketten (kampnr følger LATER-treet i bracket.py).
 const BK_LEFT = [["16-delsfinale",[74,77,73,75,83,84,81,82]],["8-delsfinale",[89,90,93,94]],
                  ["Kvartfinale",[97,98]],["Semifinale",[101]]];
@@ -671,7 +682,7 @@ function renderSluttspill(d){
     const slot = (n)=>`<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
     return `<div class="bk-match">${slot(feed[0])}${slot(feed[1])}</div>`;
   };
-  const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div>${nrs.map(matchBox).join("")}</div>`;
+  const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div><div class="bk-slots">${nrs.map(nr=>`<div class="bk-slot"><span class="bk-jl"></span>${matchBox(nr)}</div>`).join("")}</div></div>`;
   const left = BK_LEFT.map(c=>col(c[0],c[1])).join("");
   const right = BK_RIGHT.map(c=>col(c[0],c[1])).join("");
   const center = `<div class="bk-center">
@@ -693,21 +704,20 @@ function renderSluttspill(d){
     </div>`;
   }).join("");
 
-  _bracketHTML = `<div class="bk2"><div class="bk2-side">${left}</div>${center}<div class="bk2-side">${right}</div></div>`;
+  const bracketHTML = `<div class="bk2"><div class="bk2-left">${left}</div>${center}<div class="bk2-right">${right}</div></div>`;
+  _sluttspillBody = `${bracketHTML}
+    <h3 class="bk-sub">Grupper</h3>
+    <p class="bk-note"><b style="color:var(--pitch)">Grønn ramme</b> = ferdigspilt gruppe, <b style="color:var(--red)">rød ramme</b> = pågår.</p>
+    <div class="grp-grid">${grid}</div>`;
   $("#sluttspill").innerHTML = `<h2>Sluttspill-brakett</h2>
     <p class="bk-note">16-delsfinalen er fylt ut fra tabellene nå: <b style="color:var(--pitch)">grønn</b> = sikret plass (ferdig gruppe), <b style="color:var(--red)">rød</b> = avhenger av gjenstående kamper. Innover vises bare hvem som møtes (V = vinner av kampnr, T = taper), ikke en spådom.</p>
     <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
     <button class="old-toggle" onclick="openSS()" style="margin-left:8px">⛶ Fullskjerm</button>
-    <div id="bk-wrap" style="display:none">
-      ${_bracketHTML}
-      <h3 class="bk-sub">Grupper</h3>
-      <p class="bk-note"><b style="color:var(--pitch)">Grønn ramme</b> = ferdigspilt gruppe, <b style="color:var(--red)">rød ramme</b> = pågår.</p>
-      <div class="grp-grid">${grid}</div>
-    </div>`;
+    <div id="bk-wrap" style="display:none">${_sluttspillBody}</div>`;
 }
 
 function openSS(){
-  $("#ss-fs-body").innerHTML = _bracketHTML || '<p class="bk-note">Ingen brakett ennå.</p>';
+  $("#ss-fs-body").innerHTML = _sluttspillBody || '<p class="bk-note">Ingen brakett ennå.</p>';
   $("#ss-fs").style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
