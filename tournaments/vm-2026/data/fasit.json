@@ -259,6 +259,16 @@
       "home": "Skottland",
       "away": "Brasil",
       "result": "B"
+    },
+    {
+      "home": "Tsjekkia",
+      "away": "Mexico",
+      "result": "B"
+    },
+    {
+      "home": "Sør-Afrika",
+      "away": "Sør-Korea",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -284,7 +294,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 158,
+  "antall_maal": 162,
   "kamper": [
     {
       "home": "Mexico",
@@ -862,23 +872,23 @@
       "home": "Tsjekkia",
       "away": "Mexico",
       "dato": "2026-06-25",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Sør-Afrika",
       "away": "Sør-Korea",
       "dato": "2026-06-25",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Ecuador",
@@ -1101,7 +1111,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Tyskland",
       "away": "",
       "dato": "2026-06-29",
       "home_score": null,
@@ -1145,7 +1155,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Mexico",
       "away": "",
       "dato": "2026-07-01",
       "home_score": null,
@@ -1178,7 +1188,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "USA",
       "away": "",
       "dato": "2026-07-02",
       "home_score": null,
@@ -1233,7 +1243,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Argentina",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1435,31 +1445,31 @@
     "Gruppe A": [
       {
         "lag": "Mexico",
-        "poeng": 6,
-        "mf": 3,
-        "maal_for": 3,
-        "spilt": 2
+        "poeng": 9,
+        "mf": 6,
+        "maal_for": 6,
+        "spilt": 3
+      },
+      {
+        "lag": "Sør-Afrika",
+        "poeng": 4,
+        "mf": -1,
+        "maal_for": 2,
+        "spilt": 3
       },
       {
         "lag": "Sør-Korea",
         "poeng": 3,
-        "mf": 0,
+        "mf": -1,
         "maal_for": 2,
-        "spilt": 2
+        "spilt": 3
       },
       {
         "lag": "Tsjekkia",
         "poeng": 1,
-        "mf": -1,
+        "mf": -4,
         "maal_for": 2,
-        "spilt": 2
-      },
-      {
-        "lag": "Sør-Afrika",
-        "poeng": 1,
-        "mf": -2,
-        "maal_for": 1,
-        "spilt": 2
+        "spilt": 3
       }
     ],
     "Gruppe B": [
@@ -1890,8 +1900,8 @@
       "maal": 3
     },
     {
-      "navn": "Cyle Larin",
-      "lag": "Canada",
+      "navn": "Julián Quiñones",
+      "lag": "Mexico",
       "maal": 2
     }
   ],
@@ -2508,7 +2518,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 122,
-    "hentet": "2026-06-25T00:14:51+00:00",
+    "hentet": "2026-06-25T04:46:23+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 122
