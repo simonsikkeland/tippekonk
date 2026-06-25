@@ -926,23 +926,23 @@
       "home": "Tunisia",
       "away": "Nederland",
       "dato": "2026-06-25",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 2,
+      "status": "PAUSED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Japan",
       "away": "Sverige",
       "dato": "2026-06-25",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Tyrkia",
@@ -1121,7 +1121,7 @@
       "winner": null
     },
     {
-      "home": "Tyskland",
+      "home": "",
       "away": "",
       "dato": "2026-06-29",
       "home_score": null,
@@ -1165,17 +1165,6 @@
       "winner": null
     },
     {
-      "home": "Mexico",
-      "away": "",
-      "dato": "2026-07-01",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
-      "stage": "LAST_32",
-      "group": null,
-      "winner": null
-    },
-    {
       "home": "",
       "away": "",
       "dato": "2026-07-01",
@@ -1198,7 +1187,18 @@
       "winner": null
     },
     {
-      "home": "USA",
+      "home": "",
+      "away": "",
+      "dato": "2026-07-01",
+      "home_score": null,
+      "away_score": null,
+      "status": "TIMED",
+      "stage": "LAST_32",
+      "group": null,
+      "winner": null
+    },
+    {
+      "home": "",
       "away": "",
       "dato": "2026-07-02",
       "home_score": null,
@@ -1253,7 +1253,7 @@
       "winner": null
     },
     {
-      "home": "Argentina",
+      "home": "",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1910,9 +1910,9 @@
       "maal": 3
     },
     {
-      "navn": "Julián Quiñones",
-      "lag": "Mexico",
-      "maal": 2
+      "navn": "Brian Brobbey",
+      "lag": "Nederland",
+      "maal": 3
     }
   ],
   "gruppespill_ferdig": false,
@@ -2542,7 +2542,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 122,
-    "hentet": "2026-06-25T22:39:38+00:00",
+    "hentet": "2026-06-25T23:53:56+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 122
