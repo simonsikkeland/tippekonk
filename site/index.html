@@ -150,6 +150,13 @@
   .bk-sure{background:#EAF4EC;box-shadow:inset 3px 0 0 var(--pitch)}
   .bk-unsure{background:#FBEDEA;box-shadow:inset 3px 0 0 var(--red)}
   .bk-side-tbd{justify-content:center;color:var(--slate)}
+  /* Fullskjerm sluttspill */
+  .ss-fs{position:fixed;inset:0;background:var(--paper);z-index:1000;display:flex;flex-direction:column;padding:14px 20px}
+  .ss-fs-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex:none}
+  .ss-fs-body{flex:1;overflow:auto}
+  .ss-fs-body .bk2{min-height:calc(100vh - 80px)}
+  .ss-fs-body .bk2 .bk-col{flex:0 0 180px}
+  .ss-fs-body .bk-center{flex:0 0 200px}
   /* Gruppe-rutenett under braketten */
   .bk-sub{margin:18px 0 2px}
   .grp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
@@ -265,6 +272,13 @@
     <label for="tsel" style="font-size:13px;color:var(--slate);font-weight:700">Mesterskap:</label>
     <select id="tsel"></select>
     <span id="updated" style="font-size:12px;color:var(--slate)"></span>
+    <button class="old-toggle" style="margin-left:auto" onclick="openSS()">⛶ Sluttspill i fullskjerm</button>
+  </div>
+
+  <div id="ss-fs" class="ss-fs" style="display:none">
+    <div class="ss-fs-bar"><strong style="font-size:16px">Sluttspill-brakett</strong>
+      <button class="old-toggle" onclick="closeSS()">Lukk ✕</button></div>
+    <div id="ss-fs-body" class="ss-fs-body"></div>
   </div>
 
   <div class="meta" id="meta"></div>
@@ -619,6 +633,8 @@ function renderKort(d){
     ${upd}`;
 }
 
+// Brakett-HTML lagres her så fullskjerm-knappen kan gjenbruke den.
+let _bracketHTML = '';
 // Kolonner i den speilede braketten (kampnr følger LATER-treet i bracket.py).
 const BK_LEFT = [["16-delsfinale",[74,77,73,75,83,84,81,82]],["8-delsfinale",[89,90,93,94]],
                  ["Kvartfinale",[97,98]],["Semifinale",[101]]];
@@ -677,16 +693,31 @@ function renderSluttspill(d){
     </div>`;
   }).join("");
 
+  _bracketHTML = `<div class="bk2"><div class="bk2-side">${left}</div>${center}<div class="bk2-side">${right}</div></div>`;
   $("#sluttspill").innerHTML = `<h2>Sluttspill-brakett</h2>
     <p class="bk-note">16-delsfinalen er fylt ut fra tabellene nå: <b style="color:var(--pitch)">grønn</b> = sikret plass (ferdig gruppe), <b style="color:var(--red)">rød</b> = avhenger av gjenstående kamper. Innover vises bare hvem som møtes (V = vinner av kampnr, T = taper), ikke en spådom.</p>
     <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
+    <button class="old-toggle" onclick="openSS()" style="margin-left:8px">⛶ Fullskjerm</button>
     <div id="bk-wrap" style="display:none">
-      <div class="bk2"><div class="bk2-side">${left}</div>${center}<div class="bk2-side">${right}</div></div>
+      ${_bracketHTML}
       <h3 class="bk-sub">Grupper</h3>
       <p class="bk-note"><b style="color:var(--pitch)">Grønn ramme</b> = ferdigspilt gruppe, <b style="color:var(--red)">rød ramme</b> = pågår.</p>
       <div class="grp-grid">${grid}</div>
     </div>`;
 }
+
+function openSS(){
+  $("#ss-fs-body").innerHTML = _bracketHTML || '<p class="bk-note">Ingen brakett ennå.</p>';
+  $("#ss-fs").style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeSS(){
+  $("#ss-fs").style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && $("#ss-fs").style.display!=='none') closeSS();
+});
 
 // Stabil farge per deltakernavn (hash -> HSL)
 function fargeFor(navn){ let h=0; for(const c of String(navn)) h=(h*31+c.charCodeAt(0))%360; return `hsl(${h} 65% 45%)`; }
