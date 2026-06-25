@@ -301,6 +301,65 @@ def tavle_endringer(data: dict, historikk: list) -> dict:
     }
 
 
+def poeng_kilder(s: dict) -> dict:
+    """Poeng per kategori for én deltaker, fra linjene (key -> pts)."""
+    return {l.get("key"): l.get("pts", 0) for l in s.get("linjer", []) if l.get("key")}
+
+
+def grupper_ferdig_status(fasit: dict) -> dict:
+    """{ 'Gruppe A': bool } — bruk fasit-feltet hvis det finnes, ellers utled
+    fra kampene (samme logikk som engine), så det virker på eldre fasit også."""
+    if fasit.get("grupper_ferdig"):
+        return fasit["grupper_ferdig"]
+    g_tot, g_fin = {}, {}
+    for k in fasit.get("kamper", []):
+        if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
+            continue
+        lab = "Gruppe " + k["group"].split("_")[-1]
+        g_tot[lab] = g_tot.get(lab, 0) + 1
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            g_fin[lab] = g_fin.get(lab, 0) + 1
+    return {lab: g_fin.get(lab, 0) == g_tot[lab] for lab in g_tot}
+
+
+def gruppevinner_oversikt(data: dict, window: tuple) -> list[dict]:
+    """Ferdigspilte grupper med vinner + hvem i gjengen som tippet vinneren riktig
+    (og dermed fikk 3 poeng). `nylig_avgjort` = gruppa ble ferdig i dag/i går."""
+    fasit = data.get("fasit", {})
+    gw = fasit.get("group_winners") or {}
+    stilling = data.get("stilling", [])
+
+    ferdig = grupper_ferdig_status(fasit)
+    sist_dato = {}
+    for k in fasit.get("kamper", []):
+        if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
+            continue
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            lab = "Gruppe " + k["group"].split("_")[-1]
+            d = k.get("dato", "")
+            if d > sist_dato.get(lab, ""):
+                sist_dato[lab] = d
+
+    ut = []
+    for g, er_ferdig in sorted(ferdig.items()):
+        if not er_ferdig:
+            continue
+        traff = []
+        for s in stilling:
+            for l in s.get("linjer", []):
+                if l.get("key") != "gruppevinner":
+                    continue
+                for gr in l.get("grupper", []):
+                    if gr.get("gruppe") == g and gr.get("hit"):
+                        traff.append(s["navn"])
+        ut.append({
+            "gruppe": g, "vinner": gw.get(g),
+            "antall_traff": len(traff), "tippere_som_traff": traff,
+            "nylig_avgjort": sist_dato.get(g, "") in window,
+        })
+    return ut
+
+
 def claude_oppsummering(api_key: str, data: dict, cfg: dict,
                         nyheter: list[str], historikk: list) -> str:
     """Egen Claude-prompt: kort tekst-oppsummering for nettsiden. Returnerer ren
@@ -322,8 +381,13 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
     tavle = tavle_endringer(data, historikk)
     topp_sc = [{"navn": x["navn"], "lag": x.get("lag", ""), "maal": x.get("maal", 0)}
                for x in fasit.get("topp_scorere", [])[:5]]
-    stilling = [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]}
-                for s in data.get("stilling", [])]
+    stilling = []
+    for s in data.get("stilling", []):
+        k = poeng_kilder(s)
+        stilling.append({"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
+                         "herav_gruppespill": k.get("hub", 0),
+                         "herav_gruppevinner": k.get("gruppevinner", 0)})
+    gruppevinnere = gruppevinner_oversikt(data, (today, yesterday))
 
     sammendrag = {
         "turnering": data.get("turnering", {}).get("navn"),
@@ -331,6 +395,7 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
         "kampresultater_siste_doegn": resultater,
         "totalt_antall_maal_i_mesterskapet": fasit.get("antall_maal"),
         "toppscorere": topp_sc,
+        "ferdige_grupper_med_vinner": gruppevinnere,
         "tavle_endringer": tavle,
         "stilling": stilling,
         "nyheter_fra_media": nyheter,
@@ -349,7 +414,12 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
         "- Hvor mange poeng lederen fikk det siste døgnet ('tavle_endringer."
         "leder_fikk_siste_doegn') og hva som har endret seg på tavla — ny leder hvis "
         "'ny_leder' er sann, hvem som klatret mest, osv. Hvis ingenting endret seg, si "
-        "det kort.\n\n"
+        "det kort.\n"
+        "- Gruppevinnere: hvis en gruppe nettopp ble ferdigspilt "
+        "('ferdige_grupper_med_vinner' der 'nylig_avgjort' er sann), nevn hvem som vant "
+        "gruppa og at det ga 3 poeng til de som tippet vinneren riktig (se "
+        "'tippere_som_traff'). Poengsummene i 'stilling' INKLUDERER nå gruppevinner-poeng "
+        "('herav_gruppevinner' viser hvor mange av poengene som kom derfra).\n\n"
         "REGLER:\n"
         "- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, navn, tall eller "
         "hendelser. Ikke anta et hat trick eller en skade med mindre det fremgår av "
@@ -442,9 +512,12 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
     # Grunnlag for spaltene (Gullhår / Dagens Brøler)
     spalte_data = spalte_kandidater(tipp, kamper, (today, yesterday))
 
-    # Gruppetabeller - hvem leder?
+    # Gruppevinnere (ferdige grupper, gir 3p) vs live-ledere (uavgjorte grupper).
+    gruppevinnere = gruppevinner_oversikt(data, (today, yesterday))
+    grupper_ferdig = grupper_ferdig_status(fasit)
     grupper = fasit.get("grupper", {})
-    gruppeledere = {g: rows[0]["lag"] for g, rows in grupper.items() if rows}
+    gruppeledere_uavgjort = {g: rows[0]["lag"] for g, rows in grupper.items()
+                             if rows and not grupper_ferdig.get(g)}
 
     # Seiers-sang: hvis seierslaget (Norge) vant nylig spilles «Tre poeng til
     # Norge» rett etter intro-jingelen — og da MÅ vertene anerkjenne den.
@@ -470,12 +543,17 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
     sammendrag = {
         "turnering": data.get("turnering", {}).get("navn"),
         "oppdatert": data.get("oppdatert"),
-        "stilling_konkurranse": [{"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"]} for s in stilling],
+        "stilling_konkurranse": [
+            {"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
+             "herav_gruppespill": poeng_kilder(s).get("hub", 0),
+             "herav_gruppevinner": poeng_kilder(s).get("gruppevinner", 0)}
+            for s in stilling],
         "ferske_resultater": resultater,
         "kommende_kamper": kommende,
         "spalte_data": spalte_data,
         "toppscorere": [{"navn": x["navn"], "lag": x.get("lag",""), "maal": x.get("maal",0)} for x in topp_sc],
-        "gruppeledere": gruppeledere,
+        "ferdige_grupper_med_vinner": gruppevinnere,
+        "gruppeledere_uavgjorte_grupper": gruppeledere_uavgjort,
         "nyheter_fra_media": nyheter,
     }
 
@@ -519,7 +597,14 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         f"Hvem i kompisgjengen traff blink på tippingen? Hvem bommet fullstendig? "
         f"Trekk fram morsomme fakta fra kampene (storseire, sjokkresultater, målfester). "
         f"Sammenlign tippingen mot fasit — vær konkret med navn og tips. "
-        f"{a} blir gira på mål og overraskelser, {b} kommer med den tørre analysen.\n"
+        f"{a} blir gira på mål og overraskelser, {b} kommer med den tørre analysen. "
+        f"GRUPPEVINNERE: hvis en gruppe nettopp ble ferdigspilt ('ferdige_grupper_med_vinner' "
+        f"der 'nylig_avgjort' er sann), feir hvem som vant gruppa, og at de som tippet vinneren "
+        f"riktig ('tippere_som_traff') nettopp sikret seg tre poeng hver. "
+        f"POENG: oppdater lytterne på tavla, og husk at poengsummene i 'stilling_konkurranse' nå "
+        f"INKLUDERER gruppevinner-poeng — 'herav_gruppevinner' er hvor mange av poengene hver har "
+        f"fra gruppevinnere, 'herav_gruppespill' fra kamputfall. Trekk fram om noen klatret takket "
+        f"være gruppevinnerne (f.eks. at en tok igjen forspranget ved å treffe på gruppevinnere).\n"
         f"3. GULLHÅR I RÆVA! (fast spalte) — Innled med at en vert kreativt ANNONSERER spalten "
         f"ved navn (f.eks. 'Da er det tid for vår faste spalte: Gullhår i Ræva!' eller 'Vi går "
         f"rett over til Gullhår i Ræva!'). Spalten er en hyllest til å gå mot flokken: bruk "
@@ -539,6 +624,8 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         f"5. NESTE RUNDE — Kommende kamper og hva man skal følge med på. "
         f"Hvem har gjort smarte/dumme tips som kan slå til eller smelle? "
         f"Stjernespillere å følge med på, spennende oppgjør, bygg forventning. "
+        f"Nevn gjerne hvilke grupper som fortsatt er åpne ('gruppeledere_uavgjorte_grupper') — "
+        f"der er det fremdeles tre gruppevinner-poeng å hente for de som tippet lederen. "
         f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
         f"6. OUTRO — Aller siste replikk skal være en naturlig, varm avskjed: takk for nå og "
         f"at vi høres neste gang (gjerne med en frekk vri). IKKE skriv 'Spill av outroen!' eller "
