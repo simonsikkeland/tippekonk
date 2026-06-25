@@ -1907,6 +1907,20 @@
   ],
   "gruppespill_ferdig": false,
   "turnering_ferdig": false,
+  "grupper_ferdig": {
+    "Gruppe A": true,
+    "Gruppe B": true,
+    "Gruppe D": false,
+    "Gruppe C": true,
+    "Gruppe E": false,
+    "Gruppe F": false,
+    "Gruppe H": false,
+    "Gruppe G": false,
+    "Gruppe I": false,
+    "Gruppe J": false,
+    "Gruppe K": false,
+    "Gruppe L": false
+  },
   "kort": {
     "gule": [
       {
@@ -2518,7 +2532,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 122,
-    "hentet": "2026-06-25T08:24:11+00:00",
+    "hentet": "2026-06-25T08:37:39+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 122
