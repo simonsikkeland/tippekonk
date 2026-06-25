@@ -249,6 +249,16 @@
       "home": "Bosnia-Hercegovina",
       "away": "Qatar",
       "result": "H"
+    },
+    {
+      "home": "Marokko",
+      "away": "Haiti",
+      "result": "H"
+    },
+    {
+      "home": "Skottland",
+      "away": "Brasil",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -274,7 +284,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 149,
+  "antall_maal": 158,
   "kamper": [
     {
       "home": "Mexico",
@@ -830,20 +840,20 @@
       "home": "Marokko",
       "away": "Haiti",
       "dato": "2026-06-24",
-      "home_score": 1,
-      "away_score": 1,
-      "status": "LIVE",
+      "home_score": 4,
+      "away_score": 2,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Skottland",
       "away": "Brasil",
       "dato": "2026-06-24",
       "home_score": 0,
-      "away_score": 2,
-      "status": "LIVE",
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "winner": "AWAY_TEAM"
@@ -1485,31 +1495,31 @@
     "Gruppe C": [
       {
         "lag": "Brasil",
-        "poeng": 4,
-        "mf": 3,
-        "maal_for": 4,
-        "spilt": 2
+        "poeng": 7,
+        "mf": 6,
+        "maal_for": 7,
+        "spilt": 3
       },
       {
         "lag": "Marokko",
-        "poeng": 4,
-        "mf": 1,
-        "maal_for": 2,
-        "spilt": 2
+        "poeng": 7,
+        "mf": 3,
+        "maal_for": 6,
+        "spilt": 3
       },
       {
         "lag": "Skottland",
         "poeng": 3,
-        "mf": 0,
+        "mf": -3,
         "maal_for": 1,
-        "spilt": 2
+        "spilt": 3
       },
       {
         "lag": "Haiti",
         "poeng": 0,
-        "mf": -4,
-        "maal_for": 0,
-        "spilt": 2
+        "mf": -6,
+        "maal_for": 2,
+        "spilt": 3
       }
     ],
     "Gruppe D": [
@@ -1840,6 +1850,11 @@
       "maal": 5
     },
     {
+      "navn": "Vinicius Junior",
+      "lag": "Brasil",
+      "maal": 4
+    },
+    {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
       "maal": 4
@@ -1850,8 +1865,8 @@
       "maal": 4
     },
     {
-      "navn": "Vinicius Junior",
-      "lag": "Brasil",
+      "navn": "Ismael Saibari",
+      "lag": "Marokko",
       "maal": 3
     },
     {
@@ -1870,18 +1885,13 @@
       "maal": 3
     },
     {
+      "navn": "Matheus Cunha",
+      "lag": "Brasil",
+      "maal": 3
+    },
+    {
       "navn": "Cyle Larin",
       "lag": "Canada",
-      "maal": 2
-    },
-    {
-      "navn": "Folarin Balogun",
-      "lag": "USA",
-      "maal": 2
-    },
-    {
-      "navn": "Ismael Saibari",
-      "lag": "Marokko",
       "maal": 2
     }
   ],
@@ -2498,7 +2508,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 122,
-    "hentet": "2026-06-24T22:48:27+00:00",
+    "hentet": "2026-06-25T00:14:51+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 122
