@@ -185,11 +185,13 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
     """Regn poeng for én prediksjon mot fasit. `rules` = poengverdier."""
     lines, total = [], 0
 
-    def add(label, pts, detail, kamper=None):
+    def add(key, label, pts, detail, kamper=None, grupper=None):
         nonlocal total
-        line = {"label": label, "pts": pts, "detail": detail}
+        line = {"key": key, "label": label, "pts": pts, "detail": detail}
         if kamper:
             line["kamper"] = kamper
+        if grupper:
+            line["grupper"] = grupper
         lines.append(line)
         total += pts
 
@@ -201,15 +203,37 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
             res = fact_by_teams.get((_norm(m["home"]), _norm(m["away"])))
             if res and _norm(m["pick"]) == res:
                 treff.append({"home": m["home"], "away": m["away"], "res": res.upper()})
-        add(f"Gruppespill ({len(treff)} riktige)", len(treff) * rules["kamp"],
+        add("hub", f"Gruppespill ({len(treff)} riktige)", len(treff) * rules["kamp"],
             f'{len(treff)} x {rules["kamp"]}p', kamper=treff)
 
-    if fact.get("group_winners") and fact.get("gruppespill_ferdig"):
-        correct = sum(
-            1 for g, t in pred["group_winners"].items()
-            if fact["group_winners"].get(g) and _norm(fact["group_winners"][g]) == _norm(t)
-        )
-        add(f"Gruppevinnere ({correct} riktige)", correct * rules["gruppevinner"], f'{correct} x {rules["gruppevinner"]}p')
+    # Gruppevinnere: gis per FERDIGSPILT gruppe (en ferdig gruppe er låst, så
+    # poenget er stabilt). Uferdige grupper vises ikke og teller ikke.
+    grupper_ferdig = fact.get("grupper_ferdig")
+    if not grupper_ferdig:
+        # Utled fra kampene hvis fetch ikke har lagt feltet inn ennå.
+        g_tot, g_fin = {}, {}
+        for k in fact.get("kamper", []):
+            if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
+                continue
+            lab = "Gruppe " + k["group"].split("_")[-1]
+            g_tot[lab] = g_tot.get(lab, 0) + 1
+            if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+                g_fin[lab] = g_fin.get(lab, 0) + 1
+        grupper_ferdig = {lab: g_fin.get(lab, 0) == g_tot[lab] for lab in g_tot}
+        if not grupper_ferdig and fact.get("gruppespill_ferdig"):
+            grupper_ferdig = {g: True for g in (fact.get("group_winners") or {})}
+    if fact.get("group_winners") and any(grupper_ferdig.values()):
+        gr_detalj, correct = [], 0
+        for g, fasit_v in fact["group_winners"].items():
+            if not grupper_ferdig.get(g):
+                continue
+            tipp = pred["group_winners"].get(g, "")
+            hit = bool(fasit_v) and _norm(fasit_v) == _norm(tipp)
+            if hit:
+                correct += 1
+            gr_detalj.append({"gruppe": g, "fasit": fasit_v, "tipp": tipp or "-", "hit": hit})
+        add("gruppevinner", f"Gruppevinnere ({correct} riktige)",
+            correct * rules["gruppevinner"], f'{correct} x {rules["gruppevinner"]}p', grupper=gr_detalj)
 
     rounds = [
         ("16-dels finale", "r16", "r16"), ("8-dels finale", "r8", "r8"),
@@ -220,14 +244,14 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         if not fact.get(key):
             continue
         hits = _count_set(pred.get(key, []), {_norm(x) for x in fact[key]})
-        add(f"{label} ({hits} riktige)", hits * rules[rule_key], f'{hits} x {rules[rule_key]}p')
+        add(rule_key, f"{label} ({hits} riktige)", hits * rules[rule_key], f'{hits} x {rules[rule_key]}p')
 
     if fact.get("bronse_vinner"):
         ok = _norm(pred.get("bronse_vinner")) == _norm(fact["bronse_vinner"])
-        add("Bronsevinner", rules["bronse_vinner"] if ok else 0, "riktig" if ok else f'tippet {pred.get("bronse_vinner") or "-"}')
+        add("bronse_vinner", "Bronsevinner", rules["bronse_vinner"] if ok else 0, "riktig" if ok else f'tippet {pred.get("bronse_vinner") or "-"}')
     if fact.get("vm_vinner"):
         ok = _norm(pred.get("vm_vinner")) == _norm(fact["vm_vinner"])
-        add("Vinner", rules["vm_vinner"] if ok else 0, "riktig" if ok else f'tippet {pred.get("vm_vinner") or "-"}')
+        add("vm_vinner", "Vinner", rules["vm_vinner"] if ok else 0, "riktig" if ok else f'tippet {pred.get("vm_vinner") or "-"}')
 
     # Bonusfelt avgjøres FØRST ved turneringsslutt. De vises live (med
     # deltakerens tipp), men gir ikke poeng før alt er spilt — slik at en
@@ -243,10 +267,10 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
             continue
         tipp = pred.get(fkey) or "-"
         if not ferdig:
-            add(label, 0, f"tippet {tipp} — teller ved slutt")
+            add(fkey, label, 0, f"tippet {tipp} — teller ved slutt")
         else:
             ok = _norm(pred.get(fkey)) == _norm(fact[fkey])
-            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp}")
+            add(fkey, label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp}")
 
     for fkey, rule_key, label in [
         ("antall_maal", "antall_maal", "Antall mål"),
@@ -256,10 +280,10 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
             continue
         tipp = pred.get(fkey)
         if not ferdig:
-            add(label, 0, f"tippet {tipp} — teller ved slutt")
+            add(fkey, label, 0, f"tippet {tipp} — teller ved slutt")
         else:
             ok = tipp == fact[fkey]
-            add(label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp} (fasit {fact[fkey]})")
+            add(fkey, label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp} (fasit {fact[fkey]})")
 
     return {"total": total, "lines": lines}
 

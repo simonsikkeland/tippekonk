@@ -54,6 +54,14 @@
   .kort-dot.rod{background:#d83a34}
   .kort-total{margin-top:16px;text-align:center}
 
+  /* Poeng per kategori */
+  .kat-tab{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
+  .kat-tab th{font-size:10px;color:var(--slate);font-weight:900;text-transform:uppercase;letter-spacing:.5px;padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
+  .kat-tab th:first-child,.kat-tab td:first-child{text-align:left;position:sticky;left:0;background:#fff}
+  .kat-tab td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
+  .kat-tab tr:last-child td{border-bottom:none}
+  .kat-tab .kat-tot{font-weight:900;color:var(--pitch)}
+
   /* Matches */
   .match-day{margin-bottom:16px}
   .match-day h3{font-family:'Archivo';font-size:14px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
@@ -242,6 +250,9 @@
     <div id="scorers"></div>
   </div>
 
+  <!-- 1b. Poeng per kategori -->
+  <div id="kategorier"></div>
+
   <!-- 2. Podcast -->
   <div id="podcast"></div>
 
@@ -324,12 +335,14 @@ async function load(id){
       <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
       <span class="chev">${d.har_fasit?'▸':''}</span></div>
       <div class="detail" id="det${i}">${(s.linjer||[]).map(l=>{
-        const hasK = l.kamper && l.kamper.length;
-        let row = `<div class="dl${hasK?' has-k':''}"${hasK?` onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')"`:''}>
-          <span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span>${hasK?' <span class="chev2">▸</span>':''}</span>
+        const sub = (l.kamper&&l.kamper.length)?'k':(l.grupper&&l.grupper.length)?'g':'';
+        let row = `<div class="dl${sub?' has-k':''}"${sub?` onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')"`:''}>
+          <span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span>${sub?' <span class="chev2">▸</span>':''}</span>
           <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`;
-        if(hasK) row += `<div class="kamper-list">${l.kamper.map(k=>`
+        if(sub==='k') row += `<div class="kamper-list">${l.kamper.map(k=>`
           <div class="km"><span>${esc(k.home)} – ${esc(k.away)}</span><span class="km-res">${PICK_LBL[k.res]||k.res}</span></div>`).join("")}</div>`;
+        if(sub==='g') row += `<div class="kamper-list">${l.grupper.map(g=>`
+          <div class="km"><span>${esc(g.gruppe)}: <b>${esc(g.fasit)}</b></span><span class="km-res" style="color:${g.hit?'var(--pitch)':'var(--slate)'}">${g.hit?'✓ '+esc(g.tipp):'✗ '+esc(g.tipp)}</span></div>`).join("")}</div>`;
         return row;
       }).join("")}</div>`;
   });
@@ -342,6 +355,7 @@ async function load(id){
   }
   $("#board").innerHTML = bHtml;
 
+  renderKategorier(d);
   renderKamper(d);
   renderGrupper(d);
   renderScorers(d);
@@ -520,6 +534,26 @@ function projCard(title, s, enhet){
     inner += `<div class="ladder">${lad(s.tipp)}</div>`;
   }
   return `<div class="card" style="grid-column:1/-1"><h3>${title}</h3>${inner}</div>`;
+}
+
+const KAT_COLS=[['hub','HUB'],['gruppevinner','Gr.vinner'],['r16','16-del'],['r8','8-del'],['kvart','Kvart'],['semi','Semi'],['bronse_lag','Bronse'],['bronse_vinner','Br.vinner'],['finale_lag','Finale'],['vm_vinner','VM'],['toppscorer','Toppsc.'],['assist','Assist'],['antall_maal','Mål'],['antall_kort','Kort']];
+function renderKategorier(d){
+  const el=$("#kategorier");
+  if(!d.har_fasit || !(d.stilling||[]).length){ el.innerHTML=''; return; }
+  const present=new Set();
+  d.stilling.forEach(s=>(s.linjer||[]).forEach(l=>l.key&&present.add(l.key)));
+  const cols=KAT_COLS.filter(c=>present.has(c[0]));
+  if(!cols.length){ el.innerHTML=''; return; }
+  const head=`<tr><th>Deltaker</th>${cols.map(c=>`<th>${c[1]}</th>`).join('')}<th>Poeng</th></tr>`;
+  const body=d.stilling.map(s=>{
+    const m={}; (s.linjer||[]).forEach(l=>{ if(l.key) m[l.key]=l.pts; });
+    const cells=cols.map(c=>{const v=m[c[0]]; return `<td${v?'':' style="color:var(--slate)"'}>${v==null?'·':v}</td>`;}).join('');
+    return `<tr><td>${esc(s.navn)}</td>${cells}<td class="kat-tot">${s.poeng}</td></tr>`;
+  }).join('');
+  el.innerHTML=`<h2>Poeng per kategori</h2>
+    <p class="bk-note">Hver kolonne er en poengtype, og «Poeng» er summen. Klikk en deltaker i stillingen øverst for å se kampene/gruppene bak tallene. Gruppevinnere teller per ferdigspilt gruppe; uferdige grupper vises ikke.</p>
+    <button class="old-toggle" onclick="toggleF(this,'kat-wrap')">Vis poeng per kategori ▾</button>
+    <div id="kat-wrap" style="display:none;overflow-x:auto"><table class="kat-tab">${head}${body}</table></div>`;
 }
 
 function renderStats(d){

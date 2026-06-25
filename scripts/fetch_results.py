@@ -232,6 +232,19 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     print(f"  Gruppevinnere: {len(fact['group_winners'])} beregnet")
     print(f"  Grupper med tabelldata: {len(fact['grupper'])}")
 
+    # Per-gruppe ferdig-status (alle 6 kamper spilt). Styrer at gruppevinner-
+    # poeng gis per ferdigspilt gruppe i engine.score().
+    g_tot, g_fin = {}, {}
+    for k in fact["kamper"]:
+        if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
+            continue
+        lab = "Gruppe " + k["group"].split("_")[-1]
+        g_tot[lab] = g_tot.get(lab, 0) + 1
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            g_fin[lab] = g_fin.get(lab, 0) + 1
+    fact["grupper_ferdig"] = {lab: g_fin.get(lab, 0) == g_tot[lab] for lab in g_tot}
+    print(f"  Ferdige grupper: {sum(1 for v in fact['grupper_ferdig'].values() if v)}/{len(g_tot)}")
+
     # --- Antall mål totalt fra alle ferdige kamper ---
     total_goals = 0
     for k in fact["kamper"]:
