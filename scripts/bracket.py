@@ -15,6 +15,8 @@ FIFAs offisielle Annex C-tabell.
 """
 from __future__ import annotations
 
+from engine import grupper_ferdig
+
 GROUPS = list("ABCDEFGHIJKL")
 
 # Treer-slot (kampnummer) -> tillatte grupper laget kan komme fra.
@@ -96,6 +98,7 @@ def projiser_sluttspill(fact: dict) -> dict | None:
     grupper = fact.get("grupper") or {}
     if not grupper:
         return None
+    gf = grupper_ferdig(fact)
 
     # Gruppebokstav -> ordnet lagliste (allerede sortert i fetch_results)
     by_letter = {}
@@ -153,7 +156,14 @@ def projiser_sluttspill(fact: dict) -> dict | None:
     kamper[104] = {"home": fh, "away": fb, "vinner": sterkest(fh, fb)}
 
     def clean(t):
-        return {"navn": t["navn"], "seed": t["seed"]} if t else None
+        if not t:
+            return None
+        # «sikker» = kildegruppa (fra seed, f.eks. "1E" -> gruppe E) er
+        # ferdigspilt. 1./2.-plass er da låst; en 3er vises kun hvis projisert
+        # topp-8. Brukes til grønn/rød fargekoding av 16-dels-lagene på siden.
+        seed = t["seed"]
+        sikker = bool(gf.get("Gruppe " + seed[1], False)) if len(seed) >= 2 else False
+        return {"navn": t["navn"], "seed": seed, "sikker": sikker}
 
     runder = []
     for navn, nrs in RUNDER:

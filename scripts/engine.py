@@ -181,6 +181,26 @@ def _count_set(preds, fact_set):
     return hits
 
 
+def grupper_ferdig(fact: dict) -> dict:
+    """{ 'Gruppe A': bool } — alle gruppekamper spilt. Bruk fasit-feltet hvis
+    det finnes, ellers utled fra kampene (GROUP_STAGE + FINISHED med begge
+    måltall). Brukt av score(), bracket.py og podcasten."""
+    if fact.get("grupper_ferdig"):
+        return fact["grupper_ferdig"]
+    g_tot, g_fin = {}, {}
+    for k in fact.get("kamper", []):
+        if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
+            continue
+        lab = "Gruppe " + k["group"].split("_")[-1]
+        g_tot[lab] = g_tot.get(lab, 0) + 1
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            g_fin[lab] = g_fin.get(lab, 0) + 1
+    ut = {lab: g_fin.get(lab, 0) == g_tot[lab] for lab in g_tot}
+    if not ut and fact.get("gruppespill_ferdig"):
+        ut = {g: True for g in (fact.get("group_winners") or {})}
+    return ut
+
+
 def score(pred: dict, fact: dict, rules: dict) -> dict:
     """Regn poeng for én prediksjon mot fasit. `rules` = poengverdier."""
     lines, total = [], 0
@@ -208,24 +228,11 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
 
     # Gruppevinnere: gis per FERDIGSPILT gruppe (en ferdig gruppe er låst, så
     # poenget er stabilt). Uferdige grupper vises ikke og teller ikke.
-    grupper_ferdig = fact.get("grupper_ferdig")
-    if not grupper_ferdig:
-        # Utled fra kampene hvis fetch ikke har lagt feltet inn ennå.
-        g_tot, g_fin = {}, {}
-        for k in fact.get("kamper", []):
-            if k.get("stage") != "GROUP_STAGE" or not k.get("group"):
-                continue
-            lab = "Gruppe " + k["group"].split("_")[-1]
-            g_tot[lab] = g_tot.get(lab, 0) + 1
-            if k.get("status") == "FINISHED" and k.get("home_score") is not None:
-                g_fin[lab] = g_fin.get(lab, 0) + 1
-        grupper_ferdig = {lab: g_fin.get(lab, 0) == g_tot[lab] for lab in g_tot}
-        if not grupper_ferdig and fact.get("gruppespill_ferdig"):
-            grupper_ferdig = {g: True for g in (fact.get("group_winners") or {})}
-    if fact.get("group_winners") and any(grupper_ferdig.values()):
+    grupper_ferdig_map = grupper_ferdig(fact)
+    if fact.get("group_winners") and any(grupper_ferdig_map.values()):
         gr_detalj, correct = [], 0
         for g, fasit_v in fact["group_winners"].items():
-            if not grupper_ferdig.get(g):
+            if not grupper_ferdig_map.get(g):
                 continue
             tipp = pred["group_winners"].get(g, "")
             hit = bool(fasit_v) and _norm(fasit_v) == _norm(tipp)

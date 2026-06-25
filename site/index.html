@@ -136,8 +136,32 @@
   .bk-side{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:13px;border-bottom:1px solid var(--line)}
   .bk-side:last-child{border-bottom:none}
   .bk-win{background:#F0F9F1;font-weight:700}
-  .bk-seed{font-size:10px;color:var(--slate);background:#F0EEE6;border-radius:4px;padding:1px 4px;font-weight:700;min-width:22px;text-align:center}
+  .bk-seed{font-size:10px;color:var(--slate);background:#F0EEE6;border-radius:4px;padding:1px 4px;font-weight:700;min-width:22px;text-align:center;flex:none}
   .bk-tbd{color:var(--slate)}
+  .bk-team{display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
+  .bk-team img{width:18px;height:12px;object-fit:contain;flex:none}
+  /* Toveis (speilet) brakett */
+  .bk2{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;align-items:stretch}
+  .bk2-side{display:flex;gap:10px}
+  .bk2 .bk-col{flex:0 0 152px}
+  .bk-center{flex:0 0 160px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .bk-champ-mini{background:#FFF9EB;border:1px solid var(--gold);border-radius:8px;padding:8px;text-align:center;font-weight:800;font-size:13px}
+  /* Sikker (grønn) / usikker (rød) plass i 16-delsfinalen */
+  .bk-sure{background:#EAF4EC;box-shadow:inset 3px 0 0 var(--pitch)}
+  .bk-unsure{background:#FBEDEA;box-shadow:inset 3px 0 0 var(--red)}
+  /* Gruppe-rutenett under braketten */
+  .bk-sub{margin:18px 0 2px}
+  .grp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  .grp-mini{border:2px solid var(--line);border-radius:12px;padding:8px 10px 4px;background:#fff}
+  .grp-mini.grp-ferdig{border-color:var(--pitch)}
+  .grp-mini.grp-uferdig{border-color:var(--red)}
+  .grp-mini-h{font-weight:800;font-size:13px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+  .grp-mini-tag{font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;padding:2px 6px;border-radius:6px}
+  .grp-ferdig .grp-mini-tag{background:#EAF4EC;color:var(--pitch)}
+  .grp-uferdig .grp-mini-tag{background:#FBEDEA;color:var(--red)}
+  .grp-mini .grp-table{border:none;border-radius:0;margin:0}
+  .grp-mini .grp-table td,.grp-mini .grp-table th{padding:5px 8px;font-size:13px}
+  .grp-mini .grp-table th{font-size:10px}
   .pg-svg{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
   .pg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px;font-size:13px}
   .pg-legend .lg{display:inline-flex;align-items:center;gap:5px}
@@ -594,29 +618,68 @@ function renderKort(d){
     ${upd}`;
 }
 
+// Kolonner i den speilede braketten (kampnr følger LATER-treet i bracket.py).
+const BK_LEFT = [["16-delsfinale",[74,77,73,75,83,84,81,82]],["8-delsfinale",[89,90,93,94]],
+                 ["Kvartfinale",[97,98]],["Semifinale",[101]]];
+const BK_RIGHT = [["Semifinale",[102]],["Kvartfinale",[99,100]],
+                  ["8-delsfinale",[91,92,95,96]],["16-delsfinale",[76,78,79,80,86,88,85,87]]];
+
 function renderSluttspill(d){
   const ss = d.projisert_sluttspill;
   if(!ss || !ss.runder){ $("#sluttspill").innerHTML=''; return; }
-  const tip = (t)=> t ? `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span> ${esc(t.navn)}</span>` : `<span class="bk-team bk-tbd">?</span>`;
-  const mester = ss.mester ? `<div class="bk-champ">🏆 Projisert mester: <strong>${esc(ss.mester.navn)}</strong>${ss.bronse?` · 🥉 ${esc(ss.bronse.navn)}`:''}</div>` : '';
+  const byNr = {}; ss.runder.forEach(r=>r.kamper.forEach(k=>byNr[k.nr]=k));
+  const erR32 = nr => nr>=73 && nr<=88;
 
-  const cols = ss.runder.map(r=>{
-    const kamper = r.kamper.map(k=>{
-      const hw = k.vinner && k.home && k.vinner.navn===k.home.navn;
-      const aw = k.vinner && k.away && k.vinner.navn===k.away.navn;
-      return `<div class="bk-match">
-        <div class="bk-side${hw?' bk-win':''}">${tip(k.home)}</div>
-        <div class="bk-side${aw?' bk-win':''}">${tip(k.away)}</div>
-      </div>`;
-    }).join("");
-    return `<div class="bk-col"><div class="bk-round">${esc(r.navn)}</div>${kamper}</div>`;
+  const tip = (t)=> t
+    ? `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span>${flag(t.navn)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(t.navn)}</span></span>`
+    : `<span class="bk-team bk-tbd">?</span>`;
+
+  const matchBox = (nr)=>{
+    const k = byNr[nr]; if(!k) return '';
+    const r32 = erR32(nr);
+    const cls = (t,winSide)=>{
+      if(r32 && t) return 'bk-side '+(t.sikker?'bk-sure':'bk-unsure');
+      return 'bk-side'+(winSide?' bk-win':'');
+    };
+    const hw = k.vinner && k.home && k.vinner.navn===k.home.navn;
+    const aw = k.vinner && k.away && k.vinner.navn===k.away.navn;
+    return `<div class="bk-match">
+      <div class="${cls(k.home,hw)}">${tip(k.home)}</div>
+      <div class="${cls(k.away,aw)}">${tip(k.away)}</div>
+    </div>`;
+  };
+  const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div>${nrs.map(matchBox).join("")}</div>`;
+  const left = BK_LEFT.map(c=>col(c[0],c[1])).join("");
+  const right = BK_RIGHT.map(c=>col(c[0],c[1])).join("");
+  const center = `<div class="bk-center">
+    <div class="bk-round" style="color:var(--gold-deep)">Finale</div>${matchBox(104)}
+    <div class="bk-champ-mini">🏆 ${ss.mester?esc(ss.mester.navn):'?'}</div>
+    <div class="bk-round" style="margin-top:14px">Bronsefinale</div>${matchBox(103)}</div>`;
+
+  // Gruppe-rutenett med grønn (ferdig) / rød (uferdig) ramme
+  const gf = (d.fasit||{}).grupper_ferdig||{};
+  const grupper = (d.fasit||{}).grupper||{};
+  const grid = Object.keys(grupper).sort().map(g=>{
+    const ferdig = gf[g];
+    const trs = grupper[g].map((r,j)=>`<tr><td class="num">${j+1}</td>
+      <td><div class="team-cell">${flag(r.lag)} ${esc(r.lag)}</div></td>
+      <td class="num">${r.spilt||0}</td><td class="num">${r.poeng}</td>
+      <td class="num">${r.mf>=0?'+':''}${r.mf}</td></tr>`).join("");
+    return `<div class="grp-mini ${ferdig?'grp-ferdig':'grp-uferdig'}">
+      <div class="grp-mini-h">${esc(g)}<span class="grp-mini-tag">${ferdig?'ferdig':'pågår'}</span></div>
+      <table class="grp-table"><thead><tr><th>#</th><th>Lag</th><th class="num">K</th><th class="num">P</th><th class="num">MF</th></tr></thead><tbody>${trs}</tbody></table>
+    </div>`;
   }).join("");
 
-  $("#sluttspill").innerHTML = `<h2>Projisert sluttspill</h2>
-    <p class="bk-note">Basert på tabellene akkurat nå. Sterkeste lag (poeng/kamp) går videre — en lek, ikke en spådom.</p>
-    ${mester}
+  $("#sluttspill").innerHTML = `<h2>Sluttspill-brakett (projisert)</h2>
+    <p class="bk-note">Fylt ut fra tabellene nå — sterkeste lag (poeng/kamp) går videre, en lek. Inn i 16-delsfinalen: <b style="color:var(--pitch)">grønn</b> = sikret plass (ferdig gruppe), <b style="color:var(--red)">rød</b> = avhenger av gjenstående kamper.</p>
     <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
-    <div id="bk-wrap" style="display:none"><div class="bk-scroll">${cols}</div></div>`;
+    <div id="bk-wrap" style="display:none">
+      <div class="bk2"><div class="bk2-side">${left}</div>${center}<div class="bk2-side">${right}</div></div>
+      <h3 class="bk-sub">Grupper</h3>
+      <p class="bk-note"><b style="color:var(--pitch)">Grønn ramme</b> = ferdigspilt gruppe, <b style="color:var(--red)">rød ramme</b> = pågår.</p>
+      <div class="grp-grid">${grid}</div>
+    </div>`;
 }
 
 // Stabil farge per deltakernavn (hash -> HSL)
