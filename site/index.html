@@ -149,6 +149,7 @@
   /* Sikker (grønn) / usikker (rød) plass i 16-delsfinalen */
   .bk-sure{background:#EAF4EC;box-shadow:inset 3px 0 0 var(--pitch)}
   .bk-unsure{background:#FBEDEA;box-shadow:inset 3px 0 0 var(--red)}
+  .bk-side-tbd{justify-content:center;color:var(--slate)}
   /* Gruppe-rutenett under braketten */
   .bk-sub{margin:18px 0 2px}
   .grp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
@@ -623,6 +624,10 @@ const BK_LEFT = [["16-delsfinale",[74,77,73,75,83,84,81,82]],["8-delsfinale",[89
                  ["Kvartfinale",[97,98]],["Semifinale",[101]]];
 const BK_RIGHT = [["Semifinale",[102]],["Kvartfinale",[99,100]],
                   ["8-delsfinale",[91,92,95,96]],["16-delsfinale",[76,78,79,80,86,88,85,87]]];
+// Hvilke kamper materer hver senere kamp (vinner av X / vinner av Y).
+const BK_FEED = {89:[74,77],90:[73,75],91:[76,78],92:[79,80],93:[83,84],94:[81,82],
+                 95:[86,88],96:[85,87],97:[89,90],98:[93,94],99:[91,92],100:[95,96],
+                 101:[97,98],102:[99,100],104:[101,102]};
 
 function renderSluttspill(d){
   const ss = d.projisert_sluttspill;
@@ -635,25 +640,26 @@ function renderSluttspill(d){
     : `<span class="bk-team bk-tbd">?</span>`;
 
   const matchBox = (nr)=>{
-    const k = byNr[nr]; if(!k) return '';
-    const r32 = erR32(nr);
-    const cls = (t,winSide)=>{
-      if(r32 && t) return 'bk-side '+(t.sikker?'bk-sure':'bk-unsure');
-      return 'bk-side'+(winSide?' bk-win':'');
-    };
-    const hw = k.vinner && k.home && k.vinner.navn===k.home.navn;
-    const aw = k.vinner && k.away && k.vinner.navn===k.away.navn;
-    return `<div class="bk-match">
-      <div class="${cls(k.home,hw)}">${tip(k.home)}</div>
-      <div class="${cls(k.away,aw)}">${tip(k.away)}</div>
-    </div>`;
+    // 16-delsfinalen fylles ut (med grønn/rød). Innover predikeres IKKE noe lag —
+    // vis kun hvem som møtes: vinner (V) av matekampene, eller taper (T) i bronse.
+    if(erR32(nr)){
+      const k = byNr[nr]; if(!k) return '';
+      const cls = (t)=> 'bk-side'+(t?(t.sikker?' bk-sure':' bk-unsure'):'');
+      return `<div class="bk-match">
+        <div class="${cls(k.home)}">${tip(k.home)}</div>
+        <div class="${cls(k.away)}">${tip(k.away)}</div>
+      </div>`;
+    }
+    const feed = nr===103 ? [101,102] : BK_FEED[nr];
+    const pre = nr===103 ? 'T' : 'V';
+    const slot = (n)=>`<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
+    return `<div class="bk-match">${slot(feed[0])}${slot(feed[1])}</div>`;
   };
   const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div>${nrs.map(matchBox).join("")}</div>`;
   const left = BK_LEFT.map(c=>col(c[0],c[1])).join("");
   const right = BK_RIGHT.map(c=>col(c[0],c[1])).join("");
   const center = `<div class="bk-center">
     <div class="bk-round" style="color:var(--gold-deep)">Finale</div>${matchBox(104)}
-    <div class="bk-champ-mini">🏆 ${ss.mester?esc(ss.mester.navn):'?'}</div>
     <div class="bk-round" style="margin-top:14px">Bronsefinale</div>${matchBox(103)}</div>`;
 
   // Gruppe-rutenett med grønn (ferdig) / rød (uferdig) ramme
@@ -671,8 +677,8 @@ function renderSluttspill(d){
     </div>`;
   }).join("");
 
-  $("#sluttspill").innerHTML = `<h2>Sluttspill-brakett (projisert)</h2>
-    <p class="bk-note">Fylt ut fra tabellene nå — sterkeste lag (poeng/kamp) går videre, en lek. Inn i 16-delsfinalen: <b style="color:var(--pitch)">grønn</b> = sikret plass (ferdig gruppe), <b style="color:var(--red)">rød</b> = avhenger av gjenstående kamper.</p>
+  $("#sluttspill").innerHTML = `<h2>Sluttspill-brakett</h2>
+    <p class="bk-note">16-delsfinalen er fylt ut fra tabellene nå: <b style="color:var(--pitch)">grønn</b> = sikret plass (ferdig gruppe), <b style="color:var(--red)">rød</b> = avhenger av gjenstående kamper. Innover vises bare hvem som møtes (V = vinner av kampnr, T = taper), ikke en spådom.</p>
     <button class="old-toggle" onclick="toggleF(this,'bk-wrap')">Vis braketten ▾</button>
     <div id="bk-wrap" style="display:none">
       <div class="bk2"><div class="bk2-side">${left}</div>${center}<div class="bk2-side">${right}</div></div>
