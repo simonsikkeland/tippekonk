@@ -662,16 +662,18 @@ function renderSluttspill(d){
   const byNr = {}; ss.runder.forEach(r=>r.kamper.forEach(k=>byNr[k.nr]=k));
   const erR32 = nr => nr>=73 && nr<=88;
 
-  const tip = (t)=> t
-    ? `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span>${flag(t.navn)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(t.navn)}</span></span>`
-    : `<span class="bk-team bk-tbd">?</span>`;
+  const tip = (t)=>{
+    if(!t) return `<span class="bk-team bk-tbd">?</span>`;
+    if(t.placeholder) return `<span class="bk-team bk-tbd"><span class="bk-seed">${esc(t.seed)}</span> ${esc(t.navn)}</span>`;
+    return `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span>${flag(t.navn)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(t.navn)}</span></span>`;
+  };
 
   const matchBox = (nr)=>{
     // 16-delsfinalen fylles ut (med grønn/rød). Innover predikeres IKKE noe lag —
     // vis kun hvem som møtes: vinner (V) av matekampene, eller taper (T) i bronse.
     if(erR32(nr)){
       const k = byNr[nr]; if(!k) return '';
-      const cls = (t)=> 'bk-side'+(t?(t.sikker?' bk-sure':' bk-unsure'):'');
+      const cls = (t)=> (!t || t.placeholder) ? 'bk-side bk-side-tbd' : 'bk-side '+(t.sikker?'bk-sure':'bk-unsure');
       return `<div class="bk-match">
         <div class="${cls(k.home)}">${tip(k.home)}</div>
         <div class="${cls(k.away)}">${tip(k.away)}</div>

@@ -15,7 +15,7 @@ FIFAs offisielle Annex C-tabell.
 """
 from __future__ import annotations
 
-from engine import grupper_ferdig
+from engine import grupper_ferdig, _norm
 
 GROUPS = list("ABCDEFGHIJKL")
 
@@ -116,20 +116,56 @@ def projiser_sluttspill(fact: dict) -> dict | None:
     pos2 = {G: seeded(r, 1, G) for G, r in by_letter.items()}
     pos3 = {G: seeded(r, 2, G) for G, r in by_letter.items()}
 
-    # Rangér treerne, ta de 8 beste
-    treere = [(G, t) for G, t in pos3.items() if t]
-    treere.sort(key=lambda x: (x[1]["_s"], x[1]["navn"]), reverse=True)
-    kvalifiserte = {G for G, _ in treere[:8]}
-    assign = _match_treere(kvalifiserte)
+    # Faktiske 16-delsfinale-lag fra API-et (når de er satt). Hver satte
+    # LAST_32-kamp kartlegges til riktig kampnr via seedingen (1A/2B/3X), så
+    # braketten matcher den offisielle fordelingen og oppdateres automatisk.
+    name2seed, strength_by_name = {}, {}
+    for G, rows in by_letter.items():
+        for i, row in enumerate(rows[:3]):
+            name2seed[_norm(row["lag"])] = f"{i + 1}{G}"
+            strength_by_name[_norm(row["lag"])] = _styrke(row)
 
-    def team(spec):
+    def _spec_seed_match(spec, seed):
+        if not seed:
+            return False
         typ, key = spec
-        if typ == "1":
-            return pos1.get(key)
-        if typ == "2":
-            return pos2.get(key)
-        g = assign.get(key)  # treer
-        return pos3.get(g) if g else None
+        if typ in ("1", "2"):
+            return seed == f"{typ}{key}"
+        return len(seed) >= 2 and seed[0] == "3" and seed[1] in THIRD_SLOTS[key]
+
+    def _finn_r32_nr(sh, sa):
+        for nr, (sA, sB) in R32.items():
+            if (_spec_seed_match(sA, sh) and _spec_seed_match(sB, sa)) or \
+               (_spec_seed_match(sA, sa) and _spec_seed_match(sB, sh)):
+                return nr
+        return None
+
+    actual_r32 = {}  # nr -> {"home": teamobj, "away": teamobj}
+    for k in fact.get("kamper", []):
+        if k.get("stage") not in ("LAST_32", "ROUND_OF_32"):
+            continue
+        h, a = k.get("home"), k.get("away")
+        if not h or not a:
+            continue
+        sh, sa = name2seed.get(_norm(h)), name2seed.get(_norm(a))
+        nr = _finn_r32_nr(sh, sa)
+        if not nr:
+            continue
+        actual_r32[nr] = {
+            "home": {"navn": h, "seed": sh or "?", "_s": strength_by_name.get(_norm(h), (0, 0, 0)), "sikker": True},
+            "away": {"navn": a, "seed": sa or "?", "_s": strength_by_name.get(_norm(a), (0, 0, 0)), "sikker": True},
+        }
+
+    def resolve(spec):
+        """Projisert lag for et 16-dels-slot når kampen ikke er satt enda.
+        1./2.-plass: konkret lag (grønn hvis gruppa er ferdig). 3.-plass: en
+        plassholder med tillatte grupper (som Wikipedia) — vi gjetter ikke."""
+        typ, key = spec
+        if typ in ("1", "2"):
+            t = (pos1 if typ == "1" else pos2).get(key)
+            return {**t, "sikker": bool(gf.get("Gruppe " + key))} if t else None
+        return {"navn": "Nr. 3 gr. " + "/".join(THIRD_SLOTS[key]), "seed": "3",
+                "placeholder": True, "_s": (0, 0, 0)}
 
     def sterkest(a, b):
         if a is None or b is None:
@@ -137,10 +173,13 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         ka, kb = (a["_s"], a["navn"]), (b["_s"], b["navn"])
         return a if ka >= kb else b
 
-    # Resolve + simuler i kampnummer-rekkefølge
+    # Resolve 16-delsfinalen: faktiske lag der de er satt, ellers projeksjon.
     kamper = {}  # nr -> {home, away, vinner, taper}
     for nr in range(73, 89):
-        h, b = team(R32[nr][0]), team(R32[nr][1])
+        if nr in actual_r32:
+            h, b = actual_r32[nr]["home"], actual_r32[nr]["away"]
+        else:
+            h, b = resolve(R32[nr][0]), resolve(R32[nr][1])
         kamper[nr] = {"home": h, "away": b, "vinner": sterkest(h, b)}
     for nr in (89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102):
         a, c = LATER[nr]
@@ -158,12 +197,12 @@ def projiser_sluttspill(fact: dict) -> dict | None:
     def clean(t):
         if not t:
             return None
-        # «sikker» = kildegruppa (fra seed, f.eks. "1E" -> gruppe E) er
-        # ferdigspilt. 1./2.-plass er da låst; en 3er vises kun hvis projisert
-        # topp-8. Brukes til grønn/rød fargekoding av 16-dels-lagene på siden.
-        seed = t["seed"]
-        sikker = bool(gf.get("Gruppe " + seed[1], False)) if len(seed) >= 2 else False
-        return {"navn": t["navn"], "seed": seed, "sikker": sikker}
+        out = {"navn": t["navn"], "seed": t.get("seed", "")}
+        if t.get("sikker"):
+            out["sikker"] = True
+        if t.get("placeholder"):
+            out["placeholder"] = True
+        return out
 
     runder = []
     for navn, nrs in RUNDER:
