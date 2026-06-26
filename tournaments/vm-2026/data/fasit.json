@@ -299,6 +299,16 @@
       "home": "Paraguay",
       "away": "Australia",
       "result": "U"
+    },
+    {
+      "home": "Norge",
+      "away": "Frankrike",
+      "result": "B"
+    },
+    {
+      "home": "Senegal",
+      "away": "Irak",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -324,7 +334,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 178,
+  "antall_maal": 188,
   "kamper": [
     {
       "home": "Mexico",
@@ -991,8 +1001,8 @@
       "away": "Frankrike",
       "dato": "2026-06-26",
       "home_score": 1,
-      "away_score": 3,
-      "status": "LIVE",
+      "away_score": 4,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "winner": "AWAY_TEAM"
@@ -1001,9 +1011,9 @@
       "home": "Senegal",
       "away": "Irak",
       "dato": "2026-06-26",
-      "home_score": 1,
+      "home_score": 5,
       "away_score": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "winner": "HOME_TEAM"
@@ -1715,31 +1725,31 @@
     "Gruppe I": [
       {
         "lag": "Frankrike",
-        "poeng": 6,
-        "mf": 5,
-        "maal_for": 6,
-        "spilt": 2
+        "poeng": 9,
+        "mf": 8,
+        "maal_for": 10,
+        "spilt": 3
       },
       {
         "lag": "Norge",
         "poeng": 6,
-        "mf": 4,
-        "maal_for": 7,
-        "spilt": 2
+        "mf": 1,
+        "maal_for": 8,
+        "spilt": 3
       },
       {
         "lag": "Senegal",
-        "poeng": 0,
-        "mf": -3,
-        "maal_for": 3,
-        "spilt": 2
+        "poeng": 3,
+        "mf": 2,
+        "maal_for": 8,
+        "spilt": 3
       },
       {
         "lag": "Irak",
         "poeng": 0,
-        "mf": -6,
+        "mf": -11,
         "maal_for": 1,
-        "spilt": 2
+        "spilt": 3
       }
     ],
     "Gruppe J": [
@@ -1946,7 +1956,7 @@
     "Gruppe F": true,
     "Gruppe H": false,
     "Gruppe G": false,
-    "Gruppe I": false,
+    "Gruppe I": true,
     "Gruppe J": false,
     "Gruppe K": false,
     "Gruppe L": false
@@ -2562,7 +2572,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 124,
-    "hentet": "2026-06-26T19:49:59+00:00",
+    "hentet": "2026-06-26T21:20:17+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 124
