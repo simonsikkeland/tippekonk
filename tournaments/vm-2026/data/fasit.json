@@ -325,7 +325,22 @@
     "Gruppe K": "Colombia",
     "Gruppe L": "England"
   },
-  "r16": [],
+  "r16": [
+    "",
+    "Argentina",
+    "Australia",
+    "Bosnia-Hercegovina",
+    "Brasil",
+    "Canada",
+    "Japan",
+    "Marokko",
+    "Mexico",
+    "Nederland",
+    "Sveits",
+    "Sør-Afrika",
+    "Tyskland",
+    "USA"
+  ],
   "r8": [],
   "kvart": [],
   "semi": [],
@@ -1129,8 +1144,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Sør-Afrika",
+      "away": "Canada",
       "dato": "2026-06-28",
       "home_score": null,
       "away_score": null,
@@ -1140,7 +1155,18 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Brasil",
+      "away": "Japan",
+      "dato": "2026-06-29",
+      "home_score": null,
+      "away_score": null,
+      "status": "TIMED",
+      "stage": "LAST_32",
+      "group": null,
+      "winner": null
+    },
+    {
+      "home": "Tyskland",
       "away": "",
       "dato": "2026-06-29",
       "home_score": null,
@@ -1151,19 +1177,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
-      "dato": "2026-06-29",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
-      "stage": "LAST_32",
-      "group": null,
-      "winner": null
-    },
-    {
-      "home": "",
-      "away": "",
+      "home": "Nederland",
+      "away": "Marokko",
       "dato": "2026-06-30",
       "home_score": null,
       "away_score": null,
@@ -1195,7 +1210,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Mexico",
       "away": "",
       "dato": "2026-07-01",
       "home_score": null,
@@ -1228,8 +1243,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "USA",
+      "away": "Bosnia-Hercegovina",
       "dato": "2026-07-02",
       "home_score": null,
       "away_score": null,
@@ -1261,7 +1276,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Sveits",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1272,7 +1287,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Australia",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1283,7 +1298,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Argentina",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -2572,7 +2587,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 124,
-    "hentet": "2026-06-26T23:08:53+00:00",
+    "hentet": "2026-06-26T23:16:35+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 124
