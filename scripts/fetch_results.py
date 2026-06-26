@@ -93,12 +93,14 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
         "bronse": set(), "finale": set(),
     }
 
+    # football-data.org bruker LAST_32/LAST_16; eldre/andre kilder ROUND_OF_*.
+    # Godta begge så sluttspillet fanges opp uansett navnekonvensjon.
     stage_map = {
-        "ROUND_OF_32": "r16",
-        "ROUND_OF_16": "r8",
-        "QUARTER_FINALS": "kvart",
-        "SEMI_FINALS": "semi",
-        "THIRD_PLACE": "bronse",
+        "LAST_32": "r16", "ROUND_OF_32": "r16",
+        "LAST_16": "r8", "ROUND_OF_16": "r8",
+        "QUARTER_FINALS": "kvart", "QUARTER_FINAL": "kvart",
+        "SEMI_FINALS": "semi", "SEMI_FINAL": "semi",
+        "THIRD_PLACE": "bronse", "3RD_PLACE": "bronse",
         "FINAL": "finale",
     }
 
