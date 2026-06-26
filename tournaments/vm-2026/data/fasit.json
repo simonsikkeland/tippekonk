@@ -279,6 +279,16 @@
       "home": "Curaçao",
       "away": "Elfenbenskysten",
       "result": "B"
+    },
+    {
+      "home": "Tunisia",
+      "away": "Nederland",
+      "result": "B"
+    },
+    {
+      "home": "Japan",
+      "away": "Sverige",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -304,7 +314,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 167,
+  "antall_maal": 173,
   "kamper": [
     {
       "home": "Mexico",
@@ -926,9 +936,9 @@
       "home": "Tunisia",
       "away": "Nederland",
       "dato": "2026-06-25",
-      "home_score": 0,
-      "away_score": 2,
-      "status": "PAUSED",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "winner": "AWAY_TEAM"
@@ -937,9 +947,9 @@
       "home": "Japan",
       "away": "Sverige",
       "dato": "2026-06-25",
-      "home_score": 0,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "winner": "DRAW"
@@ -948,23 +958,23 @@
       "home": "Tyrkia",
       "away": "USA",
       "dato": "2026-06-26",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Paraguay",
       "away": "Australia",
       "dato": "2026-06-26",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "IN_PLAY",
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Norge",
@@ -1605,31 +1615,31 @@
     "Gruppe F": [
       {
         "lag": "Nederland",
-        "poeng": 4,
-        "mf": 4,
-        "maal_for": 7,
-        "spilt": 2
+        "poeng": 7,
+        "mf": 6,
+        "maal_for": 10,
+        "spilt": 3
       },
       {
         "lag": "Japan",
-        "poeng": 4,
+        "poeng": 5,
         "mf": 4,
-        "maal_for": 6,
-        "spilt": 2
+        "maal_for": 7,
+        "spilt": 3
       },
       {
         "lag": "Sverige",
-        "poeng": 3,
+        "poeng": 4,
         "mf": 0,
-        "maal_for": 6,
-        "spilt": 2
+        "maal_for": 7,
+        "spilt": 3
       },
       {
         "lag": "Tunisia",
         "poeng": 0,
-        "mf": -8,
-        "maal_for": 1,
-        "spilt": 2
+        "mf": -10,
+        "maal_for": 2,
+        "spilt": 3
       }
     ],
     "Gruppe G": [
@@ -1923,7 +1933,7 @@
     "Gruppe D": false,
     "Gruppe C": true,
     "Gruppe E": true,
-    "Gruppe F": false,
+    "Gruppe F": true,
     "Gruppe H": false,
     "Gruppe G": false,
     "Gruppe I": false,
@@ -2542,7 +2552,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 122,
-    "hentet": "2026-06-25T23:53:56+00:00",
+    "hentet": "2026-06-26T03:46:44+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 122
