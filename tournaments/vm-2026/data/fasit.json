@@ -328,7 +328,7 @@
     {
       "home": "Egypt",
       "away": "Iran",
-      "result": "B"
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -370,7 +370,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 198,
+  "antall_maal": 197,
   "kamper": [
     {
       "home": "Mexico",
@@ -1092,11 +1092,11 @@
       "away": "Iran",
       "dato": "2026-06-27",
       "home_score": 1,
-      "away_score": 2,
+      "away_score": 1,
       "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
-      "winner": "AWAY_TEAM"
+      "winner": "DRAW"
     },
     {
       "home": "Panama",
@@ -1707,17 +1707,17 @@
         "spilt": 3
       },
       {
-        "lag": "Iran",
+        "lag": "Egypt",
         "poeng": 5,
-        "mf": 1,
-        "maal_for": 4,
+        "mf": 2,
+        "maal_for": 5,
         "spilt": 3
       },
       {
-        "lag": "Egypt",
-        "poeng": 4,
-        "mf": 1,
-        "maal_for": 5,
+        "lag": "Iran",
+        "poeng": 3,
+        "mf": 0,
+        "maal_for": 3,
         "spilt": 3
       },
       {
