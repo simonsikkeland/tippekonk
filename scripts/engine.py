@@ -130,15 +130,13 @@ def parse_master(path: str | Path) -> list[dict]:
                     out.append(str(v).strip())
             return out
 
-        r16 = col_block(91, 122)
-        r8 = col_block(125, 140)
-        kvart = col_block(143, 150)
-        semi = col_block(153, 156)
-        bronse = col_block(153, 156)  # same as semi for bronsefinale-lag
+        r16 = col_block(90, 121)
+        r8 = col_block(123, 138)
+        kvart = col_block(140, 147)
+        semi = col_block(149, 152)
 
-        # Bronsefinale: rad 151-152 for lag, rad 153 for vinner? Let me check layout
-        bronse_lag = col_block(153, 154)
-        bronse_vinner = str(ws.cell(155, col).value or "").strip()
+        bronse_lag = col_block(154, 155)
+        bronse_vinner = str(ws.cell(156, col).value or "").strip()
         finale_lag = col_block(158, 159)
         vm_vinner = str(ws.cell(160, col).value or "").strip()
 
