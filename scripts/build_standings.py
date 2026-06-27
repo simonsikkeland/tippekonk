@@ -111,6 +111,49 @@ def main(tournament_dir: str):
     # Projisert sluttspill ut fra dagens gruppetabeller
     sluttspill = projiser_sluttspill(fact)
 
+    # Sluttspill-tips: sammenlign hver deltakers tippede lag per runde.
+    # R16 hentes fra bracket (sikre lag) når fasit ikke er satt, resten fra fasit direkte.
+    sluttspill_runder = [
+        ("r16", "16-delsfinale", 32),
+        ("r8", "8-delsfinale", 16),
+        ("kvart", "Kvartfinale", 8),
+        ("semi", "Semifinale", 4),
+        ("bronse", "Bronsefinale", 2),
+        ("finale", "Finale", 2),
+    ]
+    sluttspill_tips = []
+    for key, label, forventet in sluttspill_runder:
+        fasit_lag = set()
+        if fact.get(key):
+            fasit_lag = {_norm(t) for t in fact[key] if t and str(t).strip()}
+        if key == "r16" and sluttspill and sluttspill.get("runder"):
+            r16_runde = sluttspill["runder"][0]
+            for k in r16_runde.get("kamper", []):
+                for side in ("home", "away"):
+                    t = k.get(side)
+                    if t and not t.get("placeholder") and t.get("sikker"):
+                        fasit_lag.add(_norm(t["navn"]))
+        if not fasit_lag:
+            continue
+        tips = []
+        for d in deltakere:
+            pred_key = key
+            tippet = d["pred"].get(pred_key, [])
+            if isinstance(tippet, str):
+                tippet = [tippet] if tippet else []
+            riktige = [t for t in tippet if _norm(t) in fasit_lag]
+            tips.append({
+                "navn": d["navn"],
+                "riktige": len(riktige),
+                "antall_bekreftet": len(fasit_lag),
+                "forventet": forventet,
+                "riktige_lag": riktige,
+            })
+        tips.sort(key=lambda x: x["riktige"], reverse=True)
+        sluttspill_tips.append({"key": key, "label": label, "tips": tips})
+    if sluttspill_tips:
+        stats["sluttspill_tips"] = sluttspill_tips
+
     out = {
         "turnering": {"navn": cfg["navn"], "kort_navn": cfg["kort_navn"], "vert": cfg.get("vert", "")},
         "oppdatert": datetime.now(timezone.utc).isoformat(timespec="seconds"),

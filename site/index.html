@@ -170,7 +170,23 @@
   .ss-fs-body .bk2{--bkgap:26px}
   /* Gruppe-rutenett under braketten */
   .bk-sub{margin:18px 0 2px}
-  .grp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  /* R16 ranking */
+  .r16-ranking{display:flex;gap:10px;overflow-x:auto;padding:8px 0 12px;align-items:flex-end}
+  .r16-card{flex:0 0 auto;min-width:100px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px 10px;text-align:center;position:relative;display:flex;flex-direction:column}
+  .r16-card.r16-gold{border-color:var(--gold);background:linear-gradient(135deg,#FFF9E8,#fff)}
+  .r16-card .r16-pos{font-family:'Archivo';font-weight:900;font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.5px}
+  .r16-card.r16-gold .r16-pos{color:var(--gold-deep)}
+  .r16-card .r16-name{font-weight:700;font-size:14px;margin:4px 0 2px;white-space:nowrap}
+  .r16-card .r16-score{font-family:'Archivo';font-weight:900;font-size:22px;color:var(--pitch)}
+  .r16-card .r16-of{font-size:11px;color:var(--slate)}
+  .r16-flags{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;justify-items:center;margin:6px 0 2px;min-height:20px}
+  .r16-flag{display:inline-flex}
+  .r16-flag img{width:20px;height:14px;object-fit:contain;border-radius:2px}
+  .r16-bar{margin-top:auto;height:5px;border-radius:3px;background:var(--line)}
+  .r16-bar-fill{height:100%;border-radius:3px;background:var(--pitch)}
+
+  .grp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  @media(max-width:900px){.grp-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
   .grp-mini{border:2px solid var(--line);border-radius:12px;padding:8px 10px 4px;background:#fff}
   .grp-mini.grp-ferdig{border-color:var(--pitch)}
   .grp-mini.grp-uferdig{border-color:var(--red)}
@@ -707,7 +723,12 @@ function renderSluttspill(d){
   }).join("");
 
   const bracketHTML = `<div class="bk2"><div class="bk2-left">${left}</div>${center}<div class="bk2-right">${right}</div></div>`;
+
+  // Sluttspill-tips mellom bracket og grupper
+  const r16Html = buildSluttspillTipsHtml(d);
+
   _sluttspillBody = `${bracketHTML}
+    ${r16Html}
     <h3 class="bk-sub">Grupper</h3>
     <p class="bk-note"><b style="color:var(--pitch)">Grønn ramme</b> = ferdigspilt gruppe, <b style="color:var(--red)">rød ramme</b> = pågår.</p>
     <div class="grp-grid">${grid}</div>`;
@@ -730,6 +751,35 @@ function closeSS(){
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape' && $("#ss-fs").style.display!=='none') closeSS();
 });
+
+function buildSluttspillTipsHtml(d){
+  const runder = (d.statistikk||{}).sluttspill_tips;
+  if(!runder || !runder.length) return '';
+  return runder.map(runde=>{
+    const tips = runde.tips;
+    if(!tips || !tips.length) return '';
+    const bekreftet = tips[0].antall_bekreftet;
+    const forventet = tips[0].forventet;
+    const delvis = bekreftet < forventet;
+    const cards = tips.map((t,i)=>{
+      const pct = forventet ? Math.round(t.riktige/forventet*100) : 0;
+      const gold = i===0 ? ' r16-gold' : '';
+      const flags = (t.riktige_lag||[]).map(l=>
+        `<span class="r16-flag" title="${esc(l)}">${flag(l)}</span>`).join('');
+      return `<div class="r16-card${gold}">
+        <div class="r16-pos">${i+1}.</div>
+        <div class="r16-name">${esc(t.navn)}</div>
+        <div class="r16-score">${t.riktige}</div>
+        <div class="r16-of">av ${delvis?bekreftet+'/':''}${forventet}</div>
+        <div class="r16-flags">${flags}</div>
+        <div class="r16-bar"><div class="r16-bar-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('');
+    return `<h3 class="bk-sub">Riktige lag – ${esc(runde.label)}</h3>
+      <p class="bk-note">${delvis?'Bekreftet '+bekreftet+' av '+forventet+' lag så langt. ':''}Hold over kortet for å se lagene.</p>
+      <div class="r16-ranking">${cards}</div>`;
+  }).join('');
+}
 
 // Stabil farge per deltakernavn (hash -> HSL)
 function fargeFor(navn){ let h=0; for(const c of String(navn)) h=(h*31+c.charCodeAt(0))%360; return `hsl(${h} 65% 45%)`; }
