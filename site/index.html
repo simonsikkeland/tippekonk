@@ -410,8 +410,12 @@ async function load(id){
           <div class="km"><span>${esc(k.home)} – ${esc(k.away)}</span><span class="km-res">${PICK_LBL[k.res]||k.res}</span></div>`).join("")}</div>`;
         if(sub==='g') row += `<div class="kamper-list">${l.grupper.map(g=>`
           <div class="km"><span>${esc(g.gruppe)}: <b>${esc(g.fasit)}</b></span><span class="km-res" style="color:${g.hit?'var(--pitch)':'var(--slate)'}">${g.hit?'✓ '+esc(g.tipp):'✗ '+esc(g.tipp)}</span></div>`).join("")}</div>`;
-        if(sub==='l') row += `<div class="kamper-list"><div class="km" style="color:var(--slate);font-size:12px;border:none"><span>${l.lag.bekreftet} av ${l.lag.forventet} lag bekreftet</span></div>${l.lag.tippet.map(t=>`
-          <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:${t.hit?'var(--pitch)':'var(--slate)'}">${t.hit?'✓':'–'}</span></div>`).join("")}</div>`;
+        if(sub==='l'){
+          const bommet = (l.lag.bommet||[]).map(t=>`
+            <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:var(--red)">✗ ikke tippet</span></div>`).join("");
+          row += `<div class="kamper-list"><div class="km" style="color:var(--slate);font-size:12px;border:none"><span>${l.lag.bekreftet} av ${l.lag.forventet} lag bekreftet</span></div>${l.lag.tippet.map(t=>`
+            <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:${t.hit?'var(--pitch)':'var(--slate)'}">${t.hit?'✓':'–'}</span></div>`).join("")}${bommet?'<div class="km" style="color:var(--slate);font-size:12px;border:none;margin-top:6px"><span>Bommet på:</span></div>'+bommet:''}</div>`;
+        }
         return row;
       }).join("")}</div>`;
   });

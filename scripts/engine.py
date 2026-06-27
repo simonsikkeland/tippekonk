@@ -245,22 +245,26 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
             correct * rules["gruppevinner"], f'{correct} x {rules["gruppevinner"]}p', grupper=gr_detalj)
 
     rounds = [
-        ("16-dels finale", "r16", "r16"), ("8-dels finale", "r8", "r8"),
-        ("Kvartfinale", "kvart", "kvart"), ("Semifinale", "semi", "semi"),
-        ("Bronsefinale (lag)", "bronse", "bronse_lag"), ("Finale (lag)", "finale", "finale_lag"),
+        ("16-dels finale", "r16", "r16", 32), ("8-dels finale", "r8", "r8", 16),
+        ("Kvartfinale", "kvart", "kvart", 8), ("Semifinale", "semi", "semi", 4),
+        ("Bronsefinale (lag)", "bronse", "bronse_lag", 2), ("Finale (lag)", "finale", "finale_lag", 2),
     ]
-    for label, key, rule_key in rounds:
+    for label, key, rule_key, forventet in rounds:
         if not fact.get(key):
             continue
         fasit_set = {_norm(x) for x in fact[key] if x and str(x).strip()}
+        fasit_navn = {_norm(x): x for x in fact[key] if x and str(x).strip()}
         tippet = pred.get(key, [])
         if isinstance(tippet, str):
             tippet = [tippet] if tippet else []
+        tippet_norm = {_norm(t) for t in tippet if t and str(t).strip()}
         lag_detalj = [{"lag": t, "hit": _norm(t) in fasit_set} for t in tippet if t and str(t).strip()]
+        bommet = [{"lag": fasit_navn[n], "hit": False} for n in sorted(fasit_set - tippet_norm)]
         hits = sum(1 for l in lag_detalj if l["hit"])
         add(rule_key, f"{label} ({hits} riktige)",
             hits * rules[rule_key], f'{hits} x {rules[rule_key]}p',
-            lag={"tippet": lag_detalj, "bekreftet": len(fasit_set), "forventet": len(tippet)})
+            lag={"tippet": lag_detalj, "bommet": bommet,
+                 "bekreftet": len(fasit_set), "forventet": forventet})
 
     if fact.get("bronse_vinner"):
         ok = _norm(pred.get("bronse_vinner")) == _norm(fact["bronse_vinner"])
