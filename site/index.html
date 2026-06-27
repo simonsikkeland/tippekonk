@@ -125,7 +125,8 @@
   .dl.has-k.open .chev2{transform:rotate(90deg)}
   .kamper-list{display:none;padding:2px 0 8px 14px}
   .kamper-list.open{display:block}
-  .km{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:var(--slate)}
+  .km{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:13px;color:var(--slate)}
+  .km img{width:20px;height:14px;object-fit:contain;border-radius:1px;vertical-align:middle;margin-right:4px}
   .km-res{font-size:11px;color:var(--pitch);font-weight:700;white-space:nowrap;padding-left:10px}
   .bk-note{color:var(--slate);font-size:13px;margin:4px 0 10px}
   .bk-champ{background:linear-gradient(180deg,#FFF9EB,#fff);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:15px;margin-bottom:12px}
@@ -401,7 +402,7 @@ async function load(id){
       <span class="pts" style="${d.har_fasit?'':'color:var(--slate)'}">${d.har_fasit?s.poeng:'—'}</span>
       <span class="chev">${d.har_fasit?'▸':''}</span></div>
       <div class="detail" id="det${i}">${(s.linjer||[]).map(l=>{
-        const sub = (l.kamper&&l.kamper.length)?'k':(l.grupper&&l.grupper.length)?'g':'';
+        const sub = (l.kamper&&l.kamper.length)?'k':(l.grupper&&l.grupper.length)?'g':(l.lag&&l.lag.tippet&&l.lag.tippet.length)?'l':'';
         let row = `<div class="dl${sub?' has-k':''}"${sub?` onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')"`:''}>
           <span>${esc(l.label)} <span style="color:var(--slate);font-size:12px">· ${esc(l.detail)}</span>${sub?' <span class="chev2">▸</span>':''}</span>
           <span class="p ${l.pts>0?'win':'zero'}">${l.pts}p</span></div>`;
@@ -409,6 +410,8 @@ async function load(id){
           <div class="km"><span>${esc(k.home)} – ${esc(k.away)}</span><span class="km-res">${PICK_LBL[k.res]||k.res}</span></div>`).join("")}</div>`;
         if(sub==='g') row += `<div class="kamper-list">${l.grupper.map(g=>`
           <div class="km"><span>${esc(g.gruppe)}: <b>${esc(g.fasit)}</b></span><span class="km-res" style="color:${g.hit?'var(--pitch)':'var(--slate)'}">${g.hit?'✓ '+esc(g.tipp):'✗ '+esc(g.tipp)}</span></div>`).join("")}</div>`;
+        if(sub==='l') row += `<div class="kamper-list"><div class="km" style="color:var(--slate);font-size:12px;border:none"><span>${l.lag.bekreftet} av ${l.lag.forventet} lag bekreftet</span></div>${l.lag.tippet.map(t=>`
+          <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:${t.hit?'var(--pitch)':'var(--slate)'}">${t.hit?'✓':'–'}</span></div>`).join("")}</div>`;
         return row;
       }).join("")}</div>`;
   });

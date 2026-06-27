@@ -205,13 +205,15 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
     """Regn poeng for én prediksjon mot fasit. `rules` = poengverdier."""
     lines, total = [], 0
 
-    def add(key, label, pts, detail, kamper=None, grupper=None):
+    def add(key, label, pts, detail, kamper=None, grupper=None, lag=None):
         nonlocal total
         line = {"key": key, "label": label, "pts": pts, "detail": detail}
         if kamper:
             line["kamper"] = kamper
         if grupper:
             line["grupper"] = grupper
+        if lag:
+            line["lag"] = lag
         lines.append(line)
         total += pts
 
@@ -250,8 +252,15 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
     for label, key, rule_key in rounds:
         if not fact.get(key):
             continue
-        hits = _count_set(pred.get(key, []), {_norm(x) for x in fact[key]})
-        add(rule_key, f"{label} ({hits} riktige)", hits * rules[rule_key], f'{hits} x {rules[rule_key]}p')
+        fasit_set = {_norm(x) for x in fact[key] if x and str(x).strip()}
+        tippet = pred.get(key, [])
+        if isinstance(tippet, str):
+            tippet = [tippet] if tippet else []
+        lag_detalj = [{"lag": t, "hit": _norm(t) in fasit_set} for t in tippet if t and str(t).strip()]
+        hits = sum(1 for l in lag_detalj if l["hit"])
+        add(rule_key, f"{label} ({hits} riktige)",
+            hits * rules[rule_key], f'{hits} x {rules[rule_key]}p',
+            lag={"tippet": lag_detalj, "bekreftet": len(fasit_set), "forventet": len(tippet)})
 
     if fact.get("bronse_vinner"):
         ok = _norm(pred.get("bronse_vinner")) == _norm(fact["bronse_vinner"])
