@@ -319,6 +319,16 @@
       "home": "Kapp Verde",
       "away": "Saudi-Arabia",
       "result": "U"
+    },
+    {
+      "home": "New Zealand",
+      "away": "Belgia",
+      "result": "B"
+    },
+    {
+      "home": "Egypt",
+      "away": "Iran",
+      "result": "B"
     }
   ],
   "group_winners": {
@@ -328,14 +338,29 @@
     "Gruppe D": "USA",
     "Gruppe E": "Tyskland",
     "Gruppe F": "Nederland",
-    "Gruppe G": "Egypt",
+    "Gruppe G": "Belgia",
     "Gruppe H": "Spania",
     "Gruppe I": "Frankrike",
     "Gruppe J": "Argentina",
     "Gruppe K": "Colombia",
     "Gruppe L": "England"
   },
-  "r16": [],
+  "r16": [
+    "",
+    "Argentina",
+    "Australia",
+    "Bosnia-Hercegovina",
+    "Brasil",
+    "Canada",
+    "Japan",
+    "Marokko",
+    "Mexico",
+    "Nederland",
+    "Sveits",
+    "Sør-Afrika",
+    "Tyskland",
+    "USA"
+  ],
   "r8": [],
   "kvart": [],
   "semi": [],
@@ -344,7 +369,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 189,
+  "antall_maal": 198,
   "kamper": [
     {
       "home": "Mexico",
@@ -1054,9 +1079,9 @@
       "home": "New Zealand",
       "away": "Belgia",
       "dato": "2026-06-27",
-      "home_score": 0,
-      "away_score": 3,
-      "status": "IN_PLAY",
+      "home_score": 1,
+      "away_score": 5,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "winner": "AWAY_TEAM"
@@ -1066,11 +1091,11 @@
       "away": "Iran",
       "dato": "2026-06-27",
       "home_score": 1,
-      "away_score": 1,
-      "status": "IN_PLAY",
+      "away_score": 2,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
-      "winner": "DRAW"
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Panama",
@@ -1139,8 +1164,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Sør-Afrika",
+      "away": "Canada",
       "dato": "2026-06-28",
       "home_score": null,
       "away_score": null,
@@ -1150,7 +1175,18 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Brasil",
+      "away": "Japan",
+      "dato": "2026-06-29",
+      "home_score": null,
+      "away_score": null,
+      "status": "TIMED",
+      "stage": "LAST_32",
+      "group": null,
+      "winner": null
+    },
+    {
+      "home": "Tyskland",
       "away": "",
       "dato": "2026-06-29",
       "home_score": null,
@@ -1161,19 +1197,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
-      "dato": "2026-06-29",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
-      "stage": "LAST_32",
-      "group": null,
-      "winner": null
-    },
-    {
-      "home": "",
-      "away": "",
+      "home": "Nederland",
+      "away": "Marokko",
       "dato": "2026-06-30",
       "home_score": null,
       "away_score": null,
@@ -1205,7 +1230,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Mexico",
       "away": "",
       "dato": "2026-07-01",
       "home_score": null,
@@ -1238,8 +1263,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "USA",
+      "away": "Bosnia-Hercegovina",
       "dato": "2026-07-02",
       "home_score": null,
       "away_score": null,
@@ -1271,7 +1296,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Sveits",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1282,7 +1307,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Australia",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1293,7 +1318,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Argentina",
       "away": "",
       "dato": "2026-07-03",
       "home_score": null,
@@ -1674,32 +1699,32 @@
     ],
     "Gruppe G": [
       {
-        "lag": "Egypt",
-        "poeng": 4,
-        "mf": 2,
-        "maal_for": 4,
-        "spilt": 2
+        "lag": "Belgia",
+        "poeng": 5,
+        "mf": 4,
+        "maal_for": 6,
+        "spilt": 3
       },
       {
         "lag": "Iran",
-        "poeng": 2,
-        "mf": 0,
-        "maal_for": 2,
-        "spilt": 2
+        "poeng": 5,
+        "mf": 1,
+        "maal_for": 4,
+        "spilt": 3
       },
       {
-        "lag": "Belgia",
-        "poeng": 2,
-        "mf": 0,
-        "maal_for": 1,
-        "spilt": 2
+        "lag": "Egypt",
+        "poeng": 4,
+        "mf": 1,
+        "maal_for": 5,
+        "spilt": 3
       },
       {
         "lag": "New Zealand",
         "poeng": 1,
-        "mf": -2,
-        "maal_for": 3,
-        "spilt": 2
+        "mf": -6,
+        "maal_for": 4,
+        "spilt": 3
       }
     ],
     "Gruppe H": [
@@ -1940,6 +1965,11 @@
       "maal": 3
     },
     {
+      "navn": "Elijah Just",
+      "lag": "New Zealand",
+      "maal": 3
+    },
+    {
       "navn": "Johan Manzambi",
       "lag": "Sveits",
       "maal": 3
@@ -1947,11 +1977,6 @@
     {
       "navn": "Jonathan David",
       "lag": "Canada",
-      "maal": 3
-    },
-    {
-      "navn": "Matheus Cunha",
-      "lag": "Brasil",
       "maal": 3
     }
   ],
@@ -1965,7 +1990,7 @@
     "Gruppe E": true,
     "Gruppe F": true,
     "Gruppe H": true,
-    "Gruppe G": false,
+    "Gruppe G": true,
     "Gruppe I": true,
     "Gruppe J": false,
     "Gruppe K": false,
@@ -2582,7 +2607,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 124,
-    "hentet": "2026-06-27T04:35:29+00:00",
+    "hentet": "2026-06-27T07:18:46+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 124
