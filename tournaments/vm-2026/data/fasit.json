@@ -329,6 +329,16 @@
       "home": "Egypt",
       "away": "Iran",
       "result": "U"
+    },
+    {
+      "home": "Panama",
+      "away": "England",
+      "result": "B"
+    },
+    {
+      "home": "Kroatia",
+      "away": "Ghana",
+      "result": "H"
     }
   ],
   "group_winners": {
@@ -370,7 +380,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 197,
+  "antall_maal": 202,
   "kamper": [
     {
       "home": "Mexico",
@@ -1104,7 +1114,7 @@
       "dato": "2026-06-27",
       "home_score": 0,
       "away_score": 2,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "winner": "AWAY_TEAM"
@@ -1113,9 +1123,9 @@
       "home": "Kroatia",
       "away": "Ghana",
       "dato": "2026-06-27",
-      "home_score": 1,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "winner": "HOME_TEAM"
@@ -1851,31 +1861,31 @@
     "Gruppe L": [
       {
         "lag": "England",
-        "poeng": 4,
-        "mf": 2,
-        "maal_for": 4,
-        "spilt": 2
+        "poeng": 7,
+        "mf": 4,
+        "maal_for": 6,
+        "spilt": 3
+      },
+      {
+        "lag": "Kroatia",
+        "poeng": 6,
+        "mf": 0,
+        "maal_for": 5,
+        "spilt": 3
       },
       {
         "lag": "Ghana",
         "poeng": 4,
-        "mf": 1,
-        "maal_for": 1,
-        "spilt": 2
-      },
-      {
-        "lag": "Kroatia",
-        "poeng": 3,
-        "mf": -1,
-        "maal_for": 3,
-        "spilt": 2
+        "mf": 0,
+        "maal_for": 2,
+        "spilt": 3
       },
       {
         "lag": "Panama",
         "poeng": 0,
-        "mf": -2,
+        "mf": -4,
         "maal_for": 0,
-        "spilt": 2
+        "spilt": 3
       }
     ]
   },
@@ -1995,7 +2005,7 @@
     "Gruppe I": true,
     "Gruppe J": false,
     "Gruppe K": false,
-    "Gruppe L": false
+    "Gruppe L": true
   },
   "kort": {
     "gule": [
@@ -2838,7 +2848,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 173,
-    "hentet": "2026-06-27T22:36:40+00:00",
+    "hentet": "2026-06-27T23:09:36+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 173
