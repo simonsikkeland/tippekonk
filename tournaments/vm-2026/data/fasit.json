@@ -352,6 +352,7 @@
     "Bosnia-Hercegovina",
     "Brasil",
     "Canada",
+    "Elfenbenskysten",
     "Japan",
     "Marokko",
     "Mexico",
@@ -1208,7 +1209,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Elfenbenskysten",
       "away": "",
       "dato": "2026-06-30",
       "home_score": null,
@@ -2607,7 +2608,7 @@
     "sum_rode": 8,
     "sum_gult_rodt": 0,
     "total": 124,
-    "hentet": "2026-06-27T07:18:46+00:00",
+    "hentet": "2026-06-27T07:50:30+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 124
