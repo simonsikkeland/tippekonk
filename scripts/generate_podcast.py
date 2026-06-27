@@ -498,7 +498,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         if k.get("status") not in ("TIMED", "SCHEDULED") or k.get("dato") not in (today, tomorrow):
             continue
         obj = {"kamp": f"{k['home']} mot {k['away']}",
-               "gruppe": k.get("group", "").replace("GROUP_", "Gr. ")}
+               "gruppe": (k.get("group") or "").replace("GROUP_", "Gr. ")}
         pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
         if pk:
             navn = pk.get("navn", {})
