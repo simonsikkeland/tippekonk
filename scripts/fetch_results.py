@@ -146,6 +146,24 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
             stage_teams[key].add(away)
 
         if status == "FINISHED":
+            # Kreditér avansement fra faktisk resultat, ikke bare fra API-ets
+            # neste-runde-oppsett: vinneren av en sluttspillkamp går videre til
+            # neste runde med en gang kampen er ferdig (API-et kan henge etter
+            # med å trekke neste fixture). Taperen av en semifinale går til
+            # bronsefinalen.
+            adv = home if winner == "HOME_TEAM" else (away if winner == "AWAY_TEAM" else None)
+            tap = away if winner == "HOME_TEAM" else (home if winner == "AWAY_TEAM" else None)
+            if adv:
+                if stage in ("LAST_32", "ROUND_OF_32"):
+                    stage_teams["r8"].add(adv)
+                elif stage in ("LAST_16", "ROUND_OF_16"):
+                    stage_teams["kvart"].add(adv)
+                elif stage in ("QUARTER_FINALS", "QUARTER_FINAL"):
+                    stage_teams["semi"].add(adv)
+                elif stage in ("SEMI_FINALS", "SEMI_FINAL"):
+                    stage_teams["finale"].add(adv)
+                    if tap:
+                        stage_teams["bronse"].add(tap)
             if stage == "FINAL":
                 if winner == "HOME_TEAM":
                     fact["vm_vinner"] = home
