@@ -173,6 +173,50 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         ka, kb = (a["_s"], a["navn"]), (b["_s"], b["navn"])
         return a if ka >= kb else b
 
+    # Faktiske sluttspillresultater (lag mot lag -> vinnernavn), så en vinner
+    # populeres videre i braketten med en gang kampen er endelig — uavhengig av
+    # om API-et har trukket neste fixture ennå. Nøkkel er settet av lagnavn.
+    ko_resultat = {}
+    for k in fact.get("kamper", []):
+        if k.get("stage") in (None, "GROUP_STAGE") or k.get("status") != "FINISHED":
+            continue
+        h, a, w = k.get("home"), k.get("away"), k.get("winner")
+        if not h or not a:
+            continue
+        wn = h if w == "HOME_TEAM" else (a if w == "AWAY_TEAM" else None)
+        if not wn:
+            hs, as_ = k.get("home_score"), k.get("away_score")
+            if hs is not None and as_ is not None and hs != as_:
+                wn = h if hs > as_ else a
+        if wn:
+            ko_resultat[frozenset((_norm(h), _norm(a)))] = wn
+
+    def faktisk_vinner(h, b):
+        """Faktisk vinner (markert sikker+faktisk) hvis kampen mellom h og b er
+        ferdigspilt, ellers None."""
+        if not h or not b or h.get("placeholder") or b.get("placeholder"):
+            return None
+        wn = ko_resultat.get(frozenset((_norm(h["navn"]), _norm(b["navn"]))))
+        if not wn:
+            return None
+        w = h if _norm(h["navn"]) == _norm(wn) else b
+        return {**w, "sikker": True, "faktisk": True}
+
+    def _taper(v, h, b):
+        if not v:
+            return None
+        loser = None
+        if h and _norm(v["navn"]) == _norm(h.get("navn", "")):
+            loser = b
+        elif b and _norm(v["navn"]) == _norm(b.get("navn", "")):
+            loser = h
+        if loser is None:
+            return None
+        # Når vinneren er faktisk, er taperen også endelig kjent.
+        if v.get("faktisk") and not loser.get("placeholder"):
+            return {**loser, "sikker": True, "faktisk": True}
+        return loser
+
     # Resolve 16-delsfinalen: faktiske lag der de er satt, ellers projeksjon.
     kamper = {}  # nr -> {home, away, vinner, taper}
     for nr in range(73, 89):
@@ -180,19 +224,18 @@ def projiser_sluttspill(fact: dict) -> dict | None:
             h, b = actual_r32[nr]["home"], actual_r32[nr]["away"]
         else:
             h, b = resolve(R32[nr][0]), resolve(R32[nr][1])
-        kamper[nr] = {"home": h, "away": b, "vinner": sterkest(h, b)}
+        kamper[nr] = {"home": h, "away": b, "vinner": faktisk_vinner(h, b) or sterkest(h, b)}
     for nr in (89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102):
         a, c = LATER[nr]
         h, b = kamper[a]["vinner"], kamper[c]["vinner"]
-        v = sterkest(h, b)
-        taper = (b if v is h else h) if v else None
-        kamper[nr] = {"home": h, "away": b, "vinner": v, "taper": taper}
+        v = faktisk_vinner(h, b) or sterkest(h, b)
+        kamper[nr] = {"home": h, "away": b, "vinner": v, "taper": _taper(v, h, b)}
     # Bronsefinale: tapere av semifinalene
     bh, bb = kamper[101].get("taper"), kamper[102].get("taper")
-    kamper[103] = {"home": bh, "away": bb, "vinner": sterkest(bh, bb)}
+    kamper[103] = {"home": bh, "away": bb, "vinner": faktisk_vinner(bh, bb) or sterkest(bh, bb)}
     # Finale
     fh, fb = kamper[101]["vinner"], kamper[102]["vinner"]
-    kamper[104] = {"home": fh, "away": fb, "vinner": sterkest(fh, fb)}
+    kamper[104] = {"home": fh, "away": fb, "vinner": faktisk_vinner(fh, fb) or sterkest(fh, fb)}
 
     def clean(t):
         if not t:
@@ -200,16 +243,22 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         out = {"navn": t["navn"], "seed": t.get("seed", "")}
         if t.get("sikker"):
             out["sikker"] = True
+        if t.get("faktisk"):
+            out["faktisk"] = True
         if t.get("placeholder"):
             out["placeholder"] = True
         return out
 
     runder = []
     for navn, nrs in RUNDER:
-        runder.append({"navn": navn, "kamper": [
-            {"nr": nr, "home": clean(kamper[nr]["home"]),
-             "away": clean(kamper[nr]["away"]), "vinner": clean(kamper[nr]["vinner"])}
-            for nr in nrs]})
+        kamp_liste = []
+        for nr in nrs:
+            obj = {"nr": nr, "home": clean(kamper[nr]["home"]),
+                   "away": clean(kamper[nr]["away"]), "vinner": clean(kamper[nr]["vinner"])}
+            if kamper[nr].get("taper"):
+                obj["taper"] = clean(kamper[nr]["taper"])
+            kamp_liste.append(obj)
+        runder.append({"navn": navn, "kamper": kamp_liste})
 
     return {
         "mester": clean(kamper[104]["vinner"]),

@@ -881,7 +881,16 @@ function renderSluttspill(d){
     }
     const feed = nr===103 ? [101,102] : BK_FEED[nr];
     const pre = nr===103 ? 'T' : 'V';
-    const slot = (n)=>`<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
+    const slot = (n)=>{
+      // Når matekampen er endelig avgjort, vis det faktiske laget som gikk videre
+      // (taper i bronsefinalen, ellers vinneren) i stedet for "V73"/"T101".
+      const fk = byNr[n];
+      const lag = fk && (pre==='T' ? fk.taper : fk.vinner);
+      if(lag && lag.faktisk){
+        return `<div class="bk-side bk-sure">${tip(lag)}</div>`;
+      }
+      return `<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
+    };
     return `<div class="bk-match">${slot(feed[0])}${slot(feed[1])}</div>`;
   };
   const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div><div class="bk-slots">${nrs.map(nr=>`<div class="bk-slot"><span class="bk-jl"></span>${matchBox(nr)}</div>`).join("")}</div></div>`;
