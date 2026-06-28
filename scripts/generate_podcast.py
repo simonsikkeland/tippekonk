@@ -360,6 +360,155 @@ def gruppevinner_oversikt(data: dict, window: tuple) -> list[dict]:
     return ut
 
 
+# --- Sluttspill ---
+# Stage -> norsk rundenavn (for omtale).
+RUNDE_NAVN = {
+    "LAST_32": "16-delsfinale", "ROUND_OF_32": "16-delsfinale",
+    "LAST_16": "8-delsfinale", "ROUND_OF_16": "8-delsfinale",
+    "QUARTER_FINALS": "kvartfinale", "QUARTER_FINAL": "kvartfinale",
+    "SEMI_FINALS": "semifinale", "SEMI_FINAL": "semifinale",
+    "THIRD_PLACE": "bronsefinale", "3RD_PLACE": "bronsefinale", "FINAL": "finale",
+}
+# Stage -> hvilken runde vinneren av kampen når (avansement-nøkkel i statistikk.avansement).
+NESTE_RUNDE = {
+    "LAST_32": "r8", "ROUND_OF_32": "r8", "LAST_16": "kvart", "ROUND_OF_16": "kvart",
+    "QUARTER_FINALS": "semi", "QUARTER_FINAL": "semi",
+    "SEMI_FINALS": "finale", "SEMI_FINAL": "finale",
+    "THIRD_PLACE": "bronse", "3RD_PLACE": "bronse", "FINAL": "vm",
+}
+SLUTTSPILL_POENG_KEYS = ("r16", "r8", "kvart", "semi",
+                         "bronse_lag", "bronse_vinner", "finale_lag", "vm_vinner")
+
+
+def er_sluttspill(data: dict) -> bool:
+    """Sann når gruppespillet er ferdig — da bytter podcasten til sluttspill-modus."""
+    return bool((data.get("fasit") or {}).get("gruppespill_ferdig"))
+
+
+def herav_sluttspill(s: dict) -> int:
+    """Sum av en deltakers sluttspill-poeng (alle sluttspill-kategorier)."""
+    k = poeng_kilder(s)
+    return sum(k.get(key, 0) for key in SLUTTSPILL_POENG_KEYS)
+
+
+def _vinner_taper(k: dict):
+    """(vinner, taper) for en sluttspillkamp, ellers (None, None)."""
+    w, h, a = k.get("winner"), k.get("home"), k.get("away")
+    if w == "HOME_TEAM":
+        return h, a
+    if w == "AWAY_TEAM":
+        return a, h
+    hs, as_ = k.get("home_score"), k.get("away_score")
+    if hs is None or as_ is None:
+        return None, None
+    if hs > as_:
+        return h, a
+    if as_ > hs:
+        return a, h
+    return None, None
+
+
+def _ko_kamper(fasit: dict):
+    for k in fasit.get("kamper", []):
+        if k.get("stage") and k.get("stage") != "GROUP_STAGE":
+            yield k
+
+
+def sluttspill_resultater(data: dict, window: tuple) -> list[dict]:
+    """Ferdige sluttspillkamper i vinduet: hvem avanserte, hvem røk ut, og hvem i
+    gjengen som hadde vinneren videre til runden laget nettopp nådde."""
+    fasit = data.get("fasit", {})
+    av = (data.get("statistikk") or {}).get("avansement") or {}
+    ut = []
+    for k in _ko_kamper(fasit):
+        if k.get("status") != "FINISHED" or k.get("dato") not in window:
+            continue
+        vinner, taper = _vinner_taper(k)
+        if not vinner:
+            continue
+        nk = NESTE_RUNDE.get(k.get("stage"))
+        backers = (av.get(_nn(vinner), {}).get("runder", {}) or {}).get(nk, []) if nk else []
+        hs, as_ = k.get("home_score"), k.get("away_score")
+        res = _scoreline(max(hs, as_), min(hs, as_)) if hs is not None and as_ is not None else ""
+        ut.append({
+            "runde": RUNDE_NAVN.get(k.get("stage"), ""),
+            "vinner": vinner, "taper": taper, "resultat": res,
+            "hadde_vinneren_videre": backers, "antall_hadde_vinneren": len(backers),
+        })
+    return ut
+
+
+def utslatte_favoritter(data: dict, window: tuple) -> list[dict]:
+    """Lag slått ut i vinduet + hvor mange som hadde dem dypt (kvart/semi/finale/vm)."""
+    fasit = data.get("fasit", {})
+    av = (data.get("statistikk") or {}).get("avansement") or {}
+    ut = []
+    for k in _ko_kamper(fasit):
+        if k.get("status") != "FINISHED" or k.get("dato") not in window:
+            continue
+        _, taper = _vinner_taper(k)
+        if not taper:
+            continue
+        runder = (av.get(_nn(taper), {}) or {}).get("runder", {}) or {}
+        dyp = {r: len(runder.get(r, [])) for r in ("kvart", "semi", "finale", "vm") if runder.get(r)}
+        ut.append({"lag": taper, "slatt_ut_i": RUNDE_NAVN.get(k.get("stage"), ""),
+                   "antall_hadde_dem_dypt": dyp})
+    ut.sort(key=lambda x: -sum(x["antall_hadde_dem_dypt"].values()))
+    return ut
+
+
+def sluttspill_stilling(data: dict) -> list[dict]:
+    """Bracket-treffrangering: total riktige avanserte lag per deltaker."""
+    st = (data.get("statistikk") or {}).get("sluttspill_tips") or []
+    per = {}
+    for runde in st:
+        for t in runde.get("tips", []):
+            per.setdefault(t["navn"], {})[runde["key"]] = t["riktige"]
+    rader = [{"navn": n, "riktige_totalt": sum(v.values()), "per_runde": v}
+             for n, v in per.items()]
+    rader.sort(key=lambda x: -x["riktige_totalt"])
+    return rader
+
+
+def kommende_sluttspill(data: dict, window: tuple) -> list[dict]:
+    """Kommende sluttspillkamper (begge lag kjent) + avansement-tips per lag.
+    Tar med 'har_begge_lag_videre' — de som garantert mister én når lagene møtes."""
+    fasit = data.get("fasit", {})
+    av = (data.get("statistikk") or {}).get("avansement") or {}
+    ut = []
+    for k in _ko_kamper(fasit):
+        if k.get("status") not in ("TIMED", "SCHEDULED") or k.get("dato") not in window:
+            continue
+        h, a = (k.get("home") or "").strip(), (k.get("away") or "").strip()
+        if not h or not a:
+            continue
+        nk = NESTE_RUNDE.get(k.get("stage"))
+        A = set((av.get(_nn(h), {}).get("runder", {}) or {}).get(nk, []))
+        B = set((av.get(_nn(a), {}).get("runder", {}) or {}).get(nk, []))
+        ut.append({
+            "kamp": f"{h} mot {a}", "runde": RUNDE_NAVN.get(k.get("stage"), ""),
+            f"har_{h}_videre": sorted(A - B),
+            f"har_{a}_videre": sorted(B - A),
+            "har_begge_lag_videre": sorted(A & B),
+        })
+    return ut
+
+
+def sluttspill_spalte_kandidater(data: dict, window: tuple) -> dict:
+    """Grunnlag for de (reframede) spaltene i sluttspillet:
+      - modige_bracket_treff (Gullhår): lag som nettopp avanserte og få hadde
+      - utslatte_favoritter + darligst_paa_bracket (Dagens Brøler)."""
+    res = sluttspill_resultater(data, window)
+    modige = [{"lag": r["vinner"], "runde": r["runde"],
+               "modige_tippere": r["hadde_vinneren_videre"], "antall": r["antall_hadde_vinneren"]}
+              for r in res if r["hadde_vinneren_videre"] and r["antall_hadde_vinneren"] <= 4]
+    modige.sort(key=lambda x: x["antall"])
+    daarligst = sorted(sluttspill_stilling(data), key=lambda x: x["riktige_totalt"])[:4]
+    return {"modige_bracket_treff": modige[:5],
+            "utslatte_favoritter": utslatte_favoritter(data, window)[:5],
+            "darligst_paa_bracket": daarligst}
+
+
 def claude_oppsummering(api_key: str, data: dict, cfg: dict,
                         nyheter: list[str], historikk: list) -> str:
     """Egen Claude-prompt: kort tekst-oppsummering for nettsiden. Returnerer ren
@@ -381,12 +530,16 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
     tavle = tavle_endringer(data, historikk)
     topp_sc = [{"navn": x["navn"], "lag": x.get("lag", ""), "maal": x.get("maal", 0)}
                for x in fasit.get("topp_scorere", [])[:5]]
+    knockout = er_sluttspill(data)
     stilling = []
     for s in data.get("stilling", []):
         k = poeng_kilder(s)
-        stilling.append({"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
-                         "herav_gruppespill": k.get("hub", 0),
-                         "herav_gruppevinner": k.get("gruppevinner", 0)})
+        rad = {"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
+               "herav_gruppespill": k.get("hub", 0),
+               "herav_gruppevinner": k.get("gruppevinner", 0)}
+        if knockout:
+            rad["herav_sluttspill"] = herav_sluttspill(s)
+        stilling.append(rad)
     gruppevinnere = gruppevinner_oversikt(data, (today, yesterday))
 
     sammendrag = {
@@ -400,26 +553,13 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
         "stilling": stilling,
         "nyheter_fra_media": nyheter,
     }
+    if knockout:
+        sammendrag["fase"] = "sluttspill"
+        sammendrag["sluttspill_resultater_siste_doegn"] = sluttspill_resultater(data, (today, yesterday))
+        sammendrag["utslatte_favoritter"] = utslatte_favoritter(data, (today, yesterday))
+        sammendrag["bracket_stilling"] = sluttspill_stilling(data)[:8]
 
-    system = (
-        "Du skriver en kort, poengtert oppsummering på naturlig norsk bokmål av siste "
-        "døgns hendelser i fotball-VM 2026, for forsiden til en privat tippekonkurranse "
-        "blant norske kompiser. Teksten skal være lett å lese og lett å kopiere.\n\n"
-        "INNHOLD (få med alt dette):\n"
-        "- Resultatet av ALLE kampene i 'kampresultater_siste_doegn'. Nevn hver kamp med "
-        "lag og siffer-resultat (f.eks. 'Mexico vant 1-0 over Sør-Korea').\n"
-        "- Highlights og store øyeblikk: målfester, store seire, hat trick, dramatikk, "
-        "skader/brukne bein, kontroverser. Bruk KUN det som faktisk fremgår av "
-        "kampresultatene, toppscorerlista og overskriftene i 'nyheter_fra_media'.\n"
-        "- Hvor mange poeng lederen fikk det siste døgnet ('tavle_endringer."
-        "leder_fikk_siste_doegn') og hva som har endret seg på tavla — ny leder hvis "
-        "'ny_leder' er sann, hvem som klatret mest, osv. Hvis ingenting endret seg, si "
-        "det kort.\n"
-        "- Gruppevinnere: hvis en gruppe nettopp ble ferdigspilt "
-        "('ferdige_grupper_med_vinner' der 'nylig_avgjort' er sann), nevn hvem som vant "
-        "gruppa og at det ga 3 poeng til de som tippet vinneren riktig (se "
-        "'tippere_som_traff'). Poengsummene i 'stilling' INKLUDERER nå gruppevinner-poeng "
-        "('herav_gruppevinner' viser hvor mange av poengene som kom derfra).\n\n"
+    felles_regler = (
         "REGLER:\n"
         "- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, navn, tall eller "
         "hendelser. Ikke anta et hat trick eller en skade med mindre det fremgår av "
@@ -430,6 +570,51 @@ def claude_oppsummering(api_key: str, data: dict, cfg: dict,
         "- Tone: engasjert og lett humoristisk, men informativ.\n"
         "- Svar KUN med selve oppsummeringsteksten, ingenting annet."
     )
+    if knockout:
+        system = (
+            "Du skriver en kort, poengtert oppsummering på naturlig norsk bokmål av siste "
+            "døgns SLUTTSPILL i fotball-VM 2026, for forsiden til en privat tippekonkurranse "
+            "blant norske kompiser. Teksten skal være lett å lese og lett å kopiere.\n\n"
+            "VIKTIG OM TIPPINGEN: Deltakerne har KUN tippet hvilke lag som går videre i "
+            "sluttspillet — IKKE hvem som møter hvem eller eksakte resultater. Si derfor "
+            "aldri at noen 'tippet seier' eller 'tippet 2-1'. Si heller f.eks. 'Bjørn hadde "
+            "Brasil videre til kvarten'.\n\n"
+            "INNHOLD (få med alt dette):\n"
+            "- ALLE sluttspillkampene i 'sluttspill_resultater_siste_doegn'. For hver: hvem "
+            "vant og avanserte (til 'runde'), hvem røk ut, og siffer-resultat. Nevn hvor mange "
+            "i gjengen som hadde vinneren videre ('antall_hadde_vinneren').\n"
+            "- Utslåtte favoritter ('utslatte_favoritter'): lag mange hadde langt i bracketen "
+            "som nå er ute — det svir for de som hadde dem dypt.\n"
+            "- Highlights fra kampene og relevante medieoverskrifter ('nyheter_fra_media'), "
+            "men KUN det som faktisk fremgår.\n"
+            "- Tavla: hvor mange poeng lederen fikk ('tavle_endringer.leder_fikk_siste_doegn'), "
+            "ny leder hvis 'ny_leder', hvem som klatret. Poengsummene i 'stilling' inkluderer "
+            "sluttspill-poeng ('herav_sluttspill'). 'bracket_stilling' viser hvem som har flest "
+            "riktige avanserte lag.\n\n"
+            + felles_regler
+        )
+    else:
+        system = (
+            "Du skriver en kort, poengtert oppsummering på naturlig norsk bokmål av siste "
+            "døgns hendelser i fotball-VM 2026, for forsiden til en privat tippekonkurranse "
+            "blant norske kompiser. Teksten skal være lett å lese og lett å kopiere.\n\n"
+            "INNHOLD (få med alt dette):\n"
+            "- Resultatet av ALLE kampene i 'kampresultater_siste_doegn'. Nevn hver kamp med "
+            "lag og siffer-resultat (f.eks. 'Mexico vant 1-0 over Sør-Korea').\n"
+            "- Highlights og store øyeblikk: målfester, store seire, hat trick, dramatikk, "
+            "skader/brukne bein, kontroverser. Bruk KUN det som faktisk fremgår av "
+            "kampresultatene, toppscorerlista og overskriftene i 'nyheter_fra_media'.\n"
+            "- Hvor mange poeng lederen fikk det siste døgnet ('tavle_endringer."
+            "leder_fikk_siste_doegn') og hva som har endret seg på tavla — ny leder hvis "
+            "'ny_leder' er sann, hvem som klatret mest, osv. Hvis ingenting endret seg, si "
+            "det kort.\n"
+            "- Gruppevinnere: hvis en gruppe nettopp ble ferdigspilt "
+            "('ferdige_grupper_med_vinner' der 'nylig_avgjort' er sann), nevn hvem som vant "
+            "gruppa og at det ga 3 poeng til de som tippet vinneren riktig (se "
+            "'tippere_som_traff'). Poengsummene i 'stilling' INKLUDERER nå gruppevinner-poeng "
+            "('herav_gruppevinner' viser hvor mange av poengene som kom derfra).\n\n"
+            + felles_regler
+        )
     user = f"Dagens data:\n{json.dumps(sammendrag, ensure_ascii=False, indent=2)}\n\nSkriv oppsummeringen nå."
 
     body = json.dumps({
@@ -465,66 +650,13 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
     yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
     tomorrow = (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%d")
 
-    # Faktisk tipping per kamp (hvem tippet H/U/B) fra tippefordeling
-    tf = (data.get("statistikk") or {}).get("tippefordeling") or {}
-    tipp = {}
-    for dag in tf.get("dager", []):
-        for kk in dag.get("kamper", []):
-            tipp[(_nn(kk["home"]), _nn(kk["away"]))] = kk
-
-    resultater = []
-    for k in kamper:
-        if k.get("status") != "FINISHED" or k.get("dato") not in (today, yesterday):
-            continue
-        hs, as_ = k.get("home_score"), k.get("away_score")
-        if hs > as_:
-            rtekst = f"{k['home']} slo {k['away']} {_scoreline(hs, as_)}"
-        elif hs < as_:
-            rtekst = f"{k['away']} slo {k['home']} {_scoreline(as_, hs)}"
-        else:
-            rtekst = f"{k['home']} og {k['away']} spilte {_scoreline(hs, as_)}"
-        obj = {"kamp": f"{k['home']} mot {k['away']}", "resultat": rtekst}
-        pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
-        if pk and pk.get("fasit"):
-            navn = pk.get("navn", {})
-            riktig = navn.get(pk["fasit"], [])
-            alle = navn.get("H", []) + navn.get("U", []) + navn.get("B", [])
-            obj["tippet_riktig_utfall"] = riktig
-            obj["bommet_pa_utfall"] = [n for n in alle if n not in riktig]
-        resultater.append(obj)
-
-    kommende = []
-    for k in kamper:
-        if k.get("status") not in ("TIMED", "SCHEDULED") or k.get("dato") not in (today, tomorrow):
-            continue
-        obj = {"kamp": f"{k['home']} mot {k['away']}",
-               "gruppe": (k.get("group") or "").replace("GROUP_", "Gr. ")}
-        pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
-        if pk:
-            navn = pk.get("navn", {})
-            obj["tipping"] = {
-                f"{k['home']} vinner": navn.get("H", []),
-                "uavgjort": navn.get("U", []),
-                f"{k['away']} vinner": navn.get("B", []),
-            }
-        kommende.append(obj)
-
-    # Grunnlag for spaltene (Gullhår / Dagens Brøler)
-    spalte_data = spalte_kandidater(tipp, kamper, (today, yesterday))
-
-    # Gruppevinnere (ferdige grupper, gir 3p) vs live-ledere (uavgjorte grupper).
-    gruppevinnere = gruppevinner_oversikt(data, (today, yesterday))
-    grupper_ferdig = grupper_ferdig_status(fasit)
-    grupper = fasit.get("grupper", {})
-    gruppeledere_uavgjort = {g: rows[0]["lag"] for g, rows in grupper.items()
-                             if rows and not grupper_ferdig.get(g)}
+    knockout = er_sluttspill(data)
 
     # Seiers-sang: hvis seierslaget (Norge) vant nylig spilles «Tre poeng til
     # Norge» rett etter intro-jingelen — og da MÅ vertene anerkjenne den.
     # Samme dagvindu som lyd-genereringen i main(), så manus og lyd er enige.
     seierslag = cfg.get("podcast", {}).get("seierslag", "Norge")
-    seierssang_spilles = lag_vant_nylig(data, seierslag)
-    if seierssang_spilles:
+    if lag_vant_nylig(data, seierslag):
         seiers_instruks = (
             f"- SEIERS-SANG: Rett etter intro-jingelen spilles seiers-sangen "
             f"«Tre poeng til {seierslag}» fordi {seierslag} nettopp vant en kamp "
@@ -540,22 +672,164 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         seiers_instruks = ""
         intro_seier_note = ""
 
+    stilling_konkurranse = []
+    for s in stilling:
+        rad = {"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
+               "herav_gruppespill": poeng_kilder(s).get("hub", 0),
+               "herav_gruppevinner": poeng_kilder(s).get("gruppevinner", 0)}
+        if knockout:
+            rad["herav_sluttspill"] = herav_sluttspill(s)
+        stilling_konkurranse.append(rad)
+
     sammendrag = {
         "turnering": data.get("turnering", {}).get("navn"),
         "oppdatert": data.get("oppdatert"),
-        "stilling_konkurranse": [
-            {"plass": s["plass"], "navn": s["navn"], "poeng": s["poeng"],
-             "herav_gruppespill": poeng_kilder(s).get("hub", 0),
-             "herav_gruppevinner": poeng_kilder(s).get("gruppevinner", 0)}
-            for s in stilling],
-        "ferske_resultater": resultater,
-        "kommende_kamper": kommende,
-        "spalte_data": spalte_data,
-        "toppscorere": [{"navn": x["navn"], "lag": x.get("lag",""), "maal": x.get("maal",0)} for x in topp_sc],
-        "ferdige_grupper_med_vinner": gruppevinnere,
-        "gruppeledere_uavgjorte_grupper": gruppeledere_uavgjort,
+        "stilling_konkurranse": stilling_konkurranse,
+        "toppscorere": [{"navn": x["navn"], "lag": x.get("lag", ""), "maal": x.get("maal", 0)} for x in topp_sc],
         "nyheter_fra_media": nyheter,
     }
+
+    if knockout:
+        sammendrag["fase"] = "sluttspill"
+        sammendrag["ferske_resultater"] = sluttspill_resultater(data, (today, yesterday))
+        sammendrag["kommende_kamper"] = kommende_sluttspill(data, (today, tomorrow))
+        sammendrag["spalte_data"] = sluttspill_spalte_kandidater(data, (today, yesterday))
+        sammendrag["bracket_stilling"] = sluttspill_stilling(data)[:8]
+        sammendrag["utslatte_favoritter"] = utslatte_favoritter(data, (today, yesterday))
+        # På overgangsdagen kan en gruppe nettopp ha blitt avgjort.
+        sammendrag["ferdige_grupper_med_vinner"] = gruppevinner_oversikt(data, (today, yesterday))
+    else:
+        # H/U/B-tipping per gruppekamp fra tippefordeling
+        tf = (data.get("statistikk") or {}).get("tippefordeling") or {}
+        tipp = {}
+        for dag in tf.get("dager", []):
+            for kk in dag.get("kamper", []):
+                tipp[(_nn(kk["home"]), _nn(kk["away"]))] = kk
+
+        resultater = []
+        for k in kamper:
+            if k.get("status") != "FINISHED" or k.get("dato") not in (today, yesterday):
+                continue
+            hs, as_ = k.get("home_score"), k.get("away_score")
+            if hs is None or as_ is None:
+                continue
+            if hs > as_:
+                rtekst = f"{k['home']} slo {k['away']} {_scoreline(hs, as_)}"
+            elif hs < as_:
+                rtekst = f"{k['away']} slo {k['home']} {_scoreline(as_, hs)}"
+            else:
+                rtekst = f"{k['home']} og {k['away']} spilte {_scoreline(hs, as_)}"
+            obj = {"kamp": f"{k['home']} mot {k['away']}", "resultat": rtekst}
+            pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
+            if pk and pk.get("fasit"):
+                navn = pk.get("navn", {})
+                riktig = navn.get(pk["fasit"], [])
+                alle = navn.get("H", []) + navn.get("U", []) + navn.get("B", [])
+                obj["tippet_riktig_utfall"] = riktig
+                obj["bommet_pa_utfall"] = [n for n in alle if n not in riktig]
+            resultater.append(obj)
+
+        kommende = []
+        for k in kamper:
+            if k.get("status") not in ("TIMED", "SCHEDULED") or k.get("dato") not in (today, tomorrow):
+                continue
+            obj = {"kamp": f"{k['home']} mot {k['away']}",
+                   "gruppe": (k.get("group") or "").replace("GROUP_", "Gr. ")}
+            pk = tipp.get((_nn(k["home"]), _nn(k["away"])))
+            if pk:
+                navn = pk.get("navn", {})
+                obj["tipping"] = {
+                    f"{k['home']} vinner": navn.get("H", []),
+                    "uavgjort": navn.get("U", []),
+                    f"{k['away']} vinner": navn.get("B", []),
+                }
+            kommende.append(obj)
+
+        grupper_ferdig = grupper_ferdig_status(fasit)
+        grupper = fasit.get("grupper", {})
+        sammendrag["ferske_resultater"] = resultater
+        sammendrag["kommende_kamper"] = kommende
+        sammendrag["spalte_data"] = spalte_kandidater(tipp, kamper, (today, yesterday))
+        sammendrag["ferdige_grupper_med_vinner"] = gruppevinner_oversikt(data, (today, yesterday))
+        sammendrag["gruppeledere_uavgjorte_grupper"] = {
+            g: rows[0]["lag"] for g, rows in grupper.items()
+            if rows and not grupper_ferdig.get(g)}
+
+    if knockout:
+        tipping_regel = (
+            f"- Deltakerne har tippet KUN hvilke lag som går VIDERE i sluttspillet — IKKE "
+            f"hvem som møter hvem eller resultater. Si derfor ALDRI 'tippet seier' eller "
+            f"'tippet to til én'. Si f.eks. 'Jonas hadde Brasil videre til kvarten' eller "
+            f"'halve gjengen hadde Tyskland videre'. Siden alle tippet FØR turneringen kan "
+            f"én person ha BEGGE lagene i en kamp videre — da mister de garantert den ene "
+            f"når lagene møtes (feltet 'har_begge_lag_videre').\n"
+        )
+        seksjoner = (
+            f"2. OPPSUMMERING — Gå gjennom sluttspillkampene i 'ferske_resultater'. For hver: "
+            f"hvem vant og avanserte (til 'runde'), hvem røk ut, og det morsomme rundt kampen. "
+            f"Hvem i gjengen hadde vinneren videre ('hadde_vinneren_videre', "
+            f"'antall_hadde_vinneren')? Trekk fram utslåtte favoritter ('utslatte_favoritter') "
+            f"— lag mange hadde langt som nå er ute. {a} blir gira, {b} kommer med den tørre "
+            f"analysen. BRACKET/POENG: 'stilling_konkurranse' har 'herav_sluttspill' (poeng fra "
+            f"sluttspillet), og 'bracket_stilling' viser hvem som har flest riktige avanserte lag.\n"
+            f"3. GULLHÅR I RÆVA! (fast spalte) — Innled med at en vert kreativt ANNONSERER "
+            f"spalten ved navn. Spalten hyller modige bracket-valg: bruk "
+            f"'spalte_data.modige_bracket_treff' (lag som nettopp avanserte og som FÅ i gjengen "
+            f"hadde videre). Nominer 1 til 3, og LAND på ÉN verdig vinner. Sett 'jingle_foran' "
+            f"til \"gull\" på den FØRSTE INNHOLDSREPLIKKEN (rett etter annonseringen).\n"
+            f"4. DAGENS BRØLER (fast spalte) — Innled med at en vert kreativt ANNONSERER "
+            f"spalten ved navn. Bruk 'spalte_data.utslatte_favoritter' (favoritter som røk ut) "
+            f"og 'spalte_data.darligst_paa_bracket' (de med færrest riktige avanserte lag). "
+            f"Skjell ut både lag og tippere med frekk snert. KÅR ÉN 'Dagens Brøler' (lag eller "
+            f"deltaker). Sett 'jingle_foran' til \"broler\" på den FØRSTE INNHOLDSREPLIKKEN.\n"
+            f"5. NESTE RUNDE — Kommende sluttspillkamper ('kommende_kamper'). For hvert lag: "
+            f"hvor mange i gjengen som har dem videre. Fremhev 'har_begge_lag_videre' — de som "
+            f"har BEGGE lagene videre og dermed garantert mister én når de møtes (gull verdt "
+            f"for en frekk kommentar). Favoritter som kan ryke, stjernespillere, bygg "
+            f"forventning. Vev inn relevante nyheter fra overskriftene.\n"
+        )
+    else:
+        tipping_regel = (
+            f"- Deltakerne tipper KUN utfall: hjemmeseier, uavgjort eller borteseier — IKKE eksakt "
+            f"resultat. Si derfor aldri at noen 'tippet to til én' e.l. Si f.eks. 'Jonas tror Norge "
+            f"vinner' eller 'Bjørn tippet uavgjort'. Feltet 'tipping' viser nøyaktig hvem som tippet hva.\n"
+        )
+        seksjoner = (
+            f"2. OPPSUMMERING — Gå gjennom de ferske kampresultatene. "
+            f"Hvem i kompisgjengen traff blink på tippingen? Hvem bommet fullstendig? "
+            f"Trekk fram morsomme fakta fra kampene (storseire, sjokkresultater, målfester). "
+            f"Sammenlign tippingen mot fasit — vær konkret med navn og tips. "
+            f"{a} blir gira på mål og overraskelser, {b} kommer med den tørre analysen. "
+            f"GRUPPEVINNERE: hvis en gruppe nettopp ble ferdigspilt ('ferdige_grupper_med_vinner' "
+            f"der 'nylig_avgjort' er sann), feir hvem som vant gruppa, og at de som tippet vinneren "
+            f"riktig ('tippere_som_traff') nettopp sikret seg tre poeng hver. "
+            f"POENG: oppdater lytterne på tavla, og husk at poengsummene i 'stilling_konkurranse' nå "
+            f"INKLUDERER gruppevinner-poeng — 'herav_gruppevinner' er hvor mange av poengene hver har "
+            f"fra gruppevinnere, 'herav_gruppespill' fra kamputfall. Trekk fram om noen klatret takket "
+            f"være gruppevinnerne (f.eks. at en tok igjen forspranget ved å treffe på gruppevinnere).\n"
+            f"3. GULLHÅR I RÆVA! (fast spalte) — Innled med at en vert kreativt ANNONSERER spalten "
+            f"ved navn (f.eks. 'Da er det tid for vår faste spalte: Gullhår i Ræva!' eller 'Vi går "
+            f"rett over til Gullhår i Ræva!'). Spalten er en hyllest til å gå mot flokken: bruk "
+            f"'spalte_data.modige_treff' (tippere som traff på et utfall få andre turte å satse på). "
+            f"Nominer 1 til 3 slike modige sjeler, drodle om hvem som er mest fortjent, og LAND til "
+            f"slutt på ÉN verdig vinner (en deltaker). Sett feltet 'jingle_foran' til \"gull\" på den "
+            f"FØRSTE INNHOLDSREPLIKKEN — altså replikken RETT ETTER annonseringen — slik at jingelen "
+            f"spilles mellom annonsering og innhold.\n"
+            f"4. DAGENS BRØLER (fast spalte) — Innled med at en vert kreativt ANNONSERER spalten ved "
+            f"navn (f.eks. 'Og så til en annen fast post: Dagens Brøler!'). Spalten tar for seg "
+            f"dagens største tabbe: bruk 'spalte_data.storste_sjokk' (kamper der få/ingen traff, og "
+            f"hvilket lag som skuffet) og 'spalte_data.tippere_som_bommet_mest'. Skjell gjerne ut "
+            f"både lag og tippere med frekk snert. Nominer kandidater og KÅR til slutt ÉN 'Dagens "
+            f"Brøler' — det kan være enten et fotballag eller en deltaker. Sett 'jingle_foran' til "
+            f"\"broler\" på den FØRSTE INNHOLDSREPLIKKEN (rett etter annonseringen), slik at jingelen "
+            f"spilles mellom annonsering og innhold.\n"
+            f"5. NESTE RUNDE — Kommende kamper og hva man skal følge med på. "
+            f"Hvem har gjort smarte/dumme tips som kan slå til eller smelle? "
+            f"Stjernespillere å følge med på, spennende oppgjør, bygg forventning. "
+            f"Nevn gjerne hvilke grupper som fortsatt er åpne ('gruppeledere_uavgjorte_grupper') — "
+            f"der er det fremdeles tre gruppevinner-poeng å hente for de som tippet lederen. "
+            f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
+        )
 
     system = (
         f"Du skriver manus til en morsom norsk fotballpodcast om fotball-VM 2026, "
@@ -576,9 +850,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         f"{seiers_instruks}"
         f"- HOLD DEG STRENGT TIL DATAENE. Finn ALDRI opp resultater, tips, navn eller tall. "
         f"Bruk kun det som faktisk står i dataene under.\n"
-        f"- Deltakerne tipper KUN utfall: hjemmeseier, uavgjort eller borteseier — IKKE eksakt "
-        f"resultat. Si derfor aldri at noen 'tippet to til én' e.l. Si f.eks. 'Jonas tror Norge "
-        f"vinner' eller 'Bjørn tippet uavgjort'. Feltet 'tipping' viser nøyaktig hvem som tippet hva.\n"
+        f"{tipping_regel}"
         f"- IKKE rams opp lange navnelister. Bruk heller gruppebegreper: 'gjengen', 'folket', "
         f"'majoriteten', 'flertallet', 'de fleste', 'halve gjengen', 'en håndfull'. Nevn enkeltnavn "
         f"sparsomt — kun for å fremheve én eller to som skiller seg ut (lederen, den eneste som "
@@ -593,40 +865,7 @@ def claude_manus(api_key: str, data: dict, cfg: dict, nyheter: list[str]) -> lis
         f"1. INTRO — Kort, energisk velkomst rett etter at intro-jingelen har spilt. "
         f"IKKE kommenter eller anerkjenn selve jingelen; ønsk heller velkommen og sett "
         f"stemningen.{intro_seier_note}\n"
-        f"2. OPPSUMMERING — Gå gjennom de ferske kampresultatene. "
-        f"Hvem i kompisgjengen traff blink på tippingen? Hvem bommet fullstendig? "
-        f"Trekk fram morsomme fakta fra kampene (storseire, sjokkresultater, målfester). "
-        f"Sammenlign tippingen mot fasit — vær konkret med navn og tips. "
-        f"{a} blir gira på mål og overraskelser, {b} kommer med den tørre analysen. "
-        f"GRUPPEVINNERE: hvis en gruppe nettopp ble ferdigspilt ('ferdige_grupper_med_vinner' "
-        f"der 'nylig_avgjort' er sann), feir hvem som vant gruppa, og at de som tippet vinneren "
-        f"riktig ('tippere_som_traff') nettopp sikret seg tre poeng hver. "
-        f"POENG: oppdater lytterne på tavla, og husk at poengsummene i 'stilling_konkurranse' nå "
-        f"INKLUDERER gruppevinner-poeng — 'herav_gruppevinner' er hvor mange av poengene hver har "
-        f"fra gruppevinnere, 'herav_gruppespill' fra kamputfall. Trekk fram om noen klatret takket "
-        f"være gruppevinnerne (f.eks. at en tok igjen forspranget ved å treffe på gruppevinnere).\n"
-        f"3. GULLHÅR I RÆVA! (fast spalte) — Innled med at en vert kreativt ANNONSERER spalten "
-        f"ved navn (f.eks. 'Da er det tid for vår faste spalte: Gullhår i Ræva!' eller 'Vi går "
-        f"rett over til Gullhår i Ræva!'). Spalten er en hyllest til å gå mot flokken: bruk "
-        f"'spalte_data.modige_treff' (tippere som traff på et utfall få andre turte å satse på). "
-        f"Nominer 1 til 3 slike modige sjeler, drodle om hvem som er mest fortjent, og LAND til "
-        f"slutt på ÉN verdig vinner (en deltaker). Sett feltet 'jingle_foran' til \"gull\" på den "
-        f"FØRSTE INNHOLDSREPLIKKEN — altså replikken RETT ETTER annonseringen — slik at jingelen "
-        f"spilles mellom annonsering og innhold.\n"
-        f"4. DAGENS BRØLER (fast spalte) — Innled med at en vert kreativt ANNONSERER spalten ved "
-        f"navn (f.eks. 'Og så til en annen fast post: Dagens Brøler!'). Spalten tar for seg "
-        f"dagens største tabbe: bruk 'spalte_data.storste_sjokk' (kamper der få/ingen traff, og "
-        f"hvilket lag som skuffet) og 'spalte_data.tippere_som_bommet_mest'. Skjell gjerne ut "
-        f"både lag og tippere med frekk snert. Nominer kandidater og KÅR til slutt ÉN 'Dagens "
-        f"Brøler' — det kan være enten et fotballag eller en deltaker. Sett 'jingle_foran' til "
-        f"\"broler\" på den FØRSTE INNHOLDSREPLIKKEN (rett etter annonseringen), slik at jingelen "
-        f"spilles mellom annonsering og innhold.\n"
-        f"5. NESTE RUNDE — Kommende kamper og hva man skal følge med på. "
-        f"Hvem har gjort smarte/dumme tips som kan slå til eller smelle? "
-        f"Stjernespillere å følge med på, spennende oppgjør, bygg forventning. "
-        f"Nevn gjerne hvilke grupper som fortsatt er åpne ('gruppeledere_uavgjorte_grupper') — "
-        f"der er det fremdeles tre gruppevinner-poeng å hente for de som tippet lederen. "
-        f"Vev inn relevante nyheter (skader, favoritter, kontroverser) fra overskriftene som er gitt.\n"
+        f"{seksjoner}"
         f"6. OUTRO — Aller siste replikk skal være en naturlig, varm avskjed: takk for nå og "
         f"at vi høres neste gang (gjerne med en frekk vri). IKKE skriv 'Spill av outroen!' eller "
         f"andre lyd-signaler — outro-jingelen spilles automatisk etterpå.\n\n"

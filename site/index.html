@@ -169,6 +169,37 @@
   .ss-fs-body .bk2 .bk-col{flex:0 0 150px}
   .ss-fs-body .bk-center{flex:0 0 172px}
   .ss-fs-body .bk2{--bkgap:26px}
+  /* Fane-bryter (Gruppespill / Sluttspill) */
+  .tabs{display:flex;gap:8px;margin:22px 0 4px;border-bottom:2px solid var(--line)}
+  .tab-btn{font:inherit;font-weight:800;font-family:'Archivo',sans-serif;font-size:15px;cursor:pointer;
+    padding:10px 18px;border:none;background:none;color:var(--slate);border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab-btn:hover{color:var(--ink)}
+  .tab-btn.aktiv{color:var(--pitch);border-bottom-color:var(--pitch)}
+  .fane{display:none}
+  .fane.aktiv{display:block}
+
+  /* Sluttspillkamper: rundenavn-tag + avansement-duell */
+  .ko-round-tag{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;
+    color:var(--gold-deep);background:#FFF4D6;border-radius:6px;padding:2px 7px}
+  .duell{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:-4px 0 14px}
+  .duell-bar{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--paper);font-size:11px;font-weight:800}
+  .duell-seg{display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;min-width:0;
+    white-space:nowrap;transition:filter .15s}
+  .duell-seg:hover{filter:brightness(1.08)}
+  .duell-seg.s-a{background:var(--pitch)}
+  .duell-seg.s-begge{background:var(--gold-deep)}
+  .duell-seg.s-b{background:#2b6cb0}
+  .duell-seg.s-ingen{background:var(--slate)}
+  .duell-seg.tom{display:none}
+  .duell-legend{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .duell-chip{font-size:11px;color:var(--slate);cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+  .duell-chip:hover{background:var(--paper)}
+  .duell-chip i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+  .duell-chip.warn{color:var(--gold-deep);border-color:var(--gold);font-weight:700}
+  .duell-names{display:none;flex-wrap:wrap;gap:4px;margin-top:8px}
+  .duell-names.open{display:flex}
+  .duell-names .nm-chip{font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+
   /* Gruppe-rutenett under braketten */
   .bk-sub{margin:18px 0 2px}
   /* R16 ranking */
@@ -323,19 +354,28 @@
   <!-- 2. Podcast -->
   <div id="podcast"></div>
 
-  <!-- 3. Dagens kamper + tippefordeling -->
-  <div id="kamper"></div>
-  <div id="fordeling"></div>
+  <!-- Fane-bryter: Sluttspill / Gruppespill -->
+  <div class="tabs" id="tabs">
+    <button class="tab-btn" data-fane="sluttspill" onclick="visFane('sluttspill')">Sluttspill</button>
+    <button class="tab-btn" data-fane="gruppespill" onclick="visFane('gruppespill')">Gruppespill</button>
+  </div>
 
-  <!-- 4. Grupper + øvrig statistikk -->
-  <div id="grupper"></div>
-  <div id="stats"></div>
-  <div id="kort"></div>
+  <!-- Fane: Sluttspill -->
+  <div id="fane-sluttspill" class="fane">
+    <div id="sluttspillkamper"></div>
+    <div id="sluttspill"></div>
+  </div>
 
-  <!-- 5. Projisert sluttspill -->
-  <div id="sluttspill"></div>
+  <!-- Fane: Gruppespill -->
+  <div id="fane-gruppespill" class="fane">
+    <div id="kamper"></div>
+    <div id="fordeling"></div>
+    <div id="grupper"></div>
+    <div id="stats"></div>
+    <div id="kort"></div>
+  </div>
 
-  <!-- 6. Flere visualiseringer -->
+  <!-- Felles bunn: flere visualiseringer -->
   <div id="poenggraf"></div>
   <div id="bonus"></div>
   <div id="heatmap"></div>
@@ -435,6 +475,7 @@ async function load(id){
   renderStats(d);
   renderKort(d);
   renderFordeling(d);
+  renderSluttspillkamper(d);
   renderSluttspill(d);
   let hist=[]; try{ hist = await jget(`${id}/poenghistorikk.json`); }catch(e){}
   renderPoenggraf(hist);
@@ -443,6 +484,14 @@ async function load(id){
   renderLikhet(d);
   renderPodcast(id, d);
   $("#foot").textContent = "Drevet av GitHub Pages. Resultater fra football-data.org. Alt bygges automatisk.";
+
+  // Velg fane: lagret valg, ellers sluttspill når gruppespillet er ferdig.
+  let fane = null;
+  try{ fane = localStorage.getItem('fane'); }catch(e){}
+  if(fane!=='gruppespill' && fane!=='sluttspill'){
+    fane = (d.fasit||{}).gruppespill_ferdig ? 'sluttspill' : 'gruppespill';
+  }
+  visFane(fane);
 }
 
 function toggle(i){ $("#det"+i)?.classList.toggle("open"); }
@@ -463,8 +512,10 @@ function openPlayer(i){
   }
 }
 
+const erGruppekamp = k => !k.stage || k.stage==='GROUP_STAGE';
+
 function renderKamper(d){
-  const kamper = (d.fasit||{}).kamper||[];
+  const kamper = ((d.fasit||{}).kamper||[]).filter(erGruppekamp);
   if(!kamper.length){ $("#kamper").innerHTML=''; return; }
 
   const today = new Date().toISOString().slice(0,10);
@@ -490,7 +541,7 @@ function renderKamper(d){
   const recentDates = dates.filter(d=> d>=today).sort();
   const olderDates = dates.filter(d=> d<today);
 
-  let html = '<h2>Dagens kamper</h2>';
+  let html = '<h2>Gruppespillkamper</h2>';
 
   // Today + tomorrow
   recentDates.forEach(dato=>{
@@ -533,6 +584,132 @@ function toggleOld(btn){
   const el=document.getElementById('old-matches');
   if(el.style.display==='none'){ el.style.display=''; btn.textContent='Skjul tidligere kamper'; }
   else{ el.style.display='none'; btn.textContent=btn.textContent.replace('Skjul','Vis'); }
+}
+
+// --- Sluttspillkamper ---
+const RUNDE_NAVN = {LAST_32:'16-delsfinale', ROUND_OF_32:'16-delsfinale',
+  LAST_16:'8-delsfinale', ROUND_OF_16:'8-delsfinale',
+  QUARTER_FINALS:'Kvartfinale', QUARTER_FINAL:'Kvartfinale',
+  SEMI_FINALS:'Semifinale', SEMI_FINAL:'Semifinale',
+  THIRD_PLACE:'Bronsefinale', '3RD_PLACE':'Bronsefinale', FINAL:'Finale'};
+// Hvilken runde et lag når ved å VINNE en kamp i denne runden (for avansement-tips).
+const NESTE_RUNDE = {LAST_32:'r8', ROUND_OF_32:'r8', LAST_16:'kvart', ROUND_OF_16:'kvart',
+  QUARTER_FINALS:'semi', QUARTER_FINAL:'semi', SEMI_FINALS:'finale', SEMI_FINAL:'finale',
+  THIRD_PLACE:'bronse', '3RD_PLACE':'bronse', FINAL:'vm'};
+
+function renderSluttspillkamper(d){
+  const el = $("#sluttspillkamper");
+  const alle = ((d.fasit||{}).kamper||[]).filter(k=> !erGruppekamp(k));
+  // Bare kamper med begge lag kjent (oppsett avgjort)
+  const kamper = alle.filter(k=> (k.home||'').trim() && (k.away||'').trim());
+  if(!kamper.length){ el.innerHTML=''; return; }
+
+  const today = new Date().toISOString().slice(0,10);
+  const dateLabel = dato => {
+    const dd = new Date(dato+'T12:00:00');
+    const days=['Søn','Man','Tirs','Ons','Tors','Fre','Lør'];
+    const lbl = `${days[dd.getDay()]} ${dd.getDate()}.${dd.getMonth()+1}`;
+    return dato===today ? 'I dag' : lbl;
+  };
+
+  // Eldre (ferdige) dager bakerst/kollapset; kommende + i dag øverst
+  const byDate = {};
+  kamper.forEach(k=>{ (byDate[k.dato]=byDate[k.dato]||[]).push(k); });
+  const dates = Object.keys(byDate).sort();
+  const kommende = dates.filter(dt=> dt>=today);
+  const eldre = dates.filter(dt=> dt<today).reverse();
+
+  let html = '<h2>Sluttspillkamper</h2>';
+  kommende.forEach(dt=>{ html += renderKoDag(d, dt, byDate[dt], dateLabel); });
+  if(eldre.length){
+    html += `<button class="old-toggle" onclick="toggleOld(this)">Vis spilte sluttspillkamper (${eldre.length} dager)</button>`;
+    html += '<div id="old-matches" style="display:none">';
+    eldre.forEach(dt=>{ html += renderKoDag(d, dt, byDate[dt], dateLabel); });
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function renderKoDag(d, dato, matches, dateLabel){
+  let html = `<div class="match-day"><h3>${dateLabel(dato)}</h3>`;
+  matches.forEach((k,i)=>{
+    const finished = k.status==='FINISHED';
+    const live = k.status==='IN_PLAY'||k.status==='PAUSED';
+    const scoreText = finished ? `${k.home_score} – ${k.away_score}`
+      : live ? `${k.home_score??0} – ${k.away_score??0}` : 'vs';
+    const cls = live ? 'score live' : finished ? 'score' : 'score pending';
+    const runde = RUNDE_NAVN[k.stage] || '';
+    const tag = runde?`<span class="ko-round-tag">${esc(runde)}</span>`:'';
+    html += `<div class="match-card">
+      <div class="team right">${tag} ${flag(k.home)} ${esc(k.home)}</div>
+      <div class="${cls}">${live?'LIVE ':''} ${scoreText}</div>
+      <div class="team">${esc(k.away)} ${flag(k.away)}</div>
+    </div>`;
+    // Avansement-duell kun for kommende kamper (ikke ferdigspilte)
+    if(!finished){ html += renderDuell(d, k); }
+  });
+  html += '</div>';
+  return html;
+}
+
+function renderDuell(d, k){
+  const st = d.statistikk||{};
+  const av = st.avansement||{};
+  const alle = st.antall_deltakere||0;
+  const R = NESTE_RUNDE[k.stage];
+  if(!R || !alle) return '';
+  const nrm = s => String(s||'').trim().toLowerCase();
+  const navnA = (av[nrm(k.home)]?.runder?.[R])||[];
+  const navnB = (av[nrm(k.away)]?.runder?.[R])||[];
+  const setA = new Set(navnA), setB = new Set(navnB);
+  const kunA = navnA.filter(n=>!setB.has(n));
+  const begge = navnA.filter(n=> setB.has(n));
+  const kunB = navnB.filter(n=>!setA.has(n));
+  const dekket = new Set([...navnA, ...navnB]);
+  const ingenNavn = (d.stilling||[]).map(s=>s.navn).filter(n=> !dekket.has(n));
+
+  const total = alle || (kunA.length+begge.length+kunB.length+ingenNavn.length) || 1;
+  const pct = n => (n/total*100).toFixed(1);
+  const segs = [
+    {n:kunA.length, cls:'s-a', navn:kunA},
+    {n:begge.length, cls:'s-begge', navn:begge},
+    {n:kunB.length, cls:'s-b', navn:kunB},
+    {n:ingenNavn.length, cls:'s-ingen', navn:ingenNavn},
+  ];
+  const id = 'duell-'+Math.random().toString(36).slice(2,8);
+  const bar = segs.map((s,i)=>
+    `<div class="duell-seg ${s.cls} ${s.n?'':'tom'}" style="width:${pct(s.n)}%"
+      onclick="visDuellNavn('${id}',${i})">${s.n||''}</div>`).join('');
+  const navnBlokker = segs.map((s,i)=>
+    `<div class="duell-names" id="${id}-${i}">${s.navn.map(n=>`<span class="nm-chip">${esc(n)}</span>`).join('')||'<span class="nm-chip">ingen</span>'}</div>`).join('');
+  const begText = begge.length
+    ? `<span class="duell-chip warn" onclick="visDuellNavn('${id}',1)">⚠ ${begge.length} har begge — mister garantert én</span>` : '';
+  return `<div class="duell">
+    <div class="duell-bar">${bar}</div>
+    <div class="duell-legend">
+      <span class="duell-chip" onclick="visDuellNavn('${id}',0)"><i style="background:var(--pitch)"></i>${esc(k.home)} videre: ${kunA.length+begge.length}</span>
+      <span class="duell-chip" onclick="visDuellNavn('${id}',2)"><i style="background:#2b6cb0"></i>${esc(k.away)} videre: ${kunB.length+begge.length}</span>
+      ${begText}
+      <span class="duell-chip" onclick="visDuellNavn('${id}',3)"><i style="background:var(--slate)"></i>ingen av dem: ${ingenNavn.length}</span>
+    </div>
+    ${navnBlokker}
+  </div>`;
+}
+
+function visDuellNavn(id, i){
+  const el = document.getElementById(`${id}-${i}`);
+  if(!el) return;
+  const aapen = el.classList.contains('open');
+  // lukk alle i samme duell
+  for(let j=0;j<4;j++){ document.getElementById(`${id}-${j}`)?.classList.remove('open'); }
+  if(!aapen) el.classList.add('open');
+}
+
+function visFane(navn){
+  document.querySelectorAll('.fane').forEach(f=>f.classList.remove('aktiv'));
+  document.getElementById('fane-'+navn)?.classList.add('aktiv');
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('aktiv', b.dataset.fane===navn));
+  try{ localStorage.setItem('fane', navn); }catch(e){}
 }
 
 function renderGrupper(d){

@@ -154,6 +154,26 @@ def main(tournament_dir: str):
     if sluttspill_tips:
         stats["sluttspill_tips"] = sluttspill_tips
 
+    # Avansement-tips: for hvert lag, hvem har tippet det videre til hver runde.
+    # Brukes av siden (badge + duell-grafikk på kommende kamper) og podcasten.
+    avansement = {}  # _norm(lag) -> {"navn": <visningsnavn>, "runder": {key: [navn,...]}}
+    runde_keys = ["r16", "r8", "kvart", "semi", "bronse", "finale"]
+    for d in deltakere:
+        for key in runde_keys:
+            for lag in d["pred"].get(key, []) or []:
+                if not lag or not str(lag).strip():
+                    continue
+                rec = avansement.setdefault(_norm(lag), {"navn": lag, "runder": {}})
+                rec["runder"].setdefault(key, []).append(d["navn"])
+        # vm_vinner (1 lag) som egen "runde" for fullstendighet
+        v = d["pred"].get("vm_vinner")
+        if v and str(v).strip():
+            rec = avansement.setdefault(_norm(v), {"navn": v, "runder": {}})
+            rec["runder"].setdefault("vm", []).append(d["navn"])
+    if avansement:
+        stats["avansement"] = avansement
+        stats["antall_deltakere"] = len(deltakere)
+
     out = {
         "turnering": {"navn": cfg["navn"], "kort_navn": cfg["kort_navn"], "vert": cfg.get("vert", "")},
         "oppdatert": datetime.now(timezone.utc).isoformat(timespec="seconds"),
