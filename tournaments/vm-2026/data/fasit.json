@@ -339,6 +339,26 @@
       "home": "Kroatia",
       "away": "Ghana",
       "result": "H"
+    },
+    {
+      "home": "Colombia",
+      "away": "Portugal",
+      "result": "U"
+    },
+    {
+      "home": "DR Kongo",
+      "away": "Usbekistan",
+      "result": "H"
+    },
+    {
+      "home": "Jordan",
+      "away": "Argentina",
+      "result": "B"
+    },
+    {
+      "home": "Algerie",
+      "away": "Østerrike",
+      "result": "U"
     }
   ],
   "group_winners": {
@@ -364,7 +384,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 202,
+  "antall_maal": 216,
   "kamper": [
     {
       "home": "Mexico",
@@ -1120,7 +1140,7 @@
       "dato": "2026-06-27",
       "home_score": 0,
       "away_score": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "winner": "DRAW"
@@ -1129,34 +1149,34 @@
       "home": "DR Kongo",
       "away": "Usbekistan",
       "dato": "2026-06-27",
-      "home_score": 1,
+      "home_score": 3,
       "away_score": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Jordan",
       "away": "Argentina",
       "dato": "2026-06-28",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Algerie",
       "away": "Østerrike",
       "dato": "2026-06-28",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "",
@@ -1785,61 +1805,61 @@
     "Gruppe J": [
       {
         "lag": "Argentina",
-        "poeng": 6,
-        "mf": 5,
-        "maal_for": 5,
-        "spilt": 2
+        "poeng": 9,
+        "mf": 7,
+        "maal_for": 8,
+        "spilt": 3
       },
       {
         "lag": "Østerrike",
-        "poeng": 3,
+        "poeng": 4,
         "mf": 0,
-        "maal_for": 3,
-        "spilt": 2
+        "maal_for": 6,
+        "spilt": 3
       },
       {
         "lag": "Algerie",
-        "poeng": 3,
+        "poeng": 4,
         "mf": -2,
-        "maal_for": 2,
-        "spilt": 2
+        "maal_for": 5,
+        "spilt": 3
       },
       {
         "lag": "Jordan",
         "poeng": 0,
-        "mf": -3,
-        "maal_for": 2,
-        "spilt": 2
+        "mf": -5,
+        "maal_for": 3,
+        "spilt": 3
       }
     ],
     "Gruppe K": [
       {
         "lag": "Colombia",
-        "poeng": 6,
+        "poeng": 7,
         "mf": 3,
         "maal_for": 4,
-        "spilt": 2
+        "spilt": 3
       },
       {
         "lag": "Portugal",
-        "poeng": 4,
+        "poeng": 5,
         "mf": 5,
         "maal_for": 6,
-        "spilt": 2
+        "spilt": 3
       },
       {
         "lag": "DR Kongo",
-        "poeng": 1,
-        "mf": -1,
-        "maal_for": 1,
-        "spilt": 2
+        "poeng": 4,
+        "mf": 1,
+        "maal_for": 4,
+        "spilt": 3
       },
       {
         "lag": "Usbekistan",
         "poeng": 0,
-        "mf": -7,
-        "maal_for": 1,
-        "spilt": 2
+        "mf": -9,
+        "maal_for": 2,
+        "spilt": 3
       }
     ],
     "Gruppe L": [
@@ -1927,7 +1947,7 @@
     {
       "navn": "Lionel Messi",
       "lag": "Argentina",
-      "maal": 5
+      "maal": 6
     },
     {
       "navn": "Vinicius Junior",
@@ -1965,17 +1985,17 @@
       "maal": 3
     },
     {
-      "navn": "Harry Kane",
-      "lag": "England",
+      "navn": "Yoane Wissa",
+      "lag": "DR Kongo",
       "maal": 3
     },
     {
-      "navn": "Johan Manzambi",
-      "lag": "Sveits",
+      "navn": "Harry Kane",
+      "lag": "England",
       "maal": 3
     }
   ],
-  "gruppespill_ferdig": false,
+  "gruppespill_ferdig": true,
   "turnering_ferdig": false,
   "grupper_ferdig": {
     "Gruppe A": true,
@@ -1987,8 +2007,8 @@
     "Gruppe H": true,
     "Gruppe G": true,
     "Gruppe I": true,
-    "Gruppe J": false,
-    "Gruppe K": false,
+    "Gruppe J": true,
+    "Gruppe K": true,
     "Gruppe L": true
   },
   "kort": {
@@ -2832,7 +2852,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 173,
-    "hentet": "2026-06-28T00:03:57+00:00",
+    "hentet": "2026-06-28T05:02:59+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 173
