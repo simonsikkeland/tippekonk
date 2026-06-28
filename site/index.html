@@ -141,6 +141,8 @@
   .bk-tbd{color:var(--slate)}
   .bk-team{display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
   .bk-team img{width:18px;height:12px;object-fit:contain;flex:none}
+  .bk-score{margin-left:auto;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink);flex:none;padding-left:6px}
+  .bk-side.bk-win .bk-score{color:var(--pitch)}
   /* Toveis (speilet) brakett — slot-basert layout med forbindelseslinjer */
   .bk2{--bkgap:32px;--bkline:#c9bfa9;display:flex;gap:16px;overflow-x:auto;padding-bottom:10px;align-items:stretch}
   .bk2-left,.bk2-right{display:flex;gap:var(--bkgap);align-items:stretch}
@@ -868,30 +870,51 @@ function renderSluttspill(d){
     return `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span>${flag(t.navn)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(t.navn)}</span></span>`;
   };
 
+  // Resultat-oppslag for spilte sluttspillkamper: lagpar -> {normnavn: mål}
+  const bkNorm = s => String(s||'').trim().toLowerCase();
+  const bkPair = (x,y) => [bkNorm(x), bkNorm(y)].sort().join('|');
+  const koScore = {};
+  ((d.fasit||{}).kamper||[]).forEach(k=>{
+    if(!k.stage || k.stage==='GROUP_STAGE' || k.status!=='FINISHED') return;
+    if(k.home_score==null || k.away_score==null) return;
+    if(!bkNorm(k.home) || !bkNorm(k.away)) return;
+    koScore[bkPair(k.home,k.away)] = {[bkNorm(k.home)]:k.home_score, [bkNorm(k.away)]:k.away_score};
+  });
+  const scoreObj = (a,b)=> (a&&b) ? koScore[bkPair(a,b)] : null;
+  // Bygg en spilleside med ev. resultat + uthevet vinner.
+  const sideHtml = (t, sc, fallbackCls)=>{
+    if(!t || t.placeholder)
+      return `<div class="bk-side ${fallbackCls}">${tip(t)}</div>`;
+    let scoreHtml = '', winCls = '';
+    if(sc){
+      const ks = Object.keys(sc);
+      const v = sc[bkNorm(t.navn)];
+      if(v!=null) scoreHtml = `<span class="bk-score">${v}</span>`;
+      if(ks.length===2 && sc[ks[0]]!==sc[ks[1]] && bkNorm(t.navn)===(sc[ks[0]]>sc[ks[1]]?ks[0]:ks[1]))
+        winCls = ' bk-win';
+    }
+    return `<div class="bk-side ${fallbackCls}${winCls}">${tip(t)}${scoreHtml}</div>`;
+  };
+
   const matchBox = (nr)=>{
-    // 16-delsfinalen fylles ut (med grønn/rød). Innover predikeres IKKE noe lag —
-    // vis kun hvem som møtes: vinner (V) av matekampene, eller taper (T) i bronse.
+    // 16-delsfinalen fylles ut (med grønn/rød). Innover vises faktiske lag når
+    // matekampen er avgjort, ellers V/T-plassholder. Spilte kamper viser resultat.
     if(erR32(nr)){
       const k = byNr[nr]; if(!k) return '';
-      const cls = (t)=> (!t || t.placeholder) ? 'bk-side bk-side-tbd' : 'bk-side '+(t.sikker?'bk-sure':'bk-unsure');
-      return `<div class="bk-match">
-        <div class="${cls(k.home)}">${tip(k.home)}</div>
-        <div class="${cls(k.away)}">${tip(k.away)}</div>
-      </div>`;
+      const cls = t => (!t || t.placeholder) ? 'bk-side-tbd' : (t.sikker?'bk-sure':'bk-unsure');
+      const sc = scoreObj(k.home&&k.home.navn, k.away&&k.away.navn);
+      return `<div class="bk-match">${sideHtml(k.home, sc, cls(k.home))}${sideHtml(k.away, sc, cls(k.away))}</div>`;
     }
     const feed = nr===103 ? [101,102] : BK_FEED[nr];
     const pre = nr===103 ? 'T' : 'V';
-    const slot = (n)=>{
-      // Når matekampen er endelig avgjort, vis det faktiske laget som gikk videre
-      // (taper i bronsefinalen, ellers vinneren) i stedet for "V73"/"T101".
-      const fk = byNr[n];
-      const lag = fk && (pre==='T' ? fk.taper : fk.vinner);
-      if(lag && lag.faktisk){
-        return `<div class="bk-side bk-sure">${tip(lag)}</div>`;
-      }
+    const lagFor = (n)=>{ const fk = byNr[n]; return fk && (pre==='T' ? fk.taper : fk.vinner); };
+    const t0 = lagFor(feed[0]), t1 = lagFor(feed[1]);
+    const sc = (t0&&t0.faktisk&&t1&&t1.faktisk) ? scoreObj(t0.navn, t1.navn) : null;
+    const slot = (n, t)=>{
+      if(t && t.faktisk) return sideHtml(t, sc, 'bk-sure');
       return `<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
     };
-    return `<div class="bk-match">${slot(feed[0])}${slot(feed[1])}</div>`;
+    return `<div class="bk-match">${slot(feed[0], t0)}${slot(feed[1], t1)}</div>`;
   };
   const col = (navn,nrs)=>`<div class="bk-col"><div class="bk-round">${esc(navn)}</div><div class="bk-slots">${nrs.map(nr=>`<div class="bk-slot"><span class="bk-jl"></span>${matchBox(nr)}</div>`).join("")}</div></div>`;
   const left = BK_LEFT.map(c=>col(c[0],c[1])).join("");
