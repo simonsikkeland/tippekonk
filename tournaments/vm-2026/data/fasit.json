@@ -375,7 +375,40 @@
     "Gruppe K": "Colombia",
     "Gruppe L": "England"
   },
-  "r16": [],
+  "r16": [
+    "Algerie",
+    "Argentina",
+    "Australia",
+    "Belgia",
+    "Bosnia-Hercegovina",
+    "Brasil",
+    "Canada",
+    "Colombia",
+    "DR Kongo",
+    "Ecuador",
+    "Egypt",
+    "Elfenbenskysten",
+    "England",
+    "Frankrike",
+    "Ghana",
+    "Japan",
+    "Kapp Verde",
+    "Kroatia",
+    "Marokko",
+    "Mexico",
+    "Nederland",
+    "Norge",
+    "Paraguay",
+    "Portugal",
+    "Senegal",
+    "Spania",
+    "Sveits",
+    "Sverige",
+    "Sør-Afrika",
+    "Tyskland",
+    "USA",
+    "Østerrike"
+  ],
   "r8": [],
   "kvart": [],
   "semi": [],
@@ -1179,8 +1212,8 @@
       "winner": "DRAW"
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Sør-Afrika",
+      "away": "Canada",
       "dato": "2026-06-28",
       "home_score": null,
       "away_score": null,
@@ -1190,8 +1223,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Brasil",
+      "away": "Japan",
       "dato": "2026-06-29",
       "home_score": null,
       "away_score": null,
@@ -1201,8 +1234,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Tyskland",
+      "away": "Paraguay",
       "dato": "2026-06-29",
       "home_score": null,
       "away_score": null,
@@ -1212,8 +1245,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Nederland",
+      "away": "Marokko",
       "dato": "2026-06-30",
       "home_score": null,
       "away_score": null,
@@ -1223,8 +1256,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Elfenbenskysten",
+      "away": "Norge",
       "dato": "2026-06-30",
       "home_score": null,
       "away_score": null,
@@ -1234,8 +1267,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Frankrike",
+      "away": "Sverige",
       "dato": "2026-06-30",
       "home_score": null,
       "away_score": null,
@@ -1245,8 +1278,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Mexico",
+      "away": "Ecuador",
       "dato": "2026-07-01",
       "home_score": null,
       "away_score": null,
@@ -1256,8 +1289,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "England",
+      "away": "DR Kongo",
       "dato": "2026-07-01",
       "home_score": null,
       "away_score": null,
@@ -1267,8 +1300,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Belgia",
+      "away": "Senegal",
       "dato": "2026-07-01",
       "home_score": null,
       "away_score": null,
@@ -1278,8 +1311,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "USA",
+      "away": "Bosnia-Hercegovina",
       "dato": "2026-07-02",
       "home_score": null,
       "away_score": null,
@@ -1289,8 +1322,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Spania",
+      "away": "Østerrike",
       "dato": "2026-07-02",
       "home_score": null,
       "away_score": null,
@@ -1300,8 +1333,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Portugal",
+      "away": "Kroatia",
       "dato": "2026-07-02",
       "home_score": null,
       "away_score": null,
@@ -1311,8 +1344,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Sveits",
+      "away": "Algerie",
       "dato": "2026-07-03",
       "home_score": null,
       "away_score": null,
@@ -1322,8 +1355,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Australia",
+      "away": "Egypt",
       "dato": "2026-07-03",
       "home_score": null,
       "away_score": null,
@@ -1333,8 +1366,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Argentina",
+      "away": "Kapp Verde",
       "dato": "2026-07-03",
       "home_score": null,
       "away_score": null,
@@ -1344,8 +1377,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Colombia",
+      "away": "Ghana",
       "dato": "2026-07-04",
       "home_score": null,
       "away_score": null,
@@ -2852,7 +2885,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 173,
-    "hentet": "2026-06-28T05:02:59+00:00",
+    "hentet": "2026-06-28T07:45:50+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 173
