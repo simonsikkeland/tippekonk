@@ -939,7 +939,8 @@ document.addEventListener('keydown', e=>{
 function buildSluttspillTipsHtml(d){
   const runder = (d.statistikk||{}).sluttspill_tips;
   if(!runder || !runder.length) return '';
-  return runder.map(runde=>{
+  // Nyeste/dypeste runde øverst (8-dels over 16-dels, osv.)
+  return runder.slice().reverse().map(runde=>{
     const tips = runde.tips;
     if(!tips || !tips.length) return '';
     const bekreftet = tips[0].antall_bekreftet;
