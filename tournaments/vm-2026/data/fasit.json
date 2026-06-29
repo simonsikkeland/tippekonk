@@ -1230,12 +1230,12 @@
       "home": "Brasil",
       "away": "Japan",
       "dato": "2026-06-29",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Tyskland",
@@ -2889,7 +2889,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 174,
-    "hentet": "2026-06-29T16:54:12+00:00",
+    "hentet": "2026-06-29T19:05:37+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 174
