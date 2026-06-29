@@ -1242,12 +1242,12 @@
       "home": "Tyskland",
       "away": "Paraguay",
       "dato": "2026-06-29",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "PAUSED",
       "stage": "LAST_32",
       "group": null,
-      "winner": "AWAY_TEAM"
+      "winner": "DRAW"
     },
     {
       "home": "Nederland",
@@ -2013,6 +2013,11 @@
       "maal": 3
     },
     {
+      "navn": "Kai Havertz",
+      "lag": "Tyskland",
+      "maal": 3
+    },
+    {
       "navn": "Deniz Undav",
       "lag": "Tyskland",
       "maal": 3
@@ -2025,11 +2030,6 @@
     {
       "navn": "Yoane Wissa",
       "lag": "DR Kongo",
-      "maal": 3
-    },
-    {
-      "navn": "Harry Kane",
-      "lag": "England",
       "maal": 3
     }
   ],
@@ -2890,7 +2890,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 174,
-    "hentet": "2026-06-29T21:43:02+00:00",
+    "hentet": "2026-06-29T22:37:43+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 174
