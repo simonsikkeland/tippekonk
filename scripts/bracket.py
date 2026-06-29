@@ -171,7 +171,10 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         if a is None or b is None:
             return None
         ka, kb = (a["_s"], a["navn"]), (b["_s"], b["navn"])
-        return a if ka >= kb else b
+        w = a if ka >= kb else b
+        # En PROJISERT vinner skal aldri arve "faktisk" fra en tidligere runde —
+        # ellers vises et lag som faktisk videre i en runde det ikke har spilt.
+        return {k: v for k, v in w.items() if k != "faktisk"} if w.get("faktisk") else w
 
     # Faktiske sluttspillresultater (lag mot lag -> vinnernavn), så en vinner
     # populeres videre i braketten med en gang kampen er endelig — uavhengig av
