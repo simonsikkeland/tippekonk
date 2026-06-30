@@ -413,7 +413,9 @@
   "r8": [
     "",
     "Brasil",
-    "Canada"
+    "Canada",
+    "Marokko",
+    "Paraguay"
   ],
   "kvart": [],
   "semi": [],
@@ -1247,7 +1249,9 @@
       "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": null,
+      "pen_home": 3,
+      "pen_away": 4
     },
     {
       "home": "Nederland",
@@ -1258,7 +1262,9 @@
       "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": null,
+      "pen_home": 2,
+      "pen_away": 3
     },
     {
       "home": "Elfenbenskysten",
@@ -1394,6 +1400,17 @@
     },
     {
       "home": "Canada",
+      "away": "Marokko",
+      "dato": "2026-07-04",
+      "home_score": null,
+      "away_score": null,
+      "status": "TIMED",
+      "stage": "LAST_16",
+      "group": null,
+      "winner": null
+    },
+    {
+      "home": "Paraguay",
       "away": "",
       "dato": "2026-07-04",
       "home_score": null,
@@ -1404,18 +1421,7 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
-      "dato": "2026-07-04",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
-      "stage": "LAST_16",
-      "group": null,
-      "winner": null
-    },
-    {
-      "home": "",
+      "home": "Brasil",
       "away": "",
       "dato": "2026-07-05",
       "home_score": null,
@@ -2890,7 +2896,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 176,
-    "hentet": "2026-06-30T05:29:42+00:00",
+    "hentet": "2026-06-30T06:19:58+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 176
