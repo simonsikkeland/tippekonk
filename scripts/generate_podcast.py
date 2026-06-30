@@ -399,12 +399,15 @@ def _vinner_taper(k: dict):
     if w == "AWAY_TEAM":
         return a, h
     hs, as_ = k.get("home_score"), k.get("away_score")
-    if hs is None or as_ is None:
-        return None, None
-    if hs > as_:
-        return h, a
-    if as_ > hs:
-        return a, h
+    if hs is not None and as_ is not None:
+        if hs > as_:
+            return h, a
+        if as_ > hs:
+            return a, h
+    # Uavgjort etter spilletid — avgjort på straffer.
+    ph, pa = k.get("pen_home"), k.get("pen_away")
+    if ph is not None and pa is not None and ph != pa:
+        return (h, a) if ph > pa else (a, h)
     return None, None
 
 

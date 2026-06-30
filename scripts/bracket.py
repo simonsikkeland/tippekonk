@@ -189,8 +189,12 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         wn = h if w == "HOME_TEAM" else (a if w == "AWAY_TEAM" else None)
         if not wn:
             hs, as_ = k.get("home_score"), k.get("away_score")
+            ph, pa = k.get("pen_home"), k.get("pen_away")
             if hs is not None and as_ is not None and hs != as_:
                 wn = h if hs > as_ else a
+            elif ph is not None and pa is not None and ph != pa:
+                # Uavgjort etter spilletid — avgjort på straffer.
+                wn = h if ph > pa else a
         if wn:
             ko_resultat[frozenset((_norm(h), _norm(a)))] = wn
 

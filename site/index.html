@@ -884,6 +884,7 @@ function renderSluttspill(d){
     if(k.winner==='HOME_TEAM') vin = k.home;
     else if(k.winner==='AWAY_TEAM') vin = k.away;
     else if(k.home_score!==k.away_score) vin = k.home_score>k.away_score ? k.home : k.away;
+    else if(k.pen_home!=null && k.pen_away!=null && k.pen_home!==k.pen_away) vin = k.pen_home>k.pen_away ? k.home : k.away;
     koScore[bkPair(k.home,k.away)] = {
       g: {[h]:k.home_score, [a]:k.away_score},
       p: (k.pen_home!=null && k.pen_away!=null) ? {[h]:k.pen_home, [a]:k.pen_away} : null,

@@ -157,8 +157,19 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
             # neste runde med en gang kampen er ferdig (API-et kan henge etter
             # med å trekke neste fixture). Taperen av en semifinale går til
             # bronsefinalen.
-            adv = home if winner == "HOME_TEAM" else (away if winner == "AWAY_TEAM" else None)
-            tap = away if winner == "HOME_TEAM" else (home if winner == "AWAY_TEAM" else None)
+            # Vinner fra winner-feltet, ellers målforskjell, ellers straffer
+            # (uavgjort spilletid avgjort på straffer der winner-feltet mangler).
+            adv = tap = None
+            if winner == "HOME_TEAM":
+                adv, tap = home, away
+            elif winner == "AWAY_TEAM":
+                adv, tap = away, home
+            elif h_goals is not None and a_goals is not None and h_goals != a_goals:
+                adv, tap = (home, away) if h_goals > a_goals else (away, home)
+            else:
+                ph, pa = kamp.get("pen_home"), kamp.get("pen_away")
+                if ph is not None and pa is not None and ph != pa:
+                    adv, tap = (home, away) if ph > pa else (away, home)
             if adv:
                 if stage in ("LAST_32", "ROUND_OF_32"):
                     stage_teams["r8"].add(adv)
@@ -170,16 +181,10 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
                     stage_teams["finale"].add(adv)
                     if tap:
                         stage_teams["bronse"].add(tap)
-            if stage == "FINAL":
-                if winner == "HOME_TEAM":
-                    fact["vm_vinner"] = home
-                elif winner == "AWAY_TEAM":
-                    fact["vm_vinner"] = away
-            if stage == "THIRD_PLACE":
-                if winner == "HOME_TEAM":
-                    fact["bronse_vinner"] = home
-                elif winner == "AWAY_TEAM":
-                    fact["bronse_vinner"] = away
+            if stage == "FINAL" and adv:
+                fact["vm_vinner"] = adv
+            if stage == "THIRD_PLACE" and adv:
+                fact["bronse_vinner"] = adv
 
     fact["gruppespill_ferdig"] = group_finished_count == group_total_count and group_total_count > 0
     print(f"  Gruppespill: {group_finished_count}/{group_total_count} kamper ferdig")
