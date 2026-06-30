@@ -199,6 +199,8 @@
   .duell-chip:hover{background:var(--paper)}
   .duell-chip i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
   .duell-chip.warn{color:var(--gold-deep);border-color:var(--gold);font-weight:700}
+  .duell-chip.rett{color:var(--pitch);border-color:var(--pitch);font-weight:700}
+  .ko-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
   .duell-names{display:none;flex-wrap:wrap;gap:4px;margin-top:8px}
   .duell-names.open{display:flex}
   .duell-names .nm-chip{font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
@@ -615,21 +617,25 @@ function renderSluttspillkamper(d){
     return dato===today ? 'I dag' : lbl;
   };
 
-  // Eldre (ferdige) dager bakerst/kollapset; kommende + i dag øverst
+  // I dag øverst (alltid synlig); kommende og spilte bak hver sin knapp.
   const byDate = {};
   kamper.forEach(k=>{ (byDate[k.dato]=byDate[k.dato]||[]).push(k); });
   const dates = Object.keys(byDate).sort();
-  const kommende = dates.filter(dt=> dt>=today);
-  const eldre = dates.filter(dt=> dt<today).reverse();
+  const iDag = dates.filter(dt=> dt===today);
+  const kommende = dates.filter(dt=> dt>today);
+  const spilte = dates.filter(dt=> dt<today).reverse();
+  const tellKamper = ds => ds.reduce((n,dt)=> n+byDate[dt].length, 0);
+  const dager = ds => ds.map(dt=> renderKoDag(d, dt, byDate[dt], dateLabel)).join('');
 
   let html = '<h2>Sluttspillkamper</h2>';
-  kommende.forEach(dt=>{ html += renderKoDag(d, dt, byDate[dt], dateLabel); });
-  if(eldre.length){
-    html += `<button class="old-toggle" onclick="toggleOld(this)">Vis spilte sluttspillkamper (${eldre.length} dager)</button>`;
-    html += '<div id="old-matches" style="display:none">';
-    eldre.forEach(dt=>{ html += renderKoDag(d, dt, byDate[dt], dateLabel); });
-    html += '</div>';
-  }
+  html += '<p class="bk-note">Klikk på en kamp for å se hvem som har tippet hvilket lag videre.</p>';
+  html += iDag.length ? dager(iDag) : '<p class="bk-note">Ingen sluttspillkamper i dag.</p>';
+  html += '<div class="ko-toggles">';
+  if(kommende.length) html += `<button class="old-toggle" onclick="toggleF(this,'ko-kommende')">Vis kommende kamper (${tellKamper(kommende)}) ▾</button>`;
+  if(spilte.length) html += `<button class="old-toggle" onclick="toggleF(this,'ko-spilte')">Vis spilte kamper (${tellKamper(spilte)}) ▾</button>`;
+  html += '</div>';
+  html += `<div id="ko-kommende" style="display:none">${dager(kommende)}</div>`;
+  html += `<div id="ko-spilte" style="display:none">${dager(spilte)}</div>`;
   el.innerHTML = html;
 }
 
@@ -648,8 +654,8 @@ function renderKoDag(d, dato, matches, dateLabel){
       <div class="${cls}">${live?'LIVE ':''} ${scoreText}</div>
       <div class="team">${esc(k.away)} ${flag(k.away)}</div>
     </div>`;
-    // Avansement-duell kun for kommende kamper (ikke ferdigspilte)
-    if(!finished){ html += renderDuell(d, k); }
+    // Avansement-duell (hvem har tippet hva) for alle kamper.
+    html += renderDuell(d, k);
   });
   html += '</div>';
   return html;
@@ -687,16 +693,31 @@ function renderDuell(d, k){
     `<div class="duell-names" id="${id}-${i}">${s.navn.map(n=>`<span class="nm-chip">${esc(n)}</span>`).join('')||'<span class="nm-chip">ingen</span>'}</div>`).join('');
   const begText = begge.length
     ? `<span class="duell-chip warn" onclick="visDuellNavn('${id}',1)">⚠ ${begge.length} har begge — mister garantert én</span>` : '';
+  // Når kampen er spilt: marker laget som faktisk gikk videre.
+  const vin = koVinner(k);
+  const merke = lag => (vin && nrm(lag)===nrm(vin)) ? ' ✓ videre' : (vin ? ' ✗ ute' : '');
   return `<div class="duell">
     <div class="duell-bar">${bar}</div>
     <div class="duell-legend">
-      <span class="duell-chip" onclick="visDuellNavn('${id}',0)"><i style="background:var(--pitch)"></i>${esc(k.home)} videre: ${kunA.length+begge.length}</span>
-      <span class="duell-chip" onclick="visDuellNavn('${id}',2)"><i style="background:#2b6cb0"></i>${esc(k.away)} videre: ${kunB.length+begge.length}</span>
+      <span class="duell-chip${vin&&nrm(k.home)===nrm(vin)?' rett':''}" onclick="visDuellNavn('${id}',0)"><i style="background:var(--pitch)"></i>${esc(k.home)} videre: ${kunA.length+begge.length}${merke(k.home)}</span>
+      <span class="duell-chip${vin&&nrm(k.away)===nrm(vin)?' rett':''}" onclick="visDuellNavn('${id}',2)"><i style="background:#2b6cb0"></i>${esc(k.away)} videre: ${kunB.length+begge.length}${merke(k.away)}</span>
       ${begText}
       <span class="duell-chip" onclick="visDuellNavn('${id}',3)"><i style="background:var(--slate)"></i>ingen av dem: ${ingenNavn.length}</span>
     </div>
     ${navnBlokker}
   </div>`;
+}
+
+// Faktisk vinner av en spilt sluttspillkamp (winner-felt -> mål -> straffer).
+function koVinner(k){
+  if(!k || k.status!=='FINISHED') return null;
+  if(k.winner==='HOME_TEAM') return k.home;
+  if(k.winner==='AWAY_TEAM') return k.away;
+  if(k.home_score!=null && k.away_score!=null && k.home_score!==k.away_score)
+    return k.home_score>k.away_score ? k.home : k.away;
+  if(k.pen_home!=null && k.pen_away!=null && k.pen_home!==k.pen_away)
+    return k.pen_home>k.pen_away ? k.home : k.away;
+  return null;
 }
 
 function visDuellNavn(id, i){
