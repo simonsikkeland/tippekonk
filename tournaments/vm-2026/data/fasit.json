@@ -1257,14 +1257,12 @@
       "home": "Nederland",
       "away": "Marokko",
       "dato": "2026-06-30",
-      "home_score": 4,
-      "away_score": 4,
-      "status": "FINISHED",
+      "home_score": null,
+      "away_score": null,
+      "status": "TIMED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null,
-      "pen_home": 2,
-      "pen_away": 3
+      "winner": null
     },
     {
       "home": "Elfenbenskysten",
