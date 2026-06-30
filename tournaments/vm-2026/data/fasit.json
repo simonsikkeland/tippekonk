@@ -422,7 +422,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 220,
+  "antall_maal": 231,
   "kamper": [
     {
       "home": "Mexico",
@@ -1242,12 +1242,12 @@
       "home": "Tyskland",
       "away": "Paraguay",
       "dato": "2026-06-29",
-      "home_score": 1,
-      "away_score": 1,
-      "status": "PAUSED",
+      "home_score": 5,
+      "away_score": 6,
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": "DRAW"
+      "winner": null
     },
     {
       "home": "Nederland",
@@ -2890,7 +2890,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 174,
-    "hentet": "2026-06-29T22:37:43+00:00",
+    "hentet": "2026-06-30T00:05:26+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 174
