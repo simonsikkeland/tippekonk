@@ -415,6 +415,7 @@
     "Brasil",
     "Canada",
     "Marokko",
+    "Norge",
     "Paraguay"
   ],
   "kvart": [],
@@ -424,7 +425,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 238,
+  "antall_maal": 241,
   "kamper": [
     {
       "home": "Mexico",
@@ -1272,7 +1273,7 @@
       "dato": "2026-06-30",
       "home_score": 1,
       "away_score": 2,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
       "winner": "AWAY_TEAM"
@@ -2055,7 +2056,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 250,
+  "antall_maal_inkl_straffer": 253,
   "kort": {
     "gule": [
       {
@@ -2897,7 +2898,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 178,
-    "hentet": "2026-06-30T18:57:26+00:00",
+    "hentet": "2026-06-30T20:56:35+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 178
