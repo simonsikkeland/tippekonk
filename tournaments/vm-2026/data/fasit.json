@@ -1257,12 +1257,14 @@
       "home": "Nederland",
       "away": "Marokko",
       "dato": "2026-06-30",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 3,
+      "away_score": 4,
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM",
+      "pen_home": 2,
+      "pen_away": 3
     },
     {
       "home": "Elfenbenskysten",
@@ -2894,7 +2896,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 176,
-    "hentet": "2026-06-30T06:34:48+00:00",
+    "hentet": "2026-06-30T06:43:02+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 176
