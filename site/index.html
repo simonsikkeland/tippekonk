@@ -775,14 +775,18 @@ function renderScorers(d){
 function projCard(title, s, enhet){
   if(!s) return "";
   const lad = (arr,nr)=>(arr||[]).slice(0, nr?99:5).map((x,i)=>`<div><span>${nr?`${i+1}. `:''}${esc(x.navn)}</span><span>${x.tipp} <small style="color:var(--slate)">(±${x.diff})</small></span></div>`).join("");
+  // Antall mål: vis tie-break-straffer i parentes (teller ikke i den poenggivende summen)
+  const fasitTxt = (s.fasit_inkl_straffer!=null && s.fasit_inkl_straffer!==s.fasit)
+    ? `${s.fasit} <small style="color:var(--slate);font-weight:400">(${s.fasit_inkl_straffer} m/straffer)</small>`
+    : `${s.fasit}`;
   let inner;
   if(s.projeksjon!=null){
     inner = `<div class="bigrow">
-        <div><div class="big">${s.fasit}</div><p class="muted">${enhet} så langt · ${s.spilt} av ${s.totalt} kamper</p></div>
+        <div><div class="big">${fasitTxt}</div><p class="muted">${enhet} så langt · ${s.spilt} av ${s.totalt} kamper</p></div>
         <div><div class="big">~${s.projeksjon}</div><p class="muted">projisert sluttsum</p></div>
       </div><div class="ladder">${lad(s.mot_projeksjon,true)}</div>`;
   } else {
-    inner = `<div class="big">${s.fasit}</div>`;
+    inner = `<div class="big">${fasitTxt}</div>`;
     if(s.spilt!=null && s.totalt) inner += `<p class="muted">${enhet} så langt · ${s.spilt} av ${s.totalt} kamper</p>`;
     inner += `<div class="ladder">${lad(s.tipp)}</div>`;
   }

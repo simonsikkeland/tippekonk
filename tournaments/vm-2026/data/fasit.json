@@ -424,7 +424,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 251,
+  "antall_maal": 238,
   "kamper": [
     {
       "home": "Mexico",
@@ -2899,5 +2899,6 @@
     "hentet": "2026-06-30T08:31:28+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
-  "antall_kort": 176
+  "antall_kort": 176,
+  "antall_maal_inkl_straffer": 250
 }

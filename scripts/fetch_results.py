@@ -277,17 +277,24 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     print(f"  Ferdige grupper: {sum(1 for v in fact['grupper_ferdig'].values() if v)}/{len(g_tot)}")
 
     # --- Antall mål totalt fra alle ferdige kamper ---
-    # Straffer i straffekonkurranse teller med i totalen (konkurransens regel).
+    # Mål i straffekonkurranse (tie-break) teller IKKE i totalen (det er den
+    # poenggivende summen). Vi tar i tillegg vare på en sum INKL. tie-break-
+    # straffer, kun til visning i parentes.
     total_goals = 0
+    total_goals_pen = 0
     for k in fact["kamper"]:
         if k.get("status") == "FINISHED" and k.get("home_score") is not None:
-            total_goals += (k["home_score"] or 0) + (k["away_score"] or 0)
+            g = (k["home_score"] or 0) + (k["away_score"] or 0)
+            total_goals += g
+            total_goals_pen += g
             if k.get("pen_home") is not None and k.get("pen_away") is not None:
-                total_goals += (k["pen_home"] or 0) + (k["pen_away"] or 0)
+                total_goals_pen += (k["pen_home"] or 0) + (k["pen_away"] or 0)
     # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke den.
-    existing_goals = (existing or {}).get("antall_maal") or 0
-    fact["antall_maal"] = max(total_goals, existing_goals)
-    print(f"  Totalt antall mål: {fact['antall_maal']} (denne henting: {total_goals})")
+    fact["antall_maal"] = max(total_goals, (existing or {}).get("antall_maal") or 0)
+    fact["antall_maal_inkl_straffer"] = max(
+        total_goals_pen, (existing or {}).get("antall_maal_inkl_straffer") or 0)
+    print(f"  Totalt antall mål: {fact['antall_maal']} "
+          f"(inkl. straffe-tiebreak: {fact['antall_maal_inkl_straffer']})")
 
     # --- Toppscorere (topp 10 med detaljer) ---
     prev_top = (existing or {}).get("toppscorer", "")

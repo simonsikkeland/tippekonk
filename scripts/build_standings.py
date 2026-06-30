@@ -83,6 +83,8 @@ def main(tournament_dir: str):
 
     if fact.get("antall_maal") is not None:
         stats["antall_maal"] = projisert_stat("antall_maal")
+        if fact.get("antall_maal_inkl_straffer") is not None:
+            stats["antall_maal"]["fasit_inkl_straffer"] = fact["antall_maal_inkl_straffer"]
     if fact.get("antall_kort") is not None:
         stats["antall_kort"] = projisert_stat("antall_kort")
     # Hvem tippet fortsatt-levende toppscorer/vinner
