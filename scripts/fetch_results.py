@@ -272,10 +272,13 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     print(f"  Ferdige grupper: {sum(1 for v in fact['grupper_ferdig'].values() if v)}/{len(g_tot)}")
 
     # --- Antall mål totalt fra alle ferdige kamper ---
+    # Straffer i straffekonkurranse teller med i totalen (konkurransens regel).
     total_goals = 0
     for k in fact["kamper"]:
         if k.get("status") == "FINISHED" and k.get("home_score") is not None:
             total_goals += (k["home_score"] or 0) + (k["away_score"] or 0)
+            if k.get("pen_home") is not None and k.get("pen_away") is not None:
+                total_goals += (k["pen_home"] or 0) + (k["pen_away"] or 0)
     # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke den.
     existing_goals = (existing or {}).get("antall_maal") or 0
     fact["antall_maal"] = max(total_goals, existing_goals)
