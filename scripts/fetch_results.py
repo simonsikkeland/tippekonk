@@ -130,6 +130,12 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
             "status": status, "stage": stage, "group": grp,
             "winner": winner,
         }
+        # Straffeavgjørelse (sluttspill): ta vare på straffe-scoren så braketten
+        # kan vise at en 1-1-kamp ble avgjort på straffer.
+        pen = m.get("score", {}).get("penalties", {}) or {}
+        if pen.get("home") is not None and pen.get("away") is not None:
+            kamp["pen_home"] = pen.get("home")
+            kamp["pen_away"] = pen.get("away")
         fact["kamper"].append(kamp)
 
         if stage == "GROUP_STAGE":

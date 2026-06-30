@@ -143,6 +143,7 @@
   .bk-team img{width:18px;height:12px;object-fit:contain;flex:none}
   .bk-score{margin-left:auto;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink);flex:none;padding-left:6px}
   .bk-side.bk-win .bk-score{color:var(--pitch)}
+  .bk-pen{font-weight:700;font-size:10px;color:var(--slate);margin-left:2px}
   /* Toveis (speilet) brakett — slot-basert layout med forbindelseslinjer */
   .bk2{--bkgap:32px;--bkline:#c9bfa9;display:flex;gap:16px;overflow-x:auto;padding-bottom:10px;align-items:stretch}
   .bk2-left,.bk2-right{display:flex;gap:var(--bkgap);align-items:stretch}
@@ -870,28 +871,38 @@ function renderSluttspill(d){
     return `<span class="bk-team"><span class="bk-seed">${esc(t.seed)}</span>${flag(t.navn)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(t.navn)}</span></span>`;
   };
 
-  // Resultat-oppslag for spilte sluttspillkamper: lagpar -> {normnavn: mål}
+  // Resultat-oppslag for spilte sluttspillkamper: lagpar -> {mål, straffer, vinner}
   const bkNorm = s => String(s||'').trim().toLowerCase();
   const bkPair = (x,y) => [bkNorm(x), bkNorm(y)].sort().join('|');
   const koScore = {};
   ((d.fasit||{}).kamper||[]).forEach(k=>{
     if(!k.stage || k.stage==='GROUP_STAGE' || k.status!=='FINISHED') return;
     if(k.home_score==null || k.away_score==null) return;
-    if(!bkNorm(k.home) || !bkNorm(k.away)) return;
-    koScore[bkPair(k.home,k.away)] = {[bkNorm(k.home)]:k.home_score, [bkNorm(k.away)]:k.away_score};
+    const h = bkNorm(k.home), a = bkNorm(k.away);
+    if(!h || !a) return;
+    let vin = null;
+    if(k.winner==='HOME_TEAM') vin = k.home;
+    else if(k.winner==='AWAY_TEAM') vin = k.away;
+    else if(k.home_score!==k.away_score) vin = k.home_score>k.away_score ? k.home : k.away;
+    koScore[bkPair(k.home,k.away)] = {
+      g: {[h]:k.home_score, [a]:k.away_score},
+      p: (k.pen_home!=null && k.pen_away!=null) ? {[h]:k.pen_home, [a]:k.pen_away} : null,
+      vinner: vin,
+    };
   });
-  const scoreObj = (a,b)=> (a&&b) ? koScore[bkPair(a,b)] : null;
-  // Bygg en spilleside med ev. resultat + uthevet vinner.
-  const sideHtml = (t, sc, fallbackCls)=>{
+  const matchInfo = (a,b)=> (a&&b) ? koScore[bkPair(a,b)] : null;
+  // Bygg en spilleside med ev. resultat (straffer i parentes) + uthevet vinner.
+  const sideHtml = (t, info, fallbackCls)=>{
     if(!t || t.placeholder)
       return `<div class="bk-side ${fallbackCls}">${tip(t)}</div>`;
     let scoreHtml = '', winCls = '';
-    if(sc){
-      const ks = Object.keys(sc);
-      const v = sc[bkNorm(t.navn)];
-      if(v!=null) scoreHtml = `<span class="bk-score">${v}</span>`;
-      if(ks.length===2 && sc[ks[0]]!==sc[ks[1]] && bkNorm(t.navn)===(sc[ks[0]]>sc[ks[1]]?ks[0]:ks[1]))
-        winCls = ' bk-win';
+    if(info){
+      const g = info.g[bkNorm(t.navn)];
+      if(g!=null){
+        const p = info.p && info.p[bkNorm(t.navn)];
+        scoreHtml = `<span class="bk-score">${g}${p!=null?`<span class="bk-pen">(${p})</span>`:''}</span>`;
+      }
+      if(info.vinner && bkNorm(t.navn)===bkNorm(info.vinner)) winCls = ' bk-win';
     }
     return `<div class="bk-side ${fallbackCls}${winCls}">${tip(t)}${scoreHtml}</div>`;
   };
@@ -902,16 +913,16 @@ function renderSluttspill(d){
     if(erR32(nr)){
       const k = byNr[nr]; if(!k) return '';
       const cls = t => (!t || t.placeholder) ? 'bk-side-tbd' : (t.sikker?'bk-sure':'bk-unsure');
-      const sc = scoreObj(k.home&&k.home.navn, k.away&&k.away.navn);
-      return `<div class="bk-match">${sideHtml(k.home, sc, cls(k.home))}${sideHtml(k.away, sc, cls(k.away))}</div>`;
+      const info = matchInfo(k.home&&k.home.navn, k.away&&k.away.navn);
+      return `<div class="bk-match">${sideHtml(k.home, info, cls(k.home))}${sideHtml(k.away, info, cls(k.away))}</div>`;
     }
     const feed = nr===103 ? [101,102] : BK_FEED[nr];
     const pre = nr===103 ? 'T' : 'V';
     const lagFor = (n)=>{ const fk = byNr[n]; return fk && (pre==='T' ? fk.taper : fk.vinner); };
     const t0 = lagFor(feed[0]), t1 = lagFor(feed[1]);
-    const sc = (t0&&t0.faktisk&&t1&&t1.faktisk) ? scoreObj(t0.navn, t1.navn) : null;
+    const info = (t0&&t0.faktisk&&t1&&t1.faktisk) ? matchInfo(t0.navn, t1.navn) : null;
     const slot = (n, t)=>{
-      if(t && t.faktisk) return sideHtml(t, sc, 'bk-sure');
+      if(t && t.faktisk) return sideHtml(t, info, 'bk-sure');
       return `<div class="bk-side bk-side-tbd"><span class="bk-team bk-tbd"><span class="bk-seed">${pre}${n}</span></span></div>`;
     };
     return `<div class="bk-match">${slot(feed[0], t0)}${slot(feed[1], t1)}</div>`;
