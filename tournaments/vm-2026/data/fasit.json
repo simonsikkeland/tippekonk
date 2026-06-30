@@ -2055,6 +2055,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
+  "antall_maal_inkl_straffer": 250,
   "kort": {
     "gule": [
       {
@@ -2896,9 +2897,8 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 176,
-    "hentet": "2026-06-30T08:31:28+00:00",
+    "hentet": "2026-06-30T11:38:41+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
-  "antall_kort": 176,
-  "antall_maal_inkl_straffer": 250
+  "antall_kort": 176
 }
