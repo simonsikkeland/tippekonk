@@ -1270,12 +1270,12 @@
       "home": "Elfenbenskysten",
       "away": "Norge",
       "dato": "2026-06-30",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 2,
+      "status": "IN_PLAY",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Frankrike",
@@ -1994,6 +1994,11 @@
       "maal": 6
     },
     {
+      "navn": "Erling Haaland",
+      "lag": "Norge",
+      "maal": 5
+    },
+    {
       "navn": "Vinicius Junior",
       "lag": "Brasil",
       "maal": 4
@@ -2001,11 +2006,6 @@
     {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
-      "maal": 4
-    },
-    {
-      "navn": "Erling Haaland",
-      "lag": "Norge",
       "maal": 4
     },
     {
@@ -2897,7 +2897,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 178,
-    "hentet": "2026-06-30T16:37:09+00:00",
+    "hentet": "2026-06-30T18:57:26+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 178
