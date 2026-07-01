@@ -281,10 +281,12 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
     ]
     i_live = lag_i_live(fact)
     for label, key, rule_key, forventet in rounds:
-        if not fact.get(key):
+        # Vis alle runder t.o.m. finale når sluttspillet er i gang (i_live), slik
+        # at man kan utvide og se egne tipp (✓/–/✗ ute) også før noen er bekreftet.
+        if not fact.get(key) and not i_live:
             continue
-        fasit_set = {_norm(x) for x in fact[key] if x and str(x).strip()}
-        fasit_navn = {_norm(x): x for x in fact[key] if x and str(x).strip()}
+        fasit_set = {_norm(x) for x in (fact.get(key) or []) if x and str(x).strip()}
+        fasit_navn = {_norm(x): x for x in (fact.get(key) or []) if x and str(x).strip()}
         tippet = pred.get(key, [])
         if isinstance(tippet, str):
             tippet = [tippet] if tippet else []
