@@ -199,6 +199,38 @@ def grupper_ferdig(fact: dict) -> dict:
     return ut
 
 
+def _ko_taper(k: dict):
+    """Taperen av en ferdigspilt sluttspillkamp (winner-felt, ellers mål,
+    ellers straffer). None hvis ikke avgjort."""
+    w = k.get("winner")
+    if w == "HOME_TEAM":
+        return k.get("away")
+    if w == "AWAY_TEAM":
+        return k.get("home")
+    hs, as_ = k.get("home_score"), k.get("away_score")
+    if hs is not None and as_ is not None and hs != as_:
+        return k.get("away") if hs > as_ else k.get("home")
+    ph, pa = k.get("pen_home"), k.get("pen_away")
+    if ph is not None and pa is not None and ph != pa:
+        return k.get("away") if ph > pa else k.get("home")
+    return None
+
+
+def lag_i_live(fact: dict) -> set:
+    """Normaliserte navn på lag som fortsatt kan avansere: nådde 16-delsfinalen
+    og er ikke slått ut i sluttspillet. Tom hvis sluttspillet ikke har startet."""
+    universe = {_norm(x) for x in fact.get("r16", []) if x and str(x).strip()}
+    if not universe:
+        return set()
+    utslatte = set()
+    for k in fact.get("kamper", []):
+        if k.get("stage") and k.get("stage") != "GROUP_STAGE" and k.get("status") == "FINISHED":
+            t = _ko_taper(k)
+            if t:
+                utslatte.add(_norm(t))
+    return universe - utslatte
+
+
 def score(pred: dict, fact: dict, rules: dict) -> dict:
     """Regn poeng for én prediksjon mot fasit. `rules` = poengverdier."""
     lines, total = [], 0
@@ -247,6 +279,7 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         ("Kvartfinale", "kvart", "kvart", 8), ("Semifinale", "semi", "semi", 4),
         ("Bronsefinale (lag)", "bronse", "bronse_lag", 2), ("Finale (lag)", "finale", "finale_lag", 2),
     ]
+    i_live = lag_i_live(fact)
     for label, key, rule_key, forventet in rounds:
         if not fact.get(key):
             continue
@@ -256,7 +289,11 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         if isinstance(tippet, str):
             tippet = [tippet] if tippet else []
         tippet_norm = {_norm(t) for t in tippet if t and str(t).strip()}
-        lag_detalj = [{"lag": t, "hit": _norm(t) in fasit_set} for t in tippet if t and str(t).strip()]
+        # hit = nådde runden; ute = kan ikke lenger nå den (slått ut / kom aldri
+        # til sluttspillet); ellers fortsatt mulig.
+        lag_detalj = [{"lag": t, "hit": _norm(t) in fasit_set,
+                       "ute": bool(i_live) and _norm(t) not in fasit_set and _norm(t) not in i_live}
+                      for t in tippet if t and str(t).strip()]
         bommet = [{"lag": fasit_navn[n], "hit": False} for n in sorted(fasit_set - tippet_norm)]
         hits = sum(1 for l in lag_detalj if l["hit"])
         add(rule_key, f"{label} ({hits} riktige)",

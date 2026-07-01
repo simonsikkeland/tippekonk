@@ -458,8 +458,17 @@ async function load(id){
         if(sub==='l'){
           const bommet = (l.lag.bommet||[]).map(t=>`
             <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:var(--red)">✗ ikke tippet</span></div>`).join("");
-          row += `<div class="kamper-list"><div class="km" style="color:var(--slate);font-size:12px;border:none"><span>${l.lag.bekreftet} av ${l.lag.forventet} lag bekreftet</span></div>${l.lag.tippet.map(t=>`
-            <div class="km"><span>${flag(t.lag)} ${esc(t.lag)}</span><span class="km-res" style="color:${t.hit?'var(--pitch)':'var(--slate)'}">${t.hit?'✓':'–'}</span></div>`).join("")}${bommet?'<div class="km" style="color:var(--slate);font-size:12px;border:none;margin-top:6px"><span>Bommet på:</span></div>'+bommet:''}</div>`;
+          const tippRad = t=>{
+            const navn = t.ute
+              ? `<span style="text-decoration:line-through;color:var(--slate)">${flag(t.lag)} ${esc(t.lag)}</span>`
+              : `<span>${flag(t.lag)} ${esc(t.lag)}</span>`;
+            const res = t.hit ? '<span class="km-res" style="color:var(--pitch)">✓</span>'
+              : t.ute ? '<span class="km-res" style="color:var(--red)">✗ ute</span>'
+              : '<span class="km-res" style="color:var(--slate)">–</span>';
+            return `<div class="km">${navn}${res}</div>`;
+          };
+          const igjen = l.lag.tippet.filter(t=>!t.hit && !t.ute).length;
+          row += `<div class="kamper-list"><div class="km" style="color:var(--slate);font-size:12px;border:none"><span>${l.lag.bekreftet} av ${l.lag.forventet} bekreftet · ${igjen} fortsatt mulige</span></div>${l.lag.tippet.map(tippRad).join("")}${bommet?'<div class="km" style="color:var(--slate);font-size:12px;border:none;margin-top:6px"><span>Bommet på:</span></div>'+bommet:''}</div>`;
         }
         return row;
       }).join("")}</div>`;
