@@ -1304,12 +1304,12 @@
       "home": "England",
       "away": "DR Kongo",
       "dato": "2026-07-01",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Belgia",
@@ -2973,7 +2973,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 194,
-    "hentet": "2026-07-01T14:38:11+00:00",
+    "hentet": "2026-07-01T17:15:03+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 194
