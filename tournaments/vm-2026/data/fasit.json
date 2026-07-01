@@ -376,7 +376,6 @@
     "Gruppe L": "England"
   },
   "r16": [
-    "",
     "Algerie",
     "Argentina",
     "Australia",
@@ -411,7 +410,6 @@
     "Østerrike"
   ],
   "r8": [
-    "",
     "Brasil",
     "Canada",
     "Frankrike",
@@ -1414,7 +1412,7 @@
     },
     {
       "home": "Paraguay",
-      "away": "",
+      "away": "Frankrike",
       "dato": "2026-07-04",
       "home_score": null,
       "away_score": null,
@@ -1425,7 +1423,7 @@
     },
     {
       "home": "Brasil",
-      "away": "",
+      "away": "Norge",
       "dato": "2026-07-05",
       "home_score": null,
       "away_score": null,
@@ -2975,7 +2973,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 193,
-    "hentet": "2026-07-01T05:04:19+00:00",
+    "hentet": "2026-07-01T08:19:34+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 193
