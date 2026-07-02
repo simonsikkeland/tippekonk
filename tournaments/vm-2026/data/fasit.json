@@ -2063,323 +2063,228 @@
   "kort": {
     "gule": [
       {
-        "spiller": "G. Kastaneer",
-        "lag": "Cuw",
-        "antall": 2
-      },
-      {
-        "spiller": "Casemiro",
-        "lag": "Good",
+        "spiller": "Danilo",
+        "lag": "Brasil",
         "antall": 2
       },
       {
         "spiller": "M. Galarza",
-        "lag": "Par",
-        "antall": 2
-      },
-      {
-        "spiller": "Danilo",
-        "lag": "Good",
+        "lag": "Paraguay",
         "antall": 2
       },
       {
         "spiller": "A. Franco",
-        "lag": "Ecu",
-        "antall": 2
-      },
-      {
-        "spiller": "T. Mokoena",
-        "lag": "Rsa",
+        "lag": "Ecuador",
         "antall": 2
       },
       {
         "spiller": "A. Fathi",
-        "lag": "Qat",
+        "lag": "Qatar",
+        "antall": 2
+      },
+      {
+        "spiller": "T. Mokoena",
+        "lag": "Sør-Afrika",
         "antall": 2
       },
       {
         "spiller": "I. Diop",
-        "lag": "Mar",
+        "lag": "Marokko",
         "antall": 2
       },
       {
         "spiller": "S. Ezatolahi",
-        "lag": "Irn",
+        "lag": "Iran",
         "antall": 2
       },
       {
         "spiller": "M. Lasheen",
-        "lag": "Egy",
-        "antall": 2
-      },
-      {
-        "spiller": "A. Khusanov",
-        "lag": "Uzb",
+        "lag": "Egypt",
         "antall": 2
       },
       {
         "spiller": "S. Lopes Cabral",
-        "lag": "Cpv",
+        "lag": "Kapp Verde",
+        "antall": 2
+      },
+      {
+        "spiller": "A. Khusanov",
+        "lag": "Usbekistan",
         "antall": 2
       },
       {
         "spiller": "A. Al-Ammari",
-        "lag": "Irq",
+        "lag": "Irak",
         "antall": 2
       },
       {
         "spiller": "J. Bacuna",
-        "lag": "Cuw",
+        "lag": "Curaçao",
         "antall": 2
       },
       {
-        "spiller": "S. Nasrullaev",
-        "lag": "Uzb",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Fofana",
-        "lag": "Civ",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Doski",
-        "lag": "Irq",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Gaber",
-        "lag": "Qat",
-        "antall": 1
-      },
-      {
-        "spiller": "I. Williams",
-        "lag": "Gha",
-        "antall": 1
-      },
-      {
-        "spiller": "V. Gyökeres",
-        "lag": "Swe",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Fatouh",
-        "lag": "Egy",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Lucumi",
-        "lag": "Col",
-        "antall": 1
-      },
-      {
-        "spiller": "L. Bacuna",
-        "lag": "Cuw",
-        "antall": 1
-      },
-      {
-        "spiller": "P. Hincapie",
-        "lag": "Ecu",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Bellegarde",
-        "lag": "Du Har",
-        "antall": 1
+        "spiller": "G. Kastaneer",
+        "lag": "Curaçao",
+        "antall": 2
       },
       {
         "spiller": "N. Sadiki",
-        "lag": "Cod",
-        "antall": 1
+        "lag": "Dr Kongo",
+        "antall": 2
       },
       {
-        "spiller": "T. Adams",
-        "lag": "Norge",
-        "antall": 1
-      },
-      {
-        "spiller": "L.Paredes",
-        "lag": "Arg",
-        "antall": 1
-      },
-      {
-        "spiller": "T. Castagne",
-        "lag": "Bel",
-        "antall": 1
-      },
-      {
-        "spiller": "F. Kessié",
-        "lag": "Civ",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Almirón",
-        "lag": "Par",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Casimir",
-        "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Abunada",
-        "lag": "Qat",
-        "antall": 1
-      },
-      {
-        "spiller": "Y. Ibrahim",
-        "lag": "Egy",
-        "antall": 1
+        "spiller": "Casemiro",
+        "lag": "Brasil",
+        "antall": 2
       },
       {
         "spiller": "J. Alcívar",
-        "lag": "Ecu",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
         "spiller": "D. Borges",
-        "lag": "Cpv",
+        "lag": "Kapp Verde",
         "antall": 1
       },
       {
         "spiller": "D. Santos",
-        "lag": "Good",
+        "lag": "Brasil",
         "antall": 1
       },
       {
         "spiller": "N. Sigur",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
         "spiller": "G. Varela",
-        "lag": "Uru",
+        "lag": "Uruguay",
+        "antall": 1
+      },
+      {
+        "spiller": "Y. Ibrahim",
+        "lag": "Egypt",
         "antall": 1
       },
       {
         "spiller": "C. Pickel",
-        "lag": "Cod",
+        "lag": "Dr Kongo",
         "antall": 1
       },
       {
         "spiller": "S. Abdulhamid",
-        "lag": "Ksa",
-        "antall": 1
-      },
-      {
-        "spiller": "N. de la Cruz",
-        "lag": "Uru",
-        "antall": 1
-      },
-      {
-        "spiller": "G. Xhaka",
-        "lag": "Sui",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Saber",
-        "lag": "Egy",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "J. Gaari",
-        "lag": "Cuw",
+        "lag": "Curaçao",
         "antall": 1
       },
       {
         "spiller": "H. Abu Dahab",
-        "lag": "Jor",
+        "lag": "Jordan",
         "antall": 1
       },
       {
-        "spiller": "T. Mbatha",
-        "lag": "Rsa",
+        "spiller": "N. de la Cruz",
+        "lag": "Uruguay",
         "antall": 1
       },
       {
-        "spiller": "J. Mojica",
-        "lag": "Col",
+        "spiller": "G. Xhaka",
+        "lag": "Sveits",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Saber",
+        "lag": "Egypt",
         "antall": 1
       },
       {
         "spiller": "R. Khedira",
-        "lag": "Tun",
+        "lag": "Tunisia",
         "antall": 1
       },
       {
         "spiller": "L. De Fougerolles",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
-        "spiller": "G. Gudmundsson",
-        "lag": "Swe",
+        "spiller": "T. Mbatha",
+        "lag": "Sør-Afrika",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Mojica",
+        "lag": "Colombia",
         "antall": 1
       },
       {
         "spiller": "I. Perisic",
-        "lag": "Cro",
+        "lag": "Kroatia",
         "antall": 1
       },
       {
         "spiller": "J. Cáceres",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "L. Comenencia",
-        "lag": "Cuw",
+        "lag": "Curaçao",
         "antall": 1
       },
       {
         "spiller": "E. Bare",
-        "lag": "Nzl",
+        "lag": "New Zealand",
+        "antall": 1
+      },
+      {
+        "spiller": "G. Gudmundsson",
+        "lag": "Sverige",
         "antall": 1
       },
       {
         "spiller": "A. Pavlovic",
-        "lag": "Ger",
+        "lag": "Tyskland",
         "antall": 1
       },
       {
         "spiller": "C. Summerville",
-        "lag": "Ned",
+        "lag": "Nederland",
         "antall": 1
       },
       {
         "spiller": "C. Arcus",
-        "lag": "Du Har",
+        "lag": "Haiti",
         "antall": 1
       },
       {
         "spiller": "E. Dzeko",
-        "lag": "Bih",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Arnautovic",
-        "lag": "Aut",
+        "lag": "Bosnia Og Herzegovina",
         "antall": 1
       },
       {
         "spiller": "A. Cubas",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "S. Taniguchi",
-        "lag": "Jpn",
+        "lag": "Japan",
         "antall": 1
       },
       {
         "spiller": "Mr. Depay",
-        "lag": "Ned",
+        "lag": "Nederland",
         "antall": 1
       },
       {
         "spiller": "A. Hickey",
-        "lag": "Sco",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2389,117 +2294,122 @@
       },
       {
         "spiller": "R. Ibañez",
-        "lag": "Good",
+        "lag": "Brasil",
         "antall": 1
       },
       {
         "spiller": "P. Berg",
-        "lag": "Nor",
+        "lag": "Norge",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Bellingham",
+        "lag": "England",
         "antall": 1
       },
       {
         "spiller": "R. Bentancur",
-        "lag": "Uru",
+        "lag": "Uruguay",
         "antall": 1
       },
       {
-        "spiller": "A. Circati",
-        "lag": "Aus",
+        "spiller": "M. Arnautovic",
+        "lag": "Østerrike",
         "antall": 1
       },
       {
         "spiller": "N. Pépé",
-        "lag": "Civ",
+        "lag": "Elfenbenskysten",
         "antall": 1
       },
       {
         "spiller": "C. McCowatt",
-        "lag": "Nzl",
+        "lag": "New Zealand",
         "antall": 1
       },
       {
         "spiller": "fabinho",
-        "lag": "Good",
+        "lag": "Brasil",
         "antall": 1
       },
       {
-        "spiller": "S. Posch",
-        "lag": "Aut",
+        "spiller": "A. Circati",
+        "lag": "Australia",
         "antall": 1
       },
       {
         "spiller": "S. Singh",
-        "lag": "Nzl",
+        "lag": "New Zealand",
         "antall": 1
       },
       {
         "spiller": "Z. Tahseen",
-        "lag": "Irq",
+        "lag": "Irak",
         "antall": 1
       },
       {
         "spiller": "J. Placide",
-        "lag": "Du Har",
+        "lag": "Haiti",
         "antall": 1
       },
       {
-        "spiller": "K.Havertz",
-        "lag": "Ger",
+        "spiller": "S. Posch",
+        "lag": "Østerrike",
         "antall": 1
       },
       {
         "spiller": "J. Suzuki",
-        "lag": "Jpn",
+        "lag": "Japan",
         "antall": 1
       },
       {
         "spiller": "A. Tchouameni",
-        "lag": "Fra",
+        "lag": "Frankrike",
         "antall": 1
       },
       {
         "spiller": "N. Saliba",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
         "spiller": "Y. Bárcenas",
-        "lag": "Pan",
+        "lag": "Panama",
         "antall": 1
       },
       {
-        "spiller": "M. De Cuyper",
-        "lag": "Bel",
+        "spiller": "K.Havertz",
+        "lag": "Tyskland",
         "antall": 1
       },
       {
         "spiller": "K. Páez",
-        "lag": "Ecu",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
         "spiller": "D. Cornelius",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
         "spiller": "N. Al-Dawsari",
-        "lag": "Ksa",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "EN. Baena",
-        "lag": "Esp",
+        "lag": "Spania",
         "antall": 1
       },
       {
-        "spiller": "G. Doue",
-        "lag": "Civ",
+        "spiller": "M. De Cuyper",
+        "lag": "Belgia",
         "antall": 1
       },
       {
         "spiller": "J. Porozo",
-        "lag": "Ecu",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
@@ -2509,177 +2419,167 @@
       },
       {
         "spiller": "F. Pierrot",
-        "lag": "Du Har",
+        "lag": "Haiti",
         "antall": 1
       },
       {
         "spiller": "Y. Al-Arab",
-        "lag": "Jor",
+        "lag": "Jordan",
         "antall": 1
       },
       {
         "spiller": "J. Quansah",
-        "lag": "Eng",
+        "lag": "England",
         "antall": 1
       },
       {
         "spiller": "J. Lukic",
-        "lag": "Bih",
+        "lag": "Bosnia Og Herzegovina",
+        "antall": 1
+      },
+      {
+        "spiller": "G. Doue",
+        "lag": "Elfenbenskysten",
         "antall": 1
       },
       {
         "spiller": "A. Arce",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "G. Plata",
-        "lag": "Ecu",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
         "spiller": "N. Mbuku",
-        "lag": "Cod",
+        "lag": "Dr Kongo",
         "antall": 1
       },
       {
         "spiller": "A. Robertson",
-        "lag": "Sco",
+        "lag": "Skottland",
         "antall": 1
       },
       {
         "spiller": "E. Hajsafi",
-        "lag": "Irn",
+        "lag": "Iran",
         "antall": 1
       },
       {
         "spiller": "S. Paik",
-        "lag": "Kor",
+        "lag": "Korea Republikken",
         "antall": 1
       },
       {
         "spiller": "M. Kanno",
-        "lag": "Ksa",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "pedri",
-        "lag": "Esp",
+        "lag": "Spania",
         "antall": 1
       },
       {
         "spiller": "D. Kamada",
-        "lag": "Jpn",
+        "lag": "Japan",
         "antall": 1
       },
       {
         "spiller": "N. Semedo",
-        "lag": "By",
+        "lag": "Portugal",
         "antall": 1
       },
       {
         "spiller": "F. Curtis",
-        "lag": "Sco",
+        "lag": "Skottland",
         "antall": 1
       },
       {
         "spiller": "D. Nazon",
-        "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "C. Yirenkyi",
-        "lag": "Gha",
+        "lag": "Haiti",
         "antall": 1
       },
       {
         "spiller": "J. Italiano",
-        "lag": "Aus",
+        "lag": "Australia",
         "antall": 1
       },
       {
         "spiller": "R. Veiga",
-        "lag": "By",
+        "lag": "Portugal",
         "antall": 1
       },
       {
         "spiller": "K. Lee",
-        "lag": "Kor",
+        "lag": "Korea Republikken",
         "antall": 1
       },
       {
         "spiller": "Y. Akgün",
-        "lag": "Tur",
+        "lag": "Kalkun",
         "antall": 1
       },
       {
         "spiller": "M. Olivera",
-        "lag": "Uru",
+        "lag": "Uruguay",
         "antall": 1
       },
       {
-        "spiller": "N. Elvedi",
-        "lag": "Sui",
-        "antall": 1
-      },
-      {
-        "spiller": "P. Gueye",
-        "lag": "Sen",
-        "antall": 1
-      },
-      {
-        "spiller": "O. Khamrobekov",
-        "lag": "Uzb",
+        "spiller": "C. Yirenkyi",
+        "lag": "Ghana",
         "antall": 1
       },
       {
         "spiller": "D. Jean Jacques",
-        "lag": "Du Har",
+        "lag": "Haiti",
         "antall": 1
       },
       {
         "spiller": "D. Ris",
-        "lag": "Eng",
+        "lag": "England",
         "antall": 1
       },
       {
         "spiller": "F. Al-Buraikan",
-        "lag": "Ksa",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "K. Oppong",
-        "lag": "Gha",
+        "lag": "Ghana",
         "antall": 1
       },
       {
-        "spiller": "R.Lukaku",
-        "lag": "Bel",
+        "spiller": "N. Elvedi",
+        "lag": "Sveits",
         "antall": 1
       },
       {
-        "spiller": "M. Sabitzer",
-        "lag": "Aut",
+        "spiller": "P. Gueye",
+        "lag": "Senegal",
         "antall": 1
       },
       {
-        "spiller": "M. Ateya",
-        "lag": "Egy",
+        "spiller": "O. Khamrobekov",
+        "lag": "Usbekistan",
         "antall": 1
       },
       {
         "spiller": "G. Lee",
-        "lag": "Kor",
+        "lag": "Korea Republikken",
         "antall": 1
       },
       {
         "spiller": "P. Sucic",
-        "lag": "Cro",
+        "lag": "Kroatia",
         "antall": 1
       },
       {
         "spiller": "K. McLean",
-        "lag": "Sco",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2689,102 +2589,122 @@
       },
       {
         "spiller": "B. Gutierrez",
-        "lag": "Mex",
+        "lag": "Mexico",
         "antall": 1
       },
       {
         "spiller": "E. Demirovic",
-        "lag": "Bih",
+        "lag": "Bosnia Og Herzegovina",
         "antall": 1
       },
       {
-        "spiller": "J. Lerma",
-        "lag": "Col",
+        "spiller": "R.Lukaku",
+        "lag": "Belgia",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Sabitzer",
+        "lag": "Østerrike",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Ateya",
+        "lag": "Egypt",
         "antall": 1
       },
       {
         "spiller": "D. Gómez",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "T. Araújo",
-        "lag": "By",
+        "lag": "Portugal",
         "antall": 1
       },
       {
         "spiller": "H. Kanaani",
-        "lag": "Irn",
+        "lag": "Iran",
         "antall": 1
       },
       {
         "spiller": "A. Dedic",
-        "lag": "Bih",
+        "lag": "Bosnia Og Herzegovina",
         "antall": 1
       },
       {
-        "spiller": "D. Zakaria",
-        "lag": "Sui",
+        "spiller": "L. Camara",
+        "lag": "Senegal",
         "antall": 1
       },
       {
-        "spiller": "A. Seck",
-        "lag": "Sen",
+        "spiller": "J. Lerma",
+        "lag": "Colombia",
         "antall": 1
       },
       {
         "spiller": "G. Gomez",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "M. van de Ven",
-        "lag": "Ned",
+        "lag": "Nederland",
         "antall": 1
       },
       {
         "spiller": "M. Stamenic",
-        "lag": "Nzl",
+        "lag": "New Zealand",
         "antall": 1
       },
       {
         "spiller": "H. Souttar",
-        "lag": "Aus",
+        "lag": "Australia",
         "antall": 1
       },
       {
-        "spiller": "K. Laimer",
-        "lag": "Aut",
+        "spiller": "D. Zakaria",
+        "lag": "Sveits",
         "antall": 1
       },
       {
-        "spiller": "L. Krejci",
-        "lag": "Cze",
+        "spiller": "A. Seck",
+        "lag": "Senegal",
         "antall": 1
       },
       {
         "spiller": "R. Christie",
-        "lag": "Sco",
+        "lag": "Skottland",
         "antall": 1
       },
       {
         "spiller": "W. Pina",
-        "lag": "Cpv",
+        "lag": "Kapp Verde",
         "antall": 1
       },
       {
         "spiller": "G. Cho",
-        "lag": "Kor",
+        "lag": "Korea Republikken",
         "antall": 1
       },
       {
         "spiller": "E. Álvarez",
-        "lag": "Mex",
+        "lag": "Mexico",
         "antall": 1
       },
       {
         "spiller": "E. Elmali",
-        "lag": "Tur",
+        "lag": "Kalkun",
+        "antall": 1
+      },
+      {
+        "spiller": "K. Laimer",
+        "lag": "Østerrike",
+        "antall": 1
+      },
+      {
+        "spiller": "L. Krejci",
+        "lag": "Tsjekkisk Republikk",
         "antall": 1
       },
       {
@@ -2794,190 +2714,320 @@
       },
       {
         "spiller": "S. Khalilzadeh",
-        "lag": "Irn",
+        "lag": "Iran",
         "antall": 1
       },
       {
         "spiller": "C. Harvey",
-        "lag": "Pan",
+        "lag": "Panama",
         "antall": 1
       },
       {
         "spiller": "A. Modiba",
-        "lag": "Rsa",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Sanabria",
-        "lag": "Uru",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Irvine",
-        "lag": "Aus",
+        "lag": "Sør-Afrika",
         "antall": 1
       },
       {
         "spiller": "G. Puerto",
-        "lag": "Col",
+        "lag": "Colombia",
         "antall": 1
       },
       {
         "spiller": "R. Zerrouki",
-        "lag": "Alg",
+        "lag": "Algerie",
         "antall": 1
       },
       {
         "spiller": "M. Abu Taha",
-        "lag": "Jor",
+        "lag": "Jordan",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Sanabria",
+        "lag": "Uruguay",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Irvine",
+        "lag": "Australia",
         "antall": 1
       },
       {
         "spiller": "J. Musiala",
-        "lag": "Ger",
+        "lag": "Tyskland",
         "antall": 1
       },
       {
         "spiller": "S. Al-Dawsari",
-        "lag": "Ksa",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "M. Caicedo",
-        "lag": "Ecu",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
         "spiller": "B. Silva",
-        "lag": "By",
-        "antall": 1
-      },
-      {
-        "spiller": "Y. Ayari",
-        "lag": "Swe",
-        "antall": 1
-      },
-      {
-        "spiller": "F. Medina",
-        "lag": "Arg",
+        "lag": "Portugal",
         "antall": 1
       },
       {
         "spiller": "S. Moutoussamy",
-        "lag": "Cod",
+        "lag": "Dr Kongo",
         "antall": 1
       },
       {
         "spiller": "C. Larin",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
         "spiller": "Shararh",
-        "lag": "Jor",
+        "lag": "Jordan",
         "antall": 1
       },
       {
         "spiller": "C. Blackman",
-        "lag": "Pan",
+        "lag": "Panama",
+        "antall": 1
+      },
+      {
+        "spiller": "Y. Ayari",
+        "lag": "Sverige",
+        "antall": 1
+      },
+      {
+        "spiller": "F. Medina",
+        "lag": "Argentina",
         "antall": 1
       },
       {
         "spiller": "J. Alonso",
-        "lag": "Par",
+        "lag": "Paraguay",
         "antall": 1
       },
       {
         "spiller": "C. Mbemba",
-        "lag": "Cod",
+        "lag": "Dr Kongo",
         "antall": 1
       },
       {
         "spiller": "L. Millar",
-        "lag": "Can",
+        "lag": "Canada",
         "antall": 1
       },
       {
         "spiller": "A. Al-Amri",
-        "lag": "Ksa",
+        "lag": "Saudi-Arabia",
         "antall": 1
       },
       {
         "spiller": "I. Hien",
-        "lag": "Swe",
+        "lag": "Sverige",
+        "antall": 1
+      },
+      {
+        "spiller": "B. Mechele",
+        "lag": "Belgia",
         "antall": 1
       },
       {
         "spiller": "K. Sano",
-        "lag": "Jpn",
+        "lag": "Japan",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Nemati",
+        "lag": "Iran",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Nusa",
+        "lag": "Norge",
+        "antall": 1
+      },
+      {
+        "spiller": "E. Mahmic",
+        "lag": "Bosnia Og Herzegovina",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Johnston",
+        "lag": "Canada",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Katic",
+        "lag": "Bosnia Og Herzegovina",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Sibisi",
+        "lag": "Sør-Afrika",
+        "antall": 1
+      },
+      {
+        "spiller": "L. Bergvall",
+        "lag": "Sverige",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Bos",
+        "lag": "Australia",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Fofana",
+        "lag": "Elfenbenskysten",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Doski",
+        "lag": "Irak",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Gaber",
+        "lag": "Qatar",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Nasrullaev",
+        "lag": "Usbekistan",
+        "antall": 1
+      },
+      {
+        "spiller": "L. Bacuna",
+        "lag": "Curaçao",
+        "antall": 1
+      },
+      {
+        "spiller": "P. Hincapie",
+        "lag": "Ecuador",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Bellegarde",
+        "lag": "Haiti",
+        "antall": 1
+      },
+      {
+        "spiller": "I. Williams",
+        "lag": "Ghana",
+        "antall": 1
+      },
+      {
+        "spiller": "V. Gyökeres",
+        "lag": "Sverige",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Fatouh",
+        "lag": "Egypt",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Lucumi",
+        "lag": "Colombia",
+        "antall": 1
+      },
+      {
+        "spiller": "T. Adams",
+        "lag": "Norge",
+        "antall": 1
+      },
+      {
+        "spiller": "F. Kessié",
+        "lag": "Elfenbenskysten",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Almirón",
+        "lag": "Paraguay",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Casimir",
+        "lag": "Haiti",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Abunada",
+        "lag": "Qatar",
         "antall": 1
       }
     ],
     "rode": [
       {
-        "spiller": "Y. Sithole",
-        "lag": "Rsa",
-        "antall": 1
-      },
-      {
-        "spiller": "P. Hincapie",
-        "lag": "Ecu",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Almirón",
-        "lag": "Par",
-        "antall": 1
-      },
-      {
-        "spiller": "R. Sulaka",
-        "lag": "Irq",
-        "antall": 1
-      },
-      {
         "spiller": "T. Muharemovic",
-        "lag": "Bih",
+        "lag": "Bosnia Og Herzegovina",
         "antall": 1
       },
       {
         "spiller": "C. Montes",
-        "lag": "Mex",
+        "lag": "Mexico",
         "antall": 1
       },
       {
         "spiller": "H. Al-Amin",
-        "lag": "Qat",
+        "lag": "Qatar",
         "antall": 1
       },
       {
         "spiller": "A. Madibo",
-        "lag": "Qat",
+        "lag": "Qatar",
         "antall": 1
       },
       {
         "spiller": "A. Canobbio",
-        "lag": "Uru",
+        "lag": "Uruguay",
         "antall": 1
       },
       {
         "spiller": "N. Ngoy",
-        "lag": "Bel",
+        "lag": "Belgia",
+        "antall": 1
+      },
+      {
+        "spiller": "T. Zwane",
+        "lag": "Sør-Afrika",
+        "antall": 1
+      },
+      {
+        "spiller": "P. Hincapie",
+        "lag": "Ecuador",
+        "antall": 1
+      },
+      {
+        "spiller": "Y. Sithole",
+        "lag": "Sør-Afrika",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Almirón",
+        "lag": "Paraguay",
+        "antall": 1
+      },
+      {
+        "spiller": "R. Sulaka",
+        "lag": "Irak",
         "antall": 1
       }
     ],
     "gult_rodt": [
       {
-        "spiller": "C. Romero",
-        "lag": "Arg",
+        "spiller": "M. Beier",
+        "lag": "Tyskland",
         "antall": 0
       }
     ],
-    "sum_gule": 184,
-    "sum_rode": 10,
+    "sum_gule": 194,
+    "sum_rode": 11,
     "sum_gult_rodt": 0,
-    "total": 194,
-    "hentet": "2026-07-02T08:12:35+00:00",
+    "total": 205,
+    "hentet": "2026-07-02T11:08:15+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
-  "antall_kort": 194
+  "antall_kort": 205
 }
