@@ -418,7 +418,8 @@
     "Marokko",
     "Mexico",
     "Norge",
-    "Paraguay"
+    "Paraguay",
+    "USA"
   ],
   "kvart": [],
   "semi": [],
@@ -427,7 +428,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 254,
+  "antall_maal": 256,
   "kamper": [
     {
       "home": "Mexico",
@@ -1328,12 +1329,12 @@
       "home": "USA",
       "away": "Bosnia-Hercegovina",
       "dato": "2026-07-02",
-      "home_score": 0,
+      "home_score": 2,
       "away_score": 0,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Spania",
@@ -2032,13 +2033,13 @@
       "maal": 3
     },
     {
-      "navn": "Ismael Saibari",
-      "lag": "Marokko",
+      "navn": "Folarin Balogun",
+      "lag": "USA",
       "maal": 3
     },
     {
-      "navn": "Kai Havertz",
-      "lag": "Tyskland",
+      "navn": "Ismael Saibari",
+      "lag": "Marokko",
       "maal": 3
     }
   ],
@@ -2058,7 +2059,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 266,
+  "antall_maal_inkl_straffer": 268,
   "kort": {
     "gule": [
       {
@@ -2975,7 +2976,7 @@
     "sum_rode": 10,
     "sum_gult_rodt": 0,
     "total": 194,
-    "hentet": "2026-07-02T00:08:09+00:00",
+    "hentet": "2026-07-02T04:40:36+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 194
