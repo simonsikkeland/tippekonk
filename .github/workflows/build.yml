@@ -33,6 +33,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.deploy_check.outputs.deploy }}
     steps:
       - uses: actions/checkout@v4
 
@@ -72,11 +74,21 @@ jobs:
         run: python scripts/build_site.py
 
       - name: Commit oppdaterte data
+        id: commit
         run: |
           git config user.name "vm-bot"
           git config user.email "bot@users.noreply.github.com"
           git add -A
-          git commit -m "Auto: oppdatert stilling $(date -u +%FT%TZ)" || { echo "ingen endringer"; exit 0; }
+          # stilling.json (fersk tidsstempel hver kjøring) og site/dist er
+          # gitignorert, så en vellykket commit her betyr en REELL endring i
+          # sporede kilder (fasit.json, poenghistorikk.json, podcast-filer).
+          if git commit -m "Auto: oppdatert stilling $(date -u +%FT%TZ)"; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ingen endringer"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           # Robust push med retry. Fasit er nå monoton, så et tapt kappløp
           # repareres uansett av neste kjøring.
           for i in 1 2 3 4 5; do
@@ -89,13 +101,30 @@ jobs:
           done
           echo "kunne ikke pushe etter 5 forsøk"; exit 1
 
+      - name: Avgjør om Pages skal oppdateres
+        id: deploy_check
+        run: |
+          # Pages-artefakten er stor (podcast-mp3er) og re-opplasting/deploy
+          # 48 ganger om dagen på tomgang har fått GitHub sin deploy-kø til å
+          # sette seg fast. Planlagte kjøringer (cron) hopper derfor over
+          # opplasting+deploy når ingenting reelt endret seg. Push (kode-
+          # endringer) og manuell kjøring deployer alltid.
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Ingen reelle endringer på planlagt kjøring - hopper over Pages-deploy."
+          fi
+
       - name: Last opp Pages-artefakt
+        if: steps.deploy_check.outputs.deploy == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site/dist
 
   deploy:
     needs: build
+    if: needs.build.outputs.deploy == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:
