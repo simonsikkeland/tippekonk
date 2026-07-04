@@ -1385,7 +1385,7 @@
       "stage": "LAST_32",
       "group": null,
       "winner": null,
-      "pen_home": 4,
+      "pen_home": 2,
       "pen_away": 4
     },
     {
@@ -1455,8 +1455,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Portugal",
+      "away": "Spania",
       "dato": "2026-07-06",
       "home_score": null,
       "away_score": null,
@@ -1477,8 +1477,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Argentina",
+      "away": "Egypt",
       "dato": "2026-07-07",
       "home_score": null,
       "away_score": null,
@@ -1488,8 +1488,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Sveits",
+      "away": "Colombia",
       "dato": "2026-07-07",
       "home_score": null,
       "away_score": null,
@@ -3034,7 +3034,7 @@
     "sum_rode": 11,
     "sum_gult_rodt": 0,
     "total": 208,
-    "hentet": "2026-07-04T04:12:14+00:00",
+    "hentet": "2026-07-04T06:52:53+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 208
