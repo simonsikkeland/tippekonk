@@ -410,9 +410,11 @@
     "Østerrike"
   ],
   "r8": [
+    "Argentina",
     "Belgia",
     "Brasil",
     "Canada",
+    "Colombia",
     "Egypt",
     "England",
     "Frankrike",
@@ -432,7 +434,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 272,
+  "antall_maal": 278,
   "kamper": [
     {
       "home": "Mexico",
@@ -1390,23 +1392,23 @@
       "home": "Argentina",
       "away": "Kapp Verde",
       "dato": "2026-07-03",
-      "home_score": 1,
-      "away_score": 1,
-      "status": "PAUSED",
+      "home_score": 3,
+      "away_score": 2,
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": "DRAW"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Colombia",
       "away": "Ghana",
       "dato": "2026-07-04",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Canada",
@@ -2065,7 +2067,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 292,
+  "antall_maal_inkl_straffer": 298,
   "kort": {
     "gule": [
       {
@@ -2074,23 +2076,28 @@
         "antall": 2
       },
       {
-        "spiller": "Casemiro",
-        "lag": "Good",
-        "antall": 2
-      },
-      {
         "spiller": "N. Sadiki",
         "lag": "Cod",
         "antall": 2
       },
       {
-        "spiller": "Danilo",
+        "spiller": "Casemiro",
         "lag": "Good",
+        "antall": 2
+      },
+      {
+        "spiller": "Y. Ibrahim",
+        "lag": "Egy",
         "antall": 2
       },
       {
         "spiller": "M. Galarza",
         "lag": "Par",
+        "antall": 2
+      },
+      {
+        "spiller": "Danilo",
+        "lag": "Good",
         "antall": 2
       },
       {
@@ -2104,13 +2111,13 @@
         "antall": 2
       },
       {
-        "spiller": "A. Fathi",
-        "lag": "Qat",
+        "spiller": "T. Mokoena",
+        "lag": "Rsa",
         "antall": 2
       },
       {
-        "spiller": "T. Mokoena",
-        "lag": "Rsa",
+        "spiller": "A. Fathi",
+        "lag": "Qat",
         "antall": 2
       },
       {
@@ -2134,13 +2141,13 @@
         "antall": 2
       },
       {
-        "spiller": "S. Lopes Cabral",
-        "lag": "Cpv",
+        "spiller": "A. Khusanov",
+        "lag": "Uzb",
         "antall": 2
       },
       {
-        "spiller": "A. Khusanov",
-        "lag": "Uzb",
+        "spiller": "S. Lopes Cabral",
+        "lag": "Cpv",
         "antall": 2
       },
       {
@@ -2154,13 +2161,108 @@
         "antall": 2
       },
       {
-        "spiller": "M. Doski",
-        "lag": "Irq",
+        "spiller": "C. Blackman",
+        "lag": "Pan",
         "antall": 1
       },
       {
-        "spiller": "J. Gaber",
-        "lag": "Qat",
+        "spiller": "Y. Ayari",
+        "lag": "Swe",
+        "antall": 1
+      },
+      {
+        "spiller": "F. Medina",
+        "lag": "Arg",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Moutoussamy",
+        "lag": "Cod",
+        "antall": 1
+      },
+      {
+        "spiller": "C. Larin",
+        "lag": "Can",
+        "antall": 1
+      },
+      {
+        "spiller": "Shararh",
+        "lag": "Jor",
+        "antall": 1
+      },
+      {
+        "spiller": "I. Hien",
+        "lag": "Swe",
+        "antall": 1
+      },
+      {
+        "spiller": "B. Mechele",
+        "lag": "Bel",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Alonso",
+        "lag": "Par",
+        "antall": 1
+      },
+      {
+        "spiller": "C. Mbemba",
+        "lag": "Cod",
+        "antall": 1
+      },
+      {
+        "spiller": "L. Millar",
+        "lag": "Can",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Al-Amri",
+        "lag": "Ksa",
+        "antall": 1
+      },
+      {
+        "spiller": "E. Mahmic",
+        "lag": "Bih",
+        "antall": 1
+      },
+      {
+        "spiller": "K. Sano",
+        "lag": "Jpn",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Nemati",
+        "lag": "Irn",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Nusa",
+        "lag": "Nor",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Katic",
+        "lag": "Bih",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Sibisi",
+        "lag": "Rsa",
+        "antall": 1
+      },
+      {
+        "spiller": "L. Bergvall",
+        "lag": "Swe",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Bos",
+        "lag": "Aus",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Johnston",
+        "lag": "Can",
         "antall": 1
       },
       {
@@ -2174,8 +2276,13 @@
         "antall": 1
       },
       {
-        "spiller": "J. Bellegarde",
-        "lag": "Du Har",
+        "spiller": "M. Doski",
+        "lag": "Irq",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Gaber",
+        "lag": "Qat",
         "antall": 1
       },
       {
@@ -2209,6 +2316,11 @@
         "antall": 1
       },
       {
+        "spiller": "J. Bellegarde",
+        "lag": "Du Har",
+        "antall": 1
+      },
+      {
         "spiller": "S. Radeljic",
         "lag": "Bih",
         "antall": 1
@@ -2216,16 +2328,6 @@
       {
         "spiller": "T. Adams",
         "lag": "Norge",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Casimir",
-        "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Abunada",
-        "lag": "Qat",
         "antall": 1
       },
       {
@@ -2249,6 +2351,26 @@
         "antall": 1
       },
       {
+        "spiller": "J. Casimir",
+        "lag": "Du Har",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Abunada",
+        "lag": "Qat",
+        "antall": 1
+      },
+      {
+        "spiller": "G. Varela",
+        "lag": "Uru",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Alcívar",
+        "lag": "Ecu",
+        "antall": 1
+      },
+      {
         "spiller": "D. Borges",
         "lag": "Cpv",
         "antall": 1
@@ -2264,33 +2386,13 @@
         "antall": 1
       },
       {
-        "spiller": "G. Varela",
-        "lag": "Uru",
-        "antall": 1
-      },
-      {
-        "spiller": "Y. Ibrahim",
-        "lag": "Egy",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Alcívar",
-        "lag": "Ecu",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Abdulhamid",
-        "lag": "Ksa",
-        "antall": 1
-      },
-      {
         "spiller": "C. Pickel",
         "lag": "Cod",
         "antall": 1
       },
       {
-        "spiller": "H. Abu Dahab",
-        "lag": "Jor",
+        "spiller": "S. Abdulhamid",
+        "lag": "Ksa",
         "antall": 1
       },
       {
@@ -2314,8 +2416,8 @@
         "antall": 1
       },
       {
-        "spiller": "L. De Fougerolles",
-        "lag": "Can",
+        "spiller": "H. Abu Dahab",
+        "lag": "Jor",
         "antall": 1
       },
       {
@@ -2334,8 +2436,8 @@
         "antall": 1
       },
       {
-        "spiller": "E. Bare",
-        "lag": "Nzl",
+        "spiller": "L. De Fougerolles",
+        "lag": "Can",
         "antall": 1
       },
       {
@@ -2354,8 +2456,8 @@
         "antall": 1
       },
       {
-        "spiller": "C. Arcus",
-        "lag": "Du Har",
+        "spiller": "E. Bare",
+        "lag": "Nzl",
         "antall": 1
       },
       {
@@ -2374,18 +2476,8 @@
         "antall": 1
       },
       {
-        "spiller": "R. Ibañez",
-        "lag": "Good",
-        "antall": 1
-      },
-      {
-        "spiller": "P. Berg",
-        "lag": "Nor",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Bellingham",
-        "lag": "Eng",
+        "spiller": "C. Arcus",
+        "lag": "Du Har",
         "antall": 1
       },
       {
@@ -2424,6 +2516,31 @@
         "antall": 1
       },
       {
+        "spiller": "R. Ibañez",
+        "lag": "Good",
+        "antall": 1
+      },
+      {
+        "spiller": "P. Berg",
+        "lag": "Nor",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Bellingham",
+        "lag": "Eng",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Circati",
+        "lag": "Aus",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Pépé",
+        "lag": "Civ",
+        "antall": 1
+      },
+      {
         "spiller": "C. McCowatt",
         "lag": "Nzl",
         "antall": 1
@@ -2439,13 +2556,8 @@
         "antall": 1
       },
       {
-        "spiller": "A. Circati",
-        "lag": "Aus",
-        "antall": 1
-      },
-      {
-        "spiller": "N. Pépé",
-        "lag": "Civ",
+        "spiller": "S. Singh",
+        "lag": "Nzl",
         "antall": 1
       },
       {
@@ -2456,16 +2568,6 @@
       {
         "spiller": "J. Placide",
         "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Singh",
-        "lag": "Nzl",
-        "antall": 1
-      },
-      {
-        "spiller": "N. Saliba",
-        "lag": "Can",
         "antall": 1
       },
       {
@@ -2489,13 +2591,8 @@
         "antall": 1
       },
       {
-        "spiller": "D. Cornelius",
+        "spiller": "N. Saliba",
         "lag": "Can",
-        "antall": 1
-      },
-      {
-        "spiller": "N. Al-Dawsari",
-        "lag": "Ksa",
         "antall": 1
       },
       {
@@ -2514,18 +2611,13 @@
         "antall": 1
       },
       {
-        "spiller": "F. Balogun",
-        "lag": "Norge",
+        "spiller": "D. Cornelius",
+        "lag": "Can",
         "antall": 1
       },
       {
-        "spiller": "F. Pierrot",
-        "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "Y. Al-Arab",
-        "lag": "Jor",
+        "spiller": "N. Al-Dawsari",
+        "lag": "Ksa",
         "antall": 1
       },
       {
@@ -2549,13 +2641,18 @@
         "antall": 1
       },
       {
-        "spiller": "E. Hajsafi",
-        "lag": "Irn",
+        "spiller": "F. Balogun",
+        "lag": "Norge",
         "antall": 1
       },
       {
-        "spiller": "S. Paik",
-        "lag": "Kor",
+        "spiller": "F. Pierrot",
+        "lag": "Du Har",
+        "antall": 1
+      },
+      {
+        "spiller": "Y. Al-Arab",
+        "lag": "Jor",
         "antall": 1
       },
       {
@@ -2579,8 +2676,13 @@
         "antall": 1
       },
       {
-        "spiller": "M. Kanno",
-        "lag": "Ksa",
+        "spiller": "E. Hajsafi",
+        "lag": "Irn",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Paik",
+        "lag": "Kor",
         "antall": 1
       },
       {
@@ -2589,8 +2691,8 @@
         "antall": 1
       },
       {
-        "spiller": "D. Nazon",
-        "lag": "Du Har",
+        "spiller": "M. Kanno",
+        "lag": "Ksa",
         "antall": 1
       },
       {
@@ -2609,8 +2711,8 @@
         "antall": 1
       },
       {
-        "spiller": "K. Lee",
-        "lag": "Kor",
+        "spiller": "D. Nazon",
+        "lag": "Du Har",
         "antall": 1
       },
       {
@@ -2639,23 +2741,8 @@
         "antall": 1
       },
       {
-        "spiller": "H. Boudaoui",
-        "lag": "Alg",
-        "antall": 1
-      },
-      {
-        "spiller": "D. Jean Jacques",
-        "lag": "Du Har",
-        "antall": 1
-      },
-      {
-        "spiller": "D. Ris",
-        "lag": "Eng",
-        "antall": 1
-      },
-      {
-        "spiller": "F. Al-Buraikan",
-        "lag": "Ksa",
+        "spiller": "K. Lee",
+        "lag": "Kor",
         "antall": 1
       },
       {
@@ -2684,13 +2771,23 @@
         "antall": 1
       },
       {
-        "spiller": "C.Richards",
-        "lag": "Norge",
+        "spiller": "H. Boudaoui",
+        "lag": "Alg",
         "antall": 1
       },
       {
-        "spiller": "B. Gutierrez",
-        "lag": "Mex",
+        "spiller": "D. Jean Jacques",
+        "lag": "Du Har",
+        "antall": 1
+      },
+      {
+        "spiller": "D. Ris",
+        "lag": "Eng",
+        "antall": 1
+      },
+      {
+        "spiller": "F. Al-Buraikan",
+        "lag": "Ksa",
         "antall": 1
       },
       {
@@ -2729,6 +2826,16 @@
         "antall": 1
       },
       {
+        "spiller": "C.Richards",
+        "lag": "Norge",
+        "antall": 1
+      },
+      {
+        "spiller": "B. Gutierrez",
+        "lag": "Mex",
+        "antall": 1
+      },
+      {
         "spiller": "A. Dedic",
         "lag": "Bih",
         "antall": 1
@@ -2756,11 +2863,6 @@
       {
         "spiller": "H. Kanaani",
         "lag": "Irn",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Stamenic",
-        "lag": "Nzl",
         "antall": 1
       },
       {
@@ -2794,18 +2896,8 @@
         "antall": 1
       },
       {
-        "spiller": "W. Pina",
-        "lag": "Cpv",
-        "antall": 1
-      },
-      {
-        "spiller": "G. Cho",
-        "lag": "Kor",
-        "antall": 1
-      },
-      {
-        "spiller": "E. Álvarez",
-        "lag": "Mex",
+        "spiller": "M. Stamenic",
+        "lag": "Nzl",
         "antall": 1
       },
       {
@@ -2829,6 +2921,21 @@
         "antall": 1
       },
       {
+        "spiller": "W. Pina",
+        "lag": "Cpv",
+        "antall": 1
+      },
+      {
+        "spiller": "G. Cho",
+        "lag": "Kor",
+        "antall": 1
+      },
+      {
+        "spiller": "E. Álvarez",
+        "lag": "Mex",
+        "antall": 1
+      },
+      {
         "spiller": "C. Harvey",
         "lag": "Pan",
         "antall": 1
@@ -2849,122 +2956,22 @@
         "antall": 1
       },
       {
-        "spiller": "R. Zerrouki",
-        "lag": "Alg",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Abu Taha",
-        "lag": "Jor",
-        "antall": 1
-      },
-      {
         "spiller": "J. Sanabria",
         "lag": "Uru",
         "antall": 1
       },
       {
-        "spiller": "J. Irvine",
-        "lag": "Aus",
-        "antall": 1
-      },
-      {
-        "spiller": "G. Puerto",
-        "lag": "Col",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Musiala",
-        "lag": "Ger",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Al-Dawsari",
-        "lag": "Ksa",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Caicedo",
-        "lag": "Ecu",
-        "antall": 1
-      },
-      {
-        "spiller": "B. Silva",
-        "lag": "By",
-        "antall": 1
-      },
-      {
-        "spiller": "C. Larin",
-        "lag": "Can",
-        "antall": 1
-      },
-      {
-        "spiller": "Shararh",
-        "lag": "Jor",
-        "antall": 1
-      },
-      {
-        "spiller": "C. Blackman",
-        "lag": "Pan",
-        "antall": 1
-      },
-      {
-        "spiller": "Y. Ayari",
-        "lag": "Swe",
-        "antall": 1
-      },
-      {
-        "spiller": "F. Medina",
-        "lag": "Arg",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Moutoussamy",
-        "lag": "Cod",
-        "antall": 1
-      },
-      {
-        "spiller": "L. Millar",
-        "lag": "Can",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Al-Amri",
-        "lag": "Ksa",
-        "antall": 1
-      },
-      {
-        "spiller": "I. Hien",
-        "lag": "Swe",
-        "antall": 1
-      },
-      {
-        "spiller": "B. Mechele",
-        "lag": "Bel",
-        "antall": 1
-      },
-      {
-        "spiller": "J. Alonso",
-        "lag": "Par",
-        "antall": 1
-      },
-      {
-        "spiller": "C. Mbemba",
-        "lag": "Cod",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Nemati",
-        "lag": "Irn",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Nusa",
-        "lag": "Nor",
+        "spiller": "H. Hassan",
+        "lag": "Egy",
         "antall": 1
       }
     ],
     "rode": [
+      {
+        "spiller": "T. Zwane",
+        "lag": "Rsa",
+        "antall": 1
+      },
       {
         "spiller": "Y. Sithole",
         "lag": "Rsa",
@@ -2976,13 +2983,13 @@
         "antall": 1
       },
       {
-        "spiller": "R. Sulaka",
-        "lag": "Irq",
+        "spiller": "M. Almirón",
+        "lag": "Par",
         "antall": 1
       },
       {
-        "spiller": "M. Almirón",
-        "lag": "Par",
+        "spiller": "R. Sulaka",
+        "lag": "Irq",
         "antall": 1
       },
       {
@@ -3014,26 +3021,21 @@
         "spiller": "A. Canobbio",
         "lag": "Uru",
         "antall": 1
-      },
-      {
-        "spiller": "N. Ngoy",
-        "lag": "Bel",
-        "antall": 1
       }
     ],
     "gult_rodt": [
       {
-        "spiller": "N. Pijnaker",
-        "lag": "Nzl",
+        "spiller": "G. Mora",
+        "lag": "Mex",
         "antall": 0
       }
     ],
-    "sum_gule": 196,
+    "sum_gule": 197,
     "sum_rode": 11,
     "sum_gult_rodt": 0,
-    "total": 207,
-    "hentet": "2026-07-04T00:05:28+00:00",
+    "total": 208,
+    "hentet": "2026-07-04T04:12:14+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
-  "antall_kort": 207
+  "antall_kort": 208
 }
