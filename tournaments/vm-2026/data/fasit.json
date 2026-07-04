@@ -1428,11 +1428,11 @@
       "away": "Frankrike",
       "dato": "2026-07-04",
       "home_score": 0,
-      "away_score": 0,
-      "status": "LIVE",
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "LAST_16",
       "group": null,
-      "winner": "DRAW"
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Brasil",
@@ -2003,14 +2003,14 @@
   },
   "topp_scorere": [
     {
-      "navn": "Lionel Messi",
-      "lag": "Argentina",
+      "navn": "Kylian Mbappé",
+      "lag": "Frankrike",
       "maal": 7
     },
     {
-      "navn": "Kylian Mbappé",
-      "lag": "Frankrike",
-      "maal": 6
+      "navn": "Lionel Messi",
+      "lag": "Argentina",
+      "maal": 7
     },
     {
       "navn": "Erling Haaland",
@@ -3111,7 +3111,7 @@
     "sum_rode": 12,
     "sum_gult_rodt": 0,
     "total": 224,
-    "hentet": "2026-07-04T21:32:23+00:00",
+    "hentet": "2026-07-04T22:59:06+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 224
