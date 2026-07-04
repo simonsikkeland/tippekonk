@@ -1391,11 +1391,11 @@
       "away": "Kapp Verde",
       "dato": "2026-07-03",
       "home_score": 1,
-      "away_score": 0,
-      "status": "IN_PLAY",
+      "away_score": 1,
+      "status": "PAUSED",
       "stage": "LAST_32",
       "group": null,
-      "winner": "HOME_TEAM"
+      "winner": "DRAW"
     },
     {
       "home": "Colombia",
@@ -3032,7 +3032,7 @@
     "sum_rode": 11,
     "sum_gult_rodt": 0,
     "total": 207,
-    "hentet": "2026-07-03T22:34:11+00:00",
+    "hentet": "2026-07-04T00:05:28+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 207
