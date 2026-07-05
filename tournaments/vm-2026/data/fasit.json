@@ -1453,7 +1453,7 @@
       "dato": "2026-07-06",
       "home_score": null,
       "away_score": null,
-      "status": "TIMED",
+      "status": "2026-07-06 01:00:00Z",
       "stage": "LAST_16",
       "group": null,
       "winner": null
@@ -3113,7 +3113,7 @@
     "sum_rode": 12,
     "sum_gult_rodt": 0,
     "total": 226,
-    "hentet": "2026-07-05T22:30:55+00:00",
+    "hentet": "2026-07-05T23:40:08+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 226
