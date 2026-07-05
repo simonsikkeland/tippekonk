@@ -1439,12 +1439,12 @@
       "home": "Brasil",
       "away": "Norge",
       "dato": "2026-07-05",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "PAUSED",
       "stage": "LAST_16",
       "group": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Mexico",
@@ -3112,7 +3112,7 @@
     "sum_rode": 12,
     "sum_gult_rodt": 0,
     "total": 226,
-    "hentet": "2026-07-05T19:51:48+00:00",
+    "hentet": "2026-07-05T21:01:44+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 226
