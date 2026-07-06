@@ -428,6 +428,7 @@
     "USA"
   ],
   "kvart": [
+    "England",
     "Frankrike",
     "Marokko",
     "Norge"
@@ -438,7 +439,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 285,
+  "antall_maal": 290,
   "kamper": [
     {
       "home": "Mexico",
@@ -1451,12 +1452,12 @@
       "home": "Mexico",
       "away": "England",
       "dato": "2026-07-06",
-      "home_score": null,
-      "away_score": null,
-      "status": "2026-07-06 01:00:00Z",
+      "home_score": 2,
+      "away_score": 3,
+      "status": "FINISHED",
       "stage": "LAST_16",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Portugal",
@@ -2022,11 +2023,21 @@
     {
       "navn": "Harry Kane",
       "lag": "England",
-      "maal": 5
+      "maal": 6
+    },
+    {
+      "navn": "Julián Quiñones",
+      "lag": "Mexico",
+      "maal": 4
     },
     {
       "navn": "Vinicius Junior",
       "lag": "Brasil",
+      "maal": 4
+    },
+    {
+      "navn": "Jude Bellingham",
+      "lag": "England",
       "maal": 4
     },
     {
@@ -2043,16 +2054,6 @@
       "navn": "Ismaïla Sarr",
       "lag": "Senegal",
       "maal": 4
-    },
-    {
-      "navn": "Julián Quiñones",
-      "lag": "Mexico",
-      "maal": 3
-    },
-    {
-      "navn": "Folarin Balogun",
-      "lag": "USA",
-      "maal": 3
     }
   ],
   "gruppespill_ferdig": true,
@@ -2071,7 +2072,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 303,
+  "antall_maal_inkl_straffer": 308,
   "kort": {
     "gule": [
       {
@@ -3113,7 +3114,7 @@
     "sum_rode": 12,
     "sum_gult_rodt": 0,
     "total": 226,
-    "hentet": "2026-07-05T23:40:08+00:00",
+    "hentet": "2026-07-06T03:36:57+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 226
