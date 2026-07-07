@@ -428,6 +428,7 @@
     "USA"
   ],
   "kvart": [
+    "Argentina",
     "Belgia",
     "England",
     "Frankrike",
@@ -441,7 +442,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 296,
+  "antall_maal": 301,
   "kamper": [
     {
       "home": "Mexico",
@@ -1487,12 +1488,12 @@
       "home": "Argentina",
       "away": "Egypt",
       "dato": "2026-07-07",
-      "home_score": 0,
+      "home_score": 3,
       "away_score": 2,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "LAST_16",
       "group": null,
-      "winner": "AWAY_TEAM"
+      "winner": "HOME_TEAM"
     },
     {
       "home": "Sveits",
@@ -2008,6 +2009,11 @@
   },
   "topp_scorere": [
     {
+      "navn": "Lionel Messi",
+      "lag": "Argentina",
+      "maal": 8
+    },
+    {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
       "maal": 7
@@ -2015,11 +2021,6 @@
     {
       "navn": "Erling Haaland",
       "lag": "Norge",
-      "maal": 7
-    },
-    {
-      "navn": "Lionel Messi",
-      "lag": "Argentina",
       "maal": 7
     },
     {
@@ -2074,7 +2075,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 314,
+  "antall_maal_inkl_straffer": 319,
   "kort": {
     "gule": [
       {
@@ -3191,7 +3192,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 244,
-    "hentet": "2026-07-07T17:34:47+00:00",
+    "hentet": "2026-07-07T19:56:45+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 244
