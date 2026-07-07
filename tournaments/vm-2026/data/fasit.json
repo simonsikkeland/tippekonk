@@ -1487,12 +1487,12 @@
       "home": "Argentina",
       "away": "Egypt",
       "dato": "2026-07-07",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 2,
+      "status": "IN_PLAY",
       "stage": "LAST_16",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Sveits",
@@ -3191,7 +3191,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 244,
-    "hentet": "2026-07-07T15:28:14+00:00",
+    "hentet": "2026-07-07T17:34:47+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 244
