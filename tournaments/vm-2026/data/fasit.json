@@ -2132,13 +2132,13 @@
         "antall": 2
       },
       {
-        "spiller": "B. Silva",
-        "lag": "Portugal",
+        "spiller": "J. Bacuna",
+        "lag": "Curaçao",
         "antall": 2
       },
       {
-        "spiller": "J. Bacuna",
-        "lag": "Curaçao",
+        "spiller": "B. Silva",
+        "lag": "Portugal",
         "antall": 2
       },
       {
@@ -2222,56 +2222,6 @@
         "antall": 2
       },
       {
-        "spiller": "N. Mbuku",
-        "lag": "Dr Kongo",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Robertson",
-        "lag": "Skottland",
-        "antall": 1
-      },
-      {
-        "spiller": "E. Hajsafi",
-        "lag": "Iran",
-        "antall": 1
-      },
-      {
-        "spiller": "S. Paik",
-        "lag": "Korea Republikken",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Arce",
-        "lag": "Paraguay",
-        "antall": 1
-      },
-      {
-        "spiller": "G. Plata",
-        "lag": "Ecuador",
-        "antall": 1
-      },
-      {
-        "spiller": "M. Kanno",
-        "lag": "Saudi-Arabia",
-        "antall": 1
-      },
-      {
-        "spiller": "pedri",
-        "lag": "Spania",
-        "antall": 1
-      },
-      {
-        "spiller": "N. Semedo",
-        "lag": "Portugal",
-        "antall": 1
-      },
-      {
-        "spiller": "F. Curtis",
-        "lag": "Skottland",
-        "antall": 1
-      },
-      {
         "spiller": "Mr. Tillman",
         "lag": "Norge",
         "antall": 1
@@ -2284,6 +2234,16 @@
       {
         "spiller": "D. Kamada",
         "lag": "Japan",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Semedo",
+        "lag": "Portugal",
+        "antall": 1
+      },
+      {
+        "spiller": "F. Curtis",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2347,11 +2307,6 @@
         "antall": 1
       },
       {
-        "spiller": "K. McLean",
-        "lag": "Skottland",
-        "antall": 1
-      },
-      {
         "spiller": "C.Richards",
         "lag": "Norge",
         "antall": 1
@@ -2384,6 +2339,11 @@
       {
         "spiller": "P. Sucic",
         "lag": "Kroatia",
+        "antall": 1
+      },
+      {
+        "spiller": "K. McLean",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2432,16 +2392,6 @@
         "antall": 1
       },
       {
-        "spiller": "R. Dias",
-        "lag": "Portugal",
-        "antall": 1
-      },
-      {
-        "spiller": "M. van de Ven",
-        "lag": "Nederland",
-        "antall": 1
-      },
-      {
         "spiller": "M. Stamenic",
         "lag": "New Zealand",
         "antall": 1
@@ -2462,8 +2412,13 @@
         "antall": 1
       },
       {
-        "spiller": "R. Christie",
-        "lag": "Skottland",
+        "spiller": "R. Dias",
+        "lag": "Portugal",
+        "antall": 1
+      },
+      {
+        "spiller": "M. van de Ven",
+        "lag": "Nederland",
         "antall": 1
       },
       {
@@ -2504,6 +2459,11 @@
       {
         "spiller": "J. Arias",
         "lag": "Colombia",
+        "antall": 1
+      },
+      {
+        "spiller": "R. Christie",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2572,11 +2532,6 @@
         "antall": 1
       },
       {
-        "spiller": "S. Moutoussamy",
-        "lag": "Dr Kongo",
-        "antall": 1
-      },
-      {
         "spiller": "Shararh",
         "lag": "Jordan",
         "antall": 1
@@ -2604,6 +2559,11 @@
       {
         "spiller": "D. Sanchez",
         "lag": "Colombia",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Moutoussamy",
+        "lag": "Dr Kongo",
         "antall": 1
       },
       {
@@ -2757,11 +2717,6 @@
         "antall": 1
       },
       {
-        "spiller": "M. Koné",
-        "lag": "Frankrike",
-        "antall": 1
-      },
-      {
         "spiller": "T. Adams",
         "lag": "Norge",
         "antall": 1
@@ -2769,6 +2724,11 @@
       {
         "spiller": "S. Radeljic",
         "lag": "Bosnia Og Herzegovina",
+        "antall": 1
+      },
+      {
+        "spiller": "M. Koné",
+        "lag": "Frankrike",
         "antall": 1
       },
       {
@@ -2872,11 +2832,6 @@
         "antall": 1
       },
       {
-        "spiller": "R. Khedira",
-        "lag": "Tunisia",
-        "antall": 1
-      },
-      {
         "spiller": "T. Mbatha",
         "lag": "Sør-Afrika",
         "antall": 1
@@ -2887,8 +2842,8 @@
         "antall": 1
       },
       {
-        "spiller": "L. Comenencia",
-        "lag": "Curaçao",
+        "spiller": "R. Khedira",
+        "lag": "Tunisia",
         "antall": 1
       },
       {
@@ -2912,8 +2867,8 @@
         "antall": 1
       },
       {
-        "spiller": "C. Summerville",
-        "lag": "Nederland",
+        "spiller": "L. Comenencia",
+        "lag": "Curaçao",
         "antall": 1
       },
       {
@@ -2942,13 +2897,8 @@
         "antall": 1
       },
       {
-        "spiller": "Mr. Depay",
+        "spiller": "C. Summerville",
         "lag": "Nederland",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Hickey",
-        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -2999,6 +2949,16 @@
       {
         "spiller": "S. Taniguchi",
         "lag": "Japan",
+        "antall": 1
+      },
+      {
+        "spiller": "Mr. Depay",
+        "lag": "Nederland",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Hickey",
+        "lag": "Skottland",
         "antall": 1
       },
       {
@@ -3082,11 +3042,6 @@
         "antall": 1
       },
       {
-        "spiller": "K. Páez",
-        "lag": "Ecuador",
-        "antall": 1
-      },
-      {
         "spiller": "D. Cornelius",
         "lag": "Canada",
         "antall": 1
@@ -3114,6 +3069,11 @@
       {
         "spiller": "M. De Cuyper",
         "lag": "Belgia",
+        "antall": 1
+      },
+      {
+        "spiller": "K. Páez",
+        "lag": "Ecuador",
         "antall": 1
       },
       {
@@ -3150,19 +3110,49 @@
         "spiller": "H. Fathy",
         "lag": "Egypt",
         "antall": 1
+      },
+      {
+        "spiller": "G. Doue",
+        "lag": "Elfenbenskysten",
+        "antall": 1
+      },
+      {
+        "spiller": "J. Porozo",
+        "lag": "Ecuador",
+        "antall": 1
+      },
+      {
+        "spiller": "E. Hajsafi",
+        "lag": "Iran",
+        "antall": 1
+      },
+      {
+        "spiller": "S. Paik",
+        "lag": "Korea Republikken",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Arce",
+        "lag": "Paraguay",
+        "antall": 1
+      },
+      {
+        "spiller": "G. Plata",
+        "lag": "Ecuador",
+        "antall": 1
+      },
+      {
+        "spiller": "N. Mbuku",
+        "lag": "Dr Kongo",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Robertson",
+        "lag": "Skottland",
+        "antall": 1
       }
     ],
     "rode": [
-      {
-        "spiller": "A. Madibo",
-        "lag": "Qatar",
-        "antall": 1
-      },
-      {
-        "spiller": "A. Canobbio",
-        "lag": "Uruguay",
-        "antall": 1
-      },
       {
         "spiller": "N. Ngoy",
         "lag": "Belgia",
@@ -3219,15 +3209,25 @@
         "antall": 1
       },
       {
-        "spiller": "N. Mbuku",
-        "lag": "Dr Kongo",
+        "spiller": "A. Madibo",
+        "lag": "Qatar",
+        "antall": 1
+      },
+      {
+        "spiller": "A. Canobbio",
+        "lag": "Uruguay",
+        "antall": 1
+      },
+      {
+        "spiller": "W. Zaïre-Emery",
+        "lag": "Frankrike",
         "antall": 0
       }
     ],
     "gult_rodt": [
       {
-        "spiller": "N. Mbuku",
-        "lag": "Dr Kongo",
+        "spiller": "W. Zaïre-Emery",
+        "lag": "Frankrike",
         "antall": 0
       }
     ],
@@ -3235,7 +3235,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 255,
-    "hentet": "2026-07-08T22:06:58+00:00",
+    "hentet": "2026-07-08T23:37:10+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 255
