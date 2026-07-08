@@ -1506,7 +1506,7 @@
       "stage": "LAST_16",
       "group": null,
       "winner": null,
-      "pen_home": 3,
+      "pen_home": 4,
       "pen_away": 3
     },
     {
@@ -1543,8 +1543,8 @@
       "winner": null
     },
     {
-      "home": "",
-      "away": "",
+      "home": "Argentina",
+      "away": "Sveits",
       "dato": "2026-07-12",
       "home_score": null,
       "away_score": null,
@@ -2078,7 +2078,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 332,
+  "antall_maal_inkl_straffer": 333,
   "kort": {
     "gule": [
       {
@@ -3235,7 +3235,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 251,
-    "hentet": "2026-07-08T05:23:23+00:00",
+    "hentet": "2026-07-08T06:29:03+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 251
