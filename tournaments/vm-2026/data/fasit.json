@@ -443,7 +443,7 @@
   "finale": [],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 283,
+  "antall_maal": 280,
   "kamper": [
     {
       "home": "Mexico",
@@ -845,7 +845,7 @@
       "home": "Spania",
       "away": "Saudi-Arabia",
       "dato": "2026-06-21",
-      "home_score": 5,
+      "home_score": 4,
       "away_score": 0,
       "status": "FINISHED",
       "stage": "GROUP_STAGE",
@@ -1263,12 +1263,12 @@
       "home": "Tyskland",
       "away": "Paraguay",
       "dato": "2026-06-29",
-      "home_score": 5,
-      "away_score": 6,
+      "home_score": 4,
+      "away_score": 5,
       "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "pen_home": 3,
       "pen_away": 4
     },
@@ -1393,7 +1393,7 @@
       "status": "FINISHED",
       "stage": "LAST_32",
       "group": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "pen_home": 2,
       "pen_away": 4
     },
@@ -1505,7 +1505,7 @@
       "status": "FINISHED",
       "stage": "LAST_16",
       "group": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "pen_home": 4,
       "pen_away": 3
     },
@@ -1813,8 +1813,8 @@
       {
         "lag": "Spania",
         "poeng": 7,
-        "mf": 6,
-        "maal_for": 6,
+        "mf": 5,
+        "maal_for": 5,
         "spilt": 3
       },
       {
@@ -1834,7 +1834,7 @@
       {
         "lag": "Saudi-Arabia",
         "poeng": 2,
-        "mf": -5,
+        "mf": -4,
         "maal_for": 1,
         "spilt": 3
       }
@@ -2078,7 +2078,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 308,
+  "antall_maal_inkl_straffer": 305,
   "kort": {
     "gule": [
       {
@@ -3235,7 +3235,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 255,
-    "hentet": "2026-07-09T07:49:02+00:00",
+    "hentet": "2026-07-09T09:56:11+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 255
