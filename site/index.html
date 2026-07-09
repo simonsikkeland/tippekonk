@@ -575,13 +575,28 @@ function renderKamper(d){
   $("#kamper").innerHTML = html;
 }
 
+// Visningsscore for en kamp. Straffekamper lagrer fullTime (som INKLUDERER
+// straffekonk-målene) i home_score/away_score — trekk dem fra for å vise rene
+// spilletidsmål, med straffekonkurransen i parentes.
+function visScore(k){
+  const finished = k.status==='FINISHED';
+  const live = k.status==='IN_PLAY'||k.status==='PAUSED';
+  if(!finished && !live) return 'vs';
+  let h = k.home_score??0, a = k.away_score??0;
+  const harStr = k.pen_home!=null && k.pen_away!=null;
+  if(harStr){ h -= k.pen_home; a -= k.pen_away; }
+  let s = `${h} – ${a}`;
+  if(finished && harStr)
+    s += ` <small style="color:var(--slate);font-weight:400">(str. ${k.pen_home}–${k.pen_away})</small>`;
+  return s;
+}
+
 function renderMatchDay(dato, matches, dateLabel){
   let html = `<div class="match-day"><h3>${dateLabel(dato)}</h3>`;
   matches.forEach(k=>{
     const finished = k.status==='FINISHED';
     const live = k.status==='IN_PLAY'||k.status==='PAUSED';
-    const scoreText = finished ? `${k.home_score} – ${k.away_score}`
-      : live ? `${k.home_score??0} – ${k.away_score??0}` : 'vs';
+    const scoreText = visScore(k);
     const cls = live ? 'score live' : finished ? 'score' : 'score pending';
     const grp = k.group?`<span class="grp-tag">${esc(k.group.replace('GROUP_','Gr. '))}</span>`:'';
     html += `<div class="match-card">
@@ -653,8 +668,7 @@ function renderKoDag(d, dato, matches, dateLabel){
   matches.forEach((k,i)=>{
     const finished = k.status==='FINISHED';
     const live = k.status==='IN_PLAY'||k.status==='PAUSED';
-    const scoreText = finished ? `${k.home_score} – ${k.away_score}`
-      : live ? `${k.home_score??0} – ${k.away_score??0}` : 'vs';
+    const scoreText = visScore(k);
     const cls = live ? 'score live' : finished ? 'score' : 'score pending';
     const runde = RUNDE_NAVN[k.stage] || '';
     const tag = runde?`<span class="ko-round-tag">${esc(runde)}</span>`:'';
@@ -919,8 +933,10 @@ function renderSluttspill(d){
     else if(k.winner==='AWAY_TEAM') vin = k.away;
     else if(k.home_score!==k.away_score) vin = k.home_score>k.away_score ? k.home : k.away;
     else if(k.pen_home!=null && k.pen_away!=null && k.pen_home!==k.pen_away) vin = k.pen_home>k.pen_away ? k.home : k.away;
+    // Spilletidsmål: trekk fra straffekonk. (som er bakt inn i fullTime).
+    // pen_home/away er null for ikke-straffekamper, så (||0) lar dem stå urørt.
     koScore[bkPair(k.home,k.away)] = {
-      g: {[h]:k.home_score, [a]:k.away_score},
+      g: {[h]:k.home_score-(k.pen_home||0), [a]:k.away_score-(k.pen_away||0)},
       p: (k.pen_home!=null && k.pen_away!=null) ? {[h]:k.pen_home, [a]:k.pen_away} : null,
       vinner: vin,
     };
