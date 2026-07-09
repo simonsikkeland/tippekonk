@@ -37,6 +37,29 @@ def _get(path: str, token: str) -> dict:
         return json.loads(r.read().decode("utf-8"))
 
 
+def maalsum(kamper: list) -> tuple[int, int]:
+    """(spilletidsmål, mål inkl. straffekonk.) fra alle ferdige kamper.
+
+    OBS: fullTime-scoren fra football-data.org inkluderer allerede målene fra
+    en eventuell straffekonkurranse (fullTime = spilletid + straffekonk. lagt
+    sammen). For kamper avgjort på straffer trekkes derfor straffescoren fra
+    for å få de rene spilletidsmålene, som er den poenggivende summen. Mål i
+    selve straffekonkurransen teller kun i "inkl."-summen (vises i parentes).
+    Robust uansett om per-kamp-scoren er ren (0-0) eller kontaminert (4-3)."""
+    reg = pen = 0
+    for k in kamper:
+        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
+            total = (k["home_score"] or 0) + (k["away_score"] or 0)
+            ph, pa = k.get("pen_home"), k.get("pen_away")
+            if ph is not None and pa is not None:
+                p = (ph or 0) + (pa or 0)
+                reg += total - p
+                pen += p
+            else:
+                reg += total
+    return reg, reg + pen
+
+
 def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> dict:
     comp = cfg["football_data_competition"]
     season = cfg.get("api_football_season", 2026)
@@ -277,22 +300,16 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     print(f"  Ferdige grupper: {sum(1 for v in fact['grupper_ferdig'].values() if v)}/{len(g_tot)}")
 
     # --- Antall mål totalt fra alle ferdige kamper ---
-    # Mål i straffekonkurranse (tie-break) teller IKKE i totalen (det er den
-    # poenggivende summen). Vi tar i tillegg vare på en sum INKL. tie-break-
-    # straffer, kun til visning i parentes.
-    total_goals = 0
-    total_goals_pen = 0
-    for k in fact["kamper"]:
-        if k.get("status") == "FINISHED" and k.get("home_score") is not None:
-            g = (k["home_score"] or 0) + (k["away_score"] or 0)
-            total_goals += g
-            total_goals_pen += g
-            if k.get("pen_home") is not None and k.get("pen_away") is not None:
-                total_goals_pen += (k["pen_home"] or 0) + (k["pen_away"] or 0)
-    # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke den.
-    fact["antall_maal"] = max(total_goals, (existing or {}).get("antall_maal") or 0)
-    fact["antall_maal_inkl_straffer"] = max(
-        total_goals_pen, (existing or {}).get("antall_maal_inkl_straffer") or 0)
+    # Mål i straffekonkurranse (tie-break) teller IKKE i den poenggivende
+    # summen; se maalsum() for hvorfor fullTime-scoren må renses for straffer.
+    total_goals, total_goals_pen = maalsum(fact["kamper"])
+    # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke
+    # den. Gulvet regnes ut fra existing["kamper"] med SAMME logikk, ikke fra
+    # det lagrede skalarfeltet — slik at en tidligere feilberegnet sum ikke blir
+    # et permanent, for høyt gulv.
+    floor_goals, floor_goals_pen = maalsum((existing or {}).get("kamper", []))
+    fact["antall_maal"] = max(total_goals, floor_goals)
+    fact["antall_maal_inkl_straffer"] = max(total_goals_pen, floor_goals_pen)
     print(f"  Totalt antall mål: {fact['antall_maal']} "
           f"(inkl. straffe-tiebreak: {fact['antall_maal_inkl_straffer']})")
 
@@ -363,8 +380,11 @@ def main(tournament_dir: str):
     def _finished(d):
         return sum(1 for k in d.get("kamper", []) if k.get("status") == "FINISHED")
     if existing and fact is not existing:
+        # Sammenlign mot en RENBEREGNET målsum fra existing (ikke det lagrede
+        # skalarfeltet), ellers ville en tidligere for høy sum permanent hindre
+        # en korrigert (lavere, men riktig) sum fra å bli publisert.
         if _finished(fact) < _finished(existing) or \
-                (fact.get("antall_maal") or 0) < (existing.get("antall_maal") or 0):
+                (fact.get("antall_maal") or 0) < maalsum(existing.get("kamper", []))[0]:
             print("  ADVARSEL: ny fasit er degradert (færre kamper/mål) — beholder eksisterende.")
             fact = existing
 
