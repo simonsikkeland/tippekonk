@@ -64,12 +64,13 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     comp = cfg["football_data_competition"]
     season = cfg.get("api_football_season", 2026)
 
-    # Hardt lås på ferdigspilte kamper. Når en kamp først er sett som
-    # FINISHED med begge måltall i lagret fasit.json, fryses resultatet
-    # permanent: senere API-svar med null, et annet tall, eller en flippet
-    # status ignoreres for den kampen. Bare kamper som ennå ikke er låst
-    # oppdateres fra API-et. Dette gjør tabellen stabil selv om API-et er
-    # ustabilt — vi henter alt, men beholder kun det nyeste for u-låste kamper.
+    # Lås på ferdigspilte kamper, men SELVHELBREDENDE. Når en kamp først er
+    # sett som FINISHED med begge måltall i lagret fasit.json, beskyttes den mot
+    # at API-et senere nuller scoren eller flipper statusen bort fra FINISHED.
+    # MEN: rapporterer API-et kampen som ferdig med en ANNEN gyldig score, er
+    # det en ekte korreksjon av et tidligere feil-låst resultat (f.eks. en
+    # transient feilverdi som ble frosset), og da godtas den nye scoren. Slik
+    # blir tabellen stabil mot bortfall uten å fryse en feil for evig.
     locked: dict[tuple, dict] = {}
     for k in (existing or {}).get("kamper", []):
         if (k.get("status") == "FINISHED"
@@ -80,6 +81,10 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     def apply_lock(home, away, h, a, status, winner=None):
         lk = locked.get((home, away))
         if lk:
+            # Gyldig ferdig score fra API-et vinner (korreksjon); ellers behold
+            # det låste resultatet (beskytt mot null/manglende/flippet status).
+            if status == "FINISHED" and h is not None and a is not None:
+                return h, a, "FINISHED", winner
             return lk["home_score"], lk["away_score"], "FINISHED", lk.get("winner", winner)
         return h, a, status, winner
 
@@ -302,14 +307,10 @@ def fetch_competition(cfg: dict, token: str, existing: dict | None = None) -> di
     # --- Antall mål totalt fra alle ferdige kamper ---
     # Mål i straffekonkurranse (tie-break) teller IKKE i den poenggivende
     # summen; se maalsum() for hvorfor fullTime-scoren må renses for straffer.
-    total_goals, total_goals_pen = maalsum(fact["kamper"])
-    # Monotont: målsummen kan bare øke. En transient API-dipp skal ikke senke
-    # den. Gulvet regnes ut fra existing["kamper"] med SAMME logikk, ikke fra
-    # det lagrede skalarfeltet — slik at en tidligere feilberegnet sum ikke blir
-    # et permanent, for høyt gulv.
-    floor_goals, floor_goals_pen = maalsum((existing or {}).get("kamper", []))
-    fact["antall_maal"] = max(total_goals, floor_goals)
-    fact["antall_maal_inkl_straffer"] = max(total_goals_pen, floor_goals_pen)
+    # Ikke noe monotont gulv: en ekte korreksjon (self-healing lås) kan
+    # legitimt SENKE summen, og det skal slå gjennom. Beskyttelsen mot
+    # ufullstendige API-svar ligger i degraderingsvakten (færre ferdige kamper).
+    fact["antall_maal"], fact["antall_maal_inkl_straffer"] = maalsum(fact["kamper"])
     print(f"  Totalt antall mål: {fact['antall_maal']} "
           f"(inkl. straffe-tiebreak: {fact['antall_maal_inkl_straffer']})")
 
@@ -374,18 +375,16 @@ def main(tournament_dir: str):
         print("  Ingen FOOTBALL_DATA_TOKEN eller competition-kode - hopper over.")
         fact = existing
 
-    # Degraderingsvakt: hvis ny fasit er dårligere enn den lagrede (færre
-    # ferdige kamper eller lavere målsum), er API-svaret sannsynligvis
-    # ufullstendig — behold eksisterende fasit framfor å publisere et tilbakefall.
+    # Degraderingsvakt: hvis ny fasit har FÆRRE ferdige kamper enn den lagrede,
+    # er API-svaret sannsynligvis ufullstendig — behold eksisterende fasit
+    # framfor å publisere et tilbakefall. (Vi sjekker IKKE lenger på lavere
+    # målsum: en ekte korreksjon kan legitimt senke summen uten at antall
+    # ferdige kamper faller, og den skal slippe gjennom.)
     def _finished(d):
         return sum(1 for k in d.get("kamper", []) if k.get("status") == "FINISHED")
     if existing and fact is not existing:
-        # Sammenlign mot en RENBEREGNET målsum fra existing (ikke det lagrede
-        # skalarfeltet), ellers ville en tidligere for høy sum permanent hindre
-        # en korrigert (lavere, men riktig) sum fra å bli publisert.
-        if _finished(fact) < _finished(existing) or \
-                (fact.get("antall_maal") or 0) < maalsum(existing.get("kamper", []))[0]:
-            print("  ADVARSEL: ny fasit er degradert (færre kamper/mål) — beholder eksisterende.")
+        if _finished(fact) < _finished(existing):
+            print("  ADVARSEL: ny fasit er degradert (færre ferdige kamper) — beholder eksisterende.")
             fact = existing
 
     # Kort-statistikk (gule/røde) scrapes uavhengig av football-data-API-et, så
