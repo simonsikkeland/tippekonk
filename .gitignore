@@ -2,6 +2,10 @@ __pycache__/
 *.pyc
 .claude/
 
+# Hemmeligheter (FOOTBALL_DATA_TOKEN m.m.) — må aldri committes
+.env
+.env.*
+
 # Vi bruker kun MASTER.xlsx - individuelle deltakerark ignoreres
 tournaments/*/ark/*.xlsx
 !tournaments/*/ark/MASTER.xlsx
