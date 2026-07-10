@@ -1530,12 +1530,12 @@
       "home": "Spania",
       "away": "Belgia",
       "dato": "2026-07-10",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "QUARTER_FINALS",
       "group": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "home": "Norge",
@@ -3246,7 +3246,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 258,
-    "hentet": "2026-07-10T19:02:25+00:00",
+    "hentet": "2026-07-10T20:50:41+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 258
