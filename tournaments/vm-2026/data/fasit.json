@@ -376,6 +376,7 @@
     "Gruppe L": "England"
   },
   "r16": [
+    "",
     "Algerie",
     "Argentina",
     "Australia",
@@ -410,6 +411,7 @@
     "Østerrike"
   ],
   "r8": [
+    "",
     "Argentina",
     "Belgia",
     "Brasil",
@@ -428,6 +430,7 @@
     "USA"
   ],
   "kvart": [
+    "",
     "Argentina",
     "Belgia",
     "England",
@@ -438,6 +441,7 @@
     "Sveits"
   ],
   "semi": [
+    "",
     "Frankrike"
   ],
   "bronse": [],
@@ -1556,7 +1560,7 @@
       "winner": null
     },
     {
-      "home": "",
+      "home": "Frankrike",
       "away": "",
       "dato": "2026-07-14",
       "home_score": null,
@@ -3237,7 +3241,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 255,
-    "hentet": "2026-07-10T05:36:20+00:00",
+    "hentet": "2026-07-10T09:36:46+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 255
