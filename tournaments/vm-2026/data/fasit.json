@@ -1538,8 +1538,8 @@
       "home": "Norge",
       "away": "England",
       "dato": "2026-07-11",
-      "home_score": 1,
-      "away_score": 0,
+      "home_score": 2,
+      "away_score": 1,
       "status": "IN_PLAY",
       "stage": "QUARTER_FINALS",
       "group": null,
@@ -3243,7 +3243,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 0,
     "total": 258,
-    "hentet": "2026-07-11T21:50:55+00:00",
+    "hentet": "2026-07-11T22:49:57+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 258
