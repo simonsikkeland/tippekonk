@@ -1562,12 +1562,12 @@
       "home": "Frankrike",
       "away": "Spania",
       "dato": "2026-07-14",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "SEMI_FINALS",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "England",
@@ -2042,6 +2042,11 @@
       "maal": 6
     },
     {
+      "navn": "Mikel Oyarzabal",
+      "lag": "Spania",
+      "maal": 5
+    },
+    {
       "navn": "Ousmane Dembélé",
       "lag": "Frankrike",
       "maal": 5
@@ -2054,11 +2059,6 @@
     {
       "navn": "Vinicius Junior",
       "lag": "Brasil",
-      "maal": 4
-    },
-    {
-      "navn": "Mikel Oyarzabal",
-      "lag": "Spania",
       "maal": 4
     },
     {
@@ -3290,7 +3290,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 1,
     "total": 267,
-    "hentet": "2026-07-14T18:04:40+00:00",
+    "hentet": "2026-07-14T19:52:35+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 267
