@@ -449,16 +449,18 @@
   ],
   "bronse": [
     "",
+    "England",
     "Frankrike"
   ],
   "bronse_vinner": "",
   "finale": [
     "",
+    "Argentina",
     "Spania"
   ],
   "vm_vinner": "",
   "toppscorer": "Lionel Messi",
-  "antall_maal": 294,
+  "antall_maal": 297,
   "kamper": [
     {
       "home": "Mexico",
@@ -1585,7 +1587,7 @@
       "dato": "2026-07-15",
       "home_score": 1,
       "away_score": 2,
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "stage": "SEMI_FINALS",
       "group": null,
       "winner": "AWAY_TEAM"
@@ -2093,7 +2095,7 @@
     "Gruppe K": true,
     "Gruppe L": true
   },
-  "antall_maal_inkl_straffer": 319,
+  "antall_maal_inkl_straffer": 322,
   "kort": {
     "gule": [
       {
@@ -3300,7 +3302,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 1,
     "total": 267,
-    "hentet": "2026-07-15T21:01:39+00:00",
+    "hentet": "2026-07-15T21:19:20+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 267
