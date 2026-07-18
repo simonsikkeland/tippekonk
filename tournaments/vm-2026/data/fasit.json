@@ -1590,12 +1590,12 @@
       "home": "Frankrike",
       "away": "England",
       "dato": "2026-07-18",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "IN_PLAY",
       "stage": "THIRD_PLACE",
       "group": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "home": "Spania",
@@ -3296,7 +3296,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 1,
     "total": 268,
-    "hentet": "2026-07-18T20:12:51+00:00",
+    "hentet": "2026-07-18T21:24:17+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 268
