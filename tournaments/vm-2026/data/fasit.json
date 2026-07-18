@@ -453,7 +453,7 @@
     "Spania"
   ],
   "vm_vinner": "",
-  "toppscorer": "Lionel Messi",
+  "toppscorer": "Kylian Mbappé",
   "antall_maal": 297,
   "kamper": [
     {
@@ -1590,8 +1590,8 @@
       "home": "Frankrike",
       "away": "England",
       "dato": "2026-07-18",
-      "home_score": 0,
-      "away_score": 1,
+      "home_score": 2,
+      "away_score": 4,
       "status": "IN_PLAY",
       "stage": "THIRD_PLACE",
       "group": null,
@@ -2025,7 +2025,7 @@
     {
       "navn": "Kylian Mbappé",
       "lag": "Frankrike",
-      "maal": 8
+      "maal": 9
     },
     {
       "navn": "Lionel Messi",
@@ -3296,7 +3296,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 1,
     "total": 268,
-    "hentet": "2026-07-18T21:24:17+00:00",
+    "hentet": "2026-07-18T22:23:51+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 268
