@@ -1601,12 +1601,12 @@
       "home": "Spania",
       "away": "Argentina",
       "dato": "2026-07-19",
-      "home_score": null,
-      "away_score": null,
-      "status": "TIMED",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "LIVE",
       "stage": "FINAL",
       "group": null,
-      "winner": null
+      "winner": "DRAW"
     }
   ],
   "grupper": {
@@ -3296,7 +3296,7 @@
     "sum_rode": 13,
     "sum_gult_rodt": 1,
     "total": 268,
-    "hentet": "2026-07-19T18:27:42+00:00",
+    "hentet": "2026-07-19T19:43:38+00:00",
     "kilde": "https://no.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2026-world-cup/wc-2026-fixtures-and-stats/2026-fifa-world-cup-red-and-yellow-cards/"
   },
   "antall_kort": 268
