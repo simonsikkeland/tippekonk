@@ -1,6 +1,8 @@
 name: Bygg stilling og publiser
 
-# Kjører når du laster opp/endrer ark, og automatisk under mesterskap.
+# Kjører når du laster opp/endrer ark. Den planlagte auto-oppdateringen
+# (cron hver 30. min under mesterskap) er skrudd av — VM 2026 er ferdig.
+# Legg tilbake `schedule`-blokka under for å slå den på igjen ved neste turnering.
 on:
   push:
     paths:
@@ -15,8 +17,6 @@ on:
         description: "Regenerer dagens podcast selv om den allerede finnes"
         type: boolean
         default: false
-  schedule:
-    - cron: "*/30 * * * *"     # hver 30. min: hent resultater + bygg side
 
 permissions:
   contents: write
