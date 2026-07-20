@@ -222,7 +222,10 @@ def projiser_sluttspill(fact: dict) -> dict | None:
         # Når vinneren er faktisk, er taperen også endelig kjent.
         if v.get("faktisk") and not loser.get("placeholder"):
             return {**loser, "sikker": True, "faktisk": True}
-        return loser
+        # PROJISERT utfall: taperen skal aldri arve "faktisk" fra en tidligere
+        # runde — ellers vises et lag i bronsefinalen som om det har tapt en
+        # semifinale som ikke er spilt (jf. samme vern i sterkest).
+        return {k: val for k, val in loser.items() if k != "faktisk"} if loser.get("faktisk") else loser
 
     # Resolve 16-delsfinalen: faktiske lag der de er satt, ellers projeksjon.
     kamper = {}  # nr -> {home, away, vinner, taper}
