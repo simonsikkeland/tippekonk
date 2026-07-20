@@ -8,6 +8,7 @@ openpyxl — ingen tunge avhengigheter.
 """
 from __future__ import annotations
 import json
+import unicodedata
 from pathlib import Path
 from openpyxl import load_workbook
 
@@ -26,6 +27,28 @@ LAYOUT = {
 
 def _norm(s) -> str:
     return str(s).strip().lower() if s is not None else ""
+
+
+def _fold(s) -> str:
+    """Aksentufølsom normalisering: «Mbappé» -> «mbappe», «Dembélé» -> «dembele»."""
+    if s is None:
+        return ""
+    nfkd = unicodedata.normalize("NFKD", str(s))
+    return "".join(c for c in nfkd if not unicodedata.combining(c)).strip().lower()
+
+
+def _person_match(a, b) -> bool:
+    """Matcher spillernavn tålelig for hvordan folk faktisk tipper: aksent-
+    ufølsomt, og på etternavn når fasit har fullt navn. Så tippet «Mbappe»
+    treffer fasitens «Kylian Mbappé», og «Kane» treffer «Harry Kane»."""
+    fa, fb = _fold(a), _fold(b)
+    if not fa or not fb:
+        return False
+    if fa == fb:
+        return True
+    ta, tb = fa.split(), fb.split()
+    # Etternavn (siste token) er det stabile — folk dropper som regel fornavnet.
+    return bool(ta and tb and ta[-1] == tb[-1])
 
 
 def _col_block(ws, rows, col):
@@ -326,7 +349,7 @@ def score(pred: dict, fact: dict, rules: dict) -> dict:
         if not ferdig:
             add(fkey, label, 0, f"tippet {tipp} — teller ved slutt")
         else:
-            ok = _norm(pred.get(fkey)) == _norm(fact[fkey])
+            ok = _person_match(pred.get(fkey), fact[fkey])
             add(fkey, label, rules[rule_key] if ok else 0, "riktig" if ok else f"tippet {tipp}")
 
     for fkey, rule_key, label in [
