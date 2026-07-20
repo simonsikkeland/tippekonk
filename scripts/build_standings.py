@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from engine import parse_sheet, parse_master, score  # noqa: E402
+from engine import parse_sheet, parse_master, score, _person_match  # noqa: E402
 from bracket import projiser_sluttspill  # noqa: E402
 
 
@@ -90,7 +90,7 @@ def main(tournament_dir: str):
     # Hvem tippet fortsatt-levende toppscorer/vinner
     if fact.get("toppscorer"):
         stats["toppscorer_treff"] = [d["navn"] for d in deltakere
-                                     if d["pred"]["toppscorer"].strip().lower() == fact["toppscorer"].strip().lower()]
+                                     if _person_match(d["pred"]["toppscorer"], fact["toppscorer"])]
     if fact.get("vm_vinner"):
         stats["vinner_treff"] = [d["navn"] for d in deltakere
                                  if d["pred"]["vm_vinner"].strip().lower() == fact["vm_vinner"].strip().lower()]
